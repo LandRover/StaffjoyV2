@@ -11,11 +11,14 @@ end
 
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/trusty64"
-  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
+  config.vm.box = "ubuntu/xenial64"
+  config.vm.box_url = "https://cloud-images.ubuntu.com/xenial/current/xenial-server-cloudimg-amd64-vagrant.box"
   config.vm.network :private_network, ip: ip, hostsupdater: 'skip'
   config.vm.hostname = 'staffjoy-v2.local'
 
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.synced_folder ".", "/home/vagrant/golang/src/v2.staffjoy.com", SharedFoldersEnableSymlinksCreate: true, owner: "vagrant", group: "vagrant"
+  
   config.vm.provider 'virtualbox' do |vb|
     vb.name = config.vm.hostname
     vb.customize ['modifyvm', :id, '--cpus', cpus]

@@ -2,10 +2,10 @@
 PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
 if [ ! -d /usr/local/go ]; then
-    sudo curl -O https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz
-    sudo tar -xvf go1.7.linux-amd64.tar.gz
+    sudo curl -O https://storage.googleapis.com/golang/go1.12.6.linux-amd64.tar.gz
+    sudo tar -xvf go1.12.6.linux-amd64.tar.gz
     sudo mv go /usr/local
-    sudo rm go1.7.linux-amd64.tar.gz
+    sudo rm go1.12.6.linux-amd64.tar.gz
     echo "export GOPATH=$GOPATH" >> "$VHOME/.profile"
     echo "export PATH=\$PATH:\$GOPATH/bin:/usr/local/go/bin" >> "$VHOME/.profile"
 fi
@@ -15,13 +15,15 @@ id
 source ~/.profile
 
 if ! command -V golint ; then
-    go get -u github.com/golang/lint/golint
+    go get -u golang.org/x/lint/golint
     go get -u golang.org/x/tools/cmd/cover
     go get -u golang.org/x/tools/cmd/goimports
 fi
 
 if ! command -V protoc-gen-go ; then 
-    go get -u github.com/golang/protobuf/...
+    go get -u github.com/golang/protobuf/protoc-gen-go
+    go get -u golang.org/x/tools/cmd/cover
+    go get -u golang.org/x/tools/cmd/goimports
     go get -u github.com/grpc-ecosystem/grpc-gateway/...
 fi
 
@@ -30,14 +32,23 @@ if ! command -V glide ; then
 fi
 
 if ! command -V migrate ; then 
-    go get github.com/mattes/migrate
+    #prefered solution.. install fresh
+    #go get -u github.com/golang-migrate/migrate/cli
+    #cd $GOPATH/src/github.com/golang-migrate/migrate/cli
+    #go get -u github.com/go-sql-driver/mysql
+    #go build -tags 'mysql' -o migrate github.com/golang-migrate/migrate/cli
+    #sudo mv ./migrate /usr/local/bin/migrate
+    #cd ~/
+
+    ## fallback
+    curl -L https://packagecloud.io/mattes/migrate/gpgkey | sudo apt-key add -
+    echo 'deb https://packagecloud.io/mattes/migrate/ubuntu/ xenial main' | sudo tee /etc/apt/sources.list.d/migrate.list
+    sudo apt-get update -y -q
+    sudo apt-get install -y -q  migrate
 fi
 
 if ! command -V buildifier ; then
-    go get -d -u github.com/bazelbuild/buildifier/buildifier
-    # generate step is why this isn't Glide-able
-    go generate github.com/bazelbuild/buildifier/core
-    go install github.com/bazelbuild/buildifier/buildifier
+    go get github.com/bazelbuild/buildtools/buildifier
 fi
 
 if ! command -V go-bindata ; then
