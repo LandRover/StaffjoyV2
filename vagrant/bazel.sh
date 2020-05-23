@@ -6,10 +6,15 @@ fi
 
 if ! command -V java >/dev/null 2>&1; then
     sudo apt-get install -y -q  python-software-properties debconf-utils
-    sudo add-apt-repository -y ppa:webupd8team/java
-    sudo apt-get update -y -q
-    echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections
-    sudo apt-get install -y -q  oracle-java8-installer
+    
+    ## needs older java, @TODO: use v12
+    #sudo add-apt-repository ppa:linuxuprising/java
+    #sudo apt-get update -y -q
+    #echo "oracle-java12-installer shared/accepted-oracle-license-v1-2 select true" | sudo /usr/bin/debconf-set-selections
+    #sudo apt-get install -y -q  oracle-java12-installer
+
+    ## fallback to v1.8
+    sudo apt install -y -q  openjdk-8-jdk
 fi
 
 # bazel deps
@@ -21,4 +26,9 @@ if [ ! -f /etc/apt/sources.list.d/bazel.list ]; then
 fi
 
 sudo apt-get update -y -q
-sudo apt-get install -y -q bazel
+# latest bazel, 0.27rc5 - too new at that point
+#sudo apt-get install -y -q bazel
+
+# use older bazel
+sudo curl https://github.com/bazelbuild/bazel/releases/download/0.6.0/bazel_0.6.0-linux-x86_64.deb --output /usr/src/bazel_0.6.0-linux-x86_64.deb -L --max-redirs 5
+sudo dpkg -i /usr/src/bazel_0.6.0-linux-x86_64.deb
