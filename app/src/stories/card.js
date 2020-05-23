@@ -1,5 +1,5 @@
 import React from 'react';
-import { storiesOf, action, linkTo } from '@kadira/storybook';
+import { storiesOf, action, linkTo } from '@storybook/react';
 
 import DragDropContextMock from './mock/DragDropContextMock';
 

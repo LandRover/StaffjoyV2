@@ -37,6 +37,9 @@ bazel-*
 .DS_Store
 *.swp
 
+#logs
+*.log
+
 # allow local go/glide vendor
 vendor
 

@@ -1,5 +1,7 @@
-import { changePassword, changeAccountData, changePhoto, getUser, initialize,
-  modifyUserAttribute } from './user';
+import {
+  changePassword, changeAccountData, changePhoto, getUser, initialize,
+  modifyUserAttribute,
+} from './user';
 import { getWhoAmI, fetchIntercomSettings } from './whoami';
 
 

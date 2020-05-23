@@ -10,8 +10,8 @@ import (
 
 	"google.golang.org/grpc/metadata"
 
-	"github.com/Sirupsen/logrus"
 	"github.com/gorilla/mux"
+	"github.com/sirupsen/logrus"
 	"v2.staffjoy.com/account"
 	"v2.staffjoy.com/auth"
 	"v2.staffjoy.com/company"
@@ -110,7 +110,7 @@ func whoamiHandler(res http.ResponseWriter, req *http.Request) {
 		defer close()
 
 		md := metadata.New(map[string]string{auth.AuthorizationMetadata: auth.AuthorizationWhoamiService})
-		ctx, cancel := context.WithCancel(metadata.NewContext(context.Background(), md))
+		ctx, cancel := context.WithCancel(metadata.NewOutgoingContext(context.Background(), md))
 		defer cancel()
 		if payload.Worker, err = svc.GetWorkerOf(ctx, &company.WorkerOfRequest{UserUuid: payload.UserUUID}); err != nil {
 			panic(err)
@@ -183,7 +183,7 @@ func intercomHandler(res http.ResponseWriter, req *http.Request) {
 		defer close()
 
 		md := metadata.New(map[string]string{auth.AuthorizationMetadata: auth.AuthorizationWhoamiService})
-		ctx, cancel := context.WithCancel(metadata.NewContext(context.Background(), md))
+		ctx, cancel := context.WithCancel(metadata.NewOutgoingContext(context.Background(), md))
 		defer cancel()
 
 		var u *account.Account

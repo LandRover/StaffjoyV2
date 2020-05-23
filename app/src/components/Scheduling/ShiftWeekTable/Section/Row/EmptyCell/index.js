@@ -1,11 +1,12 @@
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { DropTarget as dropTarget } from 'react-dnd';
 import classNames from 'classnames';
 import CreateShiftModal from '../../../../CreateShiftModal';
 
 require('./shift-week-table-empty-cell.scss');
 
-class ShiftWeekTableEmptyCell extends React.Component {
+class ShiftWeekTableEmptyCell extends Component {
 
   constructor(props) {
     super(props);

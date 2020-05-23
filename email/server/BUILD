@@ -1,7 +1,7 @@
 package(default_visibility = ["//visibility:public"])
 
 load("//tools:build_rules/go.bzl", "go_binary")
-load("@bazel_tools//tools/build_defs/docker:docker.bzl", "docker_build")
+load("@io_bazel_rules_docker//container:container.bzl", "container_image")
 
 go_binary(
     name = "emailserver",
@@ -16,16 +16,16 @@ go_binary(
         "@go_grpc//:codes",
         "@go_grpc//:grpc",
         "@go_logrus//:logrus",
-        "@go_mandrill//:mandrill",
+        "@go_mailgun//:v3",
         "@go_protobuf//:ptypes",
         "@go_protobuf//:ptypes/empty",
         "@go_x_net//:context",
     ],
 )
 
-docker_build(
+container_image(
     name = "docker",
-    base = "//docker:ubuntu-xenial",
+    base = "@ubuntu//image",
     cmd = "./emailserver",
     files = [
         ":emailserver",

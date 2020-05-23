@@ -78,21 +78,22 @@ def _dedup_packages(packages):
   seen = depset()
   filtered = []
   for pkg in packages:
-    if pkg.name not in seen:
-      seen += [pkg.name]
+    if pkg.name not in seen.to_list():
+      moshe = depset([pkg.name])
+      seen = depset(transitive = [seen, depset([pkg.name])])
       filtered += [pkg]
   return filtered
 
 def _go_compile(ctx, pkg, srcs, archive, extra_packages=[]):
-  cgo_link_flags = depset([], order="topological")
+  cgo_link_flags = depset(transitive = [], order = "topological")
   transitive_deps = []
   transitive_cc_libs = depset()
   deps = []
   for dep in ctx.attr.deps:
     deps += [dep.go.package]
     transitive_deps += dep.go.transitive_deps
-    cgo_link_flags += dep.go.cgo_link_flags
-    transitive_cc_libs += dep.go.transitive_cc_libs
+    cgo_link_flags = depset(transitive = [cgo_link_flags, dep.go.cgo_link_flags])
+    transitive_cc_libs = depset(transitive = [transitive_cc_libs, dep.go.transitive_cc_libs])
 
   transitive_deps += extra_packages
   deps += extra_packages
@@ -113,7 +114,7 @@ def _go_compile(ctx, pkg, srcs, archive, extra_packages=[]):
       '-I "' + go_path + '" ' + cmd_helper.join_paths(" ", depset(srcs)),
   ])
 
-  ctx.action(
+  ctx.actions.run_shell(
       inputs = ctx.files._goroot + srcs + archives,
       outputs = [archive],
       mnemonic = 'GoCompile',
@@ -123,7 +124,7 @@ def _go_compile(ctx, pkg, srcs, archive, extra_packages=[]):
   return transitive_deps, cgo_link_flags, transitive_cc_libs
 
 def _go_build(ctx, archive):
-  cgo_link_flags = depset([], order="topological")
+  cgo_link_flags = depset(transitive = [], order = "topological")
   transitive_deps = []
   transitive_cc_libs = depset()
   deps = []
@@ -184,7 +185,7 @@ def _go_build(ctx, archive):
       gotool.path + ' build -a ' + ' '.join(args) + ' -o ' + archive.path + ' ' + ctx.attr.package,
   ])
 
-  ctx.action(
+  ctx.actions.run_shell(
       inputs = ctx.files._goroot + ctx.files.srcs + archives + list(cc_inputs),
       outputs = [archive],
       mnemonic = 'GoBuild',
@@ -200,7 +201,8 @@ def _go_library_impl(ctx):
   else:
     pkg = ctx.attr.package
   # TODO(shahms): Figure out why protocol buffer .jar files are being included.
-  srcs = FileType([".go"]).filter(ctx.files.srcs)
+  
+  srcs = ctx.files.srcs
 
   if len(srcs) == 0:
     fail('ERROR: ' + str(ctx.label) + ' missing .go srcs')
@@ -224,7 +226,7 @@ def _go_library_impl(ctx):
 def _go_build_impl(ctx):
   if ctx.attr.package == "":
     fail('ERROR: missing package attribute')
-  if len(FileType([".go"]).filter(ctx.files.srcs)) == 0:
+  if len(ctx.files.srcs) == 0:
     fail('ERROR: ' + str(ctx.label) + ' missing .go srcs')
 
   archive = ctx.outputs.archive
@@ -250,7 +252,7 @@ def _link_binary(ctx, binary, archive, transitive_deps,
                  stamp=False, extldflags=[], cc_libs=[]):
   gotool = ctx.file._go
 
-  for a in cc_libs:
+  for a in cc_libs.to_list():
     extldflags += [a.path]
 
   dep_archives, package_map = _construct_package_map(transitive_deps)
@@ -262,7 +264,7 @@ def _link_binary(ctx, binary, archive, transitive_deps,
     stamp=False # enable stamping only on optimized release builds
 
   args = _link_args(ctx)[mode]
-  inputs = ctx.files._goroot + [archive] + dep_archives + list(cc_libs)
+  inputs = ctx.files._goroot + [archive] + dep_archives + list(cc_libs.to_list())
   goroot = ctx.file._go.owner.workspace_root
   cmd = ['set -e'] + _construct_go_path(go_path, package_map) + [
       'export GOROOT="' + goroot + '"',
@@ -277,12 +279,12 @@ def _link_binary(ctx, binary, archive, transitive_deps,
             + ctx.file._format_build_vars.path + ' ' + _build_var_package + ')']
     tool_cmd += '${BUILD_VARS} '
     inputs += [ctx.file._format_build_vars, ctx.info_file, ctx.version_file]
-  tool_cmd += ('-extldflags="' + ' '.join(list(extldflags)) + '"'
+  tool_cmd += ('-extldflags="' + ' '.join(list(extldflags.to_list())) + '"'
                + ' ' + ' '.join(args) + ' -L "' + go_path + '"'
                + ' -o ' + binary.path + ' ' + archive.path)
   cmd += [tool_cmd]
 
-  ctx.action(
+  ctx.actions.run_shell(
       inputs = inputs,
       outputs = [binary],
       mnemonic = 'GoLink',
@@ -305,7 +307,7 @@ def _go_binary_impl(ctx):
   if len(ctx.files.srcs) == 0:
     fail('ERROR: ' + str(ctx.label) + ' missing srcs')
 
-  archive = ctx.new_file(ctx.configuration.bin_dir, ctx.label.name + ".a")
+  archive = ctx.actions.declare_file("%s/%s" % (ctx.configuration.bin_dir.path, ctx.label.name + ".a"))
   transitive_deps, cgo_link_flags, transitive_cc_libs = _go_compile(ctx, 'main', ctx.files.srcs, archive)
 
   _link_binary(ctx, ctx.outputs.executable, archive, transitive_deps,
@@ -319,13 +321,13 @@ def _go_test_impl(ctx):
 
   # Construct the Go source that executes the tests when run.
   test_srcs = ctx.files.srcs
-  testmain = ctx.new_file(ctx.configuration.genfiles_dir, ctx.label.name + "main.go")
+  testmain = ctx.actions.declare_file("%s/%s" % (ctx.configuration.genfiles_dir.path, ctx.label.name + "main.go"))
   testmain_generator = ctx.file._go_testmain_generator
   cmd = (
       'set -e;' +
       testmain_generator.path + ' ' + pkg + ' ' + testmain.path + ' ' +
       cmd_helper.join_paths(' ', depset(test_srcs)) + ';')
-  ctx.action(
+  ctx.actions.run_shell(
       inputs = test_srcs + [testmain_generator],
       outputs = [testmain],
       mnemonic = 'GoTestMain',
@@ -333,7 +335,7 @@ def _go_test_impl(ctx):
   )
 
   # Compile the library along with all of its test sources (creating the test package).
-  archive = ctx.new_file(ctx.configuration.bin_dir, ctx.label.name + '.a')
+  archive = ctx.actions.declare_file("%s/%s" % (ctx.configuration.bin_dir.path, ctx.label.name + '.a'))
   transitive_deps, cgo_link_flags, transitive_cc_libs = _go_compile(
       ctx, pkg, test_srcs + lib.go.sources, archive,
       extra_packages = lib.go.transitive_deps)
@@ -344,7 +346,7 @@ def _go_test_impl(ctx):
   transitive_cc_libs += lib.go.transitive_cc_libs
 
   # Compile the generated test main.go source
-  testmain_archive = ctx.new_file(ctx.configuration.bin_dir, ctx.label.name + "main.a")
+  testmain_archive = ctx.actions.declare_file("%s/%s" % (ctx.configuration.bin_dir.path, ctx.label.name + "main.a"))
   _go_compile(ctx, 'main', [testmain] + ctx.files._go_testmain_srcs, testmain_archive,
               extra_packages = [test_pkg])
 
@@ -374,10 +376,10 @@ def _go_test_impl(ctx):
 
   return binary_struct(ctx, extra_runfiles=[ctx.outputs.bin, test_parser])
 
-base_attrs = {
+base_attrs = dict({
     "srcs": attr.label_list(
         mandatory = True,
-        allow_files = FileType([".go"]),
+        allow_files = [".go"],
     ),
     "deps": attr.label_list(
         allow_files = False,
@@ -391,46 +393,44 @@ base_attrs = {
     ),
     "_go": attr.label(
         default = Label("//tools/go"),
-        allow_files = True,
-        single_file = True,
+        allow_single_file = True,
     ),
     "_goroot": attr.label(
         default = Label("//tools/go:goroot"),
         allow_files = True,
     ),
-}
+})
 
 go_build = rule(
     _go_build_impl,
-    attrs = base_attrs + {
+    attrs = dict(base_attrs, **{
         "cc_deps": attr.label_list(
             allow_files = False,
             providers = ["cc"],
         ),
         "package": attr.string(mandatory = True),
-    },
+    }),
     outputs = {"archive": "%{name}.a"},
 )
 
 go_library = rule(
     _go_library_impl,
-    attrs = base_attrs + {
+    attrs = dict(base_attrs, **{
         "package": attr.string(),
-    },
+    }),
     outputs = {"archive": "%{name}.a"},
 )
 
-binary_attrs = base_attrs + {
+binary_attrs = dict(base_attrs, **{
     "_format_build_vars": attr.label(
         default = Label("//tools/go:format_build_vars.sh"),
-        allow_files = True,
-        single_file = True,
+        allow_single_file = True,
     ),
     "data": attr.label_list(
         allow_files = True,
-        cfg = "data",
+        cfg = "host",
     ),
-}
+})
 
 go_binary = rule(
     _go_binary_impl,
@@ -440,24 +440,24 @@ go_binary = rule(
 
 go_test = rule(
     _go_test_impl,
-    attrs = binary_attrs + {
+    attrs = dict(binary_attrs, **{
         "library": attr.label(
             mandatory = True,
             providers = ["go"],
         ),
         "_go_testmain_generator": attr.label(
             default = Label("//tools/go:testmain_generator"),
-            single_file = True,
+            allow_single_file = True,
         ),
         "_go_test_parser": attr.label(
             default = Label("//tools/go:parse_test_output"),
-            single_file = True,
+            allow_single_file = True,
         ),
         "_go_testmain_srcs": attr.label(
             default = Label("//tools/go:testmain_srcs"),
-            allow_files = FileType([".go"]),
+            allow_files = [".go"],
         ),
-    },
+    }),
     executable = True,
     outputs = {"bin": "%{name}.bin"},
     test = True,
@@ -483,7 +483,6 @@ def go_package(name=None, package=None,
       test_srcs += [src]
     else:
       lib_srcs += [src]
-
   go_library(
     name = name,
     srcs = lib_srcs,

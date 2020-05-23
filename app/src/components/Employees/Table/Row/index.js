@@ -1,12 +1,15 @@
 import _ from 'lodash';
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { DataTableRow, DataTableCell } from '@rmwc/data-table';
 
 import * as rowTypes from './rowTypes';
 import TableContactInfo from './ContactInfo';
 import TablePhotoName from './PhotoName';
 import TableBooleanLabel from './BooleanLabel';
 
-class TableRow extends React.Component {
+class TableRow extends Component {
 
   constructor(props) {
     super(props);
@@ -46,12 +49,11 @@ class TableRow extends React.Component {
 
       case rowTypes.INFO_LIST:
         return (
-          <td
+          <DataTableCell
             key={tdKey}
-            className="mdl-data-table__cell--non-numeric"
           >
             Team
-          </td>
+          </DataTableCell>
         );
 
       case rowTypes.BOOLEAN_LABEL:
@@ -88,13 +90,13 @@ class TableRow extends React.Component {
     const { columns } = this.props;
 
     return (
-      <tr onClick={this.onRowClick}>
+      <DataTableRow onClick={this.onRowClick}>
         {
           _.map(columns, column =>
             this.getRowComponent(column)
           )
         }
-      </tr>
+      </DataTableRow>
     );
   }
 }

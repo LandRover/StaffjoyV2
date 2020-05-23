@@ -1,14 +1,18 @@
 set -e
 
+# instal go deps
+go get -u github.com/GeertJohan/go.rice
+go get -u github.com/GeertJohan/go.rice/rice
+
 # Removes mac shitty things
 find assets/ -type f -name '.DS_Store' -delete
 
 # Put assets into the binary
-go-bindata assets/...
+rice embed-go
+
 # Clean up data so it passes linter
-gofmt -s -w bindata.go
-# We need to make it work with linting
-sed -i "s/package main/package errorpages/g" bindata.go
-sed -i "s/Css/CSS/g" bindata.go
-sed -i "s/Json/JSON/g" bindata.go
-echo "THAT WAS EASY."
+gofmt -s -w rice-box.go
+
+sed -i "s/package main/package errorpages/g" rice-box.go
+
+echo "ERROR PAGES DONE!"

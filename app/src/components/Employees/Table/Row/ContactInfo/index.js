@@ -1,6 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { formatPhoneNumber } from 'utility';
+
+import { DataTableCell } from '@rmwc/data-table';
 
 require('./contact-info.scss');
 
@@ -9,13 +12,16 @@ function TableContactInfo({ email, phoneNumber }) {
   const value = formatPhoneNumber(phoneNumber) || email || nullValue;
 
   const labelClasses = classNames({
-    'mdl-data-table__cell--non-numeric': true,
     'table-contact-info-label': true,
     empty: value === nullValue,
   });
 
   return (
-    <td className={labelClasses} >{value}</td>
+    <DataTableCell
+      className={labelClasses}
+    >
+      {value}
+    </DataTableCell>
   );
 }
 

@@ -1,6 +1,11 @@
-import HTML5Backend from 'react-dnd-html5-backend';
-import { DragDropContext } from 'react-dnd';
+import React from 'react';
 
-const DragDropContextMock = DragDropContext(HTML5Backend)((props) => props.children); 
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
+
+const DragDropContextMock = (props) => 
+    <DndProvider backend={HTML5Backend}>
+        {props.children}
+    </DndProvider>
 
 export default DragDropContextMock;

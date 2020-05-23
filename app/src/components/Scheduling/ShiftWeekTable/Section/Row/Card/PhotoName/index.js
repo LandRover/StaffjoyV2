@@ -1,11 +1,12 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 require('./scheduling-table-photo-name.scss');
 
 function SchedulingTablePhotoName({ name, photoUrl = '' }) {
   return (
     <div
-      className="scheduling-table-photo-name mdl-data-table__cell--non-numeric"
+      className="scheduling-table-photo-name"
     >
       <img
         className="profile-icon"

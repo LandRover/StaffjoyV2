@@ -1,45 +1,24 @@
 @import "../../../../frontend_resources/scss/colors";
-
 .search-container {
-
   &.dark-container {
-    box-sizing: border-box;
     background-color: $pure-white;
-    border-radius: 2px;
-    padding: 4px;
+  }
+
+  .SearchField-mdc-text-field {
+    height: 32px;
+    background-color: transparent !important;
 
     i {
-      display: inline-block;
+      bottom: 5px;
     }
 
-    .mdl-textfield {
-      padding: 0px !important;
-      display: inline-block;
+    input {
+      padding: 0 38px 0  48px !important;
     }
 
-    .mdl-textfield__input {
-      border-bottom: 0;
-    }
-
-    .mdl-textfield__label {
-      top: 1px;
-
-      &:after {
-        background: inherit;
-      }
+    &::before, &::after {
+      background-color: transparent !important;
     }
   }
 
-  i {
-    margin-right: 10px;
-    vertical-align: middle;
-  }
-
-  .mdl-textfield__input {
-    font-size: 12px;
-  }
-
-  .mdl-textfield__label {
-    font-size: 12px;
-  }
 }

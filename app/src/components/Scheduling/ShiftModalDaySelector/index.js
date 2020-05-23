@@ -1,7 +1,8 @@
 import _ from 'lodash';
 import $ from 'npm-zepto';
 import moment from 'moment';
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   MOMENT_DATE_DISPLAY,
   MOMENT_ISO_DATE,
@@ -11,7 +12,13 @@ import ShiftModalDayCell from './DayCell';
 
 require('./shift-modal-day-selector.scss');
 
-class ShiftModalDaySelector extends React.Component {
+class ShiftModalDaySelector extends Component {
+
+  state = {
+    selected: {},
+    selections: {}
+  };
+
 
   constructor(props) {
     super(props);
@@ -20,6 +27,7 @@ class ShiftModalDaySelector extends React.Component {
     const startMoment = moment(startDate);
     const cells = _.map(_.range(tableSize), (i) => {
       const calDate = startMoment.clone().add(i, 'days');
+
       return {
         dayLetter: getLetterFromDayName(calDate.format('dddd')),
         displayDate: calDate.format(MOMENT_DATE_DISPLAY),
@@ -27,14 +35,13 @@ class ShiftModalDaySelector extends React.Component {
       };
     });
 
+    this.initSelections();
     this.selectedDay = this.selectedDay.bind(this);
-    this.state = {
-      selected: {},
-    };
     this.cells = cells;
   }
 
-  componentWillMount() {
+
+  initSelections() {
     const selectedState = {};
     const { selectedDate, formCallback } = this.props;
     _.forEach(this.cells, (cell) => {

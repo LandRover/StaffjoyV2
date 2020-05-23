@@ -1,5 +1,5 @@
 import React from 'react';
-import { configure, storiesOf, action, linkTo } from '@kadira/storybook';
+import { configure, storiesOf, action, linkTo } from '@storybook/react';
 
 import StaffjoyButton from '../components/StaffjoyButton';
 

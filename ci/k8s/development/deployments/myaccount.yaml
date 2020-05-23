@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: myaccount-deployment
@@ -7,6 +7,9 @@ spec:
   revisionHistoryLimit: 1
   strategy:
     type: RollingUpdate
+  selector:
+    matchLabels:
+      app: myaccount
   template:
     metadata:
       labels:

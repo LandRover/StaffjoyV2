@@ -1,5 +1,6 @@
 import moment from 'moment';
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 import InfoStat from './InfoStat';
 import { MOMENT_MONTH_YEAR_FORMAT } from '../../constants/config';

@@ -18,12 +18,12 @@ function shouldFetchWhoAmI(state) {
     return true;
 
   // it's currently being fetched
-  } else if (whoAmIState.isFetching) {
+  } if (whoAmIState.isFetching) {
     return false;
 
   // it's been in the UI for more than the allowed threshold
-  } else if (!whoAmIState.lastUpdate ||
-    (timestampExpired(whoAmIState.lastUpdate, 'WHOAMI'))
+  } if (!whoAmIState.lastUpdate
+    || (timestampExpired(whoAmIState.lastUpdate, 'WHOAMI'))
   ) {
     return true;
   }
@@ -55,9 +55,7 @@ function fetchWhoAmI() {
     })
       .then(checkStatus)
       .then(parseJSON)
-      .then(data =>
-        dispatch(receiveWhoAmI(data))
-      );
+      .then((data) => dispatch(receiveWhoAmI(data)));
   };
 }
 
@@ -92,6 +90,6 @@ export function fetchIntercomSettings() {
     })
       .then(checkStatus)
       .then(parseJSON)
-      .then(data => dispatch(receiveIntercomSettings(data)));
+      .then((data) => dispatch(receiveIntercomSettings(data)));
   };
 }

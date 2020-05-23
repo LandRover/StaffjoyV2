@@ -3,8 +3,11 @@
 .table-row-job {
 
   .job-name-input {
-    background-color: transparent;
     border: 1px solid transparent;
+
+    &:hover {
+      background-color: $pure-white;
+    }
   }
 
   &:hover .job-delete-cell svg {
@@ -19,17 +22,6 @@
 .job-name-cell {
   width: 60%;
   text-align: left !important;
-
-  .mdl-spinner {
-    position: absolute;
-    top: 15px;
-    height: 18px;
-    width: 18px;
-
-    .mdl-spinner__circle {
-      border-width: 2px;
-    }
-  }
 }
 
 .job-name-input {
@@ -75,6 +67,7 @@
 
   svg {
     visibility: hidden;
+    vertical-align: middle;
   }
 }
 

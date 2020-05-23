@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../actions';
@@ -10,6 +11,7 @@ function ProfilePhoto({ photoUrl }) {
         className="circle-frame"
         role="presentation"
         src={photoUrl}
+        alt=""
       />
     </div>
   );
@@ -17,6 +19,7 @@ function ProfilePhoto({ photoUrl }) {
   /*
     TODO add back in when app supports custom photo
       <input
+        accept="image/*"
         type="file"
         name="photo-upload"
         id="photo-upload"
@@ -25,7 +28,7 @@ function ProfilePhoto({ photoUrl }) {
       />
       <label
         htmlFor="photo-upload"
-        className="mdl-button mdl-js-button change-photo-button"
+        className="mdc-button change-photo-button"
       >
         Change Photo
       </label>
@@ -36,7 +39,7 @@ function mapDispatchToProps(dispatch) {
   return {
     changePhoto: bindActionCreators(
       actions.changePhoto,
-      dispatch
+      dispatch,
     ),
   };
 }

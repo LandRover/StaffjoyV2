@@ -1,6 +1,9 @@
 import _ from 'lodash';
-import React, { PropTypes } from 'react';
-import { Menu, MenuItem } from 'react-mdl';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Button } from '@rmwc/button';
+import { Menu, MenuSurfaceAnchor, MenuItem } from '@rmwc/menu';
+import { ListDivider } from '@rmwc/list';
 import {
   COMPANY_BASE,
   getRoute,
@@ -16,44 +19,68 @@ function SideNavigationUserContext({
   userName,
   userPhotoUrl,
 }) {
+  const [isMenuOpen, setMenuState] = useState(false);
+  const toggleState = () => {
+    setMenuState(!isMenuOpen);
+  }
+
+  // Must set open to false to keep menu in the correct state.
+  // This does not follow the controlled component pattern
+  // (see https://reactjs.org/docs/forms.html#controlled-components).
+  // Follow https://github.com/material-components/material-components-web-react/issues/785
+  // to get any updates.
+  const onClose = () => {
+    setMenuState(false);
+  }
+
   return (
     <div id="user-context-menu" className="user-context">
-      <img
-        className="profile-icon"
-        role="presentation"
-        src={userPhotoUrl}
-      />
-      <div className="user-menu-tag">
-        <div className="user-name">{userName}</div>
-        <div className="company-name">{companyName}</div>
-      </div>
-      <Menu target="user-context-menu" valign="top" align="right">
-        {
-          _.map(companyPermissions, (company) => {
-            const companyPath = getRoute(
-              COMPANY_BASE, { companyUuid: company.uuid }
-            );
-            const route = `/?uuid=${company.uuid}/#${companyPath}`;
-            const className = (company.uuid === companyUuid) ? 'active' : '';
-            const menuKey = `menu-${company.uuid}`;
-            const linkKey = `link-${company.uuid}`;
-            return (
-              <a key={linkKey} href={route}>
-                <MenuItem className={className} key={menuKey}>
+      <Button onClick={() => toggleState()} label={userName} icon={<img
+          className="profile-icon"
+          role="presentation"
+          src={userPhotoUrl}
+        />} />
+   
+      {/* <Menu target="user-context-menu" valign="top" align="right"> */}
+
+      <MenuSurfaceAnchor>
+        <Menu
+          open={isMenuOpen}
+          onClose={onClose}
+          onSelect={e => {
+            location.href = e.target.item.dataset.url;
+          }}
+        >
+          {
+            _.map(companyPermissions, (company) => {
+              const companyPath = getRoute(
+                COMPANY_BASE, { companyUuid: company.uuid }
+              );
+
+              const route = `/?uuid=${company.uuid}/#${companyPath}`;
+              const activated = (company.uuid === companyUuid) ? true : false;
+              const menuKey = `menu-${company.uuid}`;
+              const linkKey = `link-${company.uuid}`;
+
+              return (
+                <MenuItem key={menuKey} data-url={route}>
                   {company.name}
                 </MenuItem>
-              </a>
-            );
-          })
-        }
+              );
+            })
+          }
 
-        <a href={routeToMicroservice('myaccount')}>
-          <MenuItem className="separation">My Account</MenuItem>
-        </a>
-        <a href={routeToMicroservice('www', '/logout/')}>
-          <MenuItem className="separation">Log Out</MenuItem>
-        </a>
-      </Menu>
+          <MenuItem data-url={routeToMicroservice('myaccount')}>
+            My Account
+          </MenuItem>
+
+          <ListDivider />
+
+          <MenuItem data-url={routeToMicroservice('www', '/logout/')}>
+            Logout
+          </MenuItem>
+        </Menu>
+      </MenuSurfaceAnchor>
     </div>
   );
 }

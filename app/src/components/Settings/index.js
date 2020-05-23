@@ -1,5 +1,7 @@
 import _ from 'lodash';
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 import * as constants from 'constants/constants';
@@ -9,9 +11,36 @@ import StaffjoyButton from 'components/StaffjoyButton';
 import SearchField from 'components/SearchField';
 import TeamJobs from './TeamJobs';
 
+
 require('./settings.scss');
 
-class Settings extends React.Component {
+
+class Settings extends Component {
+  state = {
+    prevPropsTeamUuid: this.props.teamUuid
+  };
+
+  static getDerivedStateFromProps(props, state) {
+    const {
+      dispatch,
+      teamUuid,
+    } = props;
+
+    // get the jobs
+    if (teamUuid !== state.prevPropsTeamUuid) {
+      dispatch(
+        actions.initializeSettings(companyUuid, teamUuid)
+      );
+
+      return {
+        prevPropsTeamUuid: teamUuid
+      }
+    }
+
+    return null;
+  }
+
+
   constructor(props) {
     super(props);
 
@@ -45,29 +74,18 @@ class Settings extends React.Component {
     dispatch(actions.initializeSettings(companyUuid, teamUuid));
   }
 
-  componentWillReceiveProps(nextProps) {
-    const {
-      dispatch,
-      teamUuid,
-    } = this.props;
-
-    // get the jobs
-    if (teamUuid !== nextProps.teamUuid) {
-      dispatch(
-        actions.initializeSettings(nextProps.companyUuid, nextProps.teamUuid)
-      );
-    }
-  }
 
   handleShowModalClick(jobUuid) {
     this.jobUuidToDelete = jobUuid;
     this.modal.showModal();
   }
 
+
   handleCancelModalClick() {
     this.jobUuidToDelete = null;
     this.modal.hideModal();
   }
+
 
   handleColorPickerChange({ hex, source }, jobUuid) {
     const {
@@ -79,6 +97,7 @@ class Settings extends React.Component {
 
     this.props.updateTeamJob(companyUuid, teamUuid, jobUuid, { color });
   }
+
 
   handleJobColorClick(event, jobUuid) {
     const {
@@ -94,9 +113,11 @@ class Settings extends React.Component {
     });
   }
 
+
   handleSearchChange(event) {
     this.props.setFilters({ searchQuery: event.target.value });
   }
+
 
   handleJobNameChange(event, jobUuid) {
     const {
@@ -110,6 +131,7 @@ class Settings extends React.Component {
       { name: event.target.value }
     );
   }
+
 
   saveTeamJob(event, jobUuid) {
     const {
@@ -131,15 +153,18 @@ class Settings extends React.Component {
     );
   }
 
+
   handleJobNameBlur(event, jobUuid) {
     this.saveTeamJob(event, jobUuid);
   }
+
 
   handleJobNameKeyPress(event, jobUuid) {
     if (event.key === 'Enter') {
       this.saveTeamJob(event, jobUuid);
     }
   }
+
 
   handleDeleteJobClick() {
     const {
@@ -164,6 +189,7 @@ class Settings extends React.Component {
     this.jobUuidToDelete = null;
   }
 
+
   handleNewJobNameChange(event) {
     const {
       setNewTeamJob,
@@ -173,6 +199,7 @@ class Settings extends React.Component {
       { name: event.target.value },
     );
   }
+
 
   createNewJob(event) {
     const {
@@ -202,11 +229,13 @@ class Settings extends React.Component {
     this.createNewJob(event);
   }
 
+
   handleNewJobNameKeyPress(event) {
     if (event.key === 'Enter') {
       this.createNewJob(event);
     }
   }
+
 
   handleNewJobDeleteIconClick() {
     const {
@@ -218,6 +247,7 @@ class Settings extends React.Component {
     );
   }
 
+
   handleAddNewJobClick() {
     const {
       setNewTeamJob,
@@ -227,6 +257,7 @@ class Settings extends React.Component {
       { isVisible: true },
     );
   }
+
 
   render() {
     const {
@@ -336,8 +367,9 @@ Settings.propTypes = {
   isFetching: PropTypes.bool.isRequired,
 };
 
+
 function mapStateToProps(state, ownProps) {
-  const teamUuid = ownProps.routeParams.teamUuid;
+  const teamUuid = ownProps.match.params.teamUuid;
 
   // consts for team data
   const team = _.get(state.teams.data, teamUuid, {});
@@ -362,7 +394,7 @@ function mapStateToProps(state, ownProps) {
   const isFetching = isTeamFetching || isJobFetching;
 
   return {
-    companyUuid: ownProps.routeParams.companyUuid,
+    companyUuid: ownProps.match.params.companyUuid,
     teamUuid,
     team,
     jobs,
@@ -374,6 +406,7 @@ function mapStateToProps(state, ownProps) {
     isFetching,
   };
 }
+
 
 const mapDispatchToProps = dispatch => ({
   dispatch,
@@ -402,7 +435,11 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-export default connect(
+
+const ConnectedComponent = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Settings);
+
+
+export default withRouter(ConnectedComponent);

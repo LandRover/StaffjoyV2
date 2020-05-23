@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { Router, Route, IndexRoute, hashHistory, IndexRedirect }
-  from 'react-router';
-import { syncHistoryWithStore } from 'react-router-redux';
+import { Provider, ReactReduxContext } from 'react-redux';
+import { Route, Switch } from 'react-router';
+import { BrowserRouter as Router, Redirect } from 'react-router-dom';
 import Raven from 'raven-js';
-import configureStore from 'stores/configureStore';
+import configureStore, { history } from 'stores/configureStore';
+import { ConnectedRouter } from 'connected-react-router';
 import Launcher from 'components/Launcher';
 import App from 'components/App';
 import Employees from 'components/Employees';
@@ -23,7 +23,6 @@ import {
   SENTRY_PRODUCTION_KEY,
 } from './constants/config';
 
-require('../../third_party/node/material_design_lite/main');
 require('./main.scss');
 
 const currentEnv = detectEnvironment();
@@ -37,53 +36,66 @@ if (currentEnv !== ENV_NAME_DEVELOPMENT) {
 }
 
 const store = configureStore();
-const history = syncHistoryWithStore(hashHistory, store);
 
-ReactDOM.render(
+const Main = () => 
   <Provider store={store}>
-    <Router history={history}>
-      <Route path={paths.getRoute(paths.ROOT_PATH)}>
-
+    <ConnectedRouter history={history}>
+      <App>
         {/* Company Launcher  */}
-        <IndexRoute component={Launcher} />
-
-        {/* Base page for a specific company */}
-        <Route path={paths.getRoute(paths.COMPANY_BASE)} component={App}>
-          <IndexRedirect to={paths.getRoute(paths.COMPANY_EMPLOYEES)} />
+        <Switch>
           <Route
-            path={paths.getRoute(paths.COMPANY_EMPLOYEES)}
-            component={Employees}
-          >
-            <IndexRoute component={InfoSidePanel} />
-            <Route
-              path={paths.getRoute(paths.COMPANY_EMPLOYEE)}
-              component={EmployeeSidePanel}
+              exact path={paths.getRoute(paths.ROOT_PATH)}
+              component={Launcher}
             />
-          </Route>
+
+          {/* Base page for a specific company */}
+          
+          <Redirect exact from={paths.getRoute(paths.COMPANY_BASE)} to={paths.getRoute(paths.COMPANY_EMPLOYEES)} />
+
+          <Route
+            path={paths.getRoute(paths.COMPANY_EMPLOYEES)} component={ (props) => (
+              <Employees { ...props }>
+                <Switch>
+                  <Route 
+                    exact path={paths.getRoute(paths.COMPANY_EMPLOYEES)}
+                    component={InfoSidePanel} />
+                  
+                  <Route
+                    exact path={paths.getRoute(paths.COMPANY_EMPLOYEE)}
+                    component={EmployeeSidePanel}
+                  />
+                </Switch>
+              </Employees>
+            ) }
+          />
+
           <Route
             path={paths.getRoute(paths.COMPANY_HISTORY)}
             component={Title}
           />
 
           {/* Base page for a team within a company  */}
-          <Route path={paths.getRoute(paths.TEAM_BASE)}>
-            <IndexRedirect to={paths.getRoute(paths.TEAM_SCHEDULING)} />
-            <Route
-              path={paths.getRoute(paths.TEAM_SCHEDULING)}
-              component={Scheduling}
-            />
-            <Route
-              path={paths.getRoute(paths.TEAM_SETTINGS)}
-              component={Settings}
-            />
-            <Route
-              path={paths.getRoute(paths.TEAM_SHIFT_BOARD)}
-              component={OtherTitle}
-            />
-          </Route>
-        </Route>
-      </Route>
-    </Router>
-  </Provider>,
+          
+          <Redirect exact from={paths.getRoute(paths.TEAM_BASE)} to={paths.getRoute(paths.TEAM_SCHEDULING)} />
+
+          <Route
+            path={paths.getRoute(paths.TEAM_SCHEDULING)}
+            component={Scheduling}
+          />
+          <Route
+            path={paths.getRoute(paths.TEAM_SETTINGS)}
+            component={Settings}
+          />
+          <Route
+            path={paths.getRoute(paths.TEAM_SHIFT_BOARD)}
+            component={OtherTitle}
+          />
+        </Switch>
+      </App>
+    </ConnectedRouter>
+  </Provider>
+
+ReactDOM.render(
+  <Main />,
   document.getElementById('app')
 );

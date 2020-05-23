@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: emailserver-deployment
@@ -7,6 +7,9 @@ spec:
   revisionHistoryLimit: 1
   strategy:
     type: RollingUpdate
+  selector:
+    matchLabels:
+      app: emailserver
   template:
     metadata:
       labels:
@@ -29,8 +32,10 @@ spec:
         env:
         - name: DEPLOY
           value: VERSION
-        - name: MANDRILL_API_KEY
-          value: S3CrEtApIkEy
+        - name: MAILGUN_DOMAIN
+          value: domain.com
+        - name: MAILGUN_API_KEY
+          value: key-4g
         - name: ENV
           valueFrom:
             fieldRef:

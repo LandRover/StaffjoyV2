@@ -8,7 +8,6 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-
     case actionTypes.FORM_CHANGE:
       return _.extend({}, state, {
         [action.form]: action.data,

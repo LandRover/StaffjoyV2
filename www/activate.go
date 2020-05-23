@@ -7,9 +7,9 @@ import (
 
 	"google.golang.org/grpc/metadata"
 
-	"github.com/Sirupsen/logrus"
 	"github.com/gorilla/csrf"
 	"github.com/gorilla/mux"
+	"github.com/sirupsen/logrus"
 	"golang.org/x/net/context"
 	"v2.staffjoy.com/account"
 	"v2.staffjoy.com/auth"
@@ -52,7 +52,7 @@ func activateHandler(res http.ResponseWriter, req *http.Request) {
 	}
 
 	md := metadata.New(map[string]string{auth.AuthorizationMetadata: auth.AuthorizationWWWService})
-	ctx, cancel := context.WithCancel(metadata.NewContext(context.Background(), md))
+	ctx, cancel := context.WithCancel(metadata.NewOutgoingContext(context.Background(), md))
 	defer cancel()
 	accountClient, close, err := account.NewClient()
 	if err != nil {

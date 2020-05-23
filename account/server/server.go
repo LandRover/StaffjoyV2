@@ -10,8 +10,8 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	intercom "gopkg.in/intercom/intercom-go.v2"
 
-	"github.com/Sirupsen/logrus"
 	"github.com/go-gorp/gorp"
+	"github.com/sirupsen/logrus"
 
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
@@ -149,6 +149,7 @@ func (s *accountServer) Create(ctx context.Context, req *pb.CreateAccountRequest
 	a := &pb.Account{Uuid: uuid.String(), Email: req.Email, Name: req.Name, Phonenumber: req.Phonenumber}
 	a.PhotoUrl = GenerateGravatarURL(a.Email)
 	a.MemberSince = time.Now()
+
 	if err = s.dbMap.Insert(a); err != nil {
 		return nil, s.internalError(err, "Could not create user account")
 	}
@@ -667,7 +668,7 @@ func (s *accountServer) SyncUser(ctx context.Context, req *pb.SyncUserRequest) (
 
 	// Setup for communication
 	md := metadata.New(map[string]string{auth.AuthorizationMetadata: auth.AuthorizationAccountService})
-	newCtx := metadata.NewContext(context.Background(), md)
+	newCtx := metadata.NewOutgoingContext(context.Background(), md)
 
 	u, err := s.Get(newCtx, &pb.GetAccountRequest{Uuid: req.Uuid})
 	if err != nil {

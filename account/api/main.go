@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/Sirupsen/logrus"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
+	"github.com/sirupsen/logrus"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
@@ -13,13 +13,13 @@ import (
 	"v2.staffjoy.com/apidocs"
 	"v2.staffjoy.com/environments"
 	"v2.staffjoy.com/healthcheck"
+
+	rice "github.com/GeertJohan/go.rice"
 )
 
 const (
 	// ServiceName identifies this app in logs
 	ServiceName = "account"
-	// swagger is the name of the swagger file
-	swagger = "account.swagger.json"
 )
 
 var (
@@ -45,13 +45,23 @@ func run() error {
 
 	mux := http.NewServeMux()
 
+	// find swagger rice.Box
+	swaggerBox, err := rice.FindBox("swagger")
+	if err != nil {
+		panic(err)
+	}
+
 	mux.HandleFunc("/swagger.json", func(res http.ResponseWriter, req *http.Request) {
 		res.Header().Set("Content-Type", "application/json")
-		data, err := Asset(swagger)
+
+		// get json
+		tmpl, err := swaggerBox.Bytes("account.swagger.json")
+
 		if err != nil {
-			panic("Unable to load swagger")
+			panic(err)
 		}
-		res.Write(data)
+
+		res.Write(tmpl)
 	})
 	mux.HandleFunc(healthcheck.HEALTHPATH, healthcheck.Handler)
 	apidocs.Serve(mux, logger)
@@ -59,9 +69,9 @@ func run() error {
 	// Custom runtime option to emit empty fields (like false bools)
 	gwmux := runtime.NewServeMux(runtime.WithMarshalerOption(runtime.MIMEWildcard, &runtime.JSONPb{OrigName: true, EmitDefaults: true}))
 	opts := []grpc.DialOption{grpc.WithInsecure()}
-	err := RegisterAccountServiceHandlerFromEndpoint(ctx, gwmux, account.Endpoint, opts)
-	if err != nil {
-		return err
+	errEndPoint := RegisterAccountServiceHandlerFromEndpoint(ctx, gwmux, account.Endpoint, opts)
+	if errEndPoint != nil {
+		return errEndPoint
 	}
 	mux.Handle("/", gwmux)
 

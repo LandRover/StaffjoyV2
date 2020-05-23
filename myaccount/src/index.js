@@ -12,14 +12,14 @@ import {
   SENTRY_PRODUCTION_KEY,
 } from './constants/config';
 
-require('../../third_party/node/material_design_lite/main');
 require('./main.scss');
 
 const currentEnv = detectEnvironment();
 
 if (currentEnv !== ENV_NAME_DEVELOPMENT) {
-  const sentryKey = (currentEnv === ENV_NAME_PRODUCTION) ?
-    SENTRY_PRODUCTION_KEY : SENTRY_STAGING_KEY;
+  const sentryKey = (currentEnv === ENV_NAME_PRODUCTION)
+    ? SENTRY_PRODUCTION_KEY : SENTRY_STAGING_KEY;
+
   Raven
     .config(sentryKey)
     .install();
@@ -31,5 +31,5 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );

@@ -1,14 +1,15 @@
 # Staffjoy V2 - Fork
 
-[![Build Status](https://travis-ci.org/LandRover/StaffjoyV2.svg?branch=minimal-fixes-to-compile)](https://travis-ci.org/LandRover/StaffjoyV2) [![Godoc Reference](https://godoc.org/v2.staffjoy.com?status.svg)](https://godoc.org/v2.staffjoy.com)
+[![Build Status](https://travis-ci.org/LandRover/StaffjoyV2.svg?branch=master)](https://travis-ci.org/LandRover/StaffjoyV2) [![Godoc Reference](https://godoc.org/v2.staffjoy.com?status.svg)](https://godoc.org/v2.staffjoy.com)
 
 The main purpose of this StaffjoyV2 fork is education. I find in this project very inspiring and learn a lot from the implementation and engineering and monorepo structure.
 
 Current fork will focus on coding standards, testing, DevOps, React, Go and **maybe** a working software on the other end.
 
-This branch, [`minimal-fixes-to-compile`](https://github.com/LandRover/StaffjoyV2/tree/minimal-fixes-to-compile), contains minimal changes to this original repo to make it compile without altering the original functionality. Mainly by specifying the version numbers to fit 2016 latest dependencies.
+There are 2 blood lines for this project:
 
-For the most recent version, the active development branch is [`master`](https://github.com/LandRover/StaffjoyV2), where new features are being added, dependencies updated and processes change.
+* The active development branch is [`master`](https://github.com/LandRover/StaffjoyV2), where new features are being added, dependencies updated and processes change.
+* The [`minimal-fixes-to-compile`](https://github.com/LandRover/StaffjoyV2/tree/minimal-fixes-to-compile) branch contains minimal changes to this original repo to make it compile without altering the original functionality. Mainly by specifying the version numbers to fit 2016 latest dependencies.
 
 ---
 
@@ -22,9 +23,6 @@ We started building V2 in August 2016, became feature complete in November 2016,
 
 This is a *monorepo*, so all of the code for all of the services are in this repo. The core technologies are the [Bazel build system](https://bazel.build), [Kubernetes](https://kubernetes.io) (including its DNS for internal service discovery), [Redux](http://redux.js.org), [Go](https://golang.org), [Protocol Buffers](https://developers.google.com/protocol-buffers/), [gRPC](http://www.grpc.io), and [Yarn](https://yarnpkg.com). In staging and production, we used [Google Container Engine](https://cloud.google.com/container-engine/) and their managed databases. 
 
-## Credit
-
-The authors of the original code were [@philipithomas](https://github.com/philipithomas), [@samdturner](https://github.com/samdturner), [@andhess](https://github.com/andhess), and some contractors. [@kootommy](https://github.com/kootommy) designed the application and most of the marketing pages, and worked closely with engineering on implementation. This is a fork of the internal repository. For security purposes, the Git history has been squashed.
 
 ## Services
 
@@ -108,7 +106,7 @@ sudo cp unison /usr/local/bin
 
 Run `make dev`. Code will boot and run at [staffjoy-v2.local](http://www.staffjoy-v2.local). Note that the first time you do this could take up to 45 minutes in order to provision the VM!
 
-Changes will trigger an automatic rebuild and redeployment. (Check deployment progress at [kubernetes.staffjoy-v2.local/ui/](http://kubernetes.staffjoy-v2.local/ui/)). End the dev server with `control + c` (and it will automatically shut off the VM).
+Changes will trigger an automatic rebuild and redeployment. (Check deployment progress at [kubernetes-dashboard url](http://kubernetes.staffjoy-v2.local/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/#/overview?namespace=development)). End the dev server with `control + c` (and it will automatically shut off the VM).
 
 **Known Bug on OSX Sierra**: If Vagrant cannot find download the box, run `sudo rm /opt/vagrant/embedded/bin/curl`. ([Bug tracking link](https://github.com/Varying-Vagrant-Vagrants/VVV/issues/354))
 
@@ -137,7 +135,7 @@ If things are really goofing, run `vagrant destroy -f` then rebuild.
 
 If you are loading assets like templates, CSS, JS, etc - you need to package the the data into the binary. Otherwise, the app will ship and it won't be able to find the assets!
 
-To do this, use the [go-bindata](https://github.com/jteeuwen/go-bindata) project. If you modify any of the asset files, you will need to rebuild them then commit the resulting `bindata.go` file and commit it. You have been warned!
+To do this, use the [go.rice](https://github.com/GeertJohan/go.rice) project. If you modify any of the asset files, you will need to rebuild them then commit the resulting `bindata.go` file and commit it. You have been warned!
 
 Most services provide a `build.sh` file that compiles all the data that needs to be committed.
 
@@ -182,3 +180,19 @@ If you're getting started with protocol buffers, here are some resources:
 
 * Email will break, but you can look at the system logs for the email service to see what would have been sent. (Useful for grabbing account activation links!)
 * See all Go documentation installed on the host machine with `godoc -http=":8080"`. You'll be able to see all docs at [localhost:8080](http://localhost:8080)
+
+
+## Fork Todos
+
+* Fix documentation regarding `go.rice` still has bindata.go refs from previous library.
+* Convert internal go build.sh to makefile
+* Migrate my account to React Hooks
+* Migrate Go dependencies to be go.mod based via Bazel. Due to this dependencies currently maintained twice in go.mod and WORKSPACE (bazel)
+* Protobuf 3 upgrade - schema changed by adding XX_ fields - currently breaks the implementations as .proto's are stored directly to the DB. (Currently, if Protobufs are regenerated - will )
+* Verify GCP deployment to stage and production works with Google Container Engine the same it works in local Kubernetes 1.16+
+* Sentry after upgrading to Go 1.12 threw exceptions - which were fixed but not tested - check still works correctly.
+
+
+## Credit
+
+The authors of the original code were [@philipithomas](https://github.com/philipithomas), [@samdturner](https://github.com/samdturner), [@andhess](https://github.com/andhess), and some contractors. [@kootommy](https://github.com/kootommy) designed the application and most of the marketing pages, and worked closely with engineering on implementation. This is a fork of the internal repository. For security purposes, the Git history has been squashed.

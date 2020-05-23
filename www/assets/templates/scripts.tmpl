@@ -1,4 +1,4 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>
 <script src="/assets/js/analytics.js?version={{ .Version }}"></script>
 <script src="/assets/js/common.js?version={{ .Version }}"></script>
 <script src="/assets/js/bundle.js?version={{ .Version }}"></script>
@@ -9,8 +9,8 @@
 {{ end }}
 
 {{ if eq .TemplateName "new_company.tmpl" }}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment-with-locales.min.js" integrity="sha256-cOjhb1i1QhtRZd/URBwT+FhNy+RzyFVkLv09UXV7md4=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.9/moment-timezone-with-data.js" integrity="sha256-Srjh9SmEF9S64bDSPpF6EyMk6tjE7bpjBqgH6bHupYA=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js" integrity="sha384-5wvDEKtdpg/AAUpUHtcjYKVs1qv2V/UFPCN2FNvgePyaKmpBjW+LrboDEuS5ssBe" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.26/moment-timezone-with-data.js" integrity="sha384-BQIJGH8iDblkecjPk+D7FApphZxfGAaem0p4F3FiWATMMYYB7DxyRgi4FT8q4ZtF" crossorigin="anonymous"></script>
   <script language="javascript">
     $(document).ready(function() {
       var tz = moment.tz.guess();
@@ -32,8 +32,6 @@
     });
 </script>
 {{ end }}
-
-
 
 <!-- TODO: (ZO) This isn't setup properly. I put the import script in the template file. -->
 {{ if eq .TemplateName "breaktime_episode.tmpl" }}

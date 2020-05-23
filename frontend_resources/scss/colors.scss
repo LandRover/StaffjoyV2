@@ -2,7 +2,6 @@
 $pure-black: #000;
 $pure-white: #fff;
 
-
 /* staffjoy brand colors */
 $staffjoy-palette-primary: #48B7AB;         // primary turquoise
 $staffjoy-palette-secondary: #CBDC57;       // light logo green
@@ -10,6 +9,7 @@ $staffjoy-palette-accent: #744FC6;          // purple
 $staffjoy-palette-white: #F7F7F7;           // background color for logo
 $staffjoy-palette-logo-grey: #423A3F;       // dark grey on the logo
 
+$staffjoy-palette-drawer-bg: #FAFAFA;
 
 /* status colors */
 // error
@@ -57,7 +57,7 @@ $accent-button-disabled: #ac95dd;
 
 $neutral-button: $staffjoy-palette-white;
 $neutral-button-pressed-hover: #dedede;
-$neutral-button-disabled: #fafafa;
+$neutral-button-disabled: $staffjoy-palette-drawer-bg;
 
 $outline-button: $accent-grey;
 $outline-button-pressed: #7b787a;

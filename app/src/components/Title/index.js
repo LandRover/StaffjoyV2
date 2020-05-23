@@ -38,7 +38,7 @@ function OtherTitle() {
   );
 }
 
-module.exports = {
+export {
   Title,
   OtherTitle,
 };

@@ -1,24 +1,18 @@
 import React from 'react';
 
+import { DataTableHead, DataTableRow, DataTableHeadCell } from '@rmwc/data-table';
+
 require('./table-header.scss');
 
 function TableHeader() {
   return (
-    <thead>
-      <tr className="job-settings-header">
-        <th
-          className="mdl-data-table__cell--non-numeric col-4"
-        >
-          Jobs
-        </th>
-        <th
-          className="mdl-data-table__cell--non-numeric col-1 job-color-header"
-        >
-          Color
-        </th>
-        <th className="mdl-data-table__cell--non-numeric col-1" />
-      </tr>
-    </thead>
+    <DataTableHead>
+      <DataTableRow className="job-settings-header">
+        <DataTableHeadCell>Jobs</DataTableHeadCell>
+        <DataTableHeadCell className="job-color-header">Color</DataTableHeadCell>
+        <DataTableHeadCell/>
+      </DataTableRow>
+    </DataTableHead>
   );
 }
 

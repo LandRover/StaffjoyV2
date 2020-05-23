@@ -1,29 +1,24 @@
-import React, { PropTypes } from 'react';
-import { Textfield } from 'react-mdl';
-import classNames from 'classnames';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { TextField } from '@rmwc/textfield';
 
 require('./staffjoy-text-field.scss');
 
 function StaffjoyTextField({ isFocused, width, ...otherProps }) {
-  const classes = classNames({
-    active: isFocused,
-  });
-
   let fieldWidth = '';
 
   if (typeof width === 'number') {
     fieldWidth = `${width}px`;
-  } else if (width === 'full') {
+  } else
+  if (width === '100%') {
     fieldWidth = '100%';
   } else {
     fieldWidth = '200px';
   }
 
   return (
-    <Textfield
+    <TextField
       className="staffjoy-text-field"
-      floatingLabel
-      inputClassName={classes}
       style={{ width: fieldWidth }}
       {...otherProps}
     />

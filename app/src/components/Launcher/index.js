@@ -1,7 +1,9 @@
 import _ from 'lodash';
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, hashHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { push } from 'connected-react-router';
 import LoadingScreen from 'components/LoadingScreen';
 import * as actions from 'actions';
 import {
@@ -12,14 +14,14 @@ import {
 
 require('./launcher.scss');
 
-class Launcher extends React.Component {
+class Launcher extends Component {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(actions.getWhoAmI());
   }
 
   componentDidUpdate() {
-    const { companies, teams, isFetching } = this.props;
+    const { companies, teams, isFetching, dispatch } = this.props;
 
     if (!isFetching) {
       // redirect if not an admin
@@ -28,9 +30,8 @@ class Launcher extends React.Component {
         // route to new company sign up if no privledges
         if (teams.length === 0) {
           window.location = routeToMicroservice('www', '/new-company/');
-
-        // route to myaccount if a worker
         } else {
+          // route to myaccount (if a worker)
           window.location = routeToMicroservice('myaccount');
         }
         /* eslint-enable */
@@ -38,9 +39,9 @@ class Launcher extends React.Component {
       // if only a member of 1 organization, route them directly
       if (companies.length === 1) {
         const company = companies.pop();
-        hashHistory.push(
+        dispatch(push(
           getRoute(COMPANY_BASE, { companyUuid: company.uuid })
-        );
+        ));
       }
     }
   }
@@ -55,16 +56,16 @@ class Launcher extends React.Component {
     }
 
     return (
-      <ul className="company-launcher mdl-list">
+      <ul className="company-launcher">
         {_.map(companies, (company) => {
           const route = getRoute(COMPANY_BASE, { companyUuid: company.uuid });
           const liKey = `launcher-li-${company.uuid}`;
           const linkKey = `launcher-a-${company.uuid}`;
           return (
-            <li className="mdl-list__item" key={liKey}>
+            <li className="list__item" key={liKey}>
               <Link
                 key={linkKey}
-                className="mdl-list__item-primary-content company"
+                className="company"
                 to={route}
               >
                 {company.name}

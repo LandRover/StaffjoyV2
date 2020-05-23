@@ -1,19 +1,22 @@
 import _ from 'lodash';
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import * as actions from '../../actions';
 import SingleAttributeField from '../SingleAttributeField';
 import StaffjoyButton from '../StaffjoyButton';
 
-class AccountUpdate extends React.Component {
+class AccountUpdate extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       email: props.email,
       name: props.name,
       phoneNumber: props.phoneNumber,
     };
+
     this.changeName = this.changeName.bind(this);
     this.changeEmail = this.changeEmail.bind(this);
     this.changePhoneNumber = this.changePhoneNumber.bind(this);
@@ -37,8 +40,8 @@ class AccountUpdate extends React.Component {
       actions.changeAccountData(
         this.state.email,
         this.state.name,
-        this.state.phoneNumber
-      )
+        this.state.phoneNumber,
+      ),
     );
   }
 
@@ -92,7 +95,7 @@ AccountUpdate.propTypes = {
   email: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   phoneNumber: PropTypes.string.isRequired,
-  dispatch: PropTypes.func,
+  dispatch: PropTypes.func.isRequired,
   formData: PropTypes.object.isRequired,
 };
 

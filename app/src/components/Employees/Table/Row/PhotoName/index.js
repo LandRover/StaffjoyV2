@@ -1,17 +1,20 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
+import { DataTableCell } from '@rmwc/data-table';
 
 require('./table-photo-name.scss');
 
 function TablePhotoName({ name, photoUrl = '' }) {
   return (
-    <td className="table-photo-name mdl-data-table__cell--non-numeric">
+    <DataTableCell className="table-photo-name">
       <img
         className="profile-icon"
         role="presentation"
         src={photoUrl}
       />
       <span className="name-label">{name}</span>
-    </td>
+    </DataTableCell>
   );
 }
 

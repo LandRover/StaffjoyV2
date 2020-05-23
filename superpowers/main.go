@@ -13,8 +13,8 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
 
-	"github.com/Sirupsen/logrus"
 	"github.com/gorilla/mux"
+	"github.com/sirupsen/logrus"
 	"github.com/urfave/negroni"
 	"v2.staffjoy.com/account"
 	"v2.staffjoy.com/auth"
@@ -133,7 +133,7 @@ func superpowerHandler(res http.ResponseWriter, req *http.Request) {
 		panic("Could not get user id")
 	}
 	md := metadata.New(map[string]string{auth.AuthorizationMetadata: auth.AuthorizationSuperpowersService})
-	ctx, cancel := context.WithCancel(metadata.NewContext(context.Background(), md))
+	ctx, cancel := context.WithCancel(metadata.NewOutgoingContext(context.Background(), md))
 	defer cancel()
 	a, err := c.Get(ctx, &account.GetAccountRequest{Uuid: uuid})
 	if err != nil {

@@ -1,7 +1,8 @@
 import _ from 'lodash';
 import moment from 'moment';
 import 'moment-timezone';
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import TableSectionPhotoName from './PhotoName';
 import SectionSummaryInfo from './SummaryInfo';
@@ -11,7 +12,7 @@ import { arrayToObjectBucket } from '../../../../utility';
 
 require('./shift-week-table-section.scss');
 
-class ShiftWeekTableSection extends React.Component {
+class ShiftWeekTableSection extends Component {
   /*
     - A TableSection constitutes one database uuid, i.e. a job or an employee
     - A TableSection can have multiple rows, such as if there are more than

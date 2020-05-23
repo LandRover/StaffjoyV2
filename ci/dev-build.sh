@@ -18,8 +18,10 @@ do
     # Remove slashes from service
     service=$(echo $target | sed 's/\///g')
     export service
+
     # Run the build and upload to GKE
-    bazel run //$target:docker
+    /home/vagrant/.bazel/bin/bazel run //$target:docker
+    
     # Tag so we can track the deploy in Kubernetes
     # (bazel converts slash to an underscore)
     docker tag bazel/$(echo $target):docker localhost:5000/$service:$VERSION
@@ -29,4 +31,3 @@ do
 done
 
 echo "Finished deploying version ${VERSION} - check the status at http://kubernetes.staffjoy-v2.local"
-

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import 'whatwg-fetch';
-import { normalize, Schema, arrayOf } from 'normalizr';
+import { normalize, schema } from 'normalizr';
 import { getTeams, createTeamEmployee } from './teams';
 import { getAssociations } from './associations';
 import * as actionTypes from '../constants/actionTypes';
@@ -24,8 +24,8 @@ import {
 */
 
 // schemas!
-const employeesSchema = new Schema('employees', { idAttribute: 'user_uuid' });
-const arrayOfEmployees = arrayOf(employeesSchema);
+const employeesSchema = new schema.Entity('employees', {}, { idAttribute: 'user_uuid' });
+const arrayOfEmployees = new schema.Array(employeesSchema);
 
 // employees
 
@@ -124,8 +124,7 @@ function fetchEmployee(companyUuid, employeeUuid) {
       `/v1/companies/${companyUuid}/directory/${employeeUuid}`;
 
     return fetch(
-      routeToMicroservice('company', directoryPath),
-      { credentials: 'include' })
+      routeToMicroservice('company', directoryPath), { credentials: 'include' })
       .then(checkStatus)
       .then(parseJSON)
       .then((data) => {
@@ -259,10 +258,10 @@ export function updateEmployee(companyUuid, employeeUuid, newData, callback) {
   return (dispatch, getState) => {
     const employeeData = _.get(getState().employees.data, employeeUuid, {});
     const updateData = _.extend({}, employeeData, newData);
+
     dispatch(updatingEmployee({ data: { [employeeUuid]: updateData } }));
 
-    const directoryPath =
-      `/v1/companies/${companyUuid}/directory/${employeeUuid}`;
+    const directoryPath = `/v1/companies/${companyUuid}/directory/${employeeUuid}`;
 
     return fetch(
       routeToMicroservice('company', directoryPath),
@@ -273,7 +272,7 @@ export function updateEmployee(companyUuid, employeeUuid, newData, callback) {
       })
       .then(checkStatus)
       .then(parseJSON)
-      .then((data) => {
+      .then(data => {
         const normalized = normalize(data, employeesSchema);
 
         if (callback) {
@@ -322,6 +321,7 @@ export function updateEmployeeField(companyUuid, employeeUuid, fieldName) {
   return (dispatch, getState) => {
     const { values } = getState().form['employee-side-panel'];
     const value = values[fieldName];
+
     dispatch(updatingEmployeeField({
       data: { [employeeUuid]: { [fieldName]: fieldUpdateStatus.UPDATING } },
     }));
@@ -332,13 +332,16 @@ export function updateEmployeeField(companyUuid, employeeUuid, fieldName) {
         employeeUuid,
         { [fieldName]: value },
         (response, error) => {
-          if (!error) {
-            dispatch(updatingEmployeeField({
-              data: {
-                [employeeUuid]: { [fieldName]: fieldUpdateStatus.SUCCESS },
-              },
-            }));
+          if (error) {
+            // log error?
+            return;
           }
+          
+          dispatch(updatingEmployeeField({
+            data: {
+              [employeeUuid]: { [fieldName]: fieldUpdateStatus.SUCCESS },
+            },
+          }));
         },
       )
     );

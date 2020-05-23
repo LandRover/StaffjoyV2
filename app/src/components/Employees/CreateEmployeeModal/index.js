@@ -1,9 +1,10 @@
 import _ from 'lodash';
-import React, { PropTypes } from 'react';
-import { ProgressBar } from 'react-mdl';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { LinearProgress } from '@rmwc/linear-progress';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { ScaleModal } from 'boron';
+import { ScaleModal } from 'boron-15';
 
 import * as actions from '../../../actions';
 import createEmployee from '../../../validators/create-employee';
@@ -17,13 +18,15 @@ require('./create-employee-modal.scss');
 const EMPTY_OBJECT = Object.freeze({});
 
 // Adapter for redux-form. Add your prop - do not use spread operator.
-function TextField({ disabled, input, label, meta, name, width }) {
+function TextField({ disabled, input, label, meta, name, width, fullwidth, required }) {
+  // helpText={meta.error}
   return (
     <StaffjoyTextField
       disabled={disabled}
-      error={meta.error}
+      required={required}
       label={label}
       name={name}
+      fullwidth={fullwidth}
       width={width}
       onChange={input.onChange}
       onBlur={input.onBlur}
@@ -33,11 +36,13 @@ function TextField({ disabled, input, label, meta, name, width }) {
 
 TextField.propTypes = {
   disabled: PropTypes.bool,
+  required: PropTypes.bool,
   input: PropTypes.object,
   label: PropTypes.string,
   meta: PropTypes.object,
   name: PropTypes.string,
-  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  width: PropTypes.string,
+  fullwidth: PropTypes.bool,
 };
 
 // Adapter for redux-form.
@@ -68,6 +73,7 @@ function SelectableList({
   );
 }
 
+
 SelectableList.propTypes = {
   displayByProperty: PropTypes.string,
   formField: PropTypes.string,
@@ -79,7 +85,22 @@ SelectableList.propTypes = {
   uuidKey: PropTypes.string,
 };
 
-class CreateEmployeeModal extends React.Component {
+class CreateEmployeeModal extends Component {
+  state = {
+    submitting: false
+  };
+
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.submitSucceeded && state.submitting) {
+      return {
+        submitting: false
+      };
+    }
+
+    return null;
+  }
+
 
   constructor(props) {
     super(props);
@@ -93,26 +114,27 @@ class CreateEmployeeModal extends React.Component {
       const { createEmployeeFromForm, companyUuid, dispatch } = this.props;
       dispatch(createEmployeeFromForm(companyUuid));
     });
-
-    this.state = { submitting: false };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.submitSucceeded && !this.props.submitSucceeded) {
-      this.setState({ submitting: false });
+
+  componentDidUpdate(prevProps) {
+    if (this.props.submitSucceeded && !prevProps.submitSucceeded) {
       this.closeModal();
-      // TODO: add success modal
+      // TODO: add success modal?
     }
   }
+
 
   closeModal() {
     this.props.reset();
     this.modal.hide();
   }
 
+
   openModal() {
     this.modal.show();
   }
+
 
   render() {
     const { teams } = this.props;
@@ -148,7 +170,7 @@ class CreateEmployeeModal extends React.Component {
 
     let progressBar;
     if (submitting) {
-      progressBar = <ProgressBar indeterminate />;
+      progressBar = <LinearProgress />;
     }
 
     const createButton = (
@@ -168,21 +190,22 @@ class CreateEmployeeModal extends React.Component {
           disabled={submitting}
           label="Full Name"
           name="full_name"
-          width="full"
+          width="100%"
+          required={true}
         />
         <Field
           component={TextField}
           disabled={submitting}
           label="Email"
           name="email"
-          width="full"
+          width="100%"
         />
         <Field
           component={TextField}
           disabled={submitting}
           label="Phone"
           name="phonenumber"
-          width="full"
+          width="100%"
         />
       </form>
     );
@@ -223,6 +246,7 @@ class CreateEmployeeModal extends React.Component {
   }
 }
 
+
 CreateEmployeeModal.propTypes = {
   companyUuid: PropTypes.string.isRequired,
   createEmployeeFromForm: PropTypes.func.isRequired,
@@ -236,6 +260,12 @@ CreateEmployeeModal.propTypes = {
   submitSucceeded: PropTypes.bool.isRequired,
 };
 
+
+CreateEmployeeModal.defaultProps = {
+  createEmployeeFromForm: () => {}
+};
+
+
 function mapStateToProps(state) {
   const createEmployeeForm = _.get(state.form, 'create-employee', EMPTY_OBJECT);
 
@@ -244,6 +274,7 @@ function mapStateToProps(state) {
   };
 }
 
+
 function mapDisatchToProps(dispatch) {
   return {
     createEmployeeFromForm: actions.createEmployeeFromForm,
@@ -251,9 +282,12 @@ function mapDisatchToProps(dispatch) {
   };
 }
 
+
 const Form = reduxForm({
   form: 'create-employee',
   validate: createEmployee,
 })(CreateEmployeeModal);
+
 const Container = connect(mapStateToProps, mapDisatchToProps)(Form);
+
 export default Container;

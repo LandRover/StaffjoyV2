@@ -1,8 +1,11 @@
 import _ from 'lodash';
-import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Drawer, Navigation } from 'react-mdl';
+import { Drawer } from '@rmwc/drawer';
+import { List, SimpleListItem } from '@rmwc/list';
+import Icon from '@rmwc/icon';
 import { companyNavLinks } from 'constants/sideNavigation';
 import * as paths from 'constants/paths';
 import NavigationLogo from './Logo';
@@ -23,26 +26,26 @@ function NavigationSide({
   return (
     <Drawer>
       <NavigationLogo companyUuid={companyUuid} />
-      <Navigation>
+
+      <List>
         {
           _.map(companyNavLinks, (link) => {
             const route = paths.getRoute(link.pathName, { companyUuid });
 
-            // 'mdl-navigation__link' is automatically added to all links
-            const className = (currentPath === route) ? 'active' : '';
+            const activated = (currentPath === route) ? true : false;
 
             return (
-              <Link
-                key={link.pathName}
-                className={className}
-                to={route}
-              >
-                {link.displayName}
+              <Link to={route} style={{ textDecoration: 'none' }} key={link.pathName}>
+                <SimpleListItem
+                  activated={activated}
+                  text={link.displayName}
+                />
               </Link>
             );
           })
         }
-      </Navigation>
+      </List>
+      
       <div className="team-navigation">
         {
           _.map(teams, team =>
@@ -57,6 +60,7 @@ function NavigationSide({
           )
         }
       </div>
+
       <SideNavigationUserContext
         companyUuid={companyUuid}
         companyName={companyName}
@@ -80,7 +84,7 @@ function mapStateToProps(state) {
   );
 
   return {
-    currentPath: state.routing.locationBeforeTransitions.pathname,
+    currentPath: state.router.location.pathname,
     userName: _.get(userData, 'name', ''),
     userPhotoUrl: _.get(userData, 'photo_url', ''),
     companyName,

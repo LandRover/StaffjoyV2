@@ -16,9 +16,7 @@ import {
 } from '../utility';
 
 // TODO delete this once we start fetching
-const delay = ms => new Promise(resolve =>
-  setTimeout(resolve, ms)
-);
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 function updatingPassword() {
   return {
@@ -38,7 +36,7 @@ function updatePassword(userUuid, password) {
 
     return fetch(routeToMicroservice(
       'account',
-      `/v1/accounts/${userUuid}/password`
+      `/v1/accounts/${userUuid}/password`,
     ), {
       credentials: 'include',
       method: 'PUT',
@@ -54,21 +52,18 @@ function updatePassword(userUuid, password) {
         }));
         return dispatch(updatedPassword());
       })
-      .catch(() =>
-        dispatch(setFormResponse('passwordUpdate', {
-          type: 'danger',
-          message: 'Passwords must be at least 6 characters long',
-        }))
-      );
+      .catch(() => dispatch(setFormResponse('passwordUpdate', {
+        type: 'danger',
+        message: 'Passwords must be at least 6 characters long',
+      })));
   };
 }
 
 export function changePassword(newPassword) {
-  return (dispatch, getState) =>
-    dispatch(updatePassword(
-      getState().whoami.data.user_uuid,
-      newPassword
-    ));
+  return (dispatch, getState) => dispatch(updatePassword(
+    getState().whoami.data.user_uuid,
+    newPassword,
+  ));
 }
 
 function updatingPhoto() {
@@ -105,8 +100,7 @@ function updatePhoto(userUuid, photoReference) {
 export function changePhoto(event) {
   const photoLocalLocation = event.target.value;
 
-  return (dispatch, getState) =>
-    dispatch(updatePhoto(getState().user.useUuid, photoLocalLocation));
+  return (dispatch, getState) => dispatch(updatePhoto(getState().user.useUuid, photoLocalLocation));
 }
 
 // state will be update before the patch is made
@@ -153,12 +147,10 @@ function updateUser(userUuid, data) {
           lastUpdate: Date.now(),
         }));
       })
-      .catch(() =>
-        dispatch(setFormResponse('accountUpdate', {
-          type: 'danger',
-          message: 'Unable to save changes',
-        }))
-      );
+      .catch(() => dispatch(setFormResponse('accountUpdate', {
+        type: 'danger',
+        message: 'Unable to save changes',
+      })));
   };
 }
 
@@ -185,12 +177,10 @@ function fetchUser(userUuid) {
     })
       .then(checkStatus)
       .then(parseJSON)
-      .then(data =>
-        dispatch(receiveUser({
-          data,
-          lastUpdate: Date.now(),
-        }))
-      );
+      .then((data) => dispatch(receiveUser({
+        data,
+        lastUpdate: Date.now(),
+      })));
   };
 }
 
@@ -203,12 +193,12 @@ function shouldFetchUser(state) {
     return true;
 
   // it's currently being fetched
-  } else if (userState.isFetching) {
+  } if (userState.isFetching) {
     return false;
 
   // it's been in the UI for more than the allowed threshold
-  } else if (!userState.lastUpdate ||
-    (timestampExpired(userState.lastUpdate, 'USER'))
+  } if (!userState.lastUpdate
+    || (timestampExpired(userState.lastUpdate, 'USER'))
   ) {
     return true;
   }
@@ -246,16 +236,15 @@ export function initialize() {
 
 export function changeAccountData(email, name, phoneNumber) {
   // make API call to save the submitted changes
-  return (dispatch, getState) =>
-    dispatch(updateUser(getState().whoami.data.user_uuid, {
-      email,
-      name,
-      phonenumber: phoneNumber,
-    }));
+  return (dispatch, getState) => dispatch(updateUser(getState().whoami.data.user_uuid, {
+    email,
+    name,
+    phonenumber: phoneNumber,
+  }));
 }
 
 export function modifyUserAttribute(event) {
-  const target = event.target;
+  const { target } = event;
   const inputType = target.getAttribute('type');
   const attribute = target.getAttribute('data-model-attribute');
   const payload = {};

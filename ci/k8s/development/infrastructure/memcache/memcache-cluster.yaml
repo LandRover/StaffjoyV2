@@ -16,7 +16,7 @@ spec:
     tier: backend
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: memcached
@@ -25,6 +25,9 @@ metadata:
     tier: backend
 spec:
   replicas: 2
+  selector:
+    matchLabels:
+      app: staffjoy
   template:
     metadata:
       labels:

@@ -1,43 +1,44 @@
-#DOCKER STUFF
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
 
-new_http_archive(
-  name = "docker_ubuntu",
-  build_file = "BUILD.ubuntu",
-  url = "https://codeload.github.com/tianon/docker-brew-ubuntu-core/zip/52c8214ecac89d45592d16ce7c14ef82ac7b0822",
-  sha256 = "a7386a64ad61298ee518885b414f70f9dba86eda61aebc1bca99bd91b07dd32c",
-  type = "zip",
-  strip_prefix = "docker-brew-ubuntu-core-52c8214ecac89d45592d16ce7c14ef82ac7b0822"
+io_rules_docker_version="80ea3aae060077e5fe0cdef1a5c570d4b7622100" # v0.8.1
+## Load docker rules
+http_archive(
+    name = "io_bazel_rules_docker",
+    urls = ["https://github.com/bazelbuild/rules_docker/archive/%s.zip"% io_rules_docker_version],
+    type = "zip",
+    strip_prefix = "rules_docker-%s" % io_rules_docker_version
 )
 
-# Docker base images(s)
-load("//docker:docker_pull.bzl", "docker_pull")
-
-[docker_pull(
-    name = name,
-    dockerfile = "//docker:Dockerfile." + name,
-    tag = "local:" + name,
-) for name in [
-    "ubuntu-xenial",
-    "docker-nginx",
-]]
-
-# NGINX
-
-#http_file(
-#    name = "nginx",
-#    urls = ["http://nginx.org/packages/ubuntu/pool/nginx/n/nginx/nginx_1.10.1-1~xenial_amd64.deb"],
-#    sha256 = "18dc0565965bd569b98c575d75d0e130d9794a3f7e7642129c488b515cbdf02c",
-#)
-
-# NODEJS
-
-http_file(
-    name = "nodejs",
-    urls = ["https://deb.nodesource.com/node_6.x/pool/main/n/nodejs/nodejs-dbg_6.4.0-1nodesource1~xenial1_amd64.deb"],
-    sha256 = "895dab136994f95d4c7e162e7773239264165921097a7dbf94061dd0e794f538",
+# DOCKER STUFF
+load(
+    "@io_bazel_rules_docker//repositories:repositories.bzl",
+    container_repositories = "repositories",
 )
+container_repositories()
+
+load(
+    "@io_bazel_rules_docker//container:container.bzl",
+    "container_pull",
+)
+
+container_pull(
+    name = "nginx",
+    registry ="index.docker.io",
+    repository = "library/nginx",
+    tag = "latest",
+)
+
+container_pull(
+    name = "ubuntu",
+    registry ="index.docker.io",
+    repository = "library/ubuntu",
+    tag = "bionic",
+)
+
 
 # GOLANG INIT
+
 load("//tools/go:go_configure.bzl", "go_configure")
 
 go_configure()
@@ -51,254 +52,314 @@ bind(
 
 new_git_repository(
     name = "go_recaptcha",
-    build_file = "third_party/go/dpapathanasiou_recaptcha.BUILD",
-    commit = "962f1d77fed91285eb86c988e3ae8e7948e554c8",
+    build_file = "//:third_party/go/dpapathanasiou_recaptcha.BUILD",
+    commit = "be5090b17804c90a577d345b6d67acbf01dc90ed", # Jan 21, 2019 (LATEST)
     remote = "https://github.com/dpapathanasiou/go-recaptcha.git",
 )
 
 new_git_repository(
     name = "go_libphonenumber",
-    build_file = "third_party/go/ttacon_libphonenumber.BUILD",
-    commit = "5cb77679a4c77d45f2496c9ed8e60b5eec03bb47",
+    build_file = "//:third_party/go/ttacon_libphonenumber.BUILD",
+    commit = "23ddf903e8f8800d2857645eb155ffbe15cd02ee", ## Jan 8, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/ttacon/libphonenumber.git",
 )
 
 new_git_repository(
     name = "go_builder",
-    build_file = "third_party/go/ttacon_builder.BUILD",
-    commit = "7f152c3cf4714fd6318739f8f3dbcd14c2a18b39",
+    build_file = "//:third_party/go/ttacon_builder.BUILD",
+    commit = "c099f663e1c235176c175644792c5eb282017ad7", # May 18, 2017 (LATEST GIT COMMIT)
     remote = "https://github.com/ttacon/builder.git",
 )
 
 new_git_repository(
     name = "go_jwt",
-    build_file = "third_party/go/dgrijalva_jwt.BUILD",
-    commit = "d2709f9f1f31ebcda9651b03077758c1f3a0018c",
+    build_file = "//:third_party/go/dgrijalva_jwt.BUILD",
+    commit = "06ea1031745cb8b3dab3f6a236daf2b0aa468b7e", # v3.2.0 Mar 9, 2018 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/dgrijalva/jwt-go.git",
 )
 
 new_git_repository(
     name = "go_gorilla_sessions",
-    build_file = "third_party/go/gorilla_sessions.BUILD",
-    commit = "ca9ada44574153444b00d3fd9c8559e4cc95f896",
+    build_file = "//:third_party/go/gorilla_sessions.BUILD",
+    commit = "f57b7e2d29c6211d16ffa52a0998272f75799030", # v1.1.3 Sep 28, 2018 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/gorilla/sessions.git",
 )
 
 new_git_repository(
     name = "go_gorilla_securecookie",
-    build_file = "third_party/go/gorilla_securecookie.BUILD",
-    commit = "667fe4e3466a040b780561fe9b51a83a3753eefc",
+    build_file = "//:third_party/go/gorilla_securecookie.BUILD",
+    commit = "e59506cc896acb7f7bf732d4fdf5e25f7ccd8983", # v1.1.1 Feb 24, 2017 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/gorilla/securecookie.git",
 )
 
 new_git_repository(
     name = "go_gorilla_context",
-    build_file = "third_party/go/gorilla_context.BUILD",
-    commit = "aed02d124ae4a0e94fea4541c8effd05bf0c8296",
+    build_file = "//:third_party/go/gorilla_context.BUILD",
+    commit = "8559d4a6b87e4f517ec1846eb90a192b8748cc89", # Jun 27, 2019 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/gorilla/context.git",
 )
 
 new_git_repository(
     name = "go_gorilla_csrf",
-    build_file = "third_party/go/gorilla_csrf.BUILD",
-    commit = "fdae182b1882857ae6a246467084c30af79be824",
+    build_file = "//:third_party/go/gorilla_csrf.BUILD",
+    commit = "9b0e3acb4f79e4bf9415d6144123987e7b8527cb", # Jun 25, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/gorilla/csrf.git",
 )
 
 new_git_repository(
     name = "go_gorilla_mux",
-    build_file = "third_party/go/gorilla_mux.BUILD",
-    commit = "0eeaf8392f5b04950925b8a69fe70f110fa7cbfc",
+    build_file = "//:third_party/go/gorilla_mux.BUILD",
+    commit = "5dd56998c22c824ad2e13c50bc3213e85b125134", # Jun 4, 2016 (UPDATE REQUIRED! above, breaks)
     remote = "https://github.com/gorilla/mux.git",
 )
 
-
 new_git_repository(
     name = "go_pkg_errors",
-    build_file = "third_party/go/pkg_errors.BUILD",
-    commit = "645ef00459ed84a119197bfb8d8205042c6df63d",
+    build_file = "//:third_party/go/pkg_errors.BUILD",
+    commit = "27936f6d90f9c8e1145f11ed52ffffbfdb9e0af7", # Feb 27, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/pkg/errors.git",
 )
 
 new_git_repository(
-    name = "go_mandrill",
-    build_file = "third_party/go/keighl_mandrill.BUILD",
-    commit = "6a59523fcf7d27e9230141f0e2563ba976a92b8f",
-    remote = "https://github.com/keighl/mandrill.git",
+    name = "go_mailgun",
+    build_file = "//:third_party/go/go_mailgun.BUILD",
+    commit = "cd4cc0c6e6178be81b436ae16651f8db3d6e8460", # Jul 1, 2019 (LATEST GIT COMMIT)
+    remote = "https://github.com/mailgun/mailgun-go.git",
+)
+
+new_git_repository(
+    name = "easyjson",
+    build_file = "//:third_party/go/easyjson.BUILD",
+    commit = "b2ccc519800e761ac8000b95e5d57c80a897ff9e", # Jun 26, 2019 (LATEST GIT COMMIT)
+    remote = "https://github.com/mailru/easyjson.git",
 )
 
 new_git_repository(
     name = "go_logrus",
-    build_file = "third_party/go/Sirupsen_logrus.BUILD",
-    commit = "4b6ea7319e214d98c938f12692336f7ca9348d6b",
-    remote = "https://github.com/Sirupsen/logrus.git",
+    build_file = "//:third_party/go/sirupsen_logrus.BUILD",
+    commit = "839c75faf7f98a33d445d181f3018b5c3409a45e", # May 18, 2019 (LATEST OFFICIAL VERSION)
+    remote = "https://github.com/sirupsen/logrus.git",
 )
 
 new_git_repository(
     name = "go_testify",
-    build_file = "third_party/go/stretchr_testify.BUILD",
-    commit = "f390dcf405f7b83c997eac1b06768bb9f44dec18",
+    build_file = "//:third_party/go/stretchr_testify.BUILD",
+    commit = "ffdc059bfe9ce6a4e144ba849dbedead332c6053", # v1.3.0 Dec 5, 2018 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/stretchr/testify.git",
 )
 
 new_git_repository(
     name = "go_negroni",
-    build_file = "third_party/go/urfave_negroni.BUILD",
-    commit = "fde5e16d32adc7ad637e9cd9ad21d4ebc6192535",
+    build_file = "//:third_party/go/urfave_negroni.BUILD",
+    commit = "c6a59be0ce122566695fbd5e48a77f8f10c8a63a", # v1.0.0 Sep 2, 2018 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/urfave/negroni.git",
 )
 
 new_git_repository(
-    name = "go_assetfs",
-    build_file = "third_party/go/elazarl_assetfs.BUILD",
-    commit = "e1a2a7ec64b07d04ac9ebb072404fe8b7b60de1b",
-    remote = "https://github.com/elazarl/go-bindata-assetfs.git",
-)
-
-new_git_repository(
     name = "go_raven",
-    build_file = "third_party/go/getsentry_raven.BUILD",
-    commit = "379f8d0a68ca237cf8893a1cdfd4f574125e2c51",
+    build_file = "//:third_party/go/getsentry_raven.BUILD",
+    commit = "5c24d5110e0e198d9ae16f1f3465366085001d92", # Jun 19, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/getsentry/raven-go.git",
 )
 
 new_git_repository(
     name = "go_grpc",
-    build_file = "third_party/go/google_grpc.BUILD",
-    commit = "e59af7a0a8bf571556b40c3f871dbc4298f77693",
+    build_file = "//:third_party/go/google_grpc.BUILD",
+    commit = "73b304d882a0822aaeb3c982c747563777e79586", # v1.22.0 Jul 3, 2019 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/grpc/grpc-go.git",
 )
 
 new_git_repository(
+    name = "go_genproto",
+    build_file = "//:third_party/go/google_genproto.BUILD",
+    commit = "eb59cef1c072c61ea4f7623910448d5e9c6a4455", # Jun 27, 2019 (LATEST GIT COMMIT)
+    remote = "https://github.com/googleapis/go-genproto.git"
+)
+
+# temp fix, crosses boundary fix for bazel, grpc-gateway modules:
+#   * utilities/BUILD.bazel
+#   * runtime/BUILD.bazel 
+#   * internal/BUILD.bazel
+# forked (10/07/19) and deleted the files that prevent compilation
+# @todo: find better way to compile these, without forking grpc-gateway
+new_git_repository(
     name = "go_grpc_gateway",
-    build_file = "third_party/go/grpc_gateway.BUILD",
-    commit = "84398b94e188ee336f307779b57b3aa91af7063c",
-    remote = "https://github.com/grpc-ecosystem/grpc-gateway.git",
+    build_file = "//:third_party/go/grpc_gateway.BUILD",
+    commit = "2be0f6f1f172c9c3f3713e027003534c3065e5e3", # Forked latest 10/07/19
+    remote = "https://github.com/LandRover/grpc-gateway.git",
 )
 
 new_git_repository(
     name = "go_gogo_protobuf",
-    build_file = "third_party/go/gogo_protobuf.BUILD",
-    commit = "a9cd0c35b97daf74d0ebf3514c5254814b2703b4",
+    build_file = "//:third_party/go/gogo_protobuf.BUILD",
+    commit = "dadb625850898f31a8e40e83492f4a7132e520a2", # Jun 11, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/gogo/protobuf.git",
 )
 
 new_git_repository(
     name = "go_glog",
-    build_file = "third_party/go/glog.BUILD",
-    commit = "23def4e6c14b4da8ac2ed8007337bc5eb5007998",
+    build_file = "//:third_party/go/glog.BUILD",
+    commit = "23def4e6c14b4da8ac2ed8007337bc5eb5007998", # Jan 27, 2016 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/glog.git",
 )
 
 new_git_repository(
     name = "go_protobuf",
-    build_file = "third_party/go/protobuf.BUILD",
-    commit = "1f49d83d9aa00e6ce4fc8258c71cc7786aec968a",
+    build_file = "//:third_party/go/protobuf.BUILD",
+    commit = "b285ee9cfc6c881bb20c0d8dc73370ea9b9ec90f", # May 17, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/protobuf.git",
 )
 
 new_git_repository(
     name = "go_certifi",
-    build_file = "third_party/go/certifi_gocertifi.BUILD",
-    commit = "ec89d50f00d39494f5b3ec5cf2fe75c53467a937",
+    build_file = "//:third_party/go/certifi_gocertifi.BUILD",
+    commit = "deb3ae2ef2610fde3330947281941c562861188b", # 2018.01.18 - Jan 18, 2018 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/certifi/gocertifi.git",
 )
 
 new_git_repository(
     name = "go_cloud",
-    build_file = "third_party/go/google_cloud.BUILD",
-    commit = "c033d081db673449a5095963f987693c186fcf34",
+    build_file = "//:third_party/go/google_cloud.BUILD",
+    commit = "cf81fad90a1a1de334c4fc27e23eb9a4224b627a", # v0.41.0 - Jul 1, 2019 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/GoogleCloudPlatform/google-cloud-go.git",
 )
 
 new_git_repository(
     name = "go_intercom",
-    build_file = "third_party/go/intercom.BUILD",
-    commit = "2f809a5bfee1c01cbef2dd76453ef0f9123e289e",
+    build_file = "//:third_party/go/intercom.BUILD",
+    commit = "1dbafb072bcdb981cad04ad4a0e6e29afbfc0c42", # Mar 19, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/intercom/intercom-go.git"
 )
 
 new_git_repository(
     name = "go_querystring",
-    build_file = "third_party/go/google_querystring.BUILD",
-    commit = "9235644dd9e52eeae6fa48efd539fdc351a0af53",
-    remote = "https://github.com/google/go-querystring",
+    build_file = "//:third_party/go/google_querystring.BUILD",
+    commit = "c8c88dbee036db4e4808d1f2ec8c2e15e11c3f80", # Mar 18, 2019 (LATEST GIT COMMIT)
+    remote = "https://github.com/google/go-querystring.git",
 )
 
 new_git_repository(
     name = "go_google_api",
-    build_file = "third_party/go/google_api.BUILD",
-    commit = "a69f0f19d246419bb931b0ac8f4f8d3f3e6d4feb",
+    build_file = "//:third_party/go/google_api.BUILD",
+    commit = "cad4a65739ec9027249a05eec449fe57ff999d48", # Jul 2, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/google/google-api-go-client.git",
 )
 
 new_git_repository(
     name = "go_appengine",
-    build_file = "third_party/go/golang_appengine.BUILD",
-    commit = "4f7eeb5305a4ba1966344836ba4af9996b7b4e05",
+    build_file = "//:third_party/go/golang_appengine.BUILD",
+    commit = "b2f4a3cf3c67576a2ee09e1fe62656a5086ce880", # Jun 6, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/appengine.git",
 )
 
 new_git_repository(
     name = "go_gorp",
-    build_file = "third_party/go/gorp.BUILD",
-    commit = "c87af80f3cc5036b55b83d77171e156791085e2e",
+    build_file = "//:third_party/go/gorp.BUILD",
+    commit = "f3677d4a0a8838c846ed41bf41927f2c8713bd60", # Nov 4, 2018 (LATEST GIT COMMIT)
     remote = "https://github.com/go-gorp/gorp.git",
 )
 
 new_git_repository(
     name = "go_blackfriday",
-    build_file = "third_party/go/russross_blackfriday.BUILD",
-    commit = "5f33e7b7878355cd2b7e6b8eefc48a5472c69f70",
+    build_file = "//:third_party/go/russross_blackfriday.BUILD",
+    commit = "d3b5b032dc8e8927d31a5071b56e14c89f045135", # v2.0.1 Sep 20, 2018 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/russross/blackfriday.git",
 )
 
 new_git_repository(
     name = "go_sanitized_anchor_name",
-    build_file = "third_party/go/shurcool_sanitized_anchor_name.BUILD",
-    commit = "1dba4b3954bc059efc3991ec364f9f9a35f597d2",
+    build_file = "//:third_party/go/shurcool_sanitized_anchor_name.BUILD",
+    commit = "7bfe4c7ecddb3666a94b053b422cdd8f5aaa3615", # Dec 26, 2018 (LATEST GIT COMMIT)
     remote = "https://github.com/shurcool/sanitized_anchor_name.git",
 )
 
 new_git_repository(
     name = "go_structs",
-    build_file = "third_party/go/fatih_structs.BUILD",
-    commit = "dc3312cb1a4513a366c4c9e622ad55c32df12ed3",
+    build_file = "//:third_party/go/fatih_structs.BUILD",
+    commit = "878a968ab22548362a09bdb3322f98b00f470d46", # Oct 11, 2018 (LATEST GIT COMMIT)
     remote = "https://github.com/fatih/structs.git",
 )
 
 new_git_repository(
     name = "go_mysql",
-    build_file = "third_party/go/mysql.BUILD",
-    commit = "0b58b37b664c21f3010e836f1b931e1d0b0b0685",
+    build_file = "//:third_party/go/mysql.BUILD",
+    commit = "877a9775f06853f611fb2d4e817d92479242d1cd", # May 10, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/go-sql-driver/mysql.git",
 )
 
-
 new_git_repository(
     name = "go_x_net",
-    build_file = "third_party/go/x_net.BUILD",
-    commit = "6250b412798208e6c90b03b7c4f226de5aa299e2",
+    build_file = "//:third_party/go/x_net.BUILD",
+    commit = "da137c7871d730100384dbcf36e6f8fa493aef5b", # Jun 28, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/net.git"
 )
 
 new_git_repository(
     name = "go_x_oauth2",
-    build_file = "third_party/go/x_oauth2.BUILD",
-    commit = "3c3a985cb79f52a3190fbc056984415ca6763d01",
+    build_file = "//:third_party/go/x_oauth2.BUILD",
+    commit = "0f29369cfe4552d0e4bcddc57cc75f4d7e672a33", # Jun 4, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/oauth2.git"
 )
 
 new_git_repository(
     name = "go_x_time",
-    build_file = "third_party/go/x_time.BUILD",
-    commit = "a4bde12657593d5e90d0533a3e4fd95e635124cb",
+    build_file = "//:third_party/go/x_time.BUILD",
+    commit = "9d24e82272b4f38b78bc8cff74fa936d31ccd8ef", # Feb 16, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/time.git"
 )
 
 new_git_repository(
     name = "go_x_crypto",
-    build_file = "third_party/go/x_crypto.BUILD",
-    commit = "6ab629be5e31660579425a738ba8870beb5b7404",
+    build_file = "//:third_party/go/x_crypto.BUILD",
+    commit = "cc06ce4a13d484c0101a9e92913248488a75786d", # Jun 21, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/crypto.git"
+)
+
+new_git_repository(
+    name = "go_x_text",
+    build_file = "//:third_party/go/x_text.BUILD",
+    commit = "342b2e1fbaa52c93f31447ad2c6abc048c63e475", # Dec 15, 2018 (LATEST GIT COMMIT)
+    remote = "https://github.com/golang/text.git"
+)
+
+new_git_repository(
+    name = "go_x_sync",
+    build_file = "//:third_party/go/x_sync.BUILD",
+    commit = "112230192c580c3556b8cee6403af37a4fc5f28c", # Apr 23, 2019 (LATEST GIT COMMIT)
+    remote = "https://github.com/golang/sync.git"
+)
+
+new_git_repository(
+    name = "go_opencensus",
+    build_file = "//:third_party/go/go_opencensus.BUILD",
+    commit = "5897c5ce32247fc8af19c7710abd96e3304fb43c", # Jun 4, 2018 (UPDATE REQUIRED! above, breaks)
+    remote = "https://github.com/census-instrumentation/opencensus-go.git"
+)
+
+new_git_repository(
+    name = "golang_lru",
+    build_file = "//:third_party/go/golang_lru.BUILD",
+    commit = "59383c442f7d7b190497e9bb8fc17a48d06cd03f", # May 20, 2019 (LATEST GIT COMMIT)
+    remote = "https://github.com/hashicorp/golang-lru.git"
+)
+
+new_git_repository(
+    name = "googleapis_gax",
+    build_file = "//:third_party/go/googleapis_gax.BUILD",
+    commit = "bd5b16380fd03dc758d11cef74ba2e3bc8b0e8c2", # May 13, 2019 (LATEST GIT COMMIT)
+    remote = "https://github.com/googleapis/gax-go.git",
+)
+
+new_git_repository(
+    name = "go_rice",
+    build_file = "//:third_party/go/go_rice.BUILD",
+    commit = "c880e3cd4dd81db36b423e83dc0aeea4dca93774", # May 1, 2019 (LATEST GIT COMMIT)
+    remote = "https://github.com/GeertJohan/go.rice.git",
+)
+
+new_git_repository(
+    name = "go_zipexe",
+    build_file = "//:third_party/go/go_zipexe.BUILD",
+    commit = "74d766ac1dde7458348221869a7d1e7e5fa0597e", # v1.0.1 May 7, 2019 (LATEST GIT COMMIT)
+    remote = "https://github.com/daaku/go.zipexe.git",
 )

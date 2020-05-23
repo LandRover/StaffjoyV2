@@ -1,4 +1,7 @@
-import React, { PropTypes } from 'react';
+/* eslint-disable react/no-unused-prop-types */
+
+import PropTypes from 'prop-types';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../actions';
@@ -42,7 +45,7 @@ function mapDispatchToProps(dispatch) {
   return {
     modifyUserAttribute: bindActionCreators(
       actions.modifyUserAttribute,
-      dispatch
+      dispatch,
     ),
   };
 }
@@ -54,7 +57,11 @@ NotificationManager.propTypes = {
   modifyUserAttribute: PropTypes.func,
 };
 
+NotificationManager.defaultProps = {
+  modifyUserAttribute: () => {},
+};
+
 export default connect(
   null,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(NotificationManager);

@@ -6,6 +6,8 @@ import (
 	"io"
 	"net/http"
 	"text/template"
+
+	rice "github.com/GeertJohan/go.rice"
 )
 
 // Split this out so we can mock in tests
@@ -53,22 +55,34 @@ var (
 	}
 )
 
-// Load the template
 func init() {
-	tmplData, err := Asset("assets/error.tmpl")
+	Assets()
+}
+
+// Assets loading template and image
+func Assets() {
+	// find swagger rice.Box
+	assetsBox, err := rice.FindBox("assets")
 	if err != nil {
-		panic("Unable to find error template in bindata")
+		panic(err)
 	}
 
-	tmpl, err = template.New("Error").Parse(string(tmplData))
+	// get json
+	templateString, err := assetsBox.String("error.tmpl")
+	if err != nil {
+		panic("Unable to find error template in rice box")
+	}
+
+	tmpl, err = template.New("Error").Parse(string(templateString))
 	if err != nil {
 		panic("Unable to parse error template")
 	}
 
-	imgFile, err := Asset("assets/staffjoy_coffee.png")
+	imgFile, err := assetsBox.Bytes("staffjoy_coffee.png")
 	if err != nil {
-		panic("Unable to find error image in bindata")
+		panic("Unable to find error image in rice box")
 	}
+
 	imageBase64 = base64.StdEncoding.EncodeToString(imgFile)
 }
 

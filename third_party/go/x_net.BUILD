@@ -14,7 +14,7 @@ external_go_package(
     ],
     exclude_srcs = [
         "ctxhttp_pre17.go",
-      ],
+    ],
 )
 
 
@@ -23,7 +23,8 @@ external_go_package(
     name = "context",
     exclude_srcs = [
         "pre_go17.go",
-    ]
+        "pre_go19.go",
+    ],
 )
 
 external_go_package(
@@ -37,20 +38,23 @@ external_go_package(
     deps = [
         "@go_x_net//:internal/timeseries",
         "@go_x_net//:context",
-    ]
+    ],
+    exclude_srcs = [
+        "trace_go16.go",
+    ],
 )
 
 external_go_package(
     name = "http2",
     base_pkg = "golang.org/x/net",
     deps = [
+        "@go_x_net//:idna",
         "@go_x_net//:http2/hpack",
-        "@go_x_net//:lex/httplex",
+        "@go_x_net//:http/httpguts",
         "@go_x_net//:context",
     ],
     exclude_srcs = [
-        "not_go17.go",
-        "not_go16.go",
+        "not_go111.go",
     ],
 )
 
@@ -60,8 +64,26 @@ external_go_package(
 )
 
 external_go_package(
-    name = "lex/httplex",
+    name = "http/httpguts",
     base_pkg = "golang.org/x/net",
+    deps = [
+        "@go_x_net//:idna",
+    ],
+)
+
+external_go_package(
+    name = "idna",
+    base_pkg = "golang.org/x/net",
+    deps = [
+        "@go_x_text//:unicode/bidi",
+        "@go_x_text//:unicode/norm",
+        "@go_x_text//:secure/bidirule",
+    ],
+    exclude_srcs = [
+        "tables9.0.0.go",
+        "tables10.0.0.go",
+        "idna9.0.0.go",
+    ],
 )
 
 external_go_package(

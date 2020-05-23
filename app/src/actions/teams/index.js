@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import 'whatwg-fetch';
-import { normalize, Schema, arrayOf } from 'normalizr';
+import { normalize, schema } from 'normalizr';
 import * as actionTypes from '../../constants/actionTypes';
 import { routeToMicroservice } from '../../constants/paths';
 import {
@@ -17,8 +17,8 @@ import {
 */
 
 // schemas!
-const teamSchema = new Schema('teams', { idAttribute: 'uuid' });
-const arrayOfTeams = arrayOf(teamSchema);
+const teamSchema = new schema.Entity('teams', {}, { idAttribute: 'uuid' });
+const arrayOfTeams = new schema.Array(teamSchema);
 
 // teams
 

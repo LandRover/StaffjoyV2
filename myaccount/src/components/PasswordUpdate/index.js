@@ -1,5 +1,6 @@
 import _ from 'lodash';
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
@@ -8,7 +9,7 @@ import StaffjoyButton from '../StaffjoyButton';
 import PasswordsMatch from './PasswordsMatch';
 import * as actions from '../../actions';
 
-class PasswordUpdate extends React.Component {
+class PasswordUpdate extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,8 +34,8 @@ class PasswordUpdate extends React.Component {
     if (this.state.newPassword === this.state.confirmPassword) {
       this.props.dispatch(
         actions.changePassword(
-          this.state.newPassword
-        )
+          this.state.newPassword,
+        ),
       );
     }
 
@@ -48,8 +49,8 @@ class PasswordUpdate extends React.Component {
   render() {
     const { formData } = this.props;
     const { newPassword, confirmPassword } = this.state;
-    const passwordButtonDisabled = _.isEmpty(confirmPassword) ||
-      (newPassword !== confirmPassword);
+    const passwordButtonDisabled = _.isEmpty(confirmPassword)
+      || (newPassword !== confirmPassword);
     let element = null;
 
     if (!_.isEmpty(formData)) {
@@ -96,7 +97,7 @@ class PasswordUpdate extends React.Component {
 }
 
 PasswordUpdate.propTypes = {
-  dispatch: PropTypes.func,
+  dispatch: PropTypes.func.isRequired,
   formData: PropTypes.object.isRequired,
 };
 

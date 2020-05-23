@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: emailserver-deployment
@@ -7,6 +7,9 @@ spec:
   revisionHistoryLimit: 2
   strategy:
     type: RollingUpdate
+  selector:
+    matchLabels:
+      app: emailserver
   template:
     metadata:
       labels:
@@ -38,9 +41,14 @@ spec:
             secretKeyRef:
               name: sentry
               key: dsn
-        - name: MANDRILL_API_KEY
+        - name: MAILGUN_DOMAIN
           valueFrom:
             secretKeyRef:
-              name: mandrill
+              name: mailgun_domain
+              key: domain
+        - name: MAILGUN_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: mailgun_api_key
               key: key
 

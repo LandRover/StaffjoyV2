@@ -1,5 +1,6 @@
 import _ from 'lodash';
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ShiftWeekTableCard from './Card';
 import ShiftWeekTableEmptyCell from './EmptyCell';

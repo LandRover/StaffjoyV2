@@ -22,7 +22,7 @@ kubectl get deployment $service-deployment --namespace=$NAMESPACE 2>&1 >/dev/nul
 if [ $? -eq 0 ]
 then
   echo "Deployment for $service exists, updating container image to version $VERSION"
-  kubectl --namespace=$NAMESPACE update -f ./ci/k8s/$NAMESPACE/deployments/$service-copy.yaml
+  kubectl --namespace=$NAMESPACE apply -f ./ci/k8s/$NAMESPACE/deployments/$service-copy.yaml
 else
   echo "Deployment for $service doesn't exist, creating deployment with container image version $VERSION"
   kubectl --namespace=$NAMESPACE create -f ./ci/k8s/$NAMESPACE/deployments/$service-copy.yaml

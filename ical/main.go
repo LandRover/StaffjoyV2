@@ -12,8 +12,8 @@ import (
 	"v2.staffjoy.com/company"
 	pb "v2.staffjoy.com/company"
 
-	"github.com/Sirupsen/logrus"
 	"github.com/gorilla/mux"
+	"github.com/sirupsen/logrus"
 	"github.com/urfave/negroni"
 	"google.golang.org/grpc/metadata"
 	"v2.staffjoy.com/environments"
@@ -50,7 +50,7 @@ func init() {
 
 func icalContext() context.Context {
 	md := metadata.New(map[string]string{auth.AuthorizationMetadata: auth.AuthorizationICalService})
-	return metadata.NewContext(context.Background(), md)
+	return metadata.NewOutgoingContext(context.Background(), md)
 }
 
 // NewRouter builds the mux router for the site

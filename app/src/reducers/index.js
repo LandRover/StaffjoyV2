@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form';
+import { connectRouter } from 'connected-react-router'
 import associations from './associations';
 import company from './company';
 import employees from './employees';
@@ -10,8 +10,8 @@ import user from './user';
 import whoami from './whoami';
 import settings from './settings';
 
-export default combineReducers({
-  routing: routerReducer,
+const rootReducer = (history) => combineReducers({
+  router: connectRouter(history),
   form: formReducer,
   associations,
   company,
@@ -20,5 +20,7 @@ export default combineReducers({
   teams,
   user,
   whoami,
-  settings,
+  settings
 });
+
+export default rootReducer;

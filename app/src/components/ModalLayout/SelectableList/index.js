@@ -1,24 +1,29 @@
 import _ from 'lodash';
 import $ from 'npm-zepto';
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ModalListSelectableItem from './SelectableItem';
 
 require('./selectable-modal-list.scss');
 
-class SelectableModalList extends React.Component {
+class SelectableModalList extends Component {
+
+  state = {
+    selections: {}
+  };
+
 
   constructor(props) {
     super(props);
     this.selectElement = this.selectElement.bind(this);
-    this.state = {
-      selections: {},
-    };
+    this.initSelections();
   }
 
-  componentWillMount() {
-    const { records, selectedUuid, formField, formCallback,
-    uuidKey } = this.props;
+
+  initSelections() {
+    const { records, selectedUuid, formField, formCallback, uuidKey } = this.props;
     const selections = {};
+  
     _.forEach(records, (record) => {
       selections[record[uuidKey]] = false;
     });
@@ -31,6 +36,7 @@ class SelectableModalList extends React.Component {
     formCallback({ [formField]: selections });
   }
 
+
   selectElement(event) {
     const { formField, formCallback } = this.props;
     const newUuid = $(event.target)
@@ -41,6 +47,7 @@ class SelectableModalList extends React.Component {
     this.setState({ selections });
     formCallback({ [formField]: selections });
   }
+
 
   render() {
     const { error, records, displayByProperty, uuidKey } = this.props;
@@ -78,14 +85,16 @@ class SelectableModalList extends React.Component {
   }
 }
 
+
 SelectableModalList.propTypes = {
   error: PropTypes.string,
-  records: PropTypes.arrayOf(React.PropTypes.object),
+  records: PropTypes.arrayOf(PropTypes.object),
   displayByProperty: PropTypes.string.isRequired,
   selectedUuid: PropTypes.string,
   formCallback: PropTypes.func.isRequired,
   formField: PropTypes.string.isRequired,
   uuidKey: PropTypes.string.isRequired,
 };
+
 
 export default SelectableModalList;

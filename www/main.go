@@ -6,22 +6,19 @@ package main
 
 import (
 	"fmt"
-	"html/template"
 	"net/http"
 	"os"
-	"reflect"
 	"time"
 
-	"github.com/Sirupsen/logrus"
-	"github.com/elazarl/go-bindata-assetfs"
 	"github.com/gorilla/csrf"
 	"github.com/gorilla/mux"
+	"github.com/sirupsen/logrus"
 	"v2.staffjoy.com/environments"
 	"v2.staffjoy.com/errorpages"
 	"v2.staffjoy.com/healthcheck"
 	"v2.staffjoy.com/middlewares"
 
-	"github.com/russross/blackfriday"
+	rice "github.com/GeertJohan/go.rice"
 
 	"github.com/urfave/negroni"
 )
@@ -32,11 +29,7 @@ var (
 
 	logger       *logrus.Entry
 	config       environments.Config
-	tmpl         *template.Template
 	signingToken = os.Getenv("SIGNING_SECRET")
-
-	// Subfolders that are served directly
-	assetPaths = []string{"assets/css", "assets/images", "assets/js", "assets/data", "assets/fonts", "assets/breaktime-cover"}
 
 	// Paths that we are 301 redirecting to suite.staffjoy.com
 	legacyPaths = []string{"/api/v2/", "/auth/", "/euler/", "/myschedules/", "/manager/"}
@@ -56,15 +49,11 @@ var (
 	confirmPage      = &page{Title: "Open your email and click on the confirmation link!", Description: "Check your email and click the link for next steps", TemplateName: "confirm.tmpl", CSSId: "confirm"}
 	resetConfirmPage = &page{Title: "Please check your email for a reset link!", Description: "Check your email and click the link for next steps", TemplateName: "confirm.tmpl", CSSId: "confirm"}
 	newCompanyPage   = &page{Title: "Create a new company", Description: "Get started with a new Staffjoy account", TemplateName: "new_company.tmpl", CSSId: "newCompany"}
-	breaktimeSource  = make(map[string]string)
 )
 
 const (
 	// ServiceName is how we refer to this app in logs
 	ServiceName = "www"
-	// All templates in this folder will be loaded
-	templateFolder       = "assets/templates"
-	breaktimeAssetFolder = "assets/breaktime-content"
 
 	// For SEO / web crawlers
 	defaultDescription = "Staffjoy is an application that helps businesses create and share schedules with hourly workers."
@@ -75,60 +64,15 @@ const (
 	confirmTemplate   = "confirm.tmpl"
 )
 
-// Added in template
-func hasField(v interface{}, name string) bool {
-	rv := reflect.ValueOf(v)
-	if rv.Kind() == reflect.Ptr {
-		rv = rv.Elem()
-	}
-	if rv.Kind() != reflect.Struct {
-		return false
-	}
-	return rv.FieldByName(name).IsValid()
-}
-
 func init() {
 	var err error
+
 	// Set the ENV environment variable to control dev/stage/prod behavior
 	config, err = environments.GetConfig(os.Getenv(environments.EnvVar))
 	if err != nil {
 		panic("Unable to determine configuration")
 	}
 	logger = config.GetLogger(ServiceName)
-
-	// Load templates
-	templateFilenames, err := AssetDir(templateFolder)
-	if err != nil {
-		logger.Panicf("Unable to load template files: %s", err)
-	}
-	for _, name := range templateFilenames {
-		tmplData, err := Asset(fmt.Sprintf("%s/%s", templateFolder, name))
-		if err != nil {
-			logger.Panicf("Unable to locate specified asset - %s", err)
-		}
-		// Create template on first loop
-		if tmpl == nil {
-			tmpl, err = template.New(name).Funcs(template.FuncMap{"hasField": hasField}).Parse(string(tmplData))
-		} else {
-			tmpl, err = tmpl.New(name).Funcs(template.FuncMap{"hasField": hasField}).Parse(string(tmplData))
-		}
-		if err != nil {
-			logger.Panicf("Unable to parse template - %s", err)
-		}
-	}
-
-	breaktimeFilenames, err := AssetDir(breaktimeAssetFolder)
-	if err != nil {
-		logger.Panicf("Unable to load breaktime files: %s", err)
-	}
-	for _, name := range breaktimeFilenames {
-		sourceData, err := Asset(fmt.Sprintf("%s/%s", breaktimeAssetFolder, name))
-		if err != nil {
-			logger.Panicf("Unable to locate specified asset - %s", err)
-		}
-		// Create template on first loop
-		breaktimeSource[name] = string(blackfriday.MarkdownBasic(sourceData))
-	}
 
 	if len(signingToken) == 0 && !config.Debug {
 		panic("no signing token")
@@ -140,6 +84,8 @@ func init() {
 // NewRouter builds the mux router for the site
 // (abstracted for testing purposes)
 func NewRouter() *mux.Router {
+	loadAssets()
+
 	r := mux.NewRouter().StrictSlash(true)
 
 	r.HandleFunc(healthcheck.HEALTHPATH, healthcheck.Handler)
@@ -165,9 +111,26 @@ func NewRouter() *mux.Router {
 
 	// Register asset folders we want served externally
 	for _, path := range assetPaths {
+		var metaHTTPBox *rice.HTTPBox
 		urlPath := fmt.Sprintf("/%s/", path) // Wrap in slashes
-		r.PathPrefix(urlPath).Handler(http.StripPrefix(urlPath, http.FileServer(
-			&assetfs.AssetFS{Asset: Asset, AssetDir: AssetDir, AssetInfo: AssetInfo, Prefix: path})))
+
+		// @TODO find cleaner solution, to iterate `assetPaths`
+		switch path {
+		case assetPaths[0]:
+			metaHTTPBox = jsBox.HTTPBox()
+		case assetPaths[1]:
+			metaHTTPBox = cssBox.HTTPBox()
+		case assetPaths[2]:
+			metaHTTPBox = imagesBox.HTTPBox()
+		case assetPaths[3]:
+			metaHTTPBox = dataBox.HTTPBox()
+		case assetPaths[4]:
+			metaHTTPBox = fontBox.HTTPBox()
+		case assetPaths[5]:
+			metaHTTPBox = breakTimeCoverBox.HTTPBox()
+		}
+
+		r.PathPrefix(urlPath).Handler(http.StripPrefix(urlPath, http.FileServer(metaHTTPBox)))
 	}
 
 	// redirect old routes to suite.staffjoy.com for legacy users

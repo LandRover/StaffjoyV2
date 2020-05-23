@@ -1,10 +1,14 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 function InfoStat({ label, stat }) {
   return (
     <div className="info-stat">
       <span>
-        <span className="label">{label}:</span>
+        <span className="label">
+          {label}
+:
+        </span>
         {stat}
       </span>
     </div>

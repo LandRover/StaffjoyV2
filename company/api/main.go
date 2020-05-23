@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/Sirupsen/logrus"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
+	"github.com/sirupsen/logrus"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 
@@ -13,13 +13,13 @@ import (
 	"v2.staffjoy.com/company"
 	"v2.staffjoy.com/environments"
 	"v2.staffjoy.com/healthcheck"
+
+	rice "github.com/GeertJohan/go.rice"
 )
 
 const (
 	// ServiceName identifies this app in logs
 	ServiceName = "company"
-	// swagger is the name of the swagger file
-	swagger = "company.swagger.json"
 )
 
 var (
@@ -45,13 +45,23 @@ func run() error {
 
 	mux := http.NewServeMux()
 
+	// find swagger rice.Box
+	swaggerBox, err := rice.FindBox("swagger")
+	if err != nil {
+		panic(err)
+	}
+
 	mux.HandleFunc("/swagger.json", func(res http.ResponseWriter, req *http.Request) {
 		res.Header().Set("Content-Type", "application/json")
-		data, err := Asset(swagger)
+
+		// get json
+		tmpl, err := swaggerBox.Bytes("company.swagger.json")
+
 		if err != nil {
-			panic("Unable to load swagger")
+			panic(err)
 		}
-		res.Write(data)
+
+		res.Write(tmpl)
 	})
 
 	mux.HandleFunc(healthcheck.HEALTHPATH, healthcheck.Handler)

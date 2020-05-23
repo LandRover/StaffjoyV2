@@ -24,7 +24,7 @@ $(document).ready(function () {
   // the ^700 is a delay before the heart icon appears.
   
   $("#typed").css('height', $("#typed").height()).text("").css("color", "#fff").typed({
-    strings: ["Share schedules in less time <i class='fa fa-commenting-o' aria-hidden='true'></i>"],
+    strings: ["Share schedules in less time <i class='far fa-comment-dots' aria-hidden='true'></i>"],
     typeSpeed: 10,
     showCursor: false,
     callback: complete

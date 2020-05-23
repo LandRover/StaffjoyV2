@@ -47,8 +47,6 @@
     }
 
     .modal-side-panel {
-      padding-top: 24px;
-      padding-bottom: 12px;
       position: absolute;
       background-color: $staffjoy-palette-primary;
       top: 0;
@@ -59,17 +57,19 @@
       border-bottom-right-radius: 3px;
 
       .side-panel-title {
+        margin: 0;
         font-weight: 300;
         font-size: 20px;
         color: $pure-white;
         text-align: center;
-        margin-top: 0;
-        margin-bottom: 8px;
+        height: 15%;
+        line-height: 44px;
       }
 
       .scrolling-panel {
         overflow: scroll;
-        height: 90%;
+        overflow-x: hidden;
+        height: 85%;
       }
     }
   }

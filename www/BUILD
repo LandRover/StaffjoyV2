@@ -1,13 +1,13 @@
 package(default_visibility = ["//visibility:public"])
 
 load("//tools:build_rules/go.bzl", "go_binary")
-load("@bazel_tools//tools/build_defs/docker:docker.bzl", "docker_build")
+load("@io_bazel_rules_docker//container:container.bzl", "container_image")
 
 go_binary(
     name = "www",
     srcs = [
         "activate.go",
-        "bindata.go",
+        "assets.go",
         "breaktime_episodes.go",
         "confirmreset.go",
         "login.go",
@@ -17,6 +17,7 @@ go_binary(
         "page.go",
         "reset.go",
         "signup.go",
+        "rice-box.go",
     ],
     deps = [
         "//account",
@@ -31,8 +32,9 @@ go_binary(
         "//helpers",
         "//middlewares",
         "//suite",
-        "@go_assetfs//:go-bindata-assetfs",
-        "@go_blackfriday//:blackfriday",
+        "@go_blackfriday//:v2",
+        "@go_rice//:go.rice",
+        "@go_rice//:embedded",
         "@go_gorilla_csrf//:csrf",
         "@go_gorilla_mux//:mux",
         "@go_grpc//:codes",
@@ -45,9 +47,9 @@ go_binary(
     ],
 )
 
-docker_build(
+container_image(
     name = "docker",
-    base = "//docker:ubuntu-xenial",
+    base = "@ubuntu//image",
     cmd = "./www",
     files = [
         ":www",

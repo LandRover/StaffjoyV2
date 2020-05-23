@@ -1,29 +1,37 @@
 import classNames from 'classnames';
-import React, { PropTypes } from 'react';
-import { Spinner } from 'react-mdl';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { CircularProgress } from '@rmwc/circular-progress';
 import * as fieldUpdateStatus from 'constants/fieldUpdateStatus';
 
 require('./employee-form-field.scss');
 
-class EmployeeFormField extends React.Component {
+class EmployeeFormField extends Component {
+
+  state = {
+    showSuccess: false
+  };
+
 
   constructor(props) {
     super(props);
-    this.state = { showSuccess: false };
   }
 
-  componentWillReceiveProps(nextProps) {
+
+  componentDidUpdate(prevProps) {
     if (
-      nextProps.updateStatus === fieldUpdateStatus.SUCCESS &&
-      this.props.updateStatus === fieldUpdateStatus.UPDATING
+      this.props.updateStatus === fieldUpdateStatus.SUCCESS &&
+      prevProps.updateStatus === fieldUpdateStatus.UPDATING
     ) {
       this.setState({ showSuccess: true });
+
       setTimeout(
         () => { this.setState({ showSuccess: false }); },
         1000,
       );
     }
   }
+
 
   render() {
     const { iconKey, input, onBlur, updateStatus } = this.props;
@@ -58,9 +66,9 @@ class EmployeeFormField extends React.Component {
       );
     }
 
-    let spinner;
+    let progress;
     if (updateStatus === fieldUpdateStatus.UPDATING) {
-      spinner = <Spinner singleColor />;
+      progress = <CircularProgress size="xsmall" />;
     }
 
     let success;
@@ -85,12 +93,13 @@ class EmployeeFormField extends React.Component {
       <div className={className}>
         {icon}
         {inputElement}
-        {spinner}
+        {progress}
         {success}
       </div>
     );
   }
 }
+
 
 EmployeeFormField.propTypes = {
   iconKey: PropTypes.string,
@@ -101,5 +110,6 @@ EmployeeFormField.propTypes = {
   }).isRequired,
   onBlur: PropTypes.func,
 };
+
 
 export default EmployeeFormField;

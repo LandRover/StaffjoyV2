@@ -1,19 +1,32 @@
-const gulp         = require('gulp')
-      sass         = require('gulp-sass'),
-      autoprefixer = require('gulp-autoprefixer')
+const { src, dest, watch, series, parallel } = require('gulp');
+const gulpSass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
 
-gulp.task('sass', function () {
-  gulp.src('./sass/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }))
-    .pipe(gulp.dest('./assets/css/'))
-});
+function sassTask() {
+  // Where should gulp look for the sass files?
+  // My .sass files are stored in the styles folder
+  // (If you want to use scss files, simply look for *.scss files instead)
+  return (
+      src('./sass/**/*.scss')
+      .pipe(gulpSass())
+      .pipe(autoprefixer({
+        cascade: false
+      }))
+      .pipe(dest('./assets/css/'))
+  );
+}
 
-gulp.task('watch', function() {
-  gulp.watch('./sass/**/*.scss', ['sass']);
-});
+function watchTask() {
+  watch(
+      ['./sass/**/*.scss'],
+      parallel(sassTask)
+  );
+}
 
-gulp.task('default', ['sass', 'watch']);
+exports.sass = sassTask;
+exports.watch = watchTask;
+
+exports.default = series(
+  sassTask,
+  watchTask
+);

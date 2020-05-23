@@ -1,9 +1,10 @@
-import React, { PropTypes } from 'react';
-import { ScaleModal } from 'boron';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { ScaleModal } from 'boron-15';
 
 require('./confirmation-modal.scss');
 
-export default class ConfirmationModal extends React.Component {
+export default class ConfirmationModal extends Component {
 
   showModal() {
     this.modal.show();

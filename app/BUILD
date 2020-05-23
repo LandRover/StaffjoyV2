@@ -1,25 +1,28 @@
 package(default_visibility = ["//visibility:public"])
 
-load("@bazel_tools//tools/build_defs/docker:docker.bzl", "docker_build")
-load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_tar", "pkg_deb")
+load("@io_bazel_rules_docker//container:container.bzl", "container_image")
+load("@bazel_tools//tools/build_defs/pkg:pkg.bzl", "pkg_deb", "pkg_tar")
 
-docker_build(
+container_image(
     name = "docker",
-    base = "//docker:nginx",
-    debs = [
-        ":app-deb",
-    ],
+    base = "@nginx//image",
+    #debs = [
+    #    ":app-deb",
+    #],
     files = [
         ":app-tar-src",
     ],
     ports = [
         "80",
     ],
+    tars = [
+        ":app-tar",
+    ],
 )
 
 pkg_tar(
     name = "app-tar-src",
-    files = glob([
+    srcs = glob([
         "src/*",
     ]) + [
         "index.template.ejs",
@@ -32,9 +35,10 @@ pkg_tar(
 
 pkg_tar(
     name = "app-tar",
-    files = glob([
-        "dist/bundle*.js",
-        "dist/assets/*",
+    srcs = glob([
+        "dist/*.bundle.js",
+        "dist/*.chunk.js",
+        "dist/assets/**/*",
     ]) + ["dist/index.html"],
     mode = "0644",
     package_dir = "/usr/share/nginx/html",

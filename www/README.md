@@ -17,7 +17,7 @@ CSS is being compiled from Sass, but we are bundling everything into 1 file, loc
 If you make changes to assets or templates, you must run the following scripts to package your assets for the binary:
 
 ```
-go-bindata assets/...
+`rice embed-go` or `bash ./build.sh`
 ```
 
 the bindata package is old and ornery, so you may need to run `gofmt -s` (with the simplification flag) or linting on it.

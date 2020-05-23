@@ -5,8 +5,11 @@ load("//tools:build_rules/go.bzl", "go_library")
 go_library(
     name = "errorpages",
     srcs = [
-        "bindata.go",
+        "rice-box.go",
         "errorpages.go",
     ],
-    deps = [],
+    deps = [
+        "@go_rice//:go.rice",
+        "@go_rice//:embedded",
+    ],
 )

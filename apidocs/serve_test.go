@@ -54,7 +54,7 @@ func TestHomepageRendersValidHtml(t *testing.T) {
 func TestAStaticAssetLoads(t *testing.T) {
 	assert := assert.New(t)
 
-	assets := []string{"/ui/css/style.css", "/ui/js/swagger-ui.js"}
+	assets := []string{"/ui/css/swagger-ui.css", "/ui/js/swagger-ui-bundle.js"}
 	rec := httptest.NewRecorder()
 	config, err := environments.GetConfig("test")
 	assert.NoError(err)

@@ -1,8 +1,11 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 require('./checkbox-field.scss');
 
-function CheckboxField({ id, description, attribute, checked, onChange }) {
+function CheckboxField({
+  id, description, attribute, checked, onChange,
+}) {
   return (
     <div className="checkbox-field">
       <input
@@ -17,12 +20,19 @@ function CheckboxField({ id, description, attribute, checked, onChange }) {
     </div>
   );
 }
+
 CheckboxField.propTypes = {
   attribute: PropTypes.string,
-  checked: React.PropTypes.bool,
+  checked: PropTypes.bool,
   description: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  onChange: React.PropTypes.func,
+  onChange: PropTypes.func,
+};
+
+CheckboxField.defaultProps = {
+  attribute: '',
+  checked: false,
+  onChange: () => {},
 };
 
 export default CheckboxField;

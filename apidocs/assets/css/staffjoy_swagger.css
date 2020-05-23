@@ -1,0 +1,31 @@
+html
+{
+  box-sizing: border-box;
+  overflow: -moz-scrollbars-vertical;
+  overflow-y: scroll;
+}
+
+*,
+*:before,
+*:after
+{
+  box-sizing: inherit;
+}
+
+body
+{
+  margin: 0;
+  background: #fafafa;
+}
+
+.swagger-ui .topbar {
+    background-color: #48B7AB;
+}
+
+.swagger-ui .topbar .topbar-wrapper a { 
+    height: 38px;
+    background: transparent url('../images/logo-white.svg') no-repeat;
+    background-size: 148px 38px;
+}
+
+.swagger-ui .topbar .topbar-wrapper a img { display: none; }

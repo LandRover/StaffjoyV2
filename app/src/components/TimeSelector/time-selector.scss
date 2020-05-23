@@ -3,20 +3,22 @@
 .time-selector {
   padding-bottom: 20px;
   .input-fields {
-    .mdl-textfield:first-child {
+    .staffjoy-text-field:first-child {
       margin-right: 54px;
     }
 
-    .mdl-textfield__input {
-      &.active {
+    .mdc-text-field__input {
+      &.mdc-text-field--focused {
         border-bottom: 2px solid $staffjoy-palette-primary;
+        background-color: translate;
       }
     }
   }
 
   .selector-buttons {
     .meridiem-buttons {
-      margin-bottom: 12px;
+      margin: 10px 12px 10px 0;
+
       .staffjoy-button:first-child {
         margin-right: 12px;
       }

@@ -1,5 +1,7 @@
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
+import { Grid, GridInner, GridCell } from '@rmwc/grid';
 import 'moment-timezone';
 import momentPropTypes from 'react-moment-proptypes';
 
@@ -12,28 +14,35 @@ import {
 
 require('./scheduling-date-controller.scss');
 
-class SchedulingDateController extends React.Component {
+class SchedulingDateController extends Component {
+  constructor(props) {
+    super(props);
 
-  componentWillMount() {
-    this.setTime();
-    const intervalId = window.setInterval(() => this.setTime(), 1000);
-    this.setState({ intervalId });
+    const intervalId = window.setInterval(() => {
+      this.setState({
+        time: this.getTime()
+      });
+    }, 1000);
+
+    this.state = {
+      time: this.getTime(),
+      intervalId
+    };
   }
+
 
   componentWillUnmount() {
     clearInterval(this.state.intervalId);
   }
 
-  setTime() {
-    const { timezone } = this.props;
 
-    const time = moment.tz(timezone).format(MOMENT_CALENDAR_TIME_DISPLAY);
-    this.setState({ time });
+  getTime() {
+    return moment.tz(this.props.timezone).format(MOMENT_CALENDAR_TIME_DISPLAY);
   }
 
+
   render() {
-    const { queryStart, queryStop, stepDateRange, timezone,
-      disabled } = this.props;
+    const { queryStart, queryStop, stepDateRange, timezone, disabled } = this.props;
     const { time } = this.state;
     const startDisplay = moment.utc(queryStart).tz(timezone)
       .format(MOMENT_CALENDAR_START_DISPLAY);
@@ -42,26 +51,37 @@ class SchedulingDateController extends React.Component {
       .format(MOMENT_CALENDAR_END_DISPLAY);
 
     return (
-      <div className="scheduling-date-controls-container mdl-grid">
-        <div className="date-buttons mdl-cell-3-col">
-          <SquareButton
-            name="chevron_left"
-            onClick={stepDateRange}
-            data-direction="left"
-            disabled={disabled}
-          />
-          <SquareButton
-            name="chevron_right"
-            onClick={stepDateRange}
-            data-direction="right"
-            disabled={disabled}
-          />
-        </div>
-        <div className="time-displays mdl-cell-9-col">
-          <div className="date-range">{startDisplay} - {stopDisplay}</div>
-          <div className="current-time">{time}</div>
-        </div>
-      </div>
+      <Grid>
+        <GridInner 
+          className="scheduling-date-controls-container"
+        >
+          <GridCell 
+            span={3}
+          >
+            <SquareButton
+              name="left"
+              icon="chevron_left"
+              onClick={stepDateRange}
+              data-direction="left"
+              disabled={disabled}
+            />
+            <SquareButton
+              name="right"
+              icon="chevron_right"
+              onClick={stepDateRange}
+              data-direction="right"
+              disabled={disabled}
+            />
+          </GridCell>
+          <GridCell
+            span={9}
+            className="time-displays"
+          >
+            <div className="date-range">{startDisplay} - {stopDisplay}</div>
+            <div className="current-time">{time}</div>
+          </GridCell>
+        </GridInner>
+      </Grid>
     );
   }
 }
@@ -74,8 +94,10 @@ SchedulingDateController.propTypes = {
   disabled: PropTypes.bool,
 };
 
+
 SchedulingDateController.defaultProps = {
   disabled: false,
 };
+
 
 export default SchedulingDateController;

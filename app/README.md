@@ -15,7 +15,7 @@ Commit the generated files along with your feature.
 
 ## Storybook Setup
 
-If @kadira/storybook fails to install locally, try running `npm install` in your vagrant box.
+If @storybook/react fails to install locally, try running `npm install` in your vagrant box.
 
 To run Storybook, use this npm script:
 

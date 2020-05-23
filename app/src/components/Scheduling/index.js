@@ -1,7 +1,9 @@
 import _ from 'lodash';
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { DragDropContext as dragDropContext } from 'react-dnd';
+import { DndProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import $ from 'npm-zepto';
 import * as actions from 'actions';
@@ -15,7 +17,30 @@ import CreateShiftModal from './CreateShiftModal';
 
 require('./scheduling.scss');
 
-class Scheduling extends React.Component {
+class Scheduling extends Component {
+  state = {
+    prevPropsTeamUuid: this.props.teamUuid
+  };
+
+
+  static getDerivedStateFromProps(props, state) {
+    const { dispatch, companyUuid, teamUuid, routeQuery } = props;
+    const prevPropsTeamUuid = state.prevPropsTeamUuid;
+
+    // get the jobs
+    if (teamUuid !== prevPropsTeamUuid) {
+      dispatch(
+        actions.initializeScheduling(companyUuid, teamUuid, routeQuery)
+      );
+
+      return {
+        prevPropsTeamUuid: teamUuid
+      }
+    }
+
+    return null;
+  }
+
 
   componentDidMount() {
     const { dispatch, companyUuid, teamUuid, routeQuery } = this.props;
@@ -25,18 +50,6 @@ class Scheduling extends React.Component {
     dispatch(actions.initializeScheduling(companyUuid, teamUuid, routeQuery));
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { dispatch, companyUuid, teamUuid, routeQuery } = this.props;
-    const newTeamUuid = nextProps.teamUuid;
-
-    // if changing between different scheduling views, the same component
-    // instance is used, so this is checks to get data
-    if (newTeamUuid !== teamUuid) {
-      dispatch(
-        actions.initializeScheduling(companyUuid, newTeamUuid, routeQuery)
-      );
-    }
-  }
 
   render() {
     const { isFetching, updateSearchFilter, params, filters, employees, jobs,
@@ -45,6 +58,7 @@ class Scheduling extends React.Component {
       updateSchedulingModalFormData, createTeamShift, modalFormData,
       clearSchedulingModalFormData, publishTeamShifts, isSaving, companyUuid,
       teamUuid } = this.props;
+
     const tableSize = 7;
     const viewBy = filters.viewBy;
     const startDate = params.startDate;
@@ -67,93 +81,97 @@ class Scheduling extends React.Component {
     // TODO - add publish button into top controls
 
     return (
-      <div className="scheduling-container">
-        <ul className="scheduling-controls">
-          <li className="control-unit">
-            <SchedulingDateController
-              queryStart={params.range.start}
-              queryStop={params.range.stop}
-              timezone={timezone}
-              stepDateRange={stepDateRange}
-              disabled={isSaving}
-            />
-          </li>
-          <li className="control-unit">
-            <SchedulingViewByController
-              onClick={changeViewBy}
-              viewBy={viewBy}
-              disabled={isSaving}
-            />
-          </li>
-          <li className="control-unit control-unit-hidden-on-collapse">
-            <SearchField
-              width={200}
-              onChange={updateSearchFilter}
-              darkBackground
-              disabled={isSaving}
-            />
-          </li>
-          <li className="publish-week-btn control-unit-hidden-on-collapse">
-            <StaffjoyButton
-              buttonType={publishButtonStyle}
-              onClick={publishTeamShifts}
-              disabled={isSaving}
-            >
-              {publishAction}
-            </StaffjoyButton>
-          </li>
-          <li className="create-shift-btn control-unit-hidden-on-collapse">
-            <CreateShiftModal
-              tableSize={tableSize}
+      <DndProvider backend={HTML5Backend}>
+        <div className="scheduling-container">
+          <ul className="scheduling-controls">
+            <li className="control-unit">
+              <SchedulingDateController
+                queryStart={params.range.start}
+                queryStop={params.range.stop}
+                timezone={timezone}
+                stepDateRange={stepDateRange}
+                disabled={isSaving}
+              />
+            </li>
+            <li className="control-unit">
+              <SchedulingViewByController
+                onClick={changeViewBy}
+                viewBy={viewBy}
+                disabled={isSaving}
+              />
+            </li>
+            <li className="control-unit control-unit-hidden-on-collapse">
+              <SearchField
+                width={200}
+                onChange={updateSearchFilter}
+                darkBackground
+                disabled={isSaving}
+              />
+            </li>
+            <li className="publish-week-btn control-unit-hidden-on-collapse">
+              <StaffjoyButton
+                buttonType={publishButtonStyle}
+                onClick={publishTeamShifts}
+                disabled={isSaving}
+              >
+                {publishAction}
+              </StaffjoyButton>
+            </li>
+            <li className="create-shift-btn control-unit-hidden-on-collapse">
+              <CreateShiftModal
+                tableSize={tableSize}
+                startDate={startDate}
+                timezone={timezone}
+                modalCallbackToggle={toggleSchedulingModal}
+                containerComponent="button"
+                containerProps={{
+                  buttonType: 'neutral',
+                  disabled: isSaving,
+                }}
+                viewBy={viewBy}
+                employees={employees}
+                jobs={jobs}
+                onSave={createTeamShift}
+                modalFormData={modalFormData}
+                updateSchedulingModalFormData={updateSchedulingModalFormData}
+                clearSchedulingModalFormData={clearSchedulingModalFormData}
+              />
+            </li>
+          </ul>
+
+          {(() =>
+            // TODO when we have more views, determine which view type to use
+            // if (props.params.viewType === 'week') {
+            <ShiftWeekTable
+              droppedSchedulingCard={droppedSchedulingCard}
               startDate={startDate}
+              tableSize={tableSize}
               timezone={timezone}
-              modalCallbackToggle={toggleSchedulingModal}
-              containerComponent="button"
-              containerProps={{
-                buttonType: 'neutral',
-                disabled: isSaving,
-              }}
-              viewBy={viewBy}
               employees={employees}
               jobs={jobs}
-              onSave={createTeamShift}
+              shifts={shifts}
+              filters={filters}
+              viewBy={viewBy}
+              deleteTeamShift={deleteTeamShift}
+              toggleSchedulingModal={toggleSchedulingModal}
+              modalOpen={modalOpen}
               modalFormData={modalFormData}
+              editTeamShift={editTeamShift}
+              createTeamShift={createTeamShift}
               updateSchedulingModalFormData={updateSchedulingModalFormData}
               clearSchedulingModalFormData={clearSchedulingModalFormData}
+              onCardZAxisChange={this.props.handleCardZAxisChange}
+              isSaving={isSaving}
+              companyUuid={companyUuid}
+              teamUuid={teamUuid}
             />
-          </li>
-        </ul>
-        {(() =>
-          // TODO when we have more views, determine which view type to use
-          // if (props.params.viewType === 'week') {
-          <ShiftWeekTable
-            droppedSchedulingCard={droppedSchedulingCard}
-            startDate={startDate}
-            tableSize={tableSize}
-            timezone={timezone}
-            employees={employees}
-            jobs={jobs}
-            shifts={shifts}
-            filters={filters}
-            viewBy={viewBy}
-            deleteTeamShift={deleteTeamShift}
-            toggleSchedulingModal={toggleSchedulingModal}
-            modalOpen={modalOpen}
-            modalFormData={modalFormData}
-            editTeamShift={editTeamShift}
-            createTeamShift={createTeamShift}
-            updateSchedulingModalFormData={updateSchedulingModalFormData}
-            clearSchedulingModalFormData={clearSchedulingModalFormData}
-            onCardZAxisChange={this.props.handleCardZAxisChange}
-            isSaving={isSaving}
-            companyUuid={companyUuid}
-            teamUuid={teamUuid}
-          />
-        )()}
-      </div>
+          )()}
+        </div>
+      </DndProvider>
     );
   }
 }
+
 
 Scheduling.propTypes = {
   dispatch: PropTypes.func.isRequired,
@@ -184,8 +202,9 @@ Scheduling.propTypes = {
   handleCardZAxisChange: PropTypes.func.isRequired,
 };
 
+
 function mapStateToProps(state, ownProps) {
-  const teamUuid = ownProps.routeParams.teamUuid;
+  const teamUuid = ownProps.match.params.teamUuid;
 
   // consts for team data
   const teamData = _.get(state.teams.data, teamUuid, {});
@@ -227,7 +246,7 @@ function mapStateToProps(state, ownProps) {
     isShiftSaving;
 
   return {
-    companyUuid: ownProps.routeParams.companyUuid,
+    companyUuid: ownProps.match.params.companyUuid,
     routeQuery: ownProps.location.query,
     isFetching,
     isSaving,
@@ -249,12 +268,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
   changeViewBy: (event) => {
     const newView = $(event.target).data('id');
-    const { teamUuid } = ownProps.routeParams;
+    const { teamUuid } = ownProps.match.params;
 
     dispatch(actions.changeViewBy(newView, teamUuid));
   },
   stepDateRange: (event) => {
-    const { companyUuid, teamUuid } = ownProps.routeParams;
+    const { companyUuid, teamUuid } = ownProps.match.params;
     const direction = $(event.target)
       .closest('.square-button')
       .data('direction');
@@ -262,7 +281,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(actions.stepDateRange(companyUuid, teamUuid, direction));
   },
   droppedSchedulingCard: (shiftUuid, oldColumnId, sectionUuid, newColumnId) => {
-    const { companyUuid, teamUuid } = ownProps.routeParams;
+    const { companyUuid, teamUuid } = ownProps.match.params;
 
     dispatch(actions.droppedSchedulingCard(
       companyUuid,
@@ -274,7 +293,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     ));
   },
   editTeamShift: (shiftUuid, timezone) => {
-    const { companyUuid, teamUuid } = ownProps.routeParams;
+    const { companyUuid, teamUuid } = ownProps.match.params;
 
     dispatch(actions.editTeamShiftFromModal(
       companyUuid,
@@ -284,18 +303,18 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     ));
   },
   createTeamShift: (timezone) => {
-    const { companyUuid, teamUuid } = ownProps.routeParams;
+    const { companyUuid, teamUuid } = ownProps.match.params;
     dispatch(
       actions.createTeamShiftsFromModal(companyUuid, teamUuid, timezone)
     );
   },
   deleteTeamShift: (shiftUuid) => {
-    const { companyUuid, teamUuid } = ownProps.routeParams;
+    const { companyUuid, teamUuid } = ownProps.match.params;
 
     dispatch(actions.deleteTeamShift(companyUuid, teamUuid, shiftUuid));
   },
   publishTeamShifts: () => {
-    const { companyUuid, teamUuid } = ownProps.routeParams;
+    const { companyUuid, teamUuid } = ownProps.match.params;
 
     dispatch(actions.publishTeamShifts(companyUuid, teamUuid));
   },
@@ -309,7 +328,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(actions.clearSchedulingModalFormData(data));
   },
   handleCardZAxisChange: ({ key, shiftUuid, value }) => {
-    const { companyUuid, teamUuid } = ownProps.routeParams;
+    const { companyUuid, teamUuid } = ownProps.match.params;
     const newData = { [key]: value };
 
     dispatch(actions.updateTeamShift(
@@ -322,7 +341,11 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   dispatch,
 });
 
-export default connect(
+
+const ConnectedComponent = connect(
   mapStateToProps,
   mapDispatchToProps
-)(dragDropContext(HTML5Backend)(Scheduling));
+)(Scheduling);
+
+
+export default withRouter(ConnectedComponent);

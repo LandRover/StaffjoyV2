@@ -1,12 +1,15 @@
 import _ from 'lodash';
-import React, { PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import PlusIcon from 'components/SVGs/PlusIcon';
 import TableHeader from './TableHeader';
 import JobRow from './JobRow';
 
+import { DataTable, DataTableContent, DataTableBody, DataTableRow, DataTableCell } from '@rmwc/data-table';
+
 require('./team-jobs.scss');
 
-export default class TeamJobs extends React.Component {
+export default class TeamJobs extends Component {
 
   getQueriedJobs() {
     const {
@@ -51,66 +54,68 @@ export default class TeamJobs extends React.Component {
     } = this.props;
 
     return (
-      <table className="mdl-data-table mdl-js-data-table staffjoy-table">
-        <TableHeader />
-        <tbody>
-          {_.map(this.getQueriedJobs(), (job) => {
-            if (job.archived) {
-              return null;
-            }
+      <DataTable className="staffjoy-table">
+        <DataTableContent>
+          <TableHeader />
+          <DataTableBody>
+            {_.map(this.getQueriedJobs(), (job) => {
+              if (job.archived) {
+                return null;
+              }
 
-            return (
+              return (
+                <JobRow
+                  key={`job-row-${job.uuid}`}
+                  job={job}
+                  colorPicker={colorPicker}
+                  handleJobNameChange={handleJobNameChange}
+                  handleJobNameBlur={handleJobNameBlur}
+                  handleJobNameKeyPress={handleJobNameKeyPress}
+                  handleJobColorClick={handleJobColorClick}
+                  handleColorPickerChange={handleColorPickerChange}
+                  handleShowModalClick={handleShowModalClick}
+                  jobFieldsSaving={jobFieldsSaving}
+                  jobFieldsShowSuccess={jobFieldsShowSuccess}
+                />
+              );
+            })}
+            {
+              newJob.isVisible
+              &&
               <JobRow
-                key={`job-row-${job.uuid}`}
-                job={job}
+                isNewJob
+                job={newJob}
                 colorPicker={colorPicker}
-                handleJobNameChange={handleJobNameChange}
-                handleJobNameBlur={handleJobNameBlur}
-                handleJobNameKeyPress={handleJobNameKeyPress}
-                handleJobColorClick={handleJobColorClick}
-                handleColorPickerChange={handleColorPickerChange}
-                handleShowModalClick={handleShowModalClick}
+                handleJobNameChange={handleNewJobNameChange}
+                handleJobNameBlur={handleNewJobNameBlur}
+                handleJobNameKeyPress={handleNewJobNameKeyPress}
+                handleShowModalClick={handleNewJobDeleteIconClick}
                 jobFieldsSaving={jobFieldsSaving}
                 jobFieldsShowSuccess={jobFieldsShowSuccess}
               />
-            );
-          })}
-          {
-            newJob.isVisible
-            &&
-            <JobRow
-              isNewJob
-              job={newJob}
-              colorPicker={colorPicker}
-              handleJobNameChange={handleNewJobNameChange}
-              handleJobNameBlur={handleNewJobNameBlur}
-              handleJobNameKeyPress={handleNewJobNameKeyPress}
-              handleShowModalClick={handleNewJobDeleteIconClick}
-              jobFieldsSaving={jobFieldsSaving}
-              jobFieldsShowSuccess={jobFieldsShowSuccess}
-            />
-          }
-          <tr
-            className="table-row-new-job"
-            onClick={(event) => {
-              if (newJob.isVisible) {
-                return;
-              }
+            }
+            <DataTableRow
+              className="table-row-new-job"
+              onClick={(event) => {
+                if (newJob.isVisible) {
+                  return;
+                }
 
-              handleAddNewJobClick(event);
-            }}
-          >
-            <td colSpan="3">
-              <PlusIcon
-                fill="#9a9699"
-                width="26px"
-                height="26px"
-              />
-              Add New Job
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                handleAddNewJobClick(event);
+              }}
+            >
+              <DataTableCell colSpan="3">
+                <PlusIcon
+                  fill="#9a9699"
+                  width="26px"
+                  height="26px"
+                />
+                Add New Job
+              </DataTableCell>
+            </DataTableRow>
+          </DataTableBody>
+        </DataTableContent>
+      </DataTable>
     );
   }
 }

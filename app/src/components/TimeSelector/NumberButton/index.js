@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 require('./time-selector-number-button.scss');
@@ -29,17 +30,17 @@ function TimeSelectorNumberButton({
 
 TimeSelectorNumberButton.propTypes = {
   onClick: PropTypes.func.isRequired,
-  display: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number,
+  display: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
   ]),
-  dataValue: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number,
+  dataValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
   ]),
-  currentValue: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number,
+  currentValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
   ]),
 };
 

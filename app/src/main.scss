@@ -1,4 +1,33 @@
-@import "../../third_party/node/material_design_lite/material-design-lite";
-@import "../../frontend_resources/scss/staffjoy.scss";
+@import "../../frontend_resources/scss/staffjoy";
+
+@import "@material/typography/mdc-typography";
+@import "@material/list/mdc-list";
+@import "@material/grid-list/mdc-grid-list";
+@import "@material/layout-grid/mdc-layout-grid";
+@import "@material/floating-label/mdc-floating-label";
+@import "@material/textfield/mdc-text-field";
+@import "@material/icon-button/mdc-icon-button";
+@import "@material/button/mdc-button";
+@import "@material/drawer/mdc-drawer";
+@import "@material/linear-progress/mdc-linear-progress";
+@import "@material/menu-surface/mdc-menu-surface";
+@import "@material/menu/mdc-menu";
+@import "~@rmwc/circular-progress/circular-progress";
+@import "~@rmwc/data-table/data-table";
+
+@import "@material/theme/mdc-theme";
+@import "@material/theme/mixins";
+
+:root {
+  --mdc-layout-grid-gutter-desktop: 0;
+  --mdc-layout-grid-margin-desktop: 0;
+  --mdc-layout-grid-gutter-tablet: 0;
+  --mdc-layout-grid-gutter-phone: 0;
+}
+
+body { 
+    margin: 0;
+    padding: 0;
+}
 
 #app {}
