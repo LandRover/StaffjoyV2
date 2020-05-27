@@ -24,6 +24,7 @@ external_go_package(
     base_pkg = "google.golang.org/api",
     deps = [
         "@go_google_api//:googleapi",
+        "@googleapis_gax//:v2",
         "@go_x_net//:context",
         "@go_x_net//:context/ctxhttp",
     ],

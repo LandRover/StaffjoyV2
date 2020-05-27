@@ -163,6 +163,13 @@ new_git_repository(
 )
 
 new_git_repository(
+   name = "googleapis_gax",
+   build_file = "//:third_party/go/googleapis_gax.BUILD",
+   commit = "bd5b16380fd03dc758d11cef74ba2e3bc8b0e8c2", # May 13, 2019 (LATEST GIT COMMIT)
+   remote = "https://github.com/googleapis/gax-go.git",
+)
+
+new_git_repository(
     name = "go_grpc",
     build_file = "//:third_party/go/google_grpc.BUILD",
     commit = "73b304d882a0822aaeb3c982c747563777e79586", # v1.22.0 Jul 3, 2019 (LATEST OFFICIAL VERSION)
@@ -220,7 +227,7 @@ new_git_repository(
 new_git_repository(
     name = "go_cloud",
     build_file = "//:third_party/go/google_cloud.BUILD",
-    commit = "cf81fad90a1a1de334c4fc27e23eb9a4224b627a", # v0.41.0 - Jul 1, 2019 (LATEST OFFICIAL RELEASE)
+    commit = "d1af076dc3f6a314e9dd6610fe83b0f7afaff6d6", # v0.45.1 - Sept 4, 2020 (ABOVE BREAKS: trace depricated, implement stackdriver alternatives)
     remote = "https://github.com/GoogleCloudPlatform/google-cloud-go.git",
 )
 
@@ -238,12 +245,14 @@ new_git_repository(
     remote = "https://github.com/google/go-querystring.git",
 )
 
-new_git_repository(
+go_google_api_commitid="a5d32fec5493cdc53ee6392d77152517d5d8f2af" # v0.10.0 05-09-2019 (ABOVE BREAKS: gensupport moved, breaks trace in go-cloud and other changes, tightly dependent to go-cloud)
+http_archive(
     name = "go_google_api",
     build_file = "//:third_party/go/google_api.BUILD",
-    commit = "cad4a65739ec9027249a05eec449fe57ff999d48", # Jul 2, 2019 (LATEST GIT COMMIT)
-    remote = "https://github.com/google/google-api-go-client.git",
+    urls = ["https://github.com/googleapis/google-api-go-client/archive/%s.tar.gz" % go_google_api_commitid],
+    strip_prefix = "google-api-go-client-%s" % go_google_api_commitid,
 )
+
 
 new_git_repository(
     name = "go_appengine",
@@ -341,13 +350,6 @@ new_git_repository(
     build_file = "//:third_party/go/golang_lru.BUILD",
     commit = "59383c442f7d7b190497e9bb8fc17a48d06cd03f", # May 20, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/hashicorp/golang-lru.git"
-)
-
-new_git_repository(
-    name = "googleapis_gax",
-    build_file = "//:third_party/go/googleapis_gax.BUILD",
-    commit = "bd5b16380fd03dc758d11cef74ba2e3bc8b0e8c2", # May 13, 2019 (LATEST GIT COMMIT)
-    remote = "https://github.com/googleapis/gax-go.git",
 )
 
 new_git_repository(
