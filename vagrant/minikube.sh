@@ -1,8 +1,12 @@
 #!/bin/bash
 
+## deps:
+sudo apt install -y -q  conntrack
+
+
 # VERSIONS:
-MINIKUBE_VERSION=v1.4.0
-KUBECTL_CLI_VERSION=v1.16.0
+MINIKUBE_VERSION=v1.11.0
+KUBECTL_CLI_VERSION=v1.18.3
 
 
 # ARGS
@@ -35,7 +39,7 @@ $FORCE_UPDATE && [ -f /usr/local/bin/minikube ] && sudo rm -rf /usr/local/bin/mi
 # download and install kubectl ...
 # Latest stable: https://storage.googleapis.com/kubernetes-release/release/stable.txt
 if [ ! -f "/usr/local/bin/kubectl" ] ; then
-    echo "[x] Downloading kubectl ${MINIKUBE_VERSION}...";
+    echo "[x] Downloading kubectl ${KUBECTL_CLI_VERSION}...";
     curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_CLI_VERSION}/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
 fi
 
