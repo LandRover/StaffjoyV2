@@ -5,7 +5,7 @@ _gopath_src = "third_party/go/src/"
 
 # Simple wrapper around go_package for third_party/go libraries.
 def gopath_package(deps=[], visibility=None, exclude_srcs=[], tests=None):
-  pkg = PACKAGE_NAME[len(_gopath_src):].split('/')
+  pkg = native.package_name()[len(_gopath_src):].split('/')
   print(pkg)
   go_package(
     name = pkg[-1],

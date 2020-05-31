@@ -468,7 +468,7 @@ def go_package(name=None, package=None,
                tests=True, exclude_srcs=[],
                visibility=None):
   if not name:
-    name = PACKAGE_NAME.split("/")[-1]
+    name = native.package_name().split("/")[-1]
 
   if srcs and not srcs.endswith("/"):
     srcs += "/"
