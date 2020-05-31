@@ -124,7 +124,7 @@ If things are really goofing, run `vagrant destroy -f` then rebuild.
 
 ### Development resources
 
-* [Kubernetes UI](http://kubernetes.staffjoy-v2.local/ui/). We use the `development` namespace. You can see logs from a "pod" (container) through the UI ([link](http://kubernetes.staffjoy-v2.local/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/#!/pod?namespace=development))
+* [Kubernetes UI](http://kubernetes.staffjoy-v2.local/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/#/overview?namespace=development). We use the `development` namespace. You can see logs from a "pod" (container) through the UI ([link](http://kubernetes.staffjoy-v2.local/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/#!/pod?namespace=development))
 * [HTTP Debugger (for faraday)](http://faraday.staffjoy-v2.local/) - use this to examine headers being sent to internal systems
 * [Superpowers lets you do magic things](http://superpowers.staffjoy-v2.local) - use it while logged in to get `support` api permissions in dev.
 
