@@ -2,7 +2,7 @@
 PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
 # VERSIONS:
-GOLANG_VERSION=1.13
+GOLANG_VERSION=1.14.3
 
 if [ ! -d /usr/local/go ]; then
     sudo curl -O https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz
