@@ -13,7 +13,7 @@ if $COMPILE_FROM_SRC; then
     cd tmp
 
     # Subset of protobuf to have a faster setup
-    curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v3.8.0/protobuf-cpp-3.12.2.tar.gz
+    curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v3.12.2/protobuf-cpp-3.12.2.tar.gz
     tar -xvzf protobuf-cpp-3.12.2.tar.gz
     ln -s protobuf-3.12.2 protobuf
 
