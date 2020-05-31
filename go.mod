@@ -1,6 +1,6 @@
 module v2.staffjoy.com
 
-go 1.12
+go 1.14
 
 require (
 	cloud.google.com/go v0.41.0
