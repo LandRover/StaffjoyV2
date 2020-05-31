@@ -12,6 +12,8 @@ external_go_package(
     deps = [
         "@go_protobuf//:proto",
         "@go_protobuf//:ptypes/any",
+        "@go_protobuf_official//:reflect/protoreflect",
+        "@go_protobuf_official//:runtime/protoimpl",
     ],
 )
 
@@ -20,6 +22,7 @@ external_go_package(
     base_pkg = "google.golang.org/genproto",
     deps = [
         "@go_protobuf//:proto",
+        "@go_protobuf_official//:types/known/fieldmaskpb",
     ],
 )
 
@@ -29,6 +32,8 @@ external_go_package(
     deps = [
         "@go_protobuf//:proto",
         "@go_protobuf//:protoc-gen-go/descriptor",
+        "@go_protobuf_official//:reflect/protoreflect",
+        "@go_protobuf_official//:runtime/protoimpl",
     ],
 )
 
@@ -38,5 +43,8 @@ external_go_package(
     deps = [
         "@go_protobuf//:proto",
         "@go_protobuf//:ptypes/any",
+        "@go_protobuf_official//:reflect/protoreflect",
+        "@go_protobuf_official//:runtime/protoimpl",
     ],
 )
+

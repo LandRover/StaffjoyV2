@@ -32,8 +32,10 @@ external_go_package(
         "maketables.go",
         "data9.0.0.go",
         "data10.0.0.go",
+        "data11.0.0.go",
         "tables9.0.0.go",
         "tables10.0.0.go",
+        "tables11.0.0.go",
     ],
 )
 
@@ -137,6 +139,7 @@ external_go_package(
         "gen.go",
         "tables9.0.0.go",
         "tables10.0.0.go",
+        "tables11.0.0.go",
     ],
 )
 
@@ -168,5 +171,6 @@ external_go_package(
         "gen_trieval.go",
         "tables9.0.0.go",
         "tables10.0.0.go",
+        "tables11.0.0.go",
     ],
 )

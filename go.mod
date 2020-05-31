@@ -17,7 +17,7 @@ require (
 	github.com/go-gorp/gorp v2.0.1-0.20181104192722-f3677d4a0a88+incompatible
 	github.com/go-sql-driver/mysql v1.4.1-0.20190510102335-877a9775f068
 	github.com/gobuffalo/envy v1.7.0 // indirect
-	github.com/gogo/protobuf v1.2.2-0.20190611061853-dadb62585089
+	github.com/gogo/protobuf v1.3.1
 	github.com/golang/protobuf v1.3.2-0.20190517061210-b285ee9cfc6c
 	github.com/google/go-querystring v1.0.1-0.20190318165438-c8c88dbee036 // indirect
 	github.com/googleapis/gax-go v1.0.3 // indirect

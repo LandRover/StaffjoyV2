@@ -82,6 +82,7 @@ external_go_package(
     exclude_srcs = [
         "tables9.0.0.go",
         "tables10.0.0.go",
+        "tables11.0.0.go",
         "idna9.0.0.go",
     ],
 )

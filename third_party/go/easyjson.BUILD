@@ -11,16 +11,19 @@ external_go_package(
 )
 
 external_go_package(
-    base_pkg = "github.com/mailru/easyjson",
     name = "jlexer",
+    base_pkg = "github.com/mailru/easyjson",
+    deps = [
+        "@go_intern_strings//:intern",
+    ],
     exclude_srcs = [
         "bytestostr_nounsafe.go",
     ],
 )
 
 external_go_package(
-    base_pkg = "github.com/mailru/easyjson",
     name = "jwriter",
+    base_pkg = "github.com/mailru/easyjson",
     deps = [
         "@easyjson//:buffer",
     ],

@@ -7,5 +7,6 @@ external_go_package(
     exclude_srcs = [
         "appengine.go",
         "conncheck_dummy.go",
+        "nulltime_legacy.go",
     ],
 )

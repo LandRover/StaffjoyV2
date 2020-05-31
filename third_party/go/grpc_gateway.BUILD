@@ -39,11 +39,13 @@ external_go_package(
         "@go_genproto//:googleapis/api/httpbody",
         "@go_protobuf//:proto",
         "@go_protobuf//:jsonpb",
+        "@go_protobuf//:descriptor",
         "@go_protobuf//:ptypes/any",
         "@go_protobuf//:ptypes/timestamp",
         "@go_protobuf//:ptypes/duration",
         "@go_protobuf//:ptypes/wrappers",
         "@go_protobuf//:protoc-gen-go/generator",
+        "@go_protobuf//:protoc-gen-go/descriptor",
     ],
 )
 
