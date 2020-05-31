@@ -4,11 +4,11 @@ language: go
 env:
   - GO111MODULE=on
 go:
-  - 1.12
+  - 1.14
 jdk:
   - openjdk11
 node_js:
-  - 10
+  - 12
 go_import_path: v2.staffjoy.com
 addons:
   apt:
