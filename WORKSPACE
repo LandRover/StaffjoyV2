@@ -33,7 +33,7 @@ container_pull(
     name = "ubuntu",
     registry ="index.docker.io",
     repository = "library/ubuntu",
-    tag = "bionic",
+    tag = "focal",
 )
 
 
