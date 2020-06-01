@@ -1,4 +1,4 @@
-dist: bionic
+dist: focal
 sudo: required
 language: go
 env:
@@ -18,7 +18,7 @@ addons:
       - wget
       - pkg-config
 before_install:
-    - ./vagrant/bazel.sh
+  - ./vagrant/bazel.sh
 install:
   - curl https://glide.sh/get | sh
   - go get -u golang.org/x/lint/golint
