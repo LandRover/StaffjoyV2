@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { DndProvider } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import $ from 'npm-zepto';
 import * as actions from 'actions';
 import LoadingScreen from 'components/LoadingScreen';
 import StaffjoyButton from 'components/StaffjoyButton';
@@ -267,16 +266,16 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     dispatch(actions.updateSchedulingSearchFilter(event.target.value));
   },
   changeViewBy: (event) => {
-    const newView = $(event.target).data('id');
+    const newView = event.target.getAttribute('data-id');
     const { teamUuid } = ownProps.match.params;
 
     dispatch(actions.changeViewBy(newView, teamUuid));
   },
   stepDateRange: (event) => {
     const { companyUuid, teamUuid } = ownProps.match.params;
-    const direction = $(event.target)
-      .closest('.square-button')
-      .data('direction');
+    const direction = event.target
+       .closest('.square-button')
+       .getAttribute('data-direction');
 
     dispatch(actions.stepDateRange(companyUuid, teamUuid, direction));
   },

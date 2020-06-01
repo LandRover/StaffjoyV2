@@ -1,6 +1,5 @@
 import _ from 'lodash';
 import moment from 'moment';
-import $ from 'npm-zepto';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import StaffjoyButton from 'components/StaffjoyButton';
@@ -75,9 +74,9 @@ class TimeSelector extends Component {
   timeButtonOnClick(event) {
     const { formCallback } = this.props;
     const { activeField } = this.state;
-    const $target = $(event.target);
-    const timeSpec = $target.data('time-spec');
-    const value = $target.data('time-value');
+    const $target = event.target;
+    const timeSpec = Number($target.getAttribute('data-time-spec'));
+    const value = $target.getAttribute('data-time-value');
     const momentState = this.getMomentState(activeField);
     const stateMeridiem = this.state[`${activeField}Meridiem`];
 
@@ -112,7 +111,7 @@ class TimeSelector extends Component {
   }
 
   textFieldOnFocus(event) {
-    const field = $(event.target).data('field-name');
+    const field = event.target.getAttribute('data-field-name');
     const { activeField } = this.state;
 
     if (field !== activeField) {
@@ -121,15 +120,15 @@ class TimeSelector extends Component {
   }
 
   textFieldOnChange(event) {
-    const field = $(event.target).data('field-name');
+    const field = event.target.getAttribute('data-field-name');
     const value = event.target.value;
     this.setState({ [`${field}FieldText`]: value });
   }
 
   textFieldOnBlur(event) {
-    const $target = $(event.target);
-    const field = $target.data('field-name');
-    const text = $target.val();
+    const $target = event.target;
+    const field = $target.getAttribute('data-field-name');
+    const text = $target.value;
     this.attemptToUpdateTime(field, text);
   }
 

@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import $ from 'npm-zepto';
 import moment from 'moment';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -57,7 +56,7 @@ class ShiftModalDaySelector extends Component {
   }
 
   selectedDay(event) {
-    const cellId = $(event.target).data('cellid');
+    const cellId = event.target.getAttribute('data-cellid');
     const { selected } = this.state;
     const { formCallback } = this.props;
     const currentValue = selected[cellId];

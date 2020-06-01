@@ -1,5 +1,4 @@
 import _ from 'lodash';
-import $ from 'npm-zepto';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ModalListSelectableItem from './SelectableItem';
@@ -39,9 +38,10 @@ class SelectableModalList extends Component {
 
   selectElement(event) {
     const { formField, formCallback } = this.props;
-    const newUuid = $(event.target)
+    const newUuid = event.target
                       .closest('.modal-list-selectable-item')
-                      .data('uuid');
+                      .getAttribute('data-uuid');
+
     const selections = _.extend({}, this.state.selections);
     selections[newUuid] = !selections[newUuid];
     this.setState({ selections });
