@@ -29,7 +29,7 @@ require (
 	github.com/hashicorp/golang-lru v0.5.2-0.20190520140433-59383c442f7d // indirect
 	github.com/lyft/protoc-gen-star v0.4.10 // indirect
 	github.com/mailgun/mailgun-go/v3 v3.6.0
-	github.com/mailru/easyjson v0.0.0-20190626092158-b2ccc519800e // indirect
+	github.com/mailgun/mailgun-go/v4 v4.1.0
 	github.com/nkovacs/streamquote v1.0.0 // indirect
 	github.com/pkg/errors v0.8.2-0.20190227000051-27936f6d90f9 // indirect
 	github.com/russross/blackfriday/v2 v2.0.1
