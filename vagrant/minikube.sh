@@ -1,10 +1,6 @@
 #!/bin/bash
 
-## deps:
-sudo apt install -y -q  conntrack
-
-
-# VERSIONS:
+# VERSIONS
 MINIKUBE_VERSION=v1.11.0
 KUBECTL_CLI_VERSION=v1.18.3
 
@@ -22,8 +18,16 @@ do
 done
 
 
+## DEPS
+sudo apt install -y -q  conntrack
+
+
 # We need to run a local registry - k8s cannot just pull locally
 if ! pgrep -c registry >/dev/null 2>&1 ; then
+	if ! command -V docker >/dev/null 2>&1; then
+		echo "docker NOT installed."
+	fi
+
     docker run -d \
         -p 5000:5000 \
         --restart=always \
@@ -37,7 +41,7 @@ $FORCE_UPDATE && [ -f /usr/local/bin/minikube ] && sudo rm -rf /usr/local/bin/mi
 
 
 # download and install kubectl ...
-# Latest stable: https://storage.googleapis.com/kubernetes-release/release/stable.txt
+# Latest stable: https://github.com/kubernetes/kubernetes/releases | https://storage.googleapis.com/kubernetes-release/release/stable.txt
 if [ ! -f "/usr/local/bin/kubectl" ] ; then
     echo "[x] Downloading kubectl ${KUBECTL_CLI_VERSION}...";
     curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_CLI_VERSION}/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
@@ -45,35 +49,43 @@ fi
 
 
 # ... and minikube
-# Latest stable: 
+# Latest stable: https://github.com/kubernetes/minikube/releases
 if [ ! -f "/usr/local/bin/minikube" ] ; then
     echo "[x] Downloading minikube ${MINIKUBE_VERSION}...";
     curl -Lo minikube https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
 fi
 
 
+# Clean temp stuff.
+sudo rm -rf /tmp/juju* /tmp/minikube*;
+
+
+# Start minikube instance
 sudo -E minikube start \
     --kubernetes-version=${KUBECTL_CLI_VERSION} \
     --vm-driver=none \
+    --bootstrapper=kubeadm \
     --dns-domain="cluster.local" \
     --service-cluster-ip-range="10.0.0.0/12" \
     --extra-config="kubelet.cluster-dns=10.0.0.10"
+
 
 # enables dashboard
 sudo -E minikube addons enable dashboard
 sudo -E minikube dashboard &>/dev/null &
 
+
 # either use sudo on all kubectl commands, or chown/chgrp to your user
-sudo chown -R ${USER}:${USER} /home/${USER}/.kube /home/${USER}/.minikube
+sudo chown -R ${USER} ${HOME}/.kube ${HOME}/.minikube
 
 
 # this will write over any previous configuration)
 # wait for the cluster to become ready/accessible via kubectl
 echo -e -n " [ ] Waiting for master components to start...";
 JSONPATH='{range .items[*]}{@.metadata.name}:{range @.status.conditions[*]}{@.type}={@.status};{end}{end}';
-until sudo kubectl get nodes -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do
-    echo -n "."
-    sleep 1
+until kubectl get nodes -o jsonpath="$JSONPATH" 2>&1 | grep -q "Ready=True"; do
+    echo -n ".";
+    sleep 1;
 done
 
 

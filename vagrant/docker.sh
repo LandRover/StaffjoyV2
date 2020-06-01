@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # docker deps
-sudo apt install -y -q btrfs-tools libsystemd-dev apparmor debhelper dh-apparmor dh-systemd libapparmor-dev libdevmapper-dev libltdl-dev libsqlite3-dev pkg-config
+sudo apt install -y -q  libsystemd-dev apparmor debhelper dh-apparmor dh-systemd libapparmor-dev libdevmapper-dev libltdl-dev libsqlite3-dev pkg-config
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo apt-key fingerprint 0EBFCD88

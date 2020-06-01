@@ -1,18 +1,24 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-ip = '192.168.33.11'
-cpus = 2
-memory = 1024 * 6
+# Don't change, Vagrant API.
+VAGRANT_API_VERSION = 2
+
+# Local IP Address
+IP = '192.168.33.11'
+
+# Specs
+CPUS = 2
+MEMORY = 1024 * 6
 
 def fail_with_message(msg)
   fail Vagrant::Errors::VagrantError.new, msg
 end
 
-Vagrant.configure(2) do |config|
-  config.vm.box = "ubuntu/bionic64"
-  config.vm.box_url = "https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64-vagrant.box"
-  config.vm.network :private_network, ip: ip, hostsupdater: 'skip'
+Vagrant.configure(VAGRANT_API_VERSION) do |config|
+  config.vm.box = "ubuntu/focal64"
+  config.vm.box_url = "https://cloud-images.ubuntu.com/focal64/current/focal-server-cloudimg-amd64-vagrant.box"
+  config.vm.network :private_network, ip: IP, hostsupdater: 'skip'
   config.vm.hostname = 'staffjoy-v2.local'
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
@@ -27,12 +33,15 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider 'virtualbox' do |vb|
     vb.name = config.vm.hostname
-    vb.customize ['modifyvm', :id, '--cpus', cpus]
-    vb.customize ['modifyvm', :id, '--memory', memory]
+    vb.customize ['modifyvm', :id, '--cpus', CPUS]
+    vb.customize ['modifyvm', :id, '--memory', MEMORY]
 
     # Fix for slow external network connections
     vb.customize ['modifyvm', :id, '--natdnshostresolver1', 'on']
     vb.customize ['modifyvm', :id, '--natdnsproxy1', 'on']
+	
+	# console file tty, is a must, wont boot without.
+    vb.customize ['modifyvm', :id, '--uartmode1', 'file', File.join(Dir.pwd, 'ubuntu-focal-20.04-cloudimg-console.log')]
   end
 
   # configure hostnames to access from localmachine

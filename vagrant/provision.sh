@@ -17,7 +17,7 @@ echo debconf apt-fast/aptmanager string apt | sudo debconf-set-selections
 sudo apt install -y -q  apt-fast
 
 sudo apt update -y -q
-sudo apt install -y -q  build-essential bash-completion autoconf git curl unison mc
+sudo apt install -y -q  build-essential bash-completion autoconf git curl unison net-tools mc
 sudo apt install -y -q  apt-transport-https ca-certificates gnupg-agent software-properties-common debconf-utils
 
 sudo mkdir -p ${STAFFJOY}
