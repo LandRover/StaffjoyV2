@@ -1,7 +1,7 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
 
-io_rules_docker_version="80ea3aae060077e5fe0cdef1a5c570d4b7622100" # v0.8.1
+io_rules_docker_version="2d833746a0de3c652fbc0c26d1ded83e23eb3d34" # v0.14.2
 ## Load docker rules
 http_archive(
     name = "io_bazel_rules_docker",
@@ -21,6 +21,12 @@ load(
     "@io_bazel_rules_docker//container:container.bzl",
     "container_pull",
 )
+
+load(
+    "@io_bazel_rules_docker//repositories:go_repositories.bzl",
+    container_go_deps = "go_deps",
+)
+container_go_deps()
 
 container_pull(
     name = "nginx",
