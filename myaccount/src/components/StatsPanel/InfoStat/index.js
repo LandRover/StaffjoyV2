@@ -7,7 +7,7 @@ function InfoStat({ label, stat }) {
       <span>
         <span className="label">
           {label}
-:
+          :
         </span>
         {stat}
       </span>
