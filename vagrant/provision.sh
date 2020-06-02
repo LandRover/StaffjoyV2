@@ -23,8 +23,7 @@ sudo apt install -y -q  apt-transport-https ca-certificates gnupg-agent software
 sudo apt install -y -q  unison net-tools git curl screen lynx mc
 
 sudo mkdir -p ${STAFFJOY}
-sudo chown -R ${USER} ${GOPATH}
-sudo chgrp -R ${USER} ${GOPATH}
+sudo chown -R ${USER}:${USER} ${GOPATH}
 
 source ${STAFFJOY}/vagrant/golang.sh
 source ${STAFFJOY}/vagrant/bazel.sh
