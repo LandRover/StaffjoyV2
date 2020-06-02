@@ -52,6 +52,7 @@ module.exports = (env, options) => {
                   {
                     loader: 'file-loader',
                     options: {
+                        esModule: false,
                         name(file) {
                             if (isDevMode) {
                                 return 'assets/[path][name].[ext]';
