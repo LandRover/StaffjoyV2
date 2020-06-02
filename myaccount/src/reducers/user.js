@@ -8,7 +8,7 @@ const initialState = {
   data: {},
 };
 
-export default function (state = initialState, action) {
+export default function reducerUser(state = initialState, action) {
   switch (action.type) {
     case actionTypes.INVALIDATE_USER:
       return _.extend({}, state, {
