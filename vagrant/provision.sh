@@ -25,19 +25,19 @@ sudo apt install -y -q  unison net-tools git curl screen lynx mc
 sudo mkdir -p ${STAFFJOY}
 sudo chown -R ${USER}:${USER} ${GOPATH}
 
-source ${STAFFJOY}/vagrant/golang.sh
-source ${STAFFJOY}/vagrant/bazel.sh
-source ${STAFFJOY}/vagrant/npm.sh
-source ${STAFFJOY}/vagrant/grpc.sh
-source ${STAFFJOY}/vagrant/nginx.sh
-source ${STAFFJOY}/vagrant/docker.sh
-source ${STAFFJOY}/vagrant/minikube.sh
-source ${STAFFJOY}/vagrant/mysql.sh
+/bin/bash ${STAFFJOY}/vagrant/golang.sh
+/bin/bash ${STAFFJOY}/vagrant/bazel.sh
+/bin/bash ${STAFFJOY}/vagrant/npm.sh
+/bin/bash ${STAFFJOY}/vagrant/grpc.sh
+/bin/bash ${STAFFJOY}/vagrant/nginx.sh
+/bin/bash ${STAFFJOY}/vagrant/docker.sh
+/bin/bash ${STAFFJOY}/vagrant/minikube.sh
+/bin/bash ${STAFFJOY}/vagrant/mysql.sh
 
 sudo apt autoremove -y -q && sudo apt clean
 
 # Alias
-source $(dirname $0)/helpers/alias.sh;
+source ${STAFFJOY}/vagrant/helpers/alias.sh;
 
 addAlias ~/.profile "STAFFJOY" "export STAFFJOY=${STAFFJOY}"
 addAlias ~/.profile "ACCOUNT_MYSQL_CONFIG" "export ACCOUNT_MYSQL_CONFIG='mysql://root:SHIBBOLETH@tcp(10.0.0.100:3306)/account'"
