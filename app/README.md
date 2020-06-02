@@ -19,4 +19,4 @@ If @storybook/react fails to install locally, try running `npm install` in your 
 
 To run Storybook, use this npm script:
 
-`npm run storybook` 
+`npm run storybook`
