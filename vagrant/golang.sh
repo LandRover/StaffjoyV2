@@ -1,20 +1,25 @@
 #!/bin/bash
+
 PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
-# VERSIONS:
-GOLANG_VERSION=1.14.3
+# VERSIONS
+GOLANG_VERSION=1.14.4
 
-if [ ! -d /usr/local/go ]; then
+if ! command -V go >/dev/null 2>&1; then
     sudo curl -O https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz
     sudo tar -xvf go${GOLANG_VERSION}.linux-amd64.tar.gz
     sudo mv go /usr/local
     sudo rm go${GOLANG_VERSION}.linux-amd64.tar.gz
-    echo "export GOPATH=$GOPATH" >> "$VHOME/.profile"
-    echo "export PATH=\$PATH:\$GOPATH/bin:/usr/local/go/bin" >> "$VHOME/.profile"
-    echo "export GO111MODULE=on" >> "$VHOME/.profile"
+
+    # Alias
+    source "$(dirname $0)/helpers/alias.sh";
+
+    addAlias ~/.profile "GOPATH" "export GOPATH=$GOPATH"
+    addAlias ~/.profile "\$GOPATH" "export PATH=\$PATH:\$GOPATH/bin:/usr/local/go/bin"
+    addAlias ~/.profile "GO111MODULE" "export GO111MODULE=on"
 fi
 
-sudo -u vagrant -H bash -c "
+sudo -u ${USER} -H bash -c "
 id
 source ~/.profile
 

@@ -29,16 +29,16 @@ if ! command -V bazel >/dev/null 2>&1; then
 
     # This release version should correspond to the version listed here:
     # https://github.com/bazelbuild/bazel/releases
-    RELEASE=3.2.0
+    BAZEL_VERSION=3.2.0
 
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        sudo curl -L https://github.com/bazelbuild/bazel/releases/download/${RELEASE}/bazel-${RELEASE}-installer-linux-x86_64.sh --output /usr/src/bazel-${RELEASE}-installer-linux-x86_64.sh
-        sudo chmod +x /usr/src/bazel-${RELEASE}-installer-linux-x86_64.sh
-        /usr/src/bazel-${RELEASE}-installer-linux-x86_64.sh --user
+        sudo curl -L https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh --output /usr/src/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh
+        sudo chmod +x /usr/src/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh
+        /usr/src/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh --user
     elif [[ "$OSTYPE" == "darwin"* ]]; then
-        sudo curl -L https://github.com/bazelbuild/bazel/releases/download/${RELEASE}/bazel-${RELEASE}-installer-darwin-x86_64.sh --output /usr/src/bazel-${RELEASE}-installer-darwin-x86_64.sh
-        sudo chmod +x /usr/src/bazel-${RELEASE}-installer-darwin-x86_64.sh
-        /usr/src/bazel-${RELEASE}-installer-darwin-x86_64.sh --user
+        sudo curl -L https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-installer-darwin-x86_64.sh --output /usr/src/bazel-${BAZEL_VERSION}-installer-darwin-x86_64.sh
+        sudo chmod +x /usr/src/bazel-${BAZEL_VERSION}-installer-darwin-x86_64.sh
+        /usr/src/bazel-${BAZEL_VERSION}-installer-darwin-x86_64.sh --user
     fi
 
     echo "source /home/${USER}/.bazel/bin/bazel-complete.bash" | sudo tee -a ~/.bashrc
