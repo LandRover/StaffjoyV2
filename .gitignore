@@ -46,6 +46,9 @@ vendor
 # ignore glide cache
 .glide/
 
+# Lock files
+*.lock
+
 # in case you accidentally run npm at this level
 npm-debug.log
 node_modules/
