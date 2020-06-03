@@ -5,6 +5,8 @@ go 1.14
 require (
 	cloud.google.com/go v0.45.1
 	github.com/GeertJohan/go.rice v1.0.1-0.20191102153406-d954009f7238
+	github.com/akavel/rsrc v0.9.0 // indirect
+	github.com/certifi/gocertifi v0.0.0-20200211180108-c7c1fbc02894 // indirect
 	github.com/daaku/go.zipexe v1.0.1 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/dpapathanasiou/go-recaptcha v0.0.0-20190121160230-be5090b17804
@@ -14,6 +16,7 @@ require (
 	github.com/go-sql-driver/mysql v1.5.1-0.20200529085006-d2e52fca0b65
 	github.com/gogo/protobuf v1.3.1
 	github.com/golang/protobuf v1.4.2
+	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/googleapis/gax-go v1.0.4-0.20200325113634-be11bb253a76
 	github.com/gorilla/context v1.1.2-0.20190627024605-8559d4a6b87e
 	github.com/gorilla/csrf v1.6.1
@@ -24,15 +27,19 @@ require (
 	github.com/mailgun/mailgun-go/v4 v4.1.0
 	github.com/pkg/errors v0.9.1
 	github.com/russross/blackfriday/v2 v2.0.1
+	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/sirupsen/logrus v1.6.1-0.20200526070419-42baed85eb23
 	github.com/stretchr/testify v1.5.1
+	github.com/ttacon/builder v0.0.0-20170518171403-c099f663e1c2 // indirect
 	github.com/ttacon/libphonenumber v1.1.0
 	github.com/urfave/negroni v1.0.0
+	github.com/valyala/fasttemplate v1.1.0 // indirect
 	go.opencensus.io v0.22.0
 	golang.org/x/crypto v0.0.0-20200510223506-06a226fb4e37
 	golang.org/x/net v0.0.0-20200528225125-3c3fba18258b
 	google.golang.org/api v0.10.0
 	google.golang.org/genproto v0.0.0-20200527145253-8367513e4ece
 	google.golang.org/grpc v1.29.1
+	google.golang.org/protobuf v1.24.0
 	gopkg.in/intercom/intercom-go.v2 v2.0.0-20200217143803-6ffc0627261a
 )

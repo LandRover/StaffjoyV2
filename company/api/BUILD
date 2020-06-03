@@ -34,6 +34,9 @@ go_binary(
         "@go_protobuf//:proto",
         "@go_protobuf//:ptypes/empty",
         "@go_protobuf//:ptypes/timestamp",
+        "@go_protobuf//:descriptor",
+        "@go_protobuf_official//:reflect/protoreflect",
+        "@go_protobuf_official//:runtime/protoimpl",
         "@go_x_net//:context",
     ],
 )

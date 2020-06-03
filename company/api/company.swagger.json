@@ -1,0 +1,1908 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "company.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/companies": {
+      "get": {
+        "operationId": "CompanyService_ListCompanies",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyCompanyList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "post": {
+        "operationId": "CompanyService_CreateCompany",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyCompany"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/companyCreateCompanyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{company_uuid}/admins": {
+      "get": {
+        "summary": "Admins",
+        "operationId": "CompanyService_ListAdmins",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyAdmins"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "post": {
+        "operationId": "CompanyService_CreateAdmin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyDirectoryEntry"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/companyDirectoryEntryRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{company_uuid}/admins/{user_uuid}": {
+      "get": {
+        "operationId": "CompanyService_GetAdmin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyDirectoryEntry"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "delete": {
+        "operationId": "CompanyService_DeleteAdmin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{company_uuid}/associations": {
+      "get": {
+        "operationId": "CompanyService_GetAssociations",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyAssociationList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{company_uuid}/directory": {
+      "get": {
+        "operationId": "CompanyService_Directory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyDirectoryList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "post": {
+        "summary": "Directory",
+        "operationId": "CompanyService_CreateDirectory",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyDirectoryEntry"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/companyNewDirectoryEntry"
+            }
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{company_uuid}/directory/{user_uuid}": {
+      "get": {
+        "operationId": "CompanyService_GetDirectoryEntry",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyDirectoryEntry"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "put": {
+        "operationId": "CompanyService_UpdateDirectoryEntry",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyDirectoryEntry"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/companyDirectoryEntry"
+            }
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{company_uuid}/teams": {
+      "get": {
+        "operationId": "CompanyService_ListTeams",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyTeamList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "post": {
+        "summary": "teams",
+        "operationId": "CompanyService_CreateTeam",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyTeam"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/companyCreateTeamRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{company_uuid}/teams/{team_uuid}/jobs": {
+      "get": {
+        "operationId": "CompanyService_ListJobs",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyJobList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "post": {
+        "operationId": "CompanyService_CreateJob",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyJob"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/companyCreateJobRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{company_uuid}/teams/{team_uuid}/jobs/{uuid}": {
+      "get": {
+        "operationId": "CompanyService_GetJob",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyJob"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "put": {
+        "operationId": "CompanyService_UpdateJob",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyJob"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/companyJob"
+            }
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{company_uuid}/teams/{team_uuid}/shifts": {
+      "get": {
+        "operationId": "CompanyService_ListShifts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyShiftList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_uuid",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "job_uuid",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "shift_start_after",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "shift_start_before",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "post": {
+        "operationId": "CompanyService_CreateShift",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyShift"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/companyCreateShiftRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "put": {
+        "operationId": "CompanyService_BulkPublishShifts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyShiftList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/companyBulkPublishShiftsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{company_uuid}/teams/{team_uuid}/shifts/{uuid}": {
+      "get": {
+        "operationId": "CompanyService_GetShift",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyShift"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "delete": {
+        "operationId": "CompanyService_DeleteShift",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "put": {
+        "operationId": "CompanyService_UpdateShift",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyShift"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/companyShift"
+            }
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{company_uuid}/teams/{team_uuid}/workers": {
+      "get": {
+        "summary": "Workers",
+        "operationId": "CompanyService_ListWorkers",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyWorkers"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "post": {
+        "operationId": "CompanyService_CreateWorker",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyDirectoryEntry"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/companyWorker"
+            }
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{company_uuid}/teams/{team_uuid}/workers/{user_uuid}": {
+      "get": {
+        "operationId": "CompanyService_GetWorker",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyDirectoryEntry"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "delete": {
+        "operationId": "CompanyService_DeleteWorker",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{company_uuid}/teams/{team_uuid}/workers/{worker_uuid}/shifts": {
+      "get": {
+        "operationId": "CompanyService_ListWorkerShifts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyShiftList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "worker_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "shift_start_after",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          },
+          {
+            "name": "shift_start_before",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "date-time"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{company_uuid}/teams/{uuid}": {
+      "get": {
+        "operationId": "CompanyService_GetTeam",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyTeam"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "put": {
+        "operationId": "CompanyService_UpdateTeam",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyTeam"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "company_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/companyTeam"
+            }
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{user_uuid}/teaminfo": {
+      "get": {
+        "operationId": "CompanyService_GetWorkerTeamInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyWorker"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "user_uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "company_uuid",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "team_uuid",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/companies/{uuid}": {
+      "get": {
+        "operationId": "CompanyService_GetCompany",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyCompany"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      },
+      "put": {
+        "operationId": "CompanyService_UpdateCompany",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyCompany"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uuid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/companyCompany"
+            }
+          }
+        ],
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/internal/kpis": {
+      "get": {
+        "summary": "growth graph",
+        "operationId": "CompanyService_GrowthGraph",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyGrowthGraphResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    },
+    "/v1/timezones": {
+      "get": {
+        "summary": "timezones",
+        "operationId": "CompanyService_ListTimeZones",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/companyTimeZoneList"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "tags": [
+          "CompanyService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "companyAdminOfList": {
+      "type": "object",
+      "properties": {
+        "user_uuid": {
+          "type": "string"
+        },
+        "companies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/companyCompany"
+          }
+        }
+      }
+    },
+    "companyAdmins": {
+      "type": "object",
+      "properties": {
+        "company_uuid": {
+          "type": "string"
+        },
+        "admins": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/companyDirectoryEntry"
+          }
+        }
+      }
+    },
+    "companyAssociation": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "$ref": "#/definitions/companyDirectoryEntry"
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/companyTeam"
+          }
+        },
+        "admin": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "companyAssociationList": {
+      "type": "object",
+      "properties": {
+        "accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/companyAssociation"
+          }
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "offset": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "companyBulkPublishShiftsRequest": {
+      "type": "object",
+      "properties": {
+        "company_uuid": {
+          "type": "string"
+        },
+        "team_uuid": {
+          "type": "string"
+        },
+        "user_uuid": {
+          "type": "string"
+        },
+        "job_uuid": {
+          "type": "string"
+        },
+        "shift_start_after": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "shift_start_before": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "published": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "companyCompany": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "archived": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "default_timezone": {
+          "type": "string"
+        },
+        "default_day_week_starts": {
+          "type": "string"
+        }
+      }
+    },
+    "companyCompanyList": {
+      "type": "object",
+      "properties": {
+        "companies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/companyCompany"
+          }
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "offset": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "companyCreateCompanyRequest": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "default_timezone": {
+          "type": "string"
+        },
+        "default_day_week_starts": {
+          "type": "string"
+        }
+      }
+    },
+    "companyCreateJobRequest": {
+      "type": "object",
+      "properties": {
+        "company_uuid": {
+          "type": "string"
+        },
+        "team_uuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        }
+      }
+    },
+    "companyCreateShiftRequest": {
+      "type": "object",
+      "properties": {
+        "company_uuid": {
+          "type": "string"
+        },
+        "team_uuid": {
+          "type": "string"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "stop": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "user_uuid": {
+          "type": "string"
+        },
+        "job_uuid": {
+          "type": "string"
+        },
+        "published": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "companyCreateTeamRequest": {
+      "type": "object",
+      "properties": {
+        "company_uuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "day_week_starts": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        }
+      }
+    },
+    "companyDirectoryEntry": {
+      "type": "object",
+      "properties": {
+        "user_uuid": {
+          "type": "string"
+        },
+        "internal_id": {
+          "type": "string"
+        },
+        "company_uuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "title": "coming from account"
+        },
+        "email": {
+          "type": "string"
+        },
+        "confirmed_and_active": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "phonenumber": {
+          "type": "string"
+        },
+        "photo_url": {
+          "type": "string"
+        }
+      },
+      "title": "directory"
+    },
+    "companyDirectoryEntryRequest": {
+      "type": "object",
+      "properties": {
+        "company_uuid": {
+          "type": "string"
+        },
+        "user_uuid": {
+          "type": "string"
+        }
+      }
+    },
+    "companyDirectoryList": {
+      "type": "object",
+      "properties": {
+        "accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/companyDirectoryEntry"
+          }
+        },
+        "limit": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "offset": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "companyGrowthGraphResponse": {
+      "type": "object",
+      "properties": {
+        "people_scheduled_per_week": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "people_on_shifts": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "companyJob": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "company_uuid": {
+          "type": "string"
+        },
+        "team_uuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "archived": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "color": {
+          "type": "string"
+        }
+      }
+    },
+    "companyJobList": {
+      "type": "object",
+      "properties": {
+        "jobs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/companyJob"
+          }
+        }
+      }
+    },
+    "companyNewDirectoryEntry": {
+      "type": "object",
+      "properties": {
+        "company_uuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "phonenumber": {
+          "type": "string"
+        },
+        "internal_id": {
+          "type": "string"
+        }
+      }
+    },
+    "companyShift": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "company_uuid": {
+          "type": "string"
+        },
+        "team_uuid": {
+          "type": "string"
+        },
+        "start": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "stop": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "user_uuid": {
+          "type": "string"
+        },
+        "job_uuid": {
+          "type": "string"
+        },
+        "published": {
+          "type": "boolean",
+          "format": "boolean"
+        }
+      }
+    },
+    "companyShiftList": {
+      "type": "object",
+      "properties": {
+        "shifts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/companyShift"
+          }
+        },
+        "shift_start_after": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "shift_start_before": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "companyTeam": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "company_uuid": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "archived": {
+          "type": "boolean",
+          "format": "boolean"
+        },
+        "timezone": {
+          "type": "string"
+        },
+        "day_week_starts": {
+          "type": "string"
+        },
+        "color": {
+          "type": "string"
+        }
+      }
+    },
+    "companyTeamList": {
+      "type": "object",
+      "properties": {
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/companyTeam"
+          }
+        }
+      }
+    },
+    "companyTimeZoneList": {
+      "type": "object",
+      "properties": {
+        "timezones": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "companyWorker": {
+      "type": "object",
+      "properties": {
+        "company_uuid": {
+          "type": "string"
+        },
+        "team_uuid": {
+          "type": "string"
+        },
+        "user_uuid": {
+          "type": "string"
+        }
+      }
+    },
+    "companyWorkerOfList": {
+      "type": "object",
+      "properties": {
+        "user_uuid": {
+          "type": "string"
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/companyTeam"
+          }
+        }
+      }
+    },
+    "companyWorkers": {
+      "type": "object",
+      "properties": {
+        "company_uuid": {
+          "type": "string"
+        },
+        "team_uuid": {
+          "type": "string"
+        },
+        "workers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/companyDirectoryEntry"
+          }
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}
