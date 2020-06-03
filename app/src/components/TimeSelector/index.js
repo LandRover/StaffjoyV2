@@ -17,11 +17,11 @@ class TimeSelector extends Component {
 
   constructor(props) {
     const startMoment = moment.utc(props.start, API_TIME_FORMAT)
-                        .tz(props.timezone);
+      .tz(props.timezone);
     const start = (startMoment.isValid()) ?
       startMoment.format(MOMENT_SHIFT_CARD_TIMES) : '';
     const stopMoment = moment.utc(props.stop, API_TIME_FORMAT)
-                       .tz(props.timezone);
+      .tz(props.timezone);
     const stop = (stopMoment.isValid()) ?
       stopMoment.format(MOMENT_SHIFT_CARD_TIMES) : '';
 
@@ -75,7 +75,7 @@ class TimeSelector extends Component {
     const { formCallback } = this.props;
     const { activeField } = this.state;
     const $target = event.target;
-    const timeSpec = Number($target.getAttribute('data-time-spec'));
+    const timeSpec = $target.getAttribute('data-time-spec');
     const value = $target.getAttribute('data-time-value');
     const momentState = this.getMomentState(activeField);
     const stateMeridiem = this.state[`${activeField}Meridiem`];
@@ -151,7 +151,7 @@ class TimeSelector extends Component {
       newState[`${field}Meridiem`] = textMoment.format('a');
       fieldText = textMoment.format(MOMENT_SHIFT_CARD_TIMES);
 
-    // attempt to display existing state
+      // attempt to display existing state
     } else if (stateHour !== '' && stateMinute !== '') {
       fieldText = momentState.format(MOMENT_SHIFT_CARD_TIMES);
     }
