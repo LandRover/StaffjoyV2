@@ -1,127 +1,124 @@
 package: v2.staffjoy.com
 import:
-- package: github.com/dpapathanasiou/go-recaptcha
-  version: be5090b17804c90a577d345b6d67acbf01dc90ed
-- package: github.com/ttacon/libphonenumber
-  version: 23ddf903e8f8800d2857645eb155ffbe15cd02ee
-- package: github.com/ttacon/builder
-  version: c099f663e1c235176c175644792c5eb282017ad7
-- package: github.com/dgrijalva/jwt-go
-  version: ^3.2.0
-- package: github.com/gorilla/sessions
-  version: ^1.1.3
-- package: github.com/gorilla/securecookie
-  version: ^1.1.1
-- package: github.com/gorilla/context
-  version: 8559d4a6b87e4f517ec1846eb90a192b8748cc89
+  - package: github.com/dpapathanasiou/go-recaptcha
+    version: be5090b17804c90a577d345b6d67acbf01dc90ed
+  - package: github.com/ttacon/libphonenumber
+    version: a54d6839d954633947ca08f00020d7eac2bf27cd
+  - package: github.com/ttacon/builder
+    version: c099f663e1c235176c175644792c5eb282017ad7
+  - package: github.com/dgrijalva/jwt-go
+    version: ^3.2.0
+  - package: github.com/gorilla/sessions
+    version: ^1.2.0
+  - package: github.com/gorilla/securecookie
+    version: ^1.1.1
+  - package: github.com/gorilla/context
+    version: 8559d4a6b87e4f517ec1846eb90a192b8748cc89
 
-
-
-
-- package: github.com/gorilla/csrf
-  version: 9b0e3acb4f79e4bf9415d6144123987e7b8527cb
-- package: github.com/gorilla/mux
-  version: 5dd56998c22c824ad2e13c50bc3213e85b125134
-- package: github.com/pkg/errors
-  version: 27936f6d90f9c8e1145f11ed52ffffbfdb9e0af7
-- package: github.com/mailgun/mailgun-go/v3
-  version: cd4cc0c6e6178be81b436ae16651f8db3d6e8460
-  repo: https://github.com/mailgun/mailgun-go
-- package: github.com/mailru/easyjson
-  version: b2ccc519800e761ac8000b95e5d57c80a897ff9e
-- package: github.com/sirupsen/logrus
-  version: 839c75faf7f98a33d445d181f3018b5c3409a45e
-- package: github.com/stretchr/testify
-  version: ^1.3.0
-- package: github.com/urfave/negroni
-  version: 1.0.0
-- package: github.com/getsentry/raven-go
-  version: 5c24d5110e0e198d9ae16f1f3465366085001d92
-- package: google.golang.org/grpc
-  version: 73b304d882a0822aaeb3c982c747563777e79586
-  repo: https://github.com/grpc/grpc-go
-  subpackages:
-  - '...'
-- package: google.golang.org/genproto
-  version: eb59cef1c072c61ea4f7623910448d5e9c6a4455
-  repo: https://github.com/googleapis/go-genproto
-  subpackages:
-  - '...'
-- package: github.com/grpc-ecosystem/grpc-gateway
-  version: 740ef2ee80c49ed4a272e8c3b54ebf352109f572
-  subpackages:
-  - '...'
-- package: github.com/gogo/protobuf
-  version: dadb625850898f31a8e40e83492f4a7132e520a2
-  subpackages:
-  - '...'
-- package: github.com/golang/glog
-  version: 23def4e6c14b4da8ac2ed8007337bc5eb5007998
-- package: github.com/golang/protobuf
-  version: b285ee9cfc6c881bb20c0d8dc73370ea9b9ec90f
-  subpackages:
-  - '...'
-- package: github.com/certifi/gocertifi
-  version: deb3ae2ef2610fde3330947281941c562861188b
-- package: cloud.google.com/go
-  version: cf81fad90a1a1de334c4fc27e23eb9a4224b627a
-  repo: https://github.com/GoogleCloudPlatform/google-cloud-go
-  subpackages:
-  - '...'
-- package: gopkg.in/intercom/intercom-go.v2
-  version: 1dbafb072bcdb981cad04ad4a0e6e29afbfc0c42
-  repo: https://github.com/intercom/intercom-go
-- package: github.com/google/go-querystring
-  version: c8c88dbee036db4e4808d1f2ec8c2e15e11c3f80
-  subpackages:
-  - '...'
-- package: google.golang.org/api
-  version: cad4a65739ec9027249a05eec449fe57ff999d48
-  repo: https://github.com/google/google-api-go-client
-  subpackages:
-  - '...'
-- package: google.golang.org/appengine
-  version: b2f4a3cf3c67576a2ee09e1fe62656a5086ce880
-  repo: https://github.com/golang/appengine
-- package: github.com/go-gorp/gorp
-  version: f3677d4a0a8838c846ed41bf41927f2c8713bd60
-- package: github.com/russross/blackfriday
-  version: a925a152c144ea7de0f451eaf2f7db9e52fa005a
-- package: github.com/shurcooL/sanitized_anchor_name
-  version: 7bfe4c7ecddb3666a94b053b422cdd8f5aaa3615
-- package: github.com/fatih/structs
-  version: 878a968ab22548362a09bdb3322f98b00f470d46
-- package: github.com/go-sql-driver/mysql
-  version: 877a9775f06853f611fb2d4e817d92479242d1cd
-- package: golang.org/x/net
-  version: da137c7871d730100384dbcf36e6f8fa493aef5b
-  repo: https://github.com/golang/net
-  subpackages:
-  - html
-  - context
-- package: golang.org/x/oauth2
-  version: 0f29369cfe4552d0e4bcddc57cc75f4d7e672a33
-  repo: https://github.com/golang/oauth2
-- package: golang.org/x/time
-  version: 9d24e82272b4f38b78bc8cff74fa936d31ccd8ef
-  repo: https://github.com/golang/time
-  subpackages:
-  - rate
-- package: golang.org/x/crypto
-  version: cc06ce4a13d484c0101a9e92913248488a75786d
-  repo: https://github.com/golang/crypto
-  subpackages:
-  - bcrypt
-- package: golang.org/x/text
-  version: 342b2e1fbaa52c93f31447ad2c6abc048c63e475
-  repo: https://github.com/golang/text
-- package: golang.org/x/sync
-  version: 112230192c580c3556b8cee6403af37a4fc5f28c
-  repo: https://github.com/golang/sync
-- package: go.opencensus.io
-  version: 5897c5ce32247fc8af19c7710abd96e3304fb43c
-  repo: https://github.com/census-instrumentation/opencensus-go
-- package: github.com/hashicorp/golang-lru
-  version: 59383c442f7d7b190497e9bb8fc17a48d06cd03f
-- package: github.com/googleapis/gax-go
-  version: bd5b16380fd03dc758d11cef74ba2e3bc8b0e8c2
+  - package: github.com/gorilla/csrf
+    version: 7b29b05df5ae7dc777b92fab3dadee1b15d15ed6
+  - package: github.com/gorilla/mux
+    version: 5dd56998c22c824ad2e13c50bc3213e85b125134
+  - package: github.com/pkg/errors
+    version: 614d223910a179a466c1767a985424175c39b465
+  - package: github.com/mailgun/mailgun-go/v4
+    version: 6279ab36356d0eb5d281622314963d5d407f43fc
+    repo: https://github.com/mailgun/mailgun-go
+  - package: github.com/mailru/easyjson
+    version: 8ba3c7bdceed0f2e8089b8bac6627e18a1392659
+  - package: github.com/sirupsen/logrus
+    version: 42baed85eb233bfc674562af0ef6e99c45f5f384
+  - package: github.com/stretchr/testify
+    version: ^1.5.1
+  - package: github.com/urfave/negroni
+    version: 1.0.0
+  - package: github.com/getsentry/raven-go
+    version: 5c24d5110e0e198d9ae16f1f3465366085001d92
+  - package: google.golang.org/grpc
+    version: ^1.29.1
+    repo: https://github.com/grpc/grpc-go
+    subpackages:
+      - "..."
+  - package: google.golang.org/genproto
+    version: 8367513e4ece5a54f274d4d4060c82f23a37787c
+    repo: https://github.com/googleapis/go-genproto
+    subpackages:
+      - "..."
+  - package: github.com/grpc-ecosystem/grpc-gateway
+    version: 0a916456bee1d98654a5cbbc232a74958ebe50e1
+    subpackages:
+      - "..."
+  - package: github.com/gogo/protobuf
+    version: 5628607bb4c51c3157aacc3a50f0ab707582b805
+    subpackages:
+      - "..."
+  - package: github.com/golang/glog
+    version: 23def4e6c14b4da8ac2ed8007337bc5eb5007998
+  - package: github.com/golang/protobuf
+    version: v1.4.2
+    subpackages:
+      - "..."
+  - package: github.com/certifi/gocertifi
+    version: deb3ae2ef2610fde3330947281941c562861188b
+  - package: cloud.google.com/go
+    version: v0.45.1
+    repo: https://github.com/GoogleCloudPlatform/google-cloud-go
+    subpackages:
+      - "..."
+  - package: gopkg.in/intercom/intercom-go.v2
+    version: 6ffc0627261af5a8ccfa6c107fe2ff39e3e2ed6b
+    repo: https://github.com/intercom/intercom-go
+  - package: github.com/google/go-querystring
+    version: c8c88dbee036db4e4808d1f2ec8c2e15e11c3f80
+    subpackages:
+      - "..."
+  - package: google.golang.org/api
+    version: a5d32fec5493cdc53ee6392d77152517d5d8f2af
+    repo: https://github.com/google/google-api-go-client
+    subpackages:
+      - "..."
+  - package: google.golang.org/appengine
+    version: 553959209a20f3be281c16dd5be5c740a893978f
+    repo: https://github.com/golang/appengine
+  - package: github.com/go-gorp/gorp
+    version: 03c0a1b1694b62e7517bd2282d485bae5d9cd314
+  - package: github.com/russross/blackfriday
+    version: ^2.0.1
+  - package: github.com/shurcooL/sanitized_anchor_name
+    version: 7bfe4c7ecddb3666a94b053b422cdd8f5aaa3615
+  - package: github.com/fatih/structs
+    version: 878a968ab22548362a09bdb3322f98b00f470d46
+  - package: github.com/go-sql-driver/mysql
+    version: d2e52fca0b6562a2e2cb8252fbcdbab6a6e8e2d6
+  - package: golang.org/x/net
+    version: 3c3fba18258b2a1398a025a6aeb7374d2a470009
+    repo: https://github.com/golang/net
+    subpackages:
+      - html
+      - context
+  - package: golang.org/x/oauth2
+    version: bf48bf16ab8d622ce64ec6ce98d2c98f916b6303
+    repo: https://github.com/golang/oauth2
+  - package: golang.org/x/time
+    version: 89c76fbcd5d1cd4969e5d2fe19d48b19d5ad94a0
+    repo: https://github.com/golang/time
+    subpackages:
+      - rate
+  - package: golang.org/x/crypto
+    version: 06a226fb4e3765ef3f48aa2852b401bc7b98e981
+    repo: https://github.com/golang/crypto
+    subpackages:
+      - bcrypt
+  - package: golang.org/x/text
+    version: 81608d7e9c6863c922f599e4ff1329a685218c0d
+    repo: https://github.com/golang/text
+  - package: golang.org/x/sync
+    version: 43a5402ce75a95522677f77c619865d66b8c57ab
+    repo: https://github.com/golang/sync
+  - package: go.opencensus.io
+    version: 5897c5ce32247fc8af19c7710abd96e3304fb43c
+    repo: https://github.com/census-instrumentation/opencensus-go
+  - package: github.com/hashicorp/golang-lru
+    version: eb529947af531eb529020ba979a7a887338904d1
+  - package: github.com/googleapis/gax-go
+    version: be11bb253a768098254dc71e95d1a81ced778de3
