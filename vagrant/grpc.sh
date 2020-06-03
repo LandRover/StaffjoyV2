@@ -3,10 +3,10 @@
 set -e
 
 # VERSIONS
-PROTOBUF_VERSION=3.12.2
+PROTOBUF_VERSION=3.12.3
 
 COMPILE_FROM_SRC=false;
-COMPILE_SRC_TMP_DIR="protobuf_src";
+COMPILE_SRC_TMP_DIR="/tmp/protobuf_src";
 
 if $COMPILE_FROM_SRC; then
     if [ -d ${COMPILE_SRC_TMP_DIR} ]; then
