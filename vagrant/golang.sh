@@ -15,7 +15,7 @@ if ! command -V go >/dev/null 2>&1; then
     source "$(dirname $0)/helpers/alias.sh";
 
     addAlias ~/.profile "GOPATH" "export GOPATH=$GOPATH"
-    addAlias ~/.profile "\$GOPATH" "export PATH=\$PATH:\$GOPATH/bin:/usr/local/go/bin"
+    addAlias ~/.profile "\$GOPATH" "export PATH=\$PATH:\$GOPATH/bin:$HOME/go/bin:/usr/local/go/bin"
     addAlias ~/.profile "GO111MODULE" "export GO111MODULE=on"
 fi
 
