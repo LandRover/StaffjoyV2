@@ -34,7 +34,7 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
     vb.customize ['modifyvm', :id, '--natdnsproxy1', 'on']
 
     # console file tty, is a must, wont boot without.
-    vb.customize ['modifyvm', :id, '--uartmode1', 'file', File.join(Dir.pwd, "%s-console.log" % vb.name)]
+    vb.customize ['modifyvm', :id, '--uartmode1', 'file', "%s-console.log" % vb.name]
   end
 
   # configure hostnames to access from localmachine
