@@ -41,7 +41,6 @@ Vagrant.configure(VAGRANT_API_VERSION) do |config|
     vb.customize ['modifyvm', :id, '--natdnsproxy1', 'on']
 
     # console file tty, is a must, wont boot without.
-    vb.name = "ubuntu-focal-20.04-cloudimg"
     vb.customize ['modifyvm', :id, '--uartmode1', 'file', File.join(Dir.pwd, "%s-console.log" % vb.name)]
   end
 
