@@ -118,6 +118,18 @@ To build code and run it locally, in vagrant go to the code directory `$STAFFJOY
 
 If things are really goofing, run `vagrant destroy -f` then rebuild.
 
+### PHPMyAdmin
+
+To view the DB locally you can pop a docker image of PHPMyAdmin:
+
+Host: http://kubernetes.staffjoy-v2.local:8080
+Login: root/SHIBBOLETH
+
+```
+$ docker run --name myadmin -d -e PMA_HOST=10.0.0.100 -p 8080:80 phpmyad
+min/phpmyadmin
+```
+
 ### Development resources
 
 - [Kubernetes UI](http://kubernetes.staffjoy-v2.local/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/#/overview?namespace=development). We use the `development` namespace. You can see logs from a "pod" (container) through the UI ([link](http://kubernetes.staffjoy-v2.local/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/#!/pod?namespace=development))
