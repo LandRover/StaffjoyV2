@@ -1,7 +1,7 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
 
-io_rules_docker_version="2d833746a0de3c652fbc0c26d1ded83e23eb3d34" # v0.14.2
+io_rules_docker_version="f1557ebc5381e2a662314e21585aa8080e9508be" # v0.14.3
 ## Load docker rules
 http_archive(
     name = "io_bazel_rules_docker",
