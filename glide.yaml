@@ -98,7 +98,7 @@ import:
   - package: github.com/go-sql-driver/mysql
     version: 12508c83901b1a418e3dea51850f956f32506f4e
   - package: golang.org/x/net
-    version: 3c3fba18258b2a1398a025a6aeb7374d2a470009
+    version: 627f9648deb96c27737b83199d44bb5c1010cbcf
     repo: https://github.com/golang/net
     subpackages:
       - html

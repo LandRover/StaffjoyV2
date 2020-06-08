@@ -37,7 +37,7 @@ require (
 	github.com/valyala/fasttemplate v1.1.0 // indirect
 	go.opencensus.io v0.22.0
 	golang.org/x/crypto v0.0.0-20200510223506-06a226fb4e37
-	golang.org/x/net v0.0.0-20200528225125-3c3fba18258b
+	golang.org/x/net v0.0.0-20200602114024-627f9648deb9
 	google.golang.org/api v0.10.0
 	google.golang.org/genproto v0.0.0-20200608115520-7c474a2e3482
 	google.golang.org/grpc v1.29.1

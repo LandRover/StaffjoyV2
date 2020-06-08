@@ -327,7 +327,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_net",
     build_file = "//:third_party/go/x_net.BUILD",
-    commit = "3c3fba18258b2a1398a025a6aeb7374d2a470009", # May 27, 2020 (LATEST GIT COMMIT)
+    commit = "627f9648deb96c27737b83199d44bb5c1010cbcf", # Jun 2, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/net.git"
 )
 
