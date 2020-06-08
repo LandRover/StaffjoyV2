@@ -27,7 +27,7 @@ import:
   - package: github.com/mailru/easyjson
     version: 8ba3c7bdceed0f2e8089b8bac6627e18a1392659
   - package: github.com/sirupsen/logrus
-    version: 42baed85eb233bfc674562af0ef6e99c45f5f384
+    version: ^1.6.0
   - package: github.com/stretchr/testify
     version: ^1.5.1
   - package: github.com/urfave/negroni
