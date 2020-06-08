@@ -285,7 +285,7 @@ http_archive(
 new_git_repository(
     name = "go_appengine",
     build_file = "//:third_party/go/golang_appengine.BUILD",
-    commit = "553959209a20f3be281c16dd5be5c740a893978f", # Apr 22, 2020 (LATEST GIT COMMIT)
+    commit = "553959209a20f3be281c16dd5be5c740a893978f", # v1.6.6 Apr 22, 2020 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/golang/appengine.git",
 )
 

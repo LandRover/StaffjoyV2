@@ -42,5 +42,6 @@ require (
 	google.golang.org/genproto v0.0.0-20200608115520-7c474a2e3482
 	google.golang.org/grpc v1.29.1
 	google.golang.org/protobuf v1.24.0
+	google.golang.org/appengine v1.6.6
 	gopkg.in/intercom/intercom-go.v2 v2.0.0-20200217143803-6ffc0627261a
 )
