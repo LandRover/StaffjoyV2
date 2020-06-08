@@ -122,12 +122,13 @@ If things are really goofing, run `vagrant destroy -f` then rebuild.
 
 To view the DB locally you can pop a docker image of PHPMyAdmin:
 
-Host: http://kubernetes.staffjoy-v2.local:8080
-Login: root/SHIBBOLETH
+Login Info:
+
+- Host: http://kubernetes.staffjoy-v2.local:8080
+- Login: root/SHIBBOLETH
 
 ```
-$ docker run --name myadmin -d -e PMA_HOST=10.0.0.100 -p 8080:80 phpmyad
-min/phpmyadmin
+$ docker run --name myadmin -d -e PMA_HOST=10.0.0.100 -p 8080:80 phpmyadmin/phpmyadmin
 ```
 
 ### Development resources
@@ -154,6 +155,28 @@ The tool [GoConvey](https://github.com/smartystreets/goconvey) is great for seei
 
 - `ENV`: Set to `development`,`staging`, or `production`. Null defaults to `development`
 - `SENTRY_DSN`: Set to the [Sentry](https://sentry.io) api key in every Go service for proper error tracking and reporting
+
+## WSL (Optional)
+
+- Create new file `/etc/wsl.conf`, with the following content:
+
+```
+[automount]
+enabled = true
+options = "metadata,umask=22,fmask=11"
+```
+
+- Install latest Vagrant inside the WSL and the Host
+- Install latest Virtualbox
+- Run dev env
+
+```
+> bash
+$ vagrant up
+$ vagrant ssh
+$ cd $STAFFJOY
+$ make dev-build
+```
 
 ## Protocol Buffers
 
