@@ -10,7 +10,7 @@ require (
 	github.com/daaku/go.zipexe v1.0.1 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/dpapathanasiou/go-recaptcha v0.0.0-20190121160230-be5090b17804
-	github.com/fatih/structs v1.1.1-0.20181010231757-878a968ab225
+	github.com/fatih/structs v1.1.1
 	github.com/getsentry/raven-go v0.1.2-0.20190619092523-5c24d5110e0e
 	github.com/go-gorp/gorp v2.2.0+incompatible
 	github.com/go-sql-driver/mysql v1.5.1-0.20200529085006-d2e52fca0b65

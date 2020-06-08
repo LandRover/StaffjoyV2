@@ -94,7 +94,7 @@ import:
   - package: github.com/shurcooL/sanitized_anchor_name
     version: ^1.0.0
   - package: github.com/fatih/structs
-    version: 878a968ab22548362a09bdb3322f98b00f470d46
+    version: ^1.1.0
   - package: github.com/go-sql-driver/mysql
     version: d2e52fca0b6562a2e2cb8252fbcdbab6a6e8e2d6
   - package: golang.org/x/net

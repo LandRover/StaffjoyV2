@@ -313,7 +313,7 @@ new_git_repository(
 new_git_repository(
     name = "go_structs",
     build_file = "//:third_party/go/fatih_structs.BUILD",
-    commit = "878a968ab22548362a09bdb3322f98b00f470d46", # Oct 11, 2018 (LATEST GIT COMMIT - ARCHIVED REPO)
+    commit = "4966fc68f5b7593aafa6cbbba2d65ec6e1416047", # v1.1.0 Oct 11, 2018 (LATEST OFFICIAL RELEASE - ARCHIVED REPO)
     remote = "https://github.com/fatih/structs.git",
 )
 
