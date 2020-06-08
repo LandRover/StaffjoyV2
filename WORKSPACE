@@ -348,7 +348,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_crypto",
     build_file = "//:third_party/go/x_crypto.BUILD",
-    commit = "06a226fb4e3765ef3f48aa2852b401bc7b98e981", # May 10, 2020 (LATEST GIT COMMIT)
+    commit = "70a84ac30bf957c7df57edd1935d2081871515e1", # May 21, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/crypto.git"
 )
 

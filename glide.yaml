@@ -112,7 +112,7 @@ import:
     subpackages:
       - rate
   - package: golang.org/x/crypto
-    version: 06a226fb4e3765ef3f48aa2852b401bc7b98e981
+    version: 70a84ac30bf957c7df57edd1935d2081871515e1
     repo: https://github.com/golang/crypto
     subpackages:
       - bcrypt
