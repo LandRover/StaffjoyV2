@@ -40,7 +40,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/genproto
-    version: 8367513e4ece5a54f274d4d4060c82f23a37787c
+    version: 7c474a2e34828bdcbfd56bccd302a058cae3ecec
     repo: https://github.com/googleapis/go-genproto
     subpackages:
       - "..."
@@ -54,7 +54,7 @@ import:
     subpackages:
       - "..."
   - package: github.com/gogo/protobuf
-    version: 5628607bb4c51c3157aacc3a50f0ab707582b805
+    version: ^1.3.1
     subpackages:
       - "..."
   - package: github.com/golang/glog

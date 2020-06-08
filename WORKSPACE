@@ -185,7 +185,7 @@ new_git_repository(
 new_git_repository(
     name = "go_genproto",
     build_file = "//:third_party/go/google_genproto.BUILD",
-    commit = "8367513e4ece5a54f274d4d4060c82f23a37787c", # May 27, 2020 (LATEST GIT COMMIT)
+    commit = "7c474a2e34828bdcbfd56bccd302a058cae3ecec", # May 27, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/googleapis/go-genproto.git"
 )
 
@@ -205,7 +205,7 @@ new_git_repository(
 new_git_repository(
     name = "go_gogo_protobuf",
     build_file = "//:third_party/go/gogo_protobuf.BUILD",
-    commit = "5628607bb4c51c3157aacc3a50f0ab707582b805", # Oct 14, 2019 (LATEST GIT COMMIT)
+    commit = "5628607bb4c51c3157aacc3a50f0ab707582b805", # v1.3.1 Oct 14, 2019 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/gogo/protobuf.git",
 )
 
