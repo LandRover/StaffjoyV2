@@ -22,7 +22,7 @@ import:
   - package: github.com/pkg/errors
     version: 614d223910a179a466c1767a985424175c39b465
   - package: github.com/mailgun/mailgun-go/v4
-    version: 6279ab36356d0eb5d281622314963d5d407f43fc
+    version: ^4.1.1
     repo: https://github.com/mailgun/mailgun-go
   - package: github.com/mailru/easyjson
     version: 8ba3c7bdceed0f2e8089b8bac6627e18a1392659

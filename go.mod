@@ -24,7 +24,7 @@ require (
 	github.com/gorilla/sessions v1.2.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway v1.14.6
 	github.com/hashicorp/golang-lru v0.5.5-0.20200511160909-eb529947af53
-	github.com/mailgun/mailgun-go/v4 v4.1.0
+	github.com/mailgun/mailgun-go/v4 v4.1.1
 	github.com/pkg/errors v0.9.1
 	github.com/russross/blackfriday/v2 v2.0.1
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
