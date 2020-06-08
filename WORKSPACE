@@ -341,7 +341,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_time",
     build_file = "//:third_party/go/x_time.BUILD",
-    commit = "89c76fbcd5d1cd4969e5d2fe19d48b19d5ad94a0", # Apr 15, 2020 (LATEST GIT COMMIT)
+    commit = "89c76fbcd5d1cd4969e5d2fe19d48b19d5ad94a0", # Apr 16, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/time.git"
 )
 
