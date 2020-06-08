@@ -150,7 +150,7 @@ new_git_repository(
 new_git_repository(
     name = "go_testify",
     build_file = "//:third_party/go/stretchr_testify.BUILD",
-    commit = "3ebf1ddaeb260c4b1ae502a01c7844fa8c1fa0e9", # v1.5.1 Feb 19, 2019 (LATEST OFFICIAL VERSION)
+    commit = "f654a9112bbeac49ca2cd45bfbe11533c4666cf8", # v1.6.1 Jun 5, 2020 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/stretchr/testify.git",
 )
 

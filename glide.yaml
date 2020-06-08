@@ -29,7 +29,7 @@ import:
   - package: github.com/sirupsen/logrus
     version: ^1.6.0
   - package: github.com/stretchr/testify
-    version: ^1.5.1
+    version: ^1.6.1
   - package: github.com/urfave/negroni
     version: 1.0.0
   - package: github.com/getsentry/raven-go
