@@ -306,7 +306,7 @@ new_git_repository(
 new_git_repository(
     name = "go_sanitized_anchor_name",
     build_file = "//:third_party/go/shurcool_sanitized_anchor_name.BUILD",
-    commit = "7bfe4c7ecddb3666a94b053b422cdd8f5aaa3615", # Dec 26, 2018 (LATEST GIT COMMIT)
+    commit = "7bfe4c7ecddb3666a94b053b422cdd8f5aaa3615", # v1.0.0 Dec 26, 2018 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/shurcool/sanitized_anchor_name.git",
 )
 
