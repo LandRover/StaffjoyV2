@@ -240,7 +240,7 @@ new_git_repository(
 new_git_repository(
     name = "go_certifi",
     build_file = "//:third_party/go/certifi_gocertifi.BUILD",
-    commit = "deb3ae2ef2610fde3330947281941c562861188b", # 2018.01.18 - Jan 18, 2018 (LATEST OFFICIAL RELEASE)
+    commit = "deb3ae2ef2610fde3330947281941c562861188b", # 2020.02.11 - Feb 11, 2020 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/certifi/gocertifi.git",
 )
 
