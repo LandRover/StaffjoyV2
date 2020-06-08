@@ -39,6 +39,7 @@ require (
 	golang.org/x/crypto v0.0.0-20200604202706-70a84ac30bf9
 	golang.org/x/net v0.0.0-20200602114024-627f9648deb9
 	golang.org/x/time v0.0.0-20200416051211-89c76fbcd5d1
+	golang.org/x/text v0.3.3-0.20200513185708-81608d7e9c68
 	google.golang.org/api v0.10.0
 	google.golang.org/genproto v0.0.0-20200608115520-7c474a2e3482
 	google.golang.org/grpc v1.29.1
