@@ -96,7 +96,7 @@ import:
   - package: github.com/fatih/structs
     version: ^1.1.0
   - package: github.com/go-sql-driver/mysql
-    version: d2e52fca0b6562a2e2cb8252fbcdbab6a6e8e2d6
+    version: 12508c83901b1a418e3dea51850f956f32506f4e
   - package: golang.org/x/net
     version: 3c3fba18258b2a1398a025a6aeb7374d2a470009
     repo: https://github.com/golang/net

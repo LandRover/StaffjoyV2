@@ -320,7 +320,7 @@ new_git_repository(
 new_git_repository(
     name = "go_mysql",
     build_file = "//:third_party/go/mysql.BUILD",
-    commit = "d2e52fca0b6562a2e2cb8252fbcdbab6a6e8e2d6", # May 29, 2020 (LATEST GIT COMMIT)
+    commit = "12508c83901b1a418e3dea51850f956f32506f4e", # May 31, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/go-sql-driver/mysql.git",
 )
 
