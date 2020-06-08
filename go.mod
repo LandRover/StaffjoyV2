@@ -14,6 +14,7 @@ require (
 	github.com/getsentry/raven-go v0.1.2-0.20190619092523-5c24d5110e0e
 	github.com/go-gorp/gorp v2.2.0+incompatible
 	github.com/go-sql-driver/mysql v1.5.1-0.20200529085006-d2e52fca0b65
+	github.com/josharian/intern v1.0.0
 	github.com/gogo/protobuf v1.3.1
 	github.com/golang/protobuf v1.4.2
 	github.com/google/go-querystring v1.0.0 // indirect

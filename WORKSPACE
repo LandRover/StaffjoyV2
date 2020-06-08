@@ -219,7 +219,7 @@ new_git_repository(
 new_git_repository(
     name = "go_intern_strings",
     build_file = "//:third_party/go/go_intern_strings.BUILD",
-    commit = "a140101e2404c737ca154f12ac2a9d1cc161aee6", # Dec 16, 2019 (LATEST GIT COMMIT)
+    commit = "8e6ff32b3e7c0b018c43953085fe2ac330fe9acd", # v1.0.0 Dec 15, 2019 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/josharian/intern.git",
 )
 
