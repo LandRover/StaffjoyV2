@@ -6,6 +6,10 @@ import:
     version: a54d6839d954633947ca08f00020d7eac2bf27cd
   - package: github.com/ttacon/builder
     version: c099f663e1c235176c175644792c5eb282017ad7
+  - package: github.com/GeertJohan/go.rice
+    version: d954009f7238df62c766980934c8ea7f161d0e59
+  - package: github.com/daaku/go.zipexe
+    version: 74d766ac1dde7458348221869a7d1e7e5fa0597e
   - package: github.com/dgrijalva/jwt-go
     version: ^3.2.0
   - package: github.com/gorilla/sessions
