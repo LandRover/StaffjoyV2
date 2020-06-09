@@ -89,8 +89,9 @@ import:
   - package: google.golang.org/appengine
     version: ^1.6.6
     repo: https://github.com/golang/appengine
-  - package: github.com/go-gorp/gorp
-    version: ^2.2.0
+  - package: github.com/go-gorp/gorp/v3
+    version: ^3.0.1
+    repo: https://github.com/go-gorp/gorp
   - package: github.com/josharian/intern
     version: ^1.0.0
   - package: github.com/russross/blackfriday

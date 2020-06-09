@@ -291,7 +291,7 @@ new_git_repository(
 new_git_repository(
     name = "go_gorp",
     build_file = "//:third_party/go/gorp.BUILD",
-    commit = "03c0a1b1694b62e7517bd2282d485bae5d9cd314", # v2.2.0 Oct 29, 2019 (PREVIOUS OFFICIAL RELEASE, @TODO: bump to 3.0.X)
+    commit = "68fba862f12bdea9cc21f39ef53551695fa471af", # v3.0.1 Nov 27, 2019 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/go-gorp/gorp.git",
 )
 
