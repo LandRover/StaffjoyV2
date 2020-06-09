@@ -1,13 +1,12 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
 
-io_rules_docker_version="f1557ebc5381e2a662314e21585aa8080e9508be" # v0.14.3
 ## Load docker rules
+IO_RULES_DOCKER_VERSION="0.14.3"
 http_archive(
     name = "io_bazel_rules_docker",
-    urls = ["https://github.com/bazelbuild/rules_docker/archive/%s.zip"% io_rules_docker_version],
-    type = "zip",
-    strip_prefix = "rules_docker-%s" % io_rules_docker_version
+    urls = ["https://github.com/bazelbuild/rules_docker/releases/download/v%s/rules_docker-v%s.tar.gz" % (IO_RULES_DOCKER_VERSION, IO_RULES_DOCKER_VERSION)],
+    strip_prefix = "rules_docker-%s" % IO_RULES_DOCKER_VERSION,
 )
 
 # DOCKER STUFF
