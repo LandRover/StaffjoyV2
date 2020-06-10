@@ -49,7 +49,7 @@ import:
     subpackages:
       - "..."
   - package: github.com/grpc-ecosystem/grpc-gateway
-    version: 0a916456bee1d98654a5cbbc232a74958ebe50e1
+    version: ^1.14.6
     subpackages:
       - "..."
   - package: google.golang.org/protobuf

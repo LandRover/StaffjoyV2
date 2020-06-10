@@ -197,7 +197,7 @@ new_git_repository(
 new_git_repository(
     name = "go_grpc_gateway",
     build_file = "//:third_party/go/grpc_gateway.BUILD",
-    commit = "a89ee9d0f81220c542898f7077334d1fe2cc85fc", # Forked latest 07/06/2020 (4c1f33f9458882be5fc1a274b109d75143f5d4a3)
+    commit = "a89ee9d0f81220c542898f7077334d1fe2cc85fc", # Forked latest 07/06/2020 (v1.14.6 4c1f33f9458882be5fc1a274b109d75143f5d4a3)
     remote = "https://github.com/LandRover/grpc-gateway.git",
 )
 
