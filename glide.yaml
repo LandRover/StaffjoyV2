@@ -20,7 +20,7 @@ import:
     version: 8559d4a6b87e4f517ec1846eb90a192b8748cc89
 
   - package: github.com/gorilla/csrf
-    version: 7b29b05df5ae7dc777b92fab3dadee1b15d15ed6
+    version: ^1.7.0
   - package: github.com/gorilla/mux
     version: 5dd56998c22c824ad2e13c50bc3213e85b125134
   - package: github.com/pkg/errors

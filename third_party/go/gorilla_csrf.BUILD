@@ -11,5 +11,6 @@ external_go_package(
     ],
     exclude_srcs = [
         "context_legacy.go",
+        "store_legacy.go",
     ],
 )

@@ -107,7 +107,7 @@ new_git_repository(
 new_git_repository(
     name = "go_gorilla_csrf",
     build_file = "//:third_party/go/gorilla_csrf.BUILD",
-    commit = "7b29b05df5ae7dc777b92fab3dadee1b15d15ed6", # Aug 26, 2019 (UPDATE REQUIRED! above, breaks - SameSite feature breaks it)
+    commit = "79c60d0e4fcf1fbc9653c1cb13d28e82248cf43c", # v1.7.0 Apr 26, 2020 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/gorilla/csrf.git",
 )
 

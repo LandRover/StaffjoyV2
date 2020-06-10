@@ -18,7 +18,7 @@ require (
 	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/googleapis/gax-go v1.0.4-0.20200325113634-be11bb253a76
 	github.com/gorilla/context v1.1.2-0.20190627024605-8559d4a6b87e
-	github.com/gorilla/csrf v1.6.1
+	github.com/gorilla/csrf v1.7.0
 	github.com/gorilla/mux v0.0.0-20160604082155-5dd56998c22c
 	github.com/gorilla/sessions v1.2.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway v1.14.6
