@@ -6,5 +6,5 @@ external_go_package(
     base_pkg = "github.com/gorilla/mux",
     deps = [
         "@go_gorilla_context//:context",
-    ],
+    ]
 )

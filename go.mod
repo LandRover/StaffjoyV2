@@ -3,6 +3,7 @@ module v2.staffjoy.com
 go 1.14
 
 require (
+	cloud.google.com/go v0.58.0
 	github.com/GeertJohan/go.rice v1.0.1-0.20191102153406-d954009f7238
 	github.com/akavel/rsrc v0.9.0 // indirect
 	github.com/certifi/gocertifi v0.0.0-20200211180108-c7c1fbc02894 // indirect
@@ -19,7 +20,7 @@ require (
 	github.com/googleapis/gax-go v1.0.4-0.20200325113634-be11bb253a76
 	github.com/gorilla/context v1.1.2-0.20190627024605-8559d4a6b87e
 	github.com/gorilla/csrf v1.7.0
-	github.com/gorilla/mux v0.0.0-20160604082155-5dd56998c22c
+	github.com/gorilla/mux v1.7.4
 	github.com/gorilla/sessions v1.2.0 // indirect
 	github.com/grpc-ecosystem/grpc-gateway v1.14.6
 	github.com/hashicorp/golang-lru v0.5.5-0.20200511160909-eb529947af53
@@ -35,7 +36,6 @@ require (
 	github.com/urfave/negroni v1.0.0
 	github.com/valyala/fasttemplate v1.1.0 // indirect
 	go.opencensus.io v0.22.3
-	cloud.google.com/go v0.58.0
 	golang.org/x/crypto v0.0.0-20200604202706-70a84ac30bf9
 	golang.org/x/net v0.0.0-20200602114024-627f9648deb9
 	golang.org/x/text v0.3.3-0.20200513185708-81608d7e9c68

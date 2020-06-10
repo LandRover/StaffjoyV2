@@ -114,7 +114,7 @@ new_git_repository(
 new_git_repository(
     name = "go_gorilla_mux",
     build_file = "//:third_party/go/gorilla_mux.BUILD",
-    commit = "5dd56998c22c824ad2e13c50bc3213e85b125134", # Jun 4, 2016 (UPDATE REQUIRED! above, breaks)
+    commit = "75dcda0896e109a2a22c9315bca3bb21b87b2ba5", # v1.7.4 Feb 12, 2020 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/gorilla/mux.git",
 )
 
