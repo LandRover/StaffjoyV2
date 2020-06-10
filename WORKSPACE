@@ -184,7 +184,7 @@ new_git_repository(
 new_git_repository(
     name = "go_genproto",
     build_file = "//:third_party/go/google_genproto.BUILD",
-    commit = "7c474a2e34828bdcbfd56bccd302a058cae3ecec", # May 27, 2020 (LATEST GIT COMMIT)
+    commit = "a5b850bcf112895ffd357f7e4e69ef3e666cddf0", # Jun 10, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/googleapis/go-genproto.git"
 )
 
@@ -290,7 +290,7 @@ new_git_repository(
 new_git_repository(
     name = "go_gorp",
     build_file = "//:third_party/go/gorp.BUILD",
-    commit = "68fba862f12bdea9cc21f39ef53551695fa471af", # v3.0.1 Nov 27, 2019 (LATEST OFFICIAL RELEASE)
+    commit = "3720a47f873542a8f13038aa7c514aaf1a4ec78d", # v3.0.2 Mar 29, 2020 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/go-gorp/gorp.git",
 )
 

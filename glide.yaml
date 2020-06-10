@@ -44,7 +44,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/genproto
-    version: 7c474a2e34828bdcbfd56bccd302a058cae3ecec
+    version: a5b850bcf112895ffd357f7e4e69ef3e666cddf0
     repo: https://github.com/googleapis/go-genproto
     subpackages:
       - "..."
@@ -90,7 +90,7 @@ import:
     version: ^1.6.6
     repo: https://github.com/golang/appengine
   - package: github.com/go-gorp/gorp/v3
-    version: ^3.0.1
+    version: ^3.0.2
     repo: https://github.com/go-gorp/gorp
   - package: github.com/josharian/intern
     version: ^1.0.0

@@ -83,6 +83,7 @@ github.com/go-gl/glfw/v3.3/glfw v0.0.0-20200222043503-6f7a984d4dc4/go.mod h1:tQ2
 github.com/go-gorp/gorp v2.2.0+incompatible h1:xAUh4QgEeqPPhK3vxZN+bzrim1z5Av6q837gtjUlshc=
 github.com/go-gorp/gorp v2.2.0+incompatible/go.mod h1:7IfkAQnO7jfT/9IQ3R9wL1dFhukN6aQxzKTHnkxzA/E=
 github.com/go-gorp/gorp/v3 v3.0.1/go.mod h1:BJ3q1ejpV8cVALtcXvXaXyTOlMmJhWDxTmncaR6rwBY=
+github.com/go-gorp/gorp/v3 v3.0.2/go.mod h1:BJ3q1ejpV8cVALtcXvXaXyTOlMmJhWDxTmncaR6rwBY=
 github.com/go-sql-driver/mysql v1.4.1/go.mod h1:zAC/RDZ24gD3HViQzih4MyKcchzm+sOG5ZlKdlhCg5w=
 github.com/go-sql-driver/mysql v1.5.1-0.20200529085006-d2e52fca0b65 h1:FQnGRi70L/trwvVRnIUAJWFTjvvKHLHDCSbqW9vSTcs=
 github.com/go-sql-driver/mysql v1.5.1-0.20200529085006-d2e52fca0b65/go.mod h1:DCzpHaOWr8IXmIStZouvnhqoel9Qv2LBy8hT2VhHyBg=

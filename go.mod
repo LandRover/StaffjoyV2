@@ -12,7 +12,7 @@ require (
 	github.com/dpapathanasiou/go-recaptcha v0.0.0-20190121160230-be5090b17804
 	github.com/fatih/structs v1.1.0
 	github.com/getsentry/raven-go v0.1.2-0.20190619092523-5c24d5110e0e
-	github.com/go-gorp/gorp/v3 v3.0.1
+	github.com/go-gorp/gorp/v3 v3.0.2
 	github.com/go-sql-driver/mysql v1.5.1-0.20200531100419-12508c83901b
 	github.com/gogo/protobuf v1.3.1
 	github.com/golang/protobuf v1.4.2
@@ -42,7 +42,7 @@ require (
 	golang.org/x/time v0.0.0-20200416051211-89c76fbcd5d1
 	google.golang.org/api v0.26.0
 	google.golang.org/appengine v1.6.6
-	google.golang.org/genproto v0.0.0-20200608115520-7c474a2e3482
+	google.golang.org/genproto v0.0.0-20200610104632-a5b850bcf112
 	google.golang.org/grpc v1.29.1
 	google.golang.org/protobuf v1.24.0
 	gopkg.in/intercom/intercom-go.v2 v2.0.0-20200217143803-6ffc0627261a
