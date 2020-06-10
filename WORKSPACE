@@ -367,7 +367,7 @@ new_git_repository(
 new_git_repository(
     name = "go_opencensus",
     build_file = "//:third_party/go/go_opencensus.BUILD",
-    commit = "5897c5ce32247fc8af19c7710abd96e3304fb43c", # Jun 4, 2018 (UPDATE REQUIRED! above, breaks)
+    commit = "d835ff86be02193d324330acdb7d65546b05f814", # v0.22.3 Feb 2, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/census-instrumentation/opencensus-go.git"
 )
 

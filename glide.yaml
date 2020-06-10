@@ -128,7 +128,7 @@ import:
     version: 43a5402ce75a95522677f77c619865d66b8c57ab
     repo: https://github.com/golang/sync
   - package: go.opencensus.io
-    version: 5897c5ce32247fc8af19c7710abd96e3304fb43c
+    version: ^0.22.3
     repo: https://github.com/census-instrumentation/opencensus-go
   - package: github.com/hashicorp/golang-lru
     version: eb529947af531eb529020ba979a7a887338904d1

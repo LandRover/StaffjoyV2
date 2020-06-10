@@ -139,6 +139,7 @@ github.com/gorilla/context v1.1.2-0.20190627024605-8559d4a6b87e h1:MlIUf3Rq7HBpZ
 github.com/gorilla/context v1.1.2-0.20190627024605-8559d4a6b87e/go.mod h1:kBGZzfjB9CEq2AlWe17Uuf7NDRt0dE0s8S51q0aT7Yg=
 github.com/gorilla/csrf v1.6.1 h1:wua1OxOTarfqtUVfiSvzs2zTr3qV57cXVGclVETJXXc=
 github.com/gorilla/csrf v1.6.1/go.mod h1:7tSf8kmjNYr7IWDCYhd3U8Ck34iQ/Yw5CJu7bAkHEGI=
+github.com/gorilla/csrf v1.7.0/go.mod h1:+a/4tCmqhG6/w4oafeAZ9pEa3/NZOWYVbD9fV0FwIQA=
 github.com/gorilla/mux v0.0.0-20160604082155-5dd56998c22c h1:yBjfxbxxldLDmgaHF9Ro9voedp6nWtM4z6bmwaMTubo=
 github.com/gorilla/mux v0.0.0-20160604082155-5dd56998c22c/go.mod h1:1lud6UwP+6orDFRuTfBEV8e9/aOM/c4fVVCaMa2zaAs=
 github.com/gorilla/securecookie v1.1.1 h1:miw7JPhV+b/lAHSXz4qd/nN9jRiAFV5FwjeKyCS8BvQ=
