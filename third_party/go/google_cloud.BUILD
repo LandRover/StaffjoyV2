@@ -15,7 +15,7 @@ external_go_package(
         "@go_x_time//:rate",
         "@go_x_net//:context",
         "@go_google_api//:cloudtrace/v1",
-        "@go_google_api//:gensupport",
+        "@go_google_api//:internal/gensupport",
         "@go_google_api//:option",
         "@go_google_api//:transport",
         "@go_google_api//:transport/http",

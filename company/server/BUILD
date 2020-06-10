@@ -31,7 +31,6 @@ go_binary(
         "//healthcheck",
         "//helpers",
         "//suite",
-        "@go_cloud//:trace",
         "@go_gorilla_mux//:mux",
         "@go_gorp//:gorp",
         "@go_grpc//:codes",

@@ -22,7 +22,6 @@ go_binary(
         "//healthcheck",
         "//helpers",
         "//sms",
-        "@go_cloud//:trace",
         "@go_gorilla_mux//:mux",
         "@go_gorp//:gorp",
         "@go_grpc//:codes",

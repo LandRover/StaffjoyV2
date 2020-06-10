@@ -244,13 +244,6 @@ new_git_repository(
 )
 
 new_git_repository(
-    name = "go_cloud",
-    build_file = "//:third_party/go/google_cloud.BUILD",
-    commit = "d1af076dc3f6a314e9dd6610fe83b0f7afaff6d6", # v0.45.1 - Sept 4, 2020 (ABOVE BREAKS: trace depricated, implement stackdriver alternatives to go above)
-    remote = "https://github.com/GoogleCloudPlatform/google-cloud-go.git",
-)
-
-new_git_repository(
     name = "go_intercom",
     build_file = "//:third_party/go/intercom.BUILD",
     commit = "6ffc0627261af5a8ccfa6c107fe2ff39e3e2ed6b", # Feb 17, 2020 (LATEST GIT COMMIT)
@@ -264,7 +257,6 @@ new_git_repository(
     remote = "https://github.com/google/go-querystring.git",
 )
 
-
 new_git_repository(
     name = "go_cmp",
     build_file = "//:third_party/go/google_cmp.BUILD",
@@ -272,14 +264,21 @@ new_git_repository(
     remote = "https://github.com/google/go-cmp.git",
 )
 
-go_google_api_commitid="a5d32fec5493cdc53ee6392d77152517d5d8f2af" # v0.10.0 05-09-2019 (ABOVE BREAKS: gensupport moved, breaks trace in go-cloud and other changes, tightly dependent to go-cloud)
+GO_GOOGLE_API_VERSION="0.26.0" # Jun 1, 2020 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_google_api",
     build_file = "//:third_party/go/google_api.BUILD",
-    urls = ["https://github.com/googleapis/google-api-go-client/archive/%s.tar.gz" % go_google_api_commitid],
-    strip_prefix = "google-api-go-client-%s" % go_google_api_commitid,
+    urls = ["https://github.com/googleapis/google-api-go-client/archive/v%s.tar.gz" % GO_GOOGLE_API_VERSION],
+    strip_prefix = "google-api-go-client-%s" % GO_GOOGLE_API_VERSION,
 )
 
+GO_GOOGLE_CLOUD_VERSION="0.58.0" # Jun 8, 2020 (LATEST OFFICIAL RELEASE)
+http_archive(
+    name = "go_cloud",
+    build_file = "//:third_party/go/google_cloud.BUILD",
+    urls = ["https://github.com/GoogleCloudPlatform/google-cloud-go/archive/v%s.tar.gz" % GO_GOOGLE_CLOUD_VERSION],
+    strip_prefix = "google-cloud-go-%s" % GO_GOOGLE_CLOUD_VERSION,
+)
 
 new_git_repository(
     name = "go_appengine",

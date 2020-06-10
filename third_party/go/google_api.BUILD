@@ -13,14 +13,14 @@ external_go_package(
         "@go_google_api//:option",
         "@go_x_net//:context",
         "@go_x_net//:context/ctxhttp",
-        "@go_google_api//:gensupport",
+        "@go_google_api//:internal/gensupport",
         "@go_google_api//:googleapi",
         "@go_google_api//:transport/http",
     ],
 )
 
 external_go_package(
-    name = "gensupport",
+    name = "internal/gensupport",
     base_pkg = "google.golang.org/api",
     deps = [
         "@go_google_api//:googleapi",
@@ -34,7 +34,7 @@ external_go_package(
     name = "googleapi",
     base_pkg = "google.golang.org/api",
     deps = [
-        "@go_google_api//:googleapi/internal/uritemplates",
+        "@go_google_api//:internal/third_party/uritemplates",
     ],
 )
 
@@ -52,7 +52,7 @@ external_go_package(
 )
 
 external_go_package(
-    name = "googleapi/internal/uritemplates",
+    name = "internal/third_party/uritemplates",
     base_pkg = "google.golang.org/api",
 )
 

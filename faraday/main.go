@@ -94,17 +94,17 @@ func NewRouter(config environments.Config, logger *logrus.Entry) http.Handler {
 		logger.Fatalf("Cannot get sentry info - %s", err)
 	}
 
-	traceMW, err := NewTraceMiddleware(logger, config)
-	if err != nil {
-		logger.Fatalf("Unable to load trace middleware - %v", err)
-	}
+	//traceMW, err := NewTraceMiddleware(logger, config)
+	//if err != nil {
+	//	logger.Fatalf("Unable to load trace middleware - %v", err)
+	//}
 
 	// only apply security to the internal routes
 	externalRouter.PathPrefix("/").Handler(negroni.New(
 		middlewares.NewRecovery(ServiceName, config, sentryPublicDSN),
 		NewSecurityMiddleware(config),
 		NewServiceMiddleware(config, services.StaffjoyServices),
-		traceMW,
+		//traceMW,
 		NewRobotstxtMiddleware(config),
 		negroni.Wrap(internalRouter),
 	))

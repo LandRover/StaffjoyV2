@@ -213,6 +213,7 @@ If you're getting started with protocol buffers, here are some resources:
 
 - Convert internal go build.sh to makefile.
 - Deprecate Glide for god modules.
+- Added request tracing for `Faraday`, current middleware implemntation (faraday/trace_mw.go) was depricated in https://github.com/googleapis/google-cloud-go (v0.46.0). Using latest, broke since upgrade.
 - Migrate Go dependencies to be go.mod based via Bazel. Due to this dependencies currently maintained twice in go.mod and WORKSPACE (bazel).
 - Verify GCP deployment to stage and production works with Google Container Engine the same it works in local Kubernetes 1.18+.
 - Sentry after upgrading to Go 1.12 threw exceptions - which were fixed but not tested - check still works correctly.

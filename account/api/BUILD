@@ -18,7 +18,6 @@ go_binary(
         "//healthcheck",
         "@go_rice//:go.rice",
         "@go_rice//:embedded",
-        "@go_cloud//:trace",
         "@go_gogo_protobuf//:gogoproto",
         "@go_gogo_protobuf//:proto",
         "@go_gogo_protobuf//:types",

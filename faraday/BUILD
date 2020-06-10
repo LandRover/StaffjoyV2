@@ -11,7 +11,6 @@ go_binary(
         "robotstxt.go",
         "security_mw.go",
         "service_mw.go",
-        "trace_mw.go",
     ],
     deps = [
         "//auth",
@@ -20,7 +19,6 @@ go_binary(
         "//faraday/services",
         "//healthcheck",
         "//middlewares",
-        "@go_cloud//:trace",
         "@go_google_api//:option",
         "@go_gorilla_context//:context",
         "@go_gorilla_mux//:mux",
