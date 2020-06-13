@@ -22,7 +22,7 @@ import:
   - package: github.com/gorilla/csrf
     version: ^1.7.0
   - package: github.com/gorilla/mux
-    version: 5dd56998c22c824ad2e13c50bc3213e85b125134
+    version: ^1.6.2
   - package: github.com/pkg/errors
     version: 614d223910a179a466c1767a985424175c39b465
   - package: github.com/mailgun/mailgun-go/v4
