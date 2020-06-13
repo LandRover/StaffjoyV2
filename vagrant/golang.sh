@@ -1,21 +1,38 @@
 #!/bin/bash
 
-PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
 
 # VERSIONS
 GOLANG_VERSION=1.14.4
 
+
+# PATH MAPPING
+LOCAL_PATH="/usr/local";
+SRC_PATH="/usr/src";
+
+
+# GO PATHS
+GOROOT="${LOCAL_PATH}/go";
+GOPATH="~/go";
+
+
+## Modify global path for this run
+PATH=$PATH:${GOPATH}/bin:${GOROOT}/bin
+
+
 if ! command -V go >/dev/null 2>&1; then
-    sudo curl -O https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz
-    sudo tar -xvf go${GOLANG_VERSION}.linux-amd64.tar.gz
-    sudo mv go /usr/local
-    sudo rm go${GOLANG_VERSION}.linux-amd64.tar.gz
+    GO_TAR_FILENAME="go${GOLANG_VERSION}.linux-amd64.tar.gz";
+
+    sudo curl -o ${SRC_PATH}/${GO_TAR_FILENAME} https://storage.googleapis.com/golang/${GO_TAR_FILENAME}
+    sudo tar -xvf ${SRC_PATH}/${GO_TAR_FILENAME} -C ${SRC_PATH}
+    sudo mv ${SRC_PATH}/go ${LOCAL_PATH}
+    sudo rm ${SRC_PATH}/${GO_TAR_FILENAME}
 
     # Alias
     source "$(dirname $0)/helpers/alias.sh";
 
+    addAlias ~/.profile "GOROOT" "export GOROOT=$GOROOT"
     addAlias ~/.profile "GOPATH" "export GOPATH=$GOPATH"
-    addAlias ~/.profile "\$GOPATH" "export PATH=\$PATH:\$GOPATH/bin:$HOME/go/bin:/usr/local/go/bin"
+    addAlias ~/.profile "\$GOPATH" "export PATH=\$PATH:\$GOPATH/bin:\$GOROOT/bin"
     addAlias ~/.profile "GO111MODULE" "export GO111MODULE=on"
 fi
 
