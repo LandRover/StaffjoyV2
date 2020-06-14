@@ -8,9 +8,6 @@ go_binary(
     srcs = [
         "main.go",
     ],
-    deps = [
-        "@go_gorilla_context//:context",
-    ],
 )
 
 container_image(

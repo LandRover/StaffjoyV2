@@ -20,7 +20,6 @@ go_binary(
         "//healthcheck",
         "//middlewares",
         "@go_google_api//:option",
-        "@go_gorilla_context//:context",
         "@go_gorilla_mux//:mux",
         "@go_logrus//:logrus",
         "@go_negroni//:negroni",

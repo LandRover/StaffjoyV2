@@ -1,13 +1,14 @@
 package main
 
 import (
+	"context"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
 	"v2.staffjoy.com/faraday/services"
 
-	"github.com/gorilla/context"
 	"github.com/stretchr/testify/assert"
 	"v2.staffjoy.com/environments"
 )
@@ -69,7 +70,8 @@ func TestHits(t *testing.T) {
 			service := services.Service{Security: tt.security}
 
 			// We mock the upstream ServicesMiddleware
-			context.Set(req, requestedService, service)
+			ctx := context.WithValue(req.Context(), requestedService, service)
+			req = req.WithContext(ctx)
 
 			mw.ServeHTTP(rec, req, next)
 

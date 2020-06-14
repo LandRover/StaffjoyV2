@@ -12,7 +12,6 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gorilla/context"
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
 	"github.com/urfave/negroni"
@@ -115,7 +114,7 @@ func NewRouter(config environments.Config, logger *logrus.Entry) http.Handler {
 
 // HTTP function that handles proxying after all of the middlewares
 func proxyHandler(res http.ResponseWriter, req *http.Request) {
-	service := context.Get(req, requestedService).(services.Service)
+	service := req.Context().Value(requestedService).(services.Service)
 	// No security on backend right now :-(
 	destination := "http://" + service.BackendDomain + req.URL.RequestURI()
 	logger.Debugf("Proxying to %s", destination)

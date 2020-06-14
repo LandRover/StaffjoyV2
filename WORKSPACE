@@ -98,13 +98,6 @@ new_git_repository(
 )
 
 new_git_repository(
-    name = "go_gorilla_context",
-    build_file = "//:third_party/go/gorilla_context.BUILD",
-    commit = "8559d4a6b87e4f517ec1846eb90a192b8748cc89", # Jun 27, 2019 (LATEST OFFICIAL VERSION - ARCHIVED REPO)
-    remote = "https://github.com/gorilla/context.git",
-)
-
-new_git_repository(
     name = "go_gorilla_csrf",
     build_file = "//:third_party/go/gorilla_csrf.BUILD",
     commit = "79c60d0e4fcf1fbc9653c1cb13d28e82248cf43c", # v1.7.0 Apr 26, 2020 (LATEST OFFICIAL VERSION)
@@ -114,7 +107,7 @@ new_git_repository(
 new_git_repository(
     name = "go_gorilla_mux",
     build_file = "//:third_party/go/gorilla_mux.BUILD",
-    commit = "e3702bed27f0d39777b0b37b664b6280e8ef8fbf", # v1.6.2 May 13, 2018 (OFFICIAL VERSION, above breaks, gorilla/mux depricated, will remove it)
+    commit = "75dcda0896e109a2a22c9315bca3bb21b87b2ba5", # v1.7.4 May 13, 2018 (OFFICIAL VERSION, above breaks, gorilla/mux depricated, will remove it)
     remote = "https://github.com/gorilla/mux.git",
 )
 

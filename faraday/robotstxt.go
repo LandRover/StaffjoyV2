@@ -5,7 +5,6 @@ import (
 
 	"v2.staffjoy.com/faraday/services"
 
-	"github.com/gorilla/context"
 	"v2.staffjoy.com/environments"
 )
 
@@ -36,7 +35,7 @@ func (svc *RobotstxtMiddleware) ServeHTTP(res http.ResponseWriter, req *http.Req
 		res.Header().Set("Content-Type", "text/plain")
 
 		// Default to disallow
-		service := context.Get(req, requestedService).(services.Service)
+		service := req.Context().Value(requestedService).(services.Service)
 		var body string
 		if (svc.Config.Name == "production") && (service.Security == services.Public) {
 			body = robotstxtAllow

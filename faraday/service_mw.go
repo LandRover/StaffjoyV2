@@ -1,13 +1,13 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 	"strings"
 
 	"v2.staffjoy.com/faraday/services"
 
-	"github.com/gorilla/context"
 	"v2.staffjoy.com/environments"
 )
 
@@ -63,7 +63,8 @@ func (svc *ServiceMiddleware) ServeHTTP(res http.ResponseWriter, req *http.Reque
 		return
 	}
 
-	context.Set(req, requestedService, service)
+	ctx := context.WithValue(req.Context(), requestedService, service)
+	req = req.WithContext(ctx)
 
 	next(res, req)
 }
