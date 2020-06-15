@@ -35,6 +35,8 @@ import:
     version: 1.0.0
   - package: github.com/getsentry/raven-go
     version: 5c24d5110e0e198d9ae16f1f3465366085001d92
+  - package: github.com/getsentry/sentry-go
+    version: 4104e33144033fec8e24add945c8d1b0e943d323
   - package: google.golang.org/grpc
     version: ^1.29.1
     repo: https://github.com/grpc/grpc-go

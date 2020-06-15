@@ -12,6 +12,7 @@ require (
 	github.com/dpapathanasiou/go-recaptcha v0.0.0-20190121160230-be5090b17804
 	github.com/fatih/structs v1.1.0
 	github.com/getsentry/raven-go v0.1.2-0.20190619092523-5c24d5110e0e
+	github.com/getsentry/sentry-go v0.6.1
 	github.com/go-gorp/gorp v2.2.0+incompatible
 	github.com/go-gorp/gorp/v3 v3.0.2
 	github.com/go-sql-driver/mysql v1.5.1-0.20200531100419-12508c83901b

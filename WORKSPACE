@@ -161,6 +161,13 @@ new_git_repository(
 )
 
 new_git_repository(
+    name = "go_sentry",
+    build_file = "//:third_party/go/go_sentry.BUILD",
+    commit = "4104e33144033fec8e24add945c8d1b0e943d323", # v0.6.1 May 11, 2020 (LATEST OFFICIAL VERSION)
+    remote = "https://github.com/getsentry/sentry-go.git",
+)
+
+new_git_repository(
    name = "googleapis_gax",
    build_file = "//:third_party/go/googleapis_gax.BUILD",
    commit = "be11bb253a768098254dc71e95d1a81ced778de3", # Mar 25, 2020 (LATEST GIT COMMIT)
