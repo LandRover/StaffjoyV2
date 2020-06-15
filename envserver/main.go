@@ -14,6 +14,12 @@ var (
 	hostPort = flag.String("host-port", ":12345", "hostport for pprof")
 )
 
+type key int
+
+const (
+	keyID key = iota
+)
+
 func main() {
 	flag.Parse()
 	fmt.Printf("starting envserver on %s\n", *hostPort)
@@ -23,10 +29,10 @@ func main() {
 
 // httpEnvHandler writes all os.Environs to the page
 func httpEnvHandler(w http.ResponseWriter, r *http.Request) {
-	ctx := context.WithValue(r.Context(), "a", "b")
+	ctx := context.WithValue(r.Context(), keyID, "b")
 	r = r.WithContext(ctx)
 
-	fmt.Println(r.Context().Value("a"))
+	fmt.Println(r.Context().Value(keyID))
 	b := new(bytes.Buffer)
 	for _, e := range os.Environ() {
 		fmt.Fprintln(b, e)
