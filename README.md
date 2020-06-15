@@ -170,6 +170,15 @@ options = "metadata,umask=22,fmask=11"
 - Install latest Virtualbox
 - Run dev env
 
+Enable Create symbolic links:
+```
+- Open Local Security Policy (gpedit.msc)
+- Navigate to: Local Policies -> User Rights Assignment
+- Open 'Create Symbolic Links' (SeCreateSymbolicLinkPrivilege)
+- Add your username (or a group you are assigned to)
+- Restart PC
+```
+
 ```
 > bash
 $ vagrant up
