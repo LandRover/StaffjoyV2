@@ -4,7 +4,6 @@ import {
 } from './user';
 import { getWhoAmI, fetchIntercomSettings } from './whoami';
 
-
 export {
   changePassword,
   changeAccountData,
