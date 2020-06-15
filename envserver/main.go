@@ -26,7 +26,7 @@ func httpEnvHandler(w http.ResponseWriter, r *http.Request) {
 	ctx := context.WithValue(r.Context(), "a", "b")
 	r = r.WithContext(ctx)
 
-	fmt.Println(context.Get(r, "a"))
+	fmt.Println(r.Context().Value("a"))
 	b := new(bytes.Buffer)
 	for _, e := range os.Environ() {
 		fmt.Fprintln(b, e)
