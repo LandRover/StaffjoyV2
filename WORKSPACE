@@ -184,7 +184,7 @@ new_git_repository(
 new_git_repository(
     name = "go_genproto",
     build_file = "//:third_party/go/google_genproto.BUILD",
-    commit = "a5b850bcf112895ffd357f7e4e69ef3e666cddf0", # Jun 10, 2020 (LATEST GIT COMMIT)
+    commit = "b414f8b61790dfe8bf53633838edfbacb2c28a09", # Jun 18, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/googleapis/go-genproto.git"
 )
 
@@ -264,7 +264,7 @@ new_git_repository(
     remote = "https://github.com/google/go-cmp.git",
 )
 
-GO_GOOGLE_API_VERSION="0.26.0" # Jun 1, 2020 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_API_VERSION="0.27.0" # Jun 17, 2020 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_google_api",
     build_file = "//:third_party/go/google_api.BUILD",
@@ -353,7 +353,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_text",
     build_file = "//:third_party/go/x_text.BUILD",
-    commit = "81608d7e9c6863c922f599e4ff1329a685218c0d", # May 13, 2020 (LATEST GIT COMMIT)
+    commit = "23ae387dee1f90d29a23c0e87ee0b46038fbed0e", # Jun 11, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/text.git"
 )
 
@@ -367,7 +367,7 @@ new_git_repository(
 new_git_repository(
     name = "go_opencensus",
     build_file = "//:third_party/go/go_opencensus.BUILD",
-    commit = "d835ff86be02193d324330acdb7d65546b05f814", # v0.22.3 Feb 2, 2020 (LATEST GIT COMMIT)
+    commit = "5fa069b99bc903d713add0295c7e0a55d34ae573", # v0.22.4 Jun 17, 2020 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/census-instrumentation/opencensus-go.git"
 )
 

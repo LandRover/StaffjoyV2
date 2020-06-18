@@ -37,14 +37,14 @@ require (
 	github.com/ttacon/libphonenumber v1.1.0
 	github.com/urfave/negroni v1.0.0
 	github.com/valyala/fasttemplate v1.1.0 // indirect
-	go.opencensus.io v0.22.3
+	go.opencensus.io v0.22.4
 	golang.org/x/crypto v0.0.0-20200604202706-70a84ac30bf9
 	golang.org/x/net v0.0.0-20200602114024-627f9648deb9
-	golang.org/x/text v0.3.3-0.20200513185708-81608d7e9c68
+	golang.org/x/text v0.3.3
 	golang.org/x/time v0.0.0-20200416051211-89c76fbcd5d1
-	google.golang.org/api v0.26.0
+	google.golang.org/api v0.27.0
 	google.golang.org/appengine v1.6.6
-	google.golang.org/genproto v0.0.0-20200610104632-a5b850bcf112
+	google.golang.org/genproto v0.0.0-20200618031413-b414f8b61790
 	google.golang.org/grpc v1.29.1
 	google.golang.org/protobuf v1.24.0
 	gopkg.in/intercom/intercom-go.v2 v2.0.0-20200217143803-6ffc0627261a

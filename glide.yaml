@@ -43,7 +43,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/genproto
-    version: a5b850bcf112895ffd357f7e4e69ef3e666cddf0
+    version: b414f8b61790dfe8bf53633838edfbacb2c28a09
     repo: https://github.com/googleapis/go-genproto
     subpackages:
       - "..."
@@ -81,7 +81,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/api
-    version: ^0.26.0
+    version: ^0.27.0
     repo: https://github.com/google/google-api-go-client
     subpackages:
       - "..."
@@ -121,13 +121,13 @@ import:
     subpackages:
       - bcrypt
   - package: golang.org/x/text
-    version: 81608d7e9c6863c922f599e4ff1329a685218c0d
+    version: ^0.3.3
     repo: https://github.com/golang/text
   - package: golang.org/x/sync
     version: 43a5402ce75a95522677f77c619865d66b8c57ab
     repo: https://github.com/golang/sync
   - package: go.opencensus.io
-    version: ^0.22.3
+    version: ^0.22.4
     repo: https://github.com/census-instrumentation/opencensus-go
   - package: github.com/hashicorp/golang-lru
     version: eb529947af531eb529020ba979a7a887338904d1
