@@ -28,7 +28,7 @@ sudo chown -R ${USER}:${USER} ${GOPATH}
 /bin/bash ${STAFFJOY}/vagrant/golang.sh
 /bin/bash ${STAFFJOY}/vagrant/bazel.sh
 /bin/bash ${STAFFJOY}/vagrant/npm.sh
-/bin/bash ${STAFFJOY}/vagrant/grpc.sh
+/bin/bash ${STAFFJOY}/vagrant/protobuf.sh
 /bin/bash ${STAFFJOY}/vagrant/nginx.sh
 /bin/bash ${STAFFJOY}/vagrant/docker.sh
 /bin/bash ${STAFFJOY}/vagrant/minikube.sh

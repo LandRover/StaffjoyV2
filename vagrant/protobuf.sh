@@ -5,7 +5,7 @@ set -e
 # VERSIONS
 PROTOBUF_VERSION=3.12.3
 
-COMPILE_FROM_SRC=false;
+COMPILE_FROM_SRC="${1:-false}";
 COMPILE_SRC_TMP_DIR="/tmp/protobuf_src";
 
 if $COMPILE_FROM_SRC; then
