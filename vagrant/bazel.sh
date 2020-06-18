@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# This release version should correspond to the version listed here:
+# https://github.com/bazelbuild/bazel/releases
+BAZEL_VERSION=3.3.0
+
+
 if ! command -V add-apt-repository >/dev/null 2>&1; then
     sudo apt install -y -q  software-properties-common ca-certificates apt-transport-https
 fi
@@ -26,10 +31,6 @@ fi
 
 if ! command -V bazel >/dev/null 2>&1; then
     sudo apt install -y -q  pkg-config zip g++ zlib1g-dev unzip
-
-    # This release version should correspond to the version listed here:
-    # https://github.com/bazelbuild/bazel/releases
-    BAZEL_VERSION=3.2.0
 
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
         sudo curl -L https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh --output /usr/src/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh
