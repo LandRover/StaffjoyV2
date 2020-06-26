@@ -19,7 +19,7 @@ sudo apt update -y -q
 sudo apt install -y -q  apt-fast
 sudo apt install -y -q  build-essential bash-completion autoconf
 sudo apt install -y -q  apt-transport-https ca-certificates gnupg-agent software-properties-common debconf-utils
-sudo apt install -y -q  unison net-tools git curl screen lynx mc
+sudo apt install -y -q  unison net-tools git curl dos2unix screen lynx mc
 
 sudo mkdir -p ${STAFFJOY}
 sudo chown -R ${USER}:${USER} ${GOPATH}
