@@ -9,3 +9,7 @@ if ! command -V node >/dev/null 2>&1; then
 
     addAlias ~/.profile "node_modules" "export PATH=\$PATH:node_modules/.bin"
 fi
+
+# dev packages
+echo "[v] Installing npm global packages for development...";
+sudo npm install -g  yarn npm-check-updates
