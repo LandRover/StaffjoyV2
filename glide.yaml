@@ -38,7 +38,7 @@ import:
   - package: github.com/getsentry/sentry-go
     version: 4104e33144033fec8e24add945c8d1b0e943d323
   - package: google.golang.org/grpc
-    version: ^1.29.1
+    version: ^1.30.0
     repo: https://github.com/grpc/grpc-go
     subpackages:
       - "..."

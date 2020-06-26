@@ -75,7 +75,7 @@ external_go_package(
     base_pkg = "google.golang.org/api",
     deps = [
         "@go_grpc//:grpc",
-        "@go_grpc//:naming",
+        "@go_grpc//:serviceconfig",
         "@go_x_oauth2//:oauth2",
         "@go_x_oauth2//:google",
     ],
