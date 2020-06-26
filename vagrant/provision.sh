@@ -5,8 +5,7 @@ set -u
 set -x
 
 export DEBIAN_FRONTEND=noninteractive
-export VHOME=/home/${USER}
-export GOPATH=${VHOME}/golang
+export GOPATH=${HOME}/golang
 export STAFFJOY=${GOPATH}/src/v2.staffjoy.com
 
 ## apt-fast
@@ -25,13 +24,13 @@ sudo apt install -y -q  unison net-tools git curl screen lynx mc
 sudo mkdir -p ${STAFFJOY}
 sudo chown -R ${USER}:${USER} ${GOPATH}
 
-/bin/bash ${STAFFJOY}/vagrant/golang.sh
-/bin/bash ${STAFFJOY}/vagrant/bazel.sh
-/bin/bash ${STAFFJOY}/vagrant/npm.sh
-/bin/bash ${STAFFJOY}/vagrant/protobuf.sh
-/bin/bash ${STAFFJOY}/vagrant/nginx.sh
 /bin/bash ${STAFFJOY}/vagrant/docker.sh
 /bin/bash ${STAFFJOY}/vagrant/minikube.sh
+/bin/bash ${STAFFJOY}/vagrant/golang.sh
+/bin/bash ${STAFFJOY}/vagrant/node.sh
+/bin/bash ${STAFFJOY}/vagrant/bazel.sh
+/bin/bash ${STAFFJOY}/vagrant/protobuf.sh
+/bin/bash ${STAFFJOY}/vagrant/nginx.sh
 /bin/bash ${STAFFJOY}/vagrant/mysql.sh
 
 sudo apt autoremove -y -q && sudo apt clean
