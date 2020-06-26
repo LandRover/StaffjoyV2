@@ -81,7 +81,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/api
-    version: ^0.27.0
+    version: ^0.28.0
     repo: https://github.com/google/google-api-go-client
     subpackages:
       - "..."

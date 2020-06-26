@@ -264,7 +264,7 @@ new_git_repository(
     remote = "https://github.com/google/go-cmp.git",
 )
 
-GO_GOOGLE_API_VERSION="0.27.0" # Jun 17, 2020 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_API_VERSION="0.28.0" # Jun 18, 2020 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_google_api",
     build_file = "//:third_party/go/google_api.BUILD",
