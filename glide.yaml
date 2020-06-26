@@ -43,7 +43,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/genproto
-    version: b414f8b61790dfe8bf53633838edfbacb2c28a09
+    version: ee7919e894b5b5992a06d6e11a361f08b63b49ef
     repo: https://github.com/googleapis/go-genproto
     subpackages:
       - "..."
