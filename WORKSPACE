@@ -121,7 +121,7 @@ new_git_repository(
 new_git_repository(
     name = "go_mailgun",
     build_file = "//:third_party/go/go_mailgun.BUILD",
-    commit = "679f6cbff004cd062fb5c8450478fc1eaa159034", # v4.1.2 Jun 10, 2020 (LATEST OFFICIAL VERSION)
+    commit = "1b82de88318b8185707ea659ef6007d980d30b4f", # v4.1.3 Jun 24, 2020 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/mailgun/mailgun-go.git",
 )
 
