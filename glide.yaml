@@ -52,7 +52,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/protobuf
-    version: ^1.24.0
+    version: ^1.25.0
     repo: https://github.com/protocolbuffers/protobuf-go
     subpackages:
       - "..."

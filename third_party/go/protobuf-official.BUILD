@@ -16,6 +16,7 @@ external_go_package(
       "@go_protobuf_official//:internal/fieldsort",
       "@go_protobuf_official//:internal/mapsort",
       "@go_protobuf_official//:internal/errors",
+      "@go_protobuf_official//:internal/genid",
       "@go_protobuf_official//:internal/encoding/messageset",
       "@go_protobuf_official//:encoding/protowire",
       "@go_protobuf_official//:reflect/protoregistry",
@@ -59,6 +60,7 @@ external_go_package(
        "@go_protobuf_official//:internal/strs",
        "@go_protobuf_official//:internal/flags",
        "@go_protobuf_official//:internal/errors",
+       "@go_protobuf_official//:internal/genid",
        "@go_protobuf_official//:internal/filedesc",
        "@go_protobuf_official//:internal/pragma",
        "@go_protobuf_official//:internal/encoding/defval",
@@ -75,11 +77,11 @@ external_go_package(
        "@go_protobuf_official//:reflect/protoregistry",
        "@go_protobuf_official//:reflect/protoreflect",
        "@go_protobuf_official//:internal/descopts",
-       "@go_protobuf_official//:internal/fieldnum",
        "@go_protobuf_official//:internal/descfmt",
        "@go_protobuf_official//:internal/pragma",
        "@go_protobuf_official//:internal/strs",
        "@go_protobuf_official//:internal/errors",
+       "@go_protobuf_official//:internal/genid",
        "@go_protobuf_official//:encoding/protowire",
        "@go_protobuf_official//:internal/encoding/defval",
      ],
@@ -94,11 +96,10 @@ external_go_package(
        "@go_protobuf_official//:internal/strs",
        "@go_protobuf_official//:internal/flags",
        "@go_protobuf_official//:internal/pragma",
-       "@go_protobuf_official//:internal/detectknown",
-       "@go_protobuf_official//:internal/fieldnum",
        "@go_protobuf_official//:internal/encoding/json",
        "@go_protobuf_official//:internal/encoding/messageset",
        "@go_protobuf_official//:internal/errors",
+       "@go_protobuf_official//:internal/genid",
        "@go_protobuf_official//:reflect/protoregistry",
        "@go_protobuf_official//:reflect/protoreflect",
      ],
@@ -143,17 +144,20 @@ external_go_package(
 )
 
 external_go_package(
+     name = "internal/genid",
+     base_pkg = "google.golang.org/protobuf",
+     deps = [
+       "@go_protobuf_official//:reflect/protoreflect",
+     ],
+)
+
+external_go_package(
      name = "internal/pragma",
      base_pkg = "google.golang.org/protobuf",
 )
 
 external_go_package(
      name = "internal/detrand",
-     base_pkg = "google.golang.org/protobuf",
-)
-
-external_go_package(
-     name = "internal/fieldnum",
      base_pkg = "google.golang.org/protobuf",
 )
 
@@ -276,10 +280,10 @@ external_go_package(
        "@go_protobuf_official//:internal/flags",
        "@go_protobuf_official//:internal/pragma",
        "@go_protobuf_official//:internal/errors",
+       "@go_protobuf_official//:internal/genid",
        "@go_protobuf_official//:internal/fieldsort",
        "@go_protobuf_official//:internal/filedesc",
        "@go_protobuf_official//:internal/descopts",
-       "@go_protobuf_official//:internal/genname",
        "@go_protobuf_official//:internal/encoding/messageset",
        "@go_protobuf_official//:internal/encoding/tag",
        "@go_protobuf_official//:encoding/prototext",
@@ -300,10 +304,6 @@ external_go_package(
      base_pkg = "google.golang.org/protobuf",
 )
 
-external_go_package(
-     name = "internal/genname",
-     base_pkg = "google.golang.org/protobuf",
-)
 
 external_go_package(
      name = "encoding/prototext",
@@ -315,9 +315,9 @@ external_go_package(
        "@go_protobuf_official//:internal/strs",
        "@go_protobuf_official//:internal/flags",
        "@go_protobuf_official//:internal/pragma",
-       "@go_protobuf_official//:internal/fieldnum",
        "@go_protobuf_official//:internal/mapsort",
        "@go_protobuf_official//:internal/errors",
+       "@go_protobuf_official//:internal/genid",
        "@go_protobuf_official//:internal/encoding/text",
        "@go_protobuf_official//:internal/encoding/messageset",
        "@go_protobuf_official//:reflect/protoregistry",
@@ -342,14 +342,6 @@ external_go_package(
 )
 
 external_go_package(
-     name = "internal/detectknown",
-     base_pkg = "google.golang.org/protobuf",
-     deps = [
-       "@go_protobuf_official//:reflect/protoreflect",
-     ],
-)
-
-external_go_package(
      name = "types/descriptorpb",
      base_pkg = "google.golang.org/protobuf",
      deps = [
@@ -363,6 +355,7 @@ external_go_package(
      name = "types/known/fieldmaskpb",
      base_pkg = "google.golang.org/protobuf",
      deps = [
+       "@go_protobuf_official//:proto",
        "@go_protobuf_official//:reflect/protoreflect",
        "@go_protobuf_official//:runtime/protoimpl",
      ],
@@ -383,6 +376,7 @@ external_go_package(
      deps = [
         "@go_protobuf_official//:reflect/protoreflect",
         "@go_protobuf_official//:runtime/protoimpl",
+        "@go_protobuf_official//:encoding/protojson",
      ],
 )
 
@@ -408,7 +402,9 @@ external_go_package(
      name = "types/known/anypb",
      base_pkg = "google.golang.org/protobuf",
      deps = [
+       "@go_protobuf_official//:proto",
        "@go_protobuf_official//:reflect/protoreflect",
+       "@go_protobuf_official//:reflect/protoregistry",
        "@go_protobuf_official//:runtime/protoimpl",
      ],
 )
