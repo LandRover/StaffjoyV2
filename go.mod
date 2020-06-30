@@ -3,7 +3,8 @@ module v2.staffjoy.com
 go 1.14
 
 require (
-	cloud.google.com/go v0.58.0
+	cloud.google.com/go v0.60.0
+	cloud.google.com/go/bigquery v1.8.0 // indirect
 	github.com/GeertJohan/go.rice v1.0.1-0.20191102153406-d954009f7238
 	github.com/akavel/rsrc v0.9.0 // indirect
 	github.com/certifi/gocertifi v0.0.0-20200211180108-c7c1fbc02894 // indirect
