@@ -102,7 +102,7 @@ import:
   - package: github.com/go-sql-driver/mysql
     version: 12508c83901b1a418e3dea51850f956f32506f4e
   - package: golang.org/x/net
-    version: 627f9648deb96c27737b83199d44bb5c1010cbcf
+    version: 4c5254603344ea4a8ae4bed7e296a9588303e14f
     repo: https://github.com/golang/net
     subpackages:
       - html
@@ -116,7 +116,7 @@ import:
     subpackages:
       - rate
   - package: golang.org/x/crypto
-    version: 70a84ac30bf957c7df57edd1935d2081871515e1
+    version: 75b288015ac94e66e3d6715fb68a9b41bf046ec2
     repo: https://github.com/golang/crypto
     subpackages:
       - bcrypt

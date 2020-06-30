@@ -325,7 +325,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_net",
     build_file = "//:third_party/go/x_net.BUILD",
-    commit = "627f9648deb96c27737b83199d44bb5c1010cbcf", # Jun 2, 2020 (LATEST GIT COMMIT)
+    commit = "4c5254603344ea4a8ae4bed7e296a9588303e14f", # Jun 24, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/net.git"
 )
 
@@ -346,7 +346,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_crypto",
     build_file = "//:third_party/go/x_crypto.BUILD",
-    commit = "70a84ac30bf957c7df57edd1935d2081871515e1", # May 21, 2020 (LATEST GIT COMMIT)
+    commit = "75b288015ac94e66e3d6715fb68a9b41bf046ec2", # Jun 22, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/crypto.git"
 )
 
