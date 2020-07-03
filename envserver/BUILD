@@ -12,7 +12,7 @@ go_binary(
 
 container_image(
     name = "docker",
-    base = "@docker_ubuntu//:trusty",
+    base = "@ubuntu//image",
     files = [
         ":envserver",
     ],
