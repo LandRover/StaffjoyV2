@@ -14,7 +14,6 @@ import (
 	"v2.staffjoy.com/account"
 	"v2.staffjoy.com/auth"
 	"v2.staffjoy.com/helpers"
-	"v2.staffjoy.com/suite"
 
 	"github.com/gorilla/csrf"
 	"github.com/sirupsen/logrus"
@@ -117,25 +116,6 @@ func loginHandler(res http.ResponseWriter, req *http.Request) {
 
 			http.Redirect(res, req, returnTo, http.StatusFound)
 			return
-		}
-
-		// Check suite.staffjoy.com for an account
-		if email != "" {
-			suiteAccountExists, err := suite.AccountExists(email)
-			if err != nil {
-				// Log but don't crash
-				// (which is important for dev too)
-				logger.Warningf("Unable to query suite for login attempt by %v - %v", email, err)
-			} else if suiteAccountExists {
-				u, ok := suite.SuiteConfigs[config.Name]
-				if !ok {
-					panic("failed to generate suite url")
-				}
-				u.Path = "/auth/login"
-				logger.Infof("Redirecting email %s to suite", email)
-				http.Redirect(res, req, u.String(), http.StatusTemporaryRedirect)
-				return
-			}
 		}
 
 		logger.WithFields(logrus.Fields{"email": email}).Infof("Login attempt denied")
