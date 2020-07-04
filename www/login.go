@@ -87,13 +87,13 @@ func loginHandler(res http.ResponseWriter, req *http.Request) {
 		}
 		defer close()
 
-		a, err := accountClient.VerifyPassword(ctx, &account.VerifyPasswordRequest{Email: email, Password: password})
+		user, err := accountClient.VerifyPassword(ctx, &account.VerifyPasswordRequest{Email: email, Password: password})
 		if err == nil {
-			auth.LoginUser(a.Uuid, a.Support, rememberMe, res)
-			go helpers.TrackEvent(a.Uuid, "login")
-			go accountClient.SyncUser(ctx, &account.SyncUserRequest{Uuid: a.Uuid})
+			auth.LoginUser(user.Uuid, user.Support, rememberMe, res)
+			go helpers.TrackEvent(user.Uuid, "login")
+			go accountClient.SyncUser(ctx, &account.SyncUserRequest{Uuid: user.Uuid})
 
-			logger.WithFields(logrus.Fields{"user_uuid": a.Uuid}).Info("Logging in user")
+			logger.WithFields(logrus.Fields{"user_uuid": user.Uuid}).Info("Logging in user")
 
 			scheme := "https"
 			if config.Name == "development" || config.Name == "test" {
