@@ -65,7 +65,7 @@ func loginHandler(res http.ResponseWriter, req *http.Request) {
 	}
 
 	// if logged in - go away
-	if req.Header.Get(auth.AuthorizationHeader) != auth.AuthorizationAnonymousWeb {
+	if req.Header.Get(auth.AuthorizationHeader) == auth.AuthorizationAuthenticatedUser {
 		destination := &url.URL{Host: "myaccount." + config.ExternalApex, Scheme: "http"}
 		http.Redirect(res, req, destination.String(), http.StatusFound)
 	}
