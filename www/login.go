@@ -49,6 +49,12 @@ func isValidSub(sub string) bool {
 }
 
 func loginHandler(res http.ResponseWriter, req *http.Request) {
+	// if logged in - go away
+	if req.Header.Get(auth.AuthorizationHeader) == auth.AuthorizationAuthenticatedUser {
+		destination := &url.URL{Host: "myaccount." + config.ExternalApex, Scheme: "http"}
+		http.Redirect(res, req, destination.String(), http.StatusFound)
+		return
+	}
 
 	// for GET
 	returnTo := req.URL.Query().Get("return_to")
@@ -61,12 +67,6 @@ func loginHandler(res http.ResponseWriter, req *http.Request) {
 		TemplateName: "login.tmpl",
 		Description:  "Log in to Staffjoy to start scheduling your workers. All you’ll need is your email and password.",
 		ReturnTo:     returnTo,
-	}
-
-	// if logged in - go away
-	if req.Header.Get(auth.AuthorizationHeader) == auth.AuthorizationAuthenticatedUser {
-		destination := &url.URL{Host: "myaccount." + config.ExternalApex, Scheme: "http"}
-		http.Redirect(res, req, destination.String(), http.StatusFound)
 	}
 
 	if req.Method == http.MethodPost {
