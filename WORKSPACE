@@ -2,12 +2,13 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file"
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
 
 ## Load docker rules
-IO_RULES_DOCKER_VERSION="0.14.3"
+IO_RULES_DOCKER_VERSION="0.14.4"
 http_archive(
     name = "io_bazel_rules_docker",
     urls = ["https://github.com/bazelbuild/rules_docker/releases/download/v%s/rules_docker-v%s.tar.gz" % (IO_RULES_DOCKER_VERSION, IO_RULES_DOCKER_VERSION)],
     strip_prefix = "rules_docker-%s" % IO_RULES_DOCKER_VERSION,
 )
+
 
 # DOCKER STUFF
 load(
@@ -41,6 +42,12 @@ container_pull(
     tag = "focal",
 )
 
+# Required by IO_RULES_DOCKER_VERSION > 0.14.4 (https://github.com/bazelbuild/rules_docker/issues/1550)
+load("@io_bazel_rules_docker//repositories:deps.bzl", container_deps = "deps")    
+container_deps()
+
+load("@io_bazel_rules_docker//repositories:pip_repositories.bzl", "pip_deps")
+pip_deps()
 
 # GOLANG INIT
 
