@@ -43,7 +43,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/genproto
-    version: ee7919e894b5b5992a06d6e11a361f08b63b49ef
+    version: 8698661620497c6fd6244a2fb2ff2518e6a6e892
     repo: https://github.com/googleapis/go-genproto
     subpackages:
       - "..."
@@ -81,7 +81,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/api
-    version: ^0.28.0
+    version: ^0.29.0
     repo: https://github.com/google/google-api-go-client
     subpackages:
       - "..."
@@ -102,7 +102,7 @@ import:
   - package: github.com/go-sql-driver/mysql
     version: 12508c83901b1a418e3dea51850f956f32506f4e
   - package: golang.org/x/net
-    version: 4c5254603344ea4a8ae4bed7e296a9588303e14f
+    version: ab34263943818b32f575efc978a3d24e80b04bd7
     repo: https://github.com/golang/net
     subpackages:
       - html
@@ -111,12 +111,12 @@ import:
     version: bf48bf16ab8d622ce64ec6ce98d2c98f916b6303
     repo: https://github.com/golang/oauth2
   - package: golang.org/x/time
-    version: 89c76fbcd5d1cd4969e5d2fe19d48b19d5ad94a0
+    version: 3af7569d3a1e776fc2a3c1cec133b43105ea9c2e
     repo: https://github.com/golang/time
     subpackages:
       - rate
   - package: golang.org/x/crypto
-    version: 75b288015ac94e66e3d6715fb68a9b41bf046ec2
+    version: 948cd5f35899cbf089c620b3caeac9b60fa08704
     repo: https://github.com/golang/crypto
     subpackages:
       - bcrypt
