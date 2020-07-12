@@ -10,7 +10,7 @@ spec:
   selector:
     app: staffjoy
     tier: mysql
-  clusterIP: 10.0.0.100 # Lets us do migrations locally 
+  clusterIP: 10.0.0.100 # Lets us do migrations locally
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -42,20 +42,21 @@ spec:
       labels:
         app: staffjoy
         tier: mysql
+        type: database
     spec:
       containers:
-      - image: mysql:8.0
-        name: mysql
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          value: SHIBBOLETH
-        ports:
-        - containerPort: 3306
-          name: mysql
-        volumeMounts:
-        - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql
+        - image: mariadb:10.5
+          name: mariadb
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: SHIBBOLETH
+          ports:
+            - containerPort: 3306
+              name: mysql
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
       volumes:
-      - name: mysql-persistent-storage
-        persistentVolumeClaim:
-          claimName: app-mysql-pv-claim
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: app-mysql-pv-claim
