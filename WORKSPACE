@@ -191,7 +191,7 @@ new_git_repository(
 new_git_repository(
     name = "go_genproto",
     build_file = "//:third_party/go/google_genproto.BUILD",
-    commit = "8698661620497c6fd6244a2fb2ff2518e6a6e892", # Jul 11, 2020 (LATEST GIT COMMIT)
+    commit = "88e341933a542e6f21b9ad041696148fee087ab1", # Jul 22, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/googleapis/go-genproto.git"
 )
 
@@ -279,7 +279,7 @@ http_archive(
     strip_prefix = "google-api-go-client-%s" % GO_GOOGLE_API_VERSION,
 )
 
-GO_GOOGLE_CLOUD_VERSION="0.60.0" # Jun 29, 2020 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_CLOUD_VERSION="0.61.0" # Jul 13, 2020 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_cloud",
     build_file = "//:third_party/go/google_cloud.BUILD",

@@ -3,7 +3,7 @@ module v2.staffjoy.com
 go 1.14
 
 require (
-	cloud.google.com/go v0.60.0
+	cloud.google.com/go v0.61.0
 	cloud.google.com/go/bigquery v1.9.0 // indirect
 	github.com/GeertJohan/go.rice v1.0.1-0.20191102153406-d954009f7238
 	github.com/akavel/rsrc v0.9.0 // indirect
@@ -45,7 +45,7 @@ require (
 	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e
 	google.golang.org/api v0.29.0
 	google.golang.org/appengine v1.6.6
-	google.golang.org/genproto v0.0.0-20200711021454-869866162049
+	google.golang.org/genproto v0.0.0-20200722002428-88e341933a54
 	google.golang.org/grpc v1.30.0
 	google.golang.org/protobuf v1.25.0
 	gopkg.in/intercom/intercom-go.v2 v2.0.0-20200217143803-6ffc0627261a

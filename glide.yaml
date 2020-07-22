@@ -43,7 +43,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/genproto
-    version: 8698661620497c6fd6244a2fb2ff2518e6a6e892
+    version: 88e341933a542e6f21b9ad041696148fee087ab1
     repo: https://github.com/googleapis/go-genproto
     subpackages:
       - "..."
@@ -69,7 +69,7 @@ import:
   - package: github.com/certifi/gocertifi
     version: c7c1fbc02894e7114f06f6a4d9ab31eee2225bdb
   - package: cloud.google.com/go
-    version: v0.60.0
+    version: v0.61.0
     repo: https://github.com/GoogleCloudPlatform/google-cloud-go
     subpackages:
       - "..."
