@@ -1,9 +1,8 @@
 #!/bin/bash
 
 # VERSIONS
-MINIKUBE_VERSION=v1.12.1
-KUBECTL_CLI_VERSION=v1.18.6
-
+KUBECTL_CLI_VERSION=v1.19.3
+MINIKUBE_VERSION=v1.14.1
 
 # ARGS
 FORCE_UPDATE=false
@@ -37,14 +36,14 @@ fi
 
 
 $FORCE_UPDATE && [ -f /usr/local/bin/kubectl ] && sudo rm -rf /usr/local/bin/kubectl && echo "[x] Force update flag used. Removing existing version of kubectl";
-$FORCE_UPDATE && [ -f /usr/local/bin/minikube ] && sudo rm -rf /usr/local/bin/minikube && echo "[x] Force update flag used. Removing existing version of minikube";
+$FORCE_UPDATE && [ -f /usr/local/bin/minikube ] && sudo minikube delete && sudo rm -rf /usr/local/bin/minikube && echo "[x] Force update flag used. Removing existing version of minikube";
 
 
 # download and install kubectl ...
 # Latest stable: https://github.com/kubernetes/kubernetes/releases | https://storage.googleapis.com/kubernetes-release/release/stable.txt
 if [ ! -f "/usr/local/bin/kubectl" ] ; then
     echo "[x] Downloading kubectl ${KUBECTL_CLI_VERSION}...";
-    curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_CLI_VERSION}/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+    curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_CLI_VERSION}/bin/linux/amd64/kubectl && sudo mv kubectl /usr/local/bin/ && sudo chmod +x /usr/local/bin/kubectl && sudo chown root:root /usr/local/bin/kubectl;
 fi
 
 
@@ -52,7 +51,7 @@ fi
 # Latest stable: https://github.com/kubernetes/minikube/releases
 if [ ! -f "/usr/local/bin/minikube" ] ; then
     echo "[x] Downloading minikube ${MINIKUBE_VERSION}...";
-    curl -Lo minikube https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-amd64 && chmod +x minikube && sudo mv minikube /usr/local/bin/
+    curl -Lo minikube https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-amd64 && sudo mv minikube /usr/local/bin/ && sudo chmod +x /usr/local/bin/minikube && sudo chown root:root /usr/local/bin/minikube;
 fi
 
 
@@ -67,7 +66,8 @@ sudo -E minikube start \
     --bootstrapper=kubeadm \
     --dns-domain="cluster.local" \
     --service-cluster-ip-range="10.0.0.0/12" \
-    --extra-config="kubelet.cluster-dns=10.0.0.10"
+    --extra-config="kubelet.cluster-dns=10.0.0.10" \
+    --v=99;
 
 
 # enables dashboard

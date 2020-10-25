@@ -62,6 +62,7 @@ external_go_package(
     deps = [
         "@go_grpc//:grpc",
         "@go_google_api//:internal",
+        "@go_google_api//:internal/impersonate",
         "@go_x_oauth2//:oauth2",
         "@go_x_oauth2//:google",
     ],
@@ -76,8 +77,17 @@ external_go_package(
     deps = [
         "@go_grpc//:grpc",
         "@go_grpc//:serviceconfig",
+        "@go_google_api//:internal/impersonate",
         "@go_x_oauth2//:oauth2",
         "@go_x_oauth2//:google",
+    ],
+)
+
+external_go_package(
+    name = "internal/impersonate",
+    base_pkg = "google.golang.org/api",
+    deps = [
+        "@go_x_oauth2//:oauth2",
     ],
 )
 

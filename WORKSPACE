@@ -93,7 +93,7 @@ new_git_repository(
 new_git_repository(
     name = "go_gorilla_sessions",
     build_file = "//:third_party/go/gorilla_sessions.BUILD",
-    commit = "15ff3511704639ab26f7843f780c015f4bf49565", # After v1.2.0 Jan 5, 2020 (LATEST GIT COMMIT)
+    commit = "61fa50d034f99479a7de0d1c02c5e9dea5ad30cb", # v1.2.1 Aug 19, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/gorilla/sessions.git",
 )
 
@@ -114,7 +114,7 @@ new_git_repository(
 new_git_repository(
     name = "go_gorilla_mux",
     build_file = "//:third_party/go/gorilla_mux.BUILD",
-    commit = "75dcda0896e109a2a22c9315bca3bb21b87b2ba5", # v1.7.4 Feb 12, 2020 (LATEST OFFICIAL VERSION)
+    commit = "98cb6bf42e086f6af920b965c38cacc07402d51b", # v1.8.0 Jul 11, 2020 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/gorilla/mux.git",
 )
 
@@ -128,21 +128,35 @@ new_git_repository(
 new_git_repository(
     name = "go_mailgun",
     build_file = "//:third_party/go/go_mailgun.BUILD",
-    commit = "1b82de88318b8185707ea659ef6007d980d30b4f", # v4.1.3 Jun 24, 2020 (LATEST OFFICIAL VERSION)
+    commit = "4549b26cb022921a04c55f8793e60b420587746d", # v4.3.0 Jun 24, 2020 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/mailgun/mailgun-go.git",
 )
 
 new_git_repository(
-    name = "easyjson",
-    build_file = "//:third_party/go/easyjson.BUILD",
-    commit = "8ba3c7bdceed0f2e8089b8bac6627e18a1392659", # May 24, 2020 (LATEST GIT COMMIT)
-    remote = "https://github.com/mailru/easyjson.git",
+    name = "jsoniter",
+    build_file = "//:third_party/go/jsoniter.BUILD",
+    commit = "a1ca0830781e007c66b225121d2cdb3a649421f6", # v1.1.10 Jun 8, 2020 (LATEST GIT COMMIT)
+    remote = "https://github.com/json-iterator/go.git",
+)
+
+new_git_repository(
+    name = "modern_reflect2",
+    build_file = "//:third_party/go/modern_reflect2.BUILD",
+    commit = "94122c33edd36123c84d5368cfb2b69df93a0ec8", # v1.0.1 Jul 18, 2018 (LATEST GIT COMMIT)
+    remote = "https://github.com/modern-go/reflect2.git",
+)
+
+new_git_repository(
+    name = "modern_concurrent",
+    build_file = "//:third_party/go/modern_concurrent.BUILD",
+    commit = "bacd9c7ef1dd9b15be4a9909b8ac7a4e313eec94", # v1.0.3 Mar 6, 2018 (LATEST GIT COMMIT)
+    remote = "https://github.com/modern-go/concurrent.git",
 )
 
 new_git_repository(
     name = "go_logrus",
     build_file = "//:third_party/go/sirupsen_logrus.BUILD",
-    commit = "60c74ad9be0d874af0ab0daef6ab07c5c5911f0d", # v1.6.0 May 2, 2020 (LATEST OFFICIAL VERSION)
+    commit = "6699a89a232f3db797f2e280639854bbc4b89725", # v1.7.0 May 28, 2020 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/sirupsen/logrus.git",
 )
 
@@ -170,28 +184,28 @@ new_git_repository(
 new_git_repository(
     name = "go_sentry",
     build_file = "//:third_party/go/go_sentry.BUILD",
-    commit = "4104e33144033fec8e24add945c8d1b0e943d323", # v0.6.1 May 11, 2020 (LATEST OFFICIAL VERSION)
+    commit = "e729abef9aacbc3f9e93624880d6946e3ec32a94", # v0.7.0 Jul 21, 2020 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/getsentry/sentry-go.git",
 )
 
 new_git_repository(
    name = "googleapis_gax",
    build_file = "//:third_party/go/googleapis_gax.BUILD",
-   commit = "be11bb253a768098254dc71e95d1a81ced778de3", # Mar 25, 2020 (LATEST GIT COMMIT)
+   commit = "1da42d02221b8e43600eb01ae142305ef3e97d86", # Sep 21, 2020 (LATEST GIT COMMIT)
    remote = "https://github.com/googleapis/gax-go.git",
 )
 
 new_git_repository(
     name = "go_grpc",
     build_file = "//:third_party/go/google_grpc.BUILD",
-    commit = "1f47ba4663831f2a9c28a62a7de3ff8bc45078f0", # v1.30.0 Jun 22, 2020 (LATEST OFFICIAL VERSION)
+    commit = "a767afcb69f50a47471acd75d5a1ad062561554d", # v1.33.1 Oct 21, 2020 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/grpc/grpc-go.git",
 )
 
 new_git_repository(
     name = "go_genproto",
     build_file = "//:third_party/go/google_genproto.BUILD",
-    commit = "88e341933a542e6f21b9ad041696148fee087ab1", # Jul 22, 2020 (LATEST GIT COMMIT)
+    commit = "0ff5f38871d5307ac12d54bcbb8e2e7d6d4a8bb9", # Oct 22, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/googleapis/go-genproto.git"
 )
 
@@ -199,12 +213,12 @@ new_git_repository(
 #   * utilities/BUILD.bazel
 #   * runtime/BUILD.bazel
 #   * internal/BUILD.bazel
-# forked (31/05/2020) and deleted the files that prevent compilation
+# forked (Oct 11, 2020) and deleted the files that prevent compilation
 # @todo: find better way to compile these, without forking grpc-gateway
 new_git_repository(
     name = "go_grpc_gateway",
     build_file = "//:third_party/go/grpc_gateway.BUILD",
-    commit = "a89ee9d0f81220c542898f7077334d1fe2cc85fc", # Forked latest 07/06/2020 (v1.14.6 4c1f33f9458882be5fc1a274b109d75143f5d4a3)
+    commit = "f1ff31559317a3119a259ddac78dff609c8e7014", # Forked latest Oct 10, 2020 (v1.15.2 90c395095094cad43c533f891c71de21d7744341) (NOTE: v2 just released, breaking changes in few functions)
     remote = "https://github.com/LandRover/grpc-gateway.git",
 )
 
@@ -232,14 +246,14 @@ new_git_repository(
 new_git_repository(
     name = "go_protobuf",
     build_file = "//:third_party/go/protobuf.BUILD",
-    commit = "d04d7b157bb510b1e0c10132224b616ac0e26b17", # v1.4.2 May 14, 2020 (LATEST OFFICIAL RELEASE)
+    commit = "4846b58453b3708320bdb524f25cc5a1d9cda4d4", # v1.4.3 Oct 15, 2020 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/golang/protobuf.git",
 )
 
 new_git_repository(
     name = "go_protobuf_official",
     build_file = "//:third_party/go/protobuf-official.BUILD",
-    commit = "3f7a61f89bb6813f89d981d1870ed68da0b3c3f1", # v1.25.0 Jun 22, 2020 (LATEST OFFICIAL RELEASE)
+    commit = "3f7a61f89bb6813f89d981d1870ed68da0b3c3f1", # v1.25.0 Jun 24, 2020 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/protocolbuffers/protobuf-go.git",
 )
 
@@ -267,11 +281,11 @@ new_git_repository(
 new_git_repository(
     name = "go_cmp",
     build_file = "//:third_party/go/google_cmp.BUILD",
-    commit = "4a83f562775624b78b8b83b7492758099439ca10", # May 26, 2020 (LATEST GIT COMMIT)
+    commit = "d2fcc899bdc2d134b7c00e36137260db963e193c", # v0.5.2 Aug 18, 2020 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/google/go-cmp.git",
 )
 
-GO_GOOGLE_API_VERSION="0.29.0" # Jul 8, 2020 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_API_VERSION="0.33.0" # Oct 13, 2020 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_google_api",
     build_file = "//:third_party/go/google_api.BUILD",
@@ -279,7 +293,7 @@ http_archive(
     strip_prefix = "google-api-go-client-%s" % GO_GOOGLE_API_VERSION,
 )
 
-GO_GOOGLE_CLOUD_VERSION="0.61.0" # Jul 13, 2020 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_CLOUD_VERSION="0.70.0" # Oct 19, 2020 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_cloud",
     build_file = "//:third_party/go/google_cloud.BUILD",
@@ -290,7 +304,7 @@ http_archive(
 new_git_repository(
     name = "go_appengine",
     build_file = "//:third_party/go/golang_appengine.BUILD",
-    commit = "553959209a20f3be281c16dd5be5c740a893978f", # v1.6.6 Apr 22, 2020 (LATEST OFFICIAL RELEASE)
+    commit = "5d1c1d03f8703c2e81478d9a30e9afa2d3e4bd8a", # v1.6.7 Oct 13, 2020 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/golang/appengine.git",
 )
 
@@ -325,21 +339,21 @@ new_git_repository(
 new_git_repository(
     name = "go_mysql",
     build_file = "//:third_party/go/mysql.BUILD",
-    commit = "12508c83901b1a418e3dea51850f956f32506f4e", # May 31, 2020 (LATEST GIT COMMIT)
+    commit = "46351a8892976898935f653f5333782579a96fa5", # Aug 18, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/go-sql-driver/mysql.git",
 )
 
 new_git_repository(
     name = "go_x_net",
     build_file = "//:third_party/go/x_net.BUILD",
-    commit = "ab34263943818b32f575efc978a3d24e80b04bd7", # Jul 6, 2020 (LATEST GIT COMMIT)
+    commit = "be3efd7ff1275f85d6b01ced0bee28cdb728f4b9", # Oct 24, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/net.git"
 )
 
 new_git_repository(
     name = "go_x_oauth2",
     build_file = "//:third_party/go/x_oauth2.BUILD",
-    commit = "bf48bf16ab8d622ce64ec6ce98d2c98f916b6303", # Jan 7, 2020 (LATEST GIT COMMIT)
+    commit = "5d25da1a8d43b66f2898c444f899c7bcfd6a407e", # Sep 3, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/oauth2.git"
 )
 
@@ -353,28 +367,28 @@ new_git_repository(
 new_git_repository(
     name = "go_x_crypto",
     build_file = "//:third_party/go/x_crypto.BUILD",
-    commit = "948cd5f35899cbf089c620b3caeac9b60fa08704", # Jul 7, 2020 (LATEST GIT COMMIT)
+    commit = "9e8e0b390897c84cad53ebe9ed2d1d331a5394d9", # Oct 17, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/crypto.git"
 )
 
 new_git_repository(
     name = "go_x_text",
     build_file = "//:third_party/go/x_text.BUILD",
-    commit = "23ae387dee1f90d29a23c0e87ee0b46038fbed0e", # Jun 11, 2020 (LATEST GIT COMMIT)
+    commit = "22f1617af38ed4cd65b3b96e02bab267e560155c", # Oct 21, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/text.git"
 )
 
 new_git_repository(
     name = "go_x_sync",
     build_file = "//:third_party/go/x_sync.BUILD",
-    commit = "43a5402ce75a95522677f77c619865d66b8c57ab", # Mar 17, 2020 (LATEST GIT COMMIT)
+    commit = "67f06af15bc961c363a7260195bcd53487529a21", # Oct 20, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/sync.git"
 )
 
 new_git_repository(
     name = "go_opencensus",
     build_file = "//:third_party/go/go_opencensus.BUILD",
-    commit = "5fa069b99bc903d713add0295c7e0a55d34ae573", # v0.22.4 Jun 17, 2020 (LATEST OFFICIAL RELEASE)
+    commit = "3fb168f674736c026e623310bfccb0691e6dec8a", # v0.22.5 Oct 7, 2020 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/census-instrumentation/opencensus-go.git"
 )
 

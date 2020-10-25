@@ -30,12 +30,10 @@ external_go_package(
     exclude_srcs = [
         "triegen.go",
         "maketables.go",
-        "data9.0.0.go",
-        "data10.0.0.go",
-        "data11.0.0.go",
         "tables9.0.0.go",
         "tables10.0.0.go",
         "tables11.0.0.go",
+        "tables12.0.0.go",
     ],
 )
 
@@ -140,6 +138,7 @@ external_go_package(
         "tables9.0.0.go",
         "tables10.0.0.go",
         "tables11.0.0.go",
+        "tables12.0.0.go",
     ],
 )
 
@@ -172,5 +171,6 @@ external_go_package(
         "tables9.0.0.go",
         "tables10.0.0.go",
         "tables11.0.0.go",
+        "tables12.0.0.go",
     ],
 )

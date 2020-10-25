@@ -165,6 +165,7 @@ external_go_package(
         "@go_grpc//:metadata",
         "@go_grpc//:keepalive",
         "@go_grpc//:credentials",
+        "@go_grpc//:internal/grpcutil",
         "@go_grpc//:internal/grpcrand",
         "@go_grpc//:internal/channelz",
         "@go_grpc//:internal/syscall",
@@ -325,21 +326,13 @@ external_go_package(
 )
 
 external_go_package(
-    name = "credentials/internal",
-    base_pkg = "google.golang.org/grpc",
-    exclude_srcs = [
-        "syscallconn_appengine.go",
-    ],
-)
-
-external_go_package(
     name = "credentials",
     base_pkg = "google.golang.org/grpc",
     deps = [
         "@go_x_net//:context",
         "@go_grpc//:internal",
+        "@go_grpc//:internal/credentials",
         "@go_grpc//:attributes",
-        "@go_grpc//:credentials/internal",
         "@go_protobuf//:proto",
     ],
 )
@@ -536,6 +529,7 @@ external_go_package(
     base_pkg = "google.golang.org/grpc",
     deps = [
       "@go_grpc//:resolver",
+      "@go_grpc//:metadata",
     ]
 )
 
@@ -565,4 +559,15 @@ external_go_package(
     deps = [
       "@go_grpc//:resolver",
     ]
+)
+
+external_go_package(
+    name = "internal/credentials",
+    base_pkg = "google.golang.org/grpc",
+    deps = [
+      "@go_grpc//:grpclog",
+    ],
+    exclude_srcs = [
+        "*_appengine.go",
+    ],
 )

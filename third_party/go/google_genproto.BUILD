@@ -14,6 +14,7 @@ external_go_package(
         "@go_protobuf//:ptypes/any",
         "@go_protobuf_official//:reflect/protoreflect",
         "@go_protobuf_official//:runtime/protoimpl",
+        "@go_protobuf_official//:types/known/anypb",
     ],
 )
 
@@ -34,6 +35,7 @@ external_go_package(
         "@go_protobuf//:protoc-gen-go/descriptor",
         "@go_protobuf_official//:reflect/protoreflect",
         "@go_protobuf_official//:runtime/protoimpl",
+        "@go_protobuf_official//:types/descriptorpb",
     ],
 )
 
@@ -45,6 +47,7 @@ external_go_package(
         "@go_protobuf//:ptypes/any",
         "@go_protobuf_official//:reflect/protoreflect",
         "@go_protobuf_official//:runtime/protoimpl",
+        "@go_protobuf_official//:types/known/anypb",
     ],
 )
 
