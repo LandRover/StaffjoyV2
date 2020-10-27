@@ -31,7 +31,8 @@ class SelectableModalList extends Component {
       selections[selectedUuid] = true;
     }
 
-    this.setState({ selections });
+    this.state.selections = selections;
+
     formCallback({ [formField]: selections });
   }
 
