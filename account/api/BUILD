@@ -26,6 +26,7 @@ go_binary(
         "@go_grpc//:status",
         "@go_grpc//:codes",
         "@go_grpc//:grpclog",
+        "@go_grpc//:metadata",
         "@go_grpc_gateway//:runtime",
         "@go_genproto//:googleapis/api/annotations",
         "@go_grpc_gateway//:utilities",

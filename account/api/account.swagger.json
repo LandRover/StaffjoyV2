@@ -22,7 +22,7 @@
             }
           },
           "default": {
-            "description": "An unexpected error response",
+            "description": "An unexpected error response.",
             "schema": {
               "$ref": "#/definitions/runtimeError"
             }
@@ -58,7 +58,7 @@
             }
           },
           "default": {
-            "description": "An unexpected error response",
+            "description": "An unexpected error response.",
             "schema": {
               "$ref": "#/definitions/runtimeError"
             }
@@ -90,7 +90,7 @@
             }
           },
           "default": {
-            "description": "An unexpected error response",
+            "description": "An unexpected error response.",
             "schema": {
               "$ref": "#/definitions/runtimeError"
             }
@@ -118,7 +118,7 @@
             }
           },
           "default": {
-            "description": "An unexpected error response",
+            "description": "An unexpected error response.",
             "schema": {
               "$ref": "#/definitions/runtimeError"
             }
@@ -156,7 +156,7 @@
             }
           },
           "default": {
-            "description": "An unexpected error response",
+            "description": "An unexpected error response.",
             "schema": {
               "$ref": "#/definitions/runtimeError"
             }
@@ -198,16 +198,14 @@
           "type": "string"
         },
         "confirmed_and_active": {
-          "type": "boolean",
-          "format": "boolean"
+          "type": "boolean"
         },
         "member_since": {
           "type": "string",
           "format": "date-time"
         },
         "support": {
-          "type": "boolean",
-          "format": "boolean"
+          "type": "boolean"
         },
         "phonenumber": {
           "type": "string"
