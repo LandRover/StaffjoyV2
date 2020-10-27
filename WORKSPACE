@@ -205,7 +205,7 @@ new_git_repository(
 new_git_repository(
     name = "go_genproto",
     build_file = "//:third_party/go/google_genproto.BUILD",
-    commit = "0ff5f38871d5307ac12d54bcbb8e2e7d6d4a8bb9", # Oct 22, 2020 (LATEST GIT COMMIT)
+    commit = "d4b8fe4fd8775b77ff96358a52df6b0a9d5bf8d5", # Oct 26, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/googleapis/go-genproto.git"
 )
 
@@ -285,7 +285,7 @@ new_git_repository(
     remote = "https://github.com/google/go-cmp.git",
 )
 
-GO_GOOGLE_API_VERSION="0.33.0" # Oct 13, 2020 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_API_VERSION="0.34.0" # Oct 27, 2020 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_google_api",
     build_file = "//:third_party/go/google_api.BUILD",
@@ -346,7 +346,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_net",
     build_file = "//:third_party/go/x_net.BUILD",
-    commit = "be3efd7ff1275f85d6b01ced0bee28cdb728f4b9", # Oct 24, 2020 (LATEST GIT COMMIT)
+    commit = "146b70c837a4dc8b0c96afeee04a17816c439c9c", # Oct 26, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/net.git"
 )
 

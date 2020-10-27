@@ -1,6 +1,6 @@
 module v2.staffjoy.com
 
-go 1.14
+go 1.15
 
 require (
 	cloud.google.com/go v0.70.0
@@ -40,12 +40,12 @@ require (
 	github.com/valyala/fasttemplate v1.2.1 // indirect
 	go.opencensus.io v0.22.5
 	golang.org/x/crypto v0.0.0-20201016220609-9e8e0b390897
-	golang.org/x/net v0.0.0-20201024042810-be3efd7ff127
+	golang.org/x/net v0.0.0-20201026091529-146b70c837a4
 	golang.org/x/text v0.3.3
 	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e
-	google.golang.org/api v0.33.0
+	google.golang.org/api v0.34.0
 	google.golang.org/appengine v1.6.7
-	google.golang.org/genproto v0.0.0-20201022181438-0ff5f38871d5
+	google.golang.org/genproto v0.0.0-20201026171402-d4b8fe4fd877
 	google.golang.org/grpc v1.33.1
 	google.golang.org/protobuf v1.25.0
 	gopkg.in/intercom/intercom-go.v2 v2.0.0-20200217143803-6ffc0627261a

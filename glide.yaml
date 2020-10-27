@@ -47,7 +47,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/genproto
-    version: 0ff5f38871d5307ac12d54bcbb8e2e7d6d4a8bb9
+    version: d4b8fe4fd8775b77ff96358a52df6b0a9d5bf8d5
     repo: https://github.com/googleapis/go-genproto
     subpackages:
       - "..."
@@ -85,7 +85,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/api
-    version: ^0.33.0
+    version: ^0.34.0
     repo: https://github.com/google/google-api-go-client
     subpackages:
       - "..."
@@ -106,7 +106,7 @@ import:
   - package: github.com/go-sql-driver/mysql
     version: 46351a8892976898935f653f5333782579a96fa5
   - package: golang.org/x/net
-    version: be3efd7ff1275f85d6b01ced0bee28cdb728f4b9
+    version: 146b70c837a4dc8b0c96afeee04a17816c439c9c
     repo: https://github.com/golang/net
     subpackages:
       - html
