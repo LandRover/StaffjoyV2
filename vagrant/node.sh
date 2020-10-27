@@ -1,7 +1,9 @@
 #!/bin/bash
 
+NODE_VERSION="12";
+
 if ! command -V node >/dev/null 2>&1; then
-    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+    curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | sudo -E bash -
     sudo apt install -q -y  nodejs
 
     # Alias
