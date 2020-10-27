@@ -79,8 +79,6 @@ Run `make dev`. Code will boot and run at [staffjoy-v2.local](http://www.staffjo
 
 Changes will trigger an automatic rebuild and redeployment. (Check deployment progress at [kubernetes-dashboard url](http://kubernetes.staffjoy-v2.local/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/#/overview?namespace=development)). End the dev server with `control + c` (and it will automatically shut off the VM).
 
-**Known Bug on OSX Sierra**: If Vagrant cannot find download the box, run `sudo rm /opt/vagrant/embedded/bin/curl`. ([Bug tracking link](https://github.com/Varying-Vagrant-Vagrants/VVV/issues/354))
-
 If you run into issues with stuck deployments in development - then run `make dev-k8s-fix` then re-run `make dev`.
 
 ### Accessing the environment
