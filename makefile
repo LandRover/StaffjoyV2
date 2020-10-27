@@ -19,7 +19,6 @@ clean:
 	rm -rf vendor/
 
 purge: clean
-	rm -rf ~/Library/Application\ Support/Unison/
 	git clean -fdx .
 
 build-fmt:
@@ -41,9 +40,6 @@ jenkins-promote: promote
 #
 # dev commands
 #
-
-dev-sync:
-	bash vagrant/unison.sh
 
 dev-k8s-fix:
 	bash vagrant/dev-k8s-fix.sh

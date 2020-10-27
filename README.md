@@ -71,34 +71,7 @@ git clone git@github.com:LandRover/StaffjoyV2.git $GOPATH/src/v2.staffjoy.com/
 - Vagrant Plugins:
   - Vagrant host manager: `vagrant plugin install vagrant-hostmanager`
   - Vagrant resize disk: `vagrant plugin install vagrant-disksize`
-- Unison (see below)
 - [modd](https://github.com/cortesi/modd) (either from Go source or binary available [here])
-
-### Installing Unison
-
-Unison syncs files between the host and the VM in a way that preserves simlinks.
-
-Unfortunately, installing it on OSX is a bit of a pain because the version and the compiler must be the same as the one in Vagrant!
-
-First, install OCaml version 4.05 - you may need to say "yes" to some command prompts:
-
-```
-wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sh -s /usr/local/bin 4.05.0
-```
-
-Check that `ocaml -version` is 4.05.0. If it is not, try removing `/usr/local/bin/ocaml` and running `opam switch 4.05.0`.
-
-Then, compile unison with this version of ocaml. You may be prompted for your password.
-
-```
-export UNION_VERSION="2.51.2"
-cd /tmp
-curl -O https://www.seas.upenn.edu/~bcpierce/unison/download/releases/unison-${UNION_VERSION}/unison-${UNION_VERSION}.tar.gz
-rm -rf unison-${UNION_VERSION} && mkdir unison-${UNION_VERSION} && tar -xvzf unison-${UNION_VERSION}.tar.gz -C unison-${UNION_VERSION}
-cd unison-${UNION_VERSION}/src
-make UISTYLE=text
-sudo cp unison /usr/local/bin
-```
 
 ### Running the Environment
 
