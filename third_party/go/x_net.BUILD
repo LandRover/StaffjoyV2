@@ -83,6 +83,7 @@ external_go_package(
         "tables9.0.0.go",
         "tables10.0.0.go",
         "tables11.0.0.go",
+        "tables12.0.0.go",
         "idna9.0.0.go",
     ],
 )

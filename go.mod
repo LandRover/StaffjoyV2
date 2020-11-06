@@ -3,8 +3,8 @@ module v2.staffjoy.com
 go 1.15
 
 require (
-	cloud.google.com/go v0.70.0
-	cloud.google.com/go/bigquery v1.12.0 // indirect
+	cloud.google.com/go v0.71.0
+	cloud.google.com/go/bigquery v1.13.0 // indirect
 	github.com/GeertJohan/go.rice v1.0.1-0.20191102153406-d954009f7238
 	github.com/akavel/rsrc v0.9.0 // indirect
 	github.com/certifi/gocertifi v0.0.0-20200922220541-2c3bb06c6054 // indirect
@@ -30,6 +30,7 @@ require (
 	github.com/josharian/intern v1.0.0
 	github.com/mailgun/mailgun-go/v4 v4.3.0
 	github.com/pkg/errors v0.9.1
+	github.com/rs/cors v1.7.0
 	github.com/russross/blackfriday/v2 v2.0.1
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/sirupsen/logrus v1.7.0
@@ -40,12 +41,12 @@ require (
 	github.com/valyala/fasttemplate v1.2.1 // indirect
 	go.opencensus.io v0.22.5
 	golang.org/x/crypto v0.0.0-20201016220609-9e8e0b390897
-	golang.org/x/net v0.0.0-20201026091529-146b70c837a4
-	golang.org/x/text v0.3.3
+	golang.org/x/net v0.0.0-20201031054903-ff519b6c9102
+	golang.org/x/text v0.3.4
 	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e
-	google.golang.org/api v0.34.0
+	google.golang.org/api v0.35.0
 	google.golang.org/appengine v1.6.7
-	google.golang.org/genproto v0.0.0-20201026171402-d4b8fe4fd877
+	google.golang.org/genproto v0.0.0-20201106154455-f9bfe239b0ba
 	google.golang.org/grpc v1.33.1
 	google.golang.org/protobuf v1.25.0
 	gopkg.in/intercom/intercom-go.v2 v2.0.0-20200217143803-6ffc0627261a

@@ -205,7 +205,7 @@ new_git_repository(
 new_git_repository(
     name = "go_genproto",
     build_file = "//:third_party/go/google_genproto.BUILD",
-    commit = "d4b8fe4fd8775b77ff96358a52df6b0a9d5bf8d5", # Oct 26, 2020 (LATEST GIT COMMIT)
+    commit = "f9bfe239b0ba6485a453f250d0502096ce832df2", # Nov 06, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/googleapis/go-genproto.git"
 )
 
@@ -285,7 +285,7 @@ new_git_repository(
     remote = "https://github.com/google/go-cmp.git",
 )
 
-GO_GOOGLE_API_VERSION="0.34.0" # Oct 27, 2020 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_API_VERSION="0.35.0" # Nov 06, 2020 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_google_api",
     build_file = "//:third_party/go/google_api.BUILD",
@@ -293,7 +293,7 @@ http_archive(
     strip_prefix = "google-api-go-client-%s" % GO_GOOGLE_API_VERSION,
 )
 
-GO_GOOGLE_CLOUD_VERSION="0.70.0" # Oct 19, 2020 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_CLOUD_VERSION="0.71.0" # Nov 02, 2020 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_cloud",
     build_file = "//:third_party/go/google_cloud.BUILD",
@@ -346,7 +346,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_net",
     build_file = "//:third_party/go/x_net.BUILD",
-    commit = "146b70c837a4dc8b0c96afeee04a17816c439c9c", # Oct 26, 2020 (LATEST GIT COMMIT)
+    commit = "ff519b6c91021e6316e1df005bc19f266994ddda", # Oct 31, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/net.git"
 )
 
@@ -374,7 +374,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_text",
     build_file = "//:third_party/go/x_text.BUILD",
-    commit = "22f1617af38ed4cd65b3b96e02bab267e560155c", # Oct 21, 2020 (LATEST GIT COMMIT)
+    commit = "22f1617af38ed4cd65b3b96e02bab267e560155c", # v0.3.4 Oct 27, 2020 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/golang/text.git"
 )
 
