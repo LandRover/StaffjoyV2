@@ -42,7 +42,7 @@ import:
   - package: github.com/getsentry/sentry-go
     version: ^0.7.0
   - package: google.golang.org/grpc
-    version: ^1.33.1
+    version: ^1.33.2
     repo: https://github.com/grpc/grpc-go
     subpackages:
       - "..."
