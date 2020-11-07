@@ -108,6 +108,8 @@ external_go_package(
         "@go_protobuf//:proto",
         "@go_protobuf//:ptypes/duration",
         "@go_protobuf//:ptypes/timestamp",
+        "@go_protobuf_official//:runtime/protoimpl",
+        "@go_protobuf_official//:reflect/protoreflect",
     ],
 )
 
