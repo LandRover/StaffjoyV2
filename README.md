@@ -144,7 +144,7 @@ options = "metadata,umask=22,fmask=11"
 Enable Create symbolic links:
 ```
 - Open Local Security Policy (gpedit.msc)
-- Navigate to: Local Policies -> User Rights Assignment
+- Navigate to: Computer Configuration\Windows Settings\Security Settings\Local Policies\User Rights Assignment
 - Open 'Create Symbolic Links' (SeCreateSymbolicLinkPrivilege)
 - Add your username (or a group you are assigned to)
 - Restart PC
