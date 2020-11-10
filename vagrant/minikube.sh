@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # VERSIONS
-KUBECTL_CLI_VERSION=v1.19.3
+KUBECTL_CLI_VERSION=v1.18.10
 MINIKUBE_VERSION=v1.14.2
 
 # ARGS
@@ -10,7 +10,7 @@ for arg in "$@"
 do
     case $arg in
         -f|--force)
-        FORCE_UPDATE=true
+            FORCE_UPDATE=true
             shift # Remove --force from processing
         ;;
     esac
@@ -35,8 +35,9 @@ if ! pgrep -c registry >/dev/null 2>&1 ; then
 fi
 
 
-$FORCE_UPDATE && [ -f /usr/local/bin/kubectl ] && sudo rm -rf /usr/local/bin/kubectl && echo "[x] Force update flag used. Removing existing version of kubectl";
+$FORCE_UPDATE && [ -f /usr/local/bin/minikube ] && minikube delete && echo "[x] Force update flag used. Uninstalling minikube and all files";
 $FORCE_UPDATE && [ -f /usr/local/bin/minikube ] && sudo minikube delete && sudo rm -rf /usr/local/bin/minikube && echo "[x] Force update flag used. Removing existing version of minikube";
+$FORCE_UPDATE && [ -f /usr/local/bin/kubectl ] && sudo rm -rf /usr/local/bin/kubectl && echo "[x] Force update flag used. Removing existing version of kubectl";
 
 
 # download and install kubectl ...
