@@ -8,6 +8,9 @@ export DEBIAN_FRONTEND=noninteractive
 export GOPATH=${HOME}/golang
 export STAFFJOY=${GOPATH}/src/v2.staffjoy.com
 
+# Detect and replace to fastest APT mirror
+sudo /bin/bash ${STAFFJOY}/vagrant/ubuntu_mirror_replace_to_fastest.sh
+
 ## apt-fast
 sudo add-apt-repository ppa:apt-fast/stable < /dev/null
 echo debconf apt-fast/maxdownloads string 16 | sudo debconf-set-selections
@@ -33,6 +36,7 @@ sudo chown -R ${USER}:${USER} ${GOPATH}
 /bin/bash ${STAFFJOY}/vagrant/nginx.sh
 /bin/bash ${STAFFJOY}/vagrant/mysql.sh
 
+sudo apt upgrade -y -q
 sudo apt autoremove -y -q && sudo apt clean
 
 # Alias
