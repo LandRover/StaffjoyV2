@@ -8,14 +8,14 @@ export DEBIAN_FRONTEND=noninteractive
 export GOPATH=${HOME}/golang
 export STAFFJOY=${GOPATH}/src/v2.staffjoy.com
 
-# Detect and replace to fastest APT mirror
-sudo /bin/bash ${STAFFJOY}/vagrant/ubuntu_mirror_replace_to_fastest.sh
-
 ## apt-fast
 sudo add-apt-repository ppa:apt-fast/stable < /dev/null
 echo debconf apt-fast/maxdownloads string 16 | sudo debconf-set-selections
 echo debconf apt-fast/dlflag boolean true | sudo debconf-set-selections
 echo debconf apt-fast/aptmanager string apt | sudo debconf-set-selections
+
+# Detect and replace to fastest APT mirror
+sudo /bin/bash ${STAFFJOY}/vagrant/ubuntu_mirror_replace_to_fastest.sh
 
 sudo apt update -y -q
 
