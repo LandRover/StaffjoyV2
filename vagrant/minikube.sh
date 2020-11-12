@@ -35,7 +35,7 @@ if ! pgrep -c registry >/dev/null 2>&1 ; then
 fi
 
 
-$FORCE_UPDATE && [ -f /usr/local/bin/minikube ] && minikube delete && echo "[x] Force update flag used. Uninstalling minikube and all files";
+$FORCE_UPDATE && [ -f /usr/local/bin/minikube ] && minikube delete --all --purge && echo "[x] Force update flag used. Uninstalling minikube and all files";
 $FORCE_UPDATE && [ -f /usr/local/bin/minikube ] && sudo minikube delete && sudo rm -rf /usr/local/bin/minikube && echo "[x] Force update flag used. Removing existing version of minikube";
 $FORCE_UPDATE && [ -f /usr/local/bin/kubectl ] && sudo rm -rf /usr/local/bin/kubectl && echo "[x] Force update flag used. Removing existing version of kubectl";
 
