@@ -290,7 +290,7 @@ http_archive(
     strip_prefix = "google-api-go-client-%s" % GO_GOOGLE_API_VERSION,
 )
 
-GO_GOOGLE_CLOUD_VERSION="0.71.0" # Nov 02, 2020 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_CLOUD_VERSION="0.72.0" # Nov 11, 2020 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_cloud",
     build_file = "//:third_party/go/google_cloud.BUILD",
