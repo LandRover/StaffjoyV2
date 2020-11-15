@@ -315,7 +315,7 @@ new_git_repository(
 new_git_repository(
     name = "go_blackfriday",
     build_file = "//:third_party/go/russross_blackfriday.BUILD",
-    commit = "d3b5b032dc8e8927d31a5071b56e14c89f045135", # v2.0.1 Spt 20, 2018 (LATEST OFFICIAL RELEASE)
+    commit = "4c9bf9512682b995722660a4196c0013228e2049", # v2.1.0 Oct 27, 2020 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/russross/blackfriday.git",
 )
 
