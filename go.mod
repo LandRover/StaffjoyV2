@@ -40,13 +40,13 @@ require (
 	github.com/urfave/negroni v1.0.0
 	github.com/valyala/fasttemplate v1.2.1 // indirect
 	go.opencensus.io v0.22.5
-	golang.org/x/crypto v0.0.0-20201016220609-9e8e0b390897
-	golang.org/x/net v0.0.0-20201031054903-ff519b6c9102
+	golang.org/x/crypto v0.0.0-20201112155050-0c6587e931a9
+	golang.org/x/net v0.0.0-20201110031124-69a78807bb2b
 	golang.org/x/text v0.3.4
 	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e
 	google.golang.org/api v0.35.0
 	google.golang.org/appengine v1.6.7
-	google.golang.org/genproto v0.0.0-20201109203340-2640f1f9cdfb
+	google.golang.org/genproto v0.0.0-20201113130914-ce600e9a6f9e
 	google.golang.org/grpc v1.33.2
 	google.golang.org/protobuf v1.25.0
 	gopkg.in/intercom/intercom-go.v2 v2.0.0-20200217143803-6ffc0627261a
