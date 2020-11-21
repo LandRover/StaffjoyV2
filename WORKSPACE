@@ -181,7 +181,7 @@ new_git_repository(
 new_git_repository(
     name = "go_sentry",
     build_file = "//:third_party/go/go_sentry.BUILD",
-    commit = "e729abef9aacbc3f9e93624880d6946e3ec32a94", # v0.7.0 Jul 21, 2020 (LATEST OFFICIAL VERSION)
+    commit = "17e0464cb9a4cf93aa7e9770dca7ab6591133531", # v0.8.0 Nov 16, 2020 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/getsentry/sentry-go.git",
 )
 
@@ -202,7 +202,7 @@ new_git_repository(
 new_git_repository(
     name = "go_genproto",
     build_file = "//:third_party/go/google_genproto.BUILD",
-    commit = "ce600e9a6f9ee4611c6ea38f44d1cf9e095c0c52", # Nov 13, 2020 (LATEST GIT COMMIT)
+    commit = "9b1e624d6bc4dcfbba5360975f35b6f988fa9a94", # Nov 19, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/googleapis/go-genproto.git"
 )
 
@@ -364,7 +364,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_crypto",
     build_file = "//:third_party/go/x_crypto.BUILD",
-    commit = "0c6587e931a935f573efb6988c8470cd8c0a58de", # Nov 12, 2020 (LATEST GIT COMMIT)
+    commit = "c1f2f97bffc9c53fc40a1a28a5b460094c0050d9", # Nov 17, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/crypto.git"
 )
 

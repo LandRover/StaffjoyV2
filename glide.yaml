@@ -40,14 +40,14 @@ import:
   - package: github.com/getsentry/raven-go
     version: 5c24d5110e0e198d9ae16f1f3465366085001d92
   - package: github.com/getsentry/sentry-go
-    version: ^0.7.0
+    version: ^0.8.0
   - package: google.golang.org/grpc
     version: ^1.33.2
     repo: https://github.com/grpc/grpc-go
     subpackages:
       - "..."
   - package: google.golang.org/genproto
-    version: ce600e9a6f9ee4611c6ea38f44d1cf9e095c0c52
+    version: 9b1e624d6bc4dcfbba5360975f35b6f988fa9a94
     repo: https://github.com/googleapis/go-genproto
     subpackages:
       - "..."
@@ -120,7 +120,7 @@ import:
     subpackages:
       - rate
   - package: golang.org/x/crypto
-    version: 0c6587e931a935f573efb6988c8470cd8c0a58de
+    version: c1f2f97bffc9c53fc40a1a28a5b460094c0050d9
     repo: https://github.com/golang/crypto
     subpackages:
       - bcrypt
