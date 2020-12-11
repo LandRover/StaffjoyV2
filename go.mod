@@ -3,17 +3,17 @@ module v2.staffjoy.com
 go 1.15
 
 require (
-	cloud.google.com/go v0.72.0
-	cloud.google.com/go/bigquery v1.13.0 // indirect
+	cloud.google.com/go v0.74.0
+	cloud.google.com/go/bigquery v1.14.0 // indirect
 	github.com/GeertJohan/go.rice v1.0.1-0.20191102153406-d954009f7238
-	github.com/akavel/rsrc v0.9.0 // indirect
+	github.com/akavel/rsrc v0.10.1 // indirect
 	github.com/certifi/gocertifi v0.0.0-20200922220541-2c3bb06c6054 // indirect
 	github.com/daaku/go.zipexe v1.0.1
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/dpapathanasiou/go-recaptcha v0.0.0-20190121160230-be5090b17804
 	github.com/fatih/structs v1.1.0
 	github.com/getsentry/raven-go v0.1.2-0.20190619092523-5c24d5110e0e
-	github.com/getsentry/sentry-go v0.8.0
+	github.com/getsentry/sentry-go v0.9.0
 	github.com/go-gorp/gorp v2.2.0+incompatible
 	github.com/go-gorp/gorp/v3 v3.0.2
 	github.com/go-sql-driver/mysql v1.5.1-0.20200531100419-12508c83901b
@@ -40,14 +40,14 @@ require (
 	github.com/urfave/negroni v1.0.0
 	github.com/valyala/fasttemplate v1.2.1 // indirect
 	go.opencensus.io v0.22.5
-	golang.org/x/crypto v0.0.0-20201117144127-c1f2f97bffc9
-	golang.org/x/net v0.0.0-20201110031124-69a78807bb2b
+	golang.org/x/crypto v0.0.0-20201208171446-5f87f3452ae9
+	golang.org/x/net v0.0.0-20201209123823-ac852fbbde11
 	golang.org/x/text v0.3.4
-	golang.org/x/time v0.0.0-20200630173020-3af7569d3a1e
-	google.golang.org/api v0.35.0
+	golang.org/x/time v0.0.0-20201208040808-7e3f01d25324
+	google.golang.org/api v0.36.0
 	google.golang.org/appengine v1.6.7
-	google.golang.org/genproto v0.0.0-20201119123407-9b1e624d6bc4
-	google.golang.org/grpc v1.33.2
+	google.golang.org/genproto v0.0.0-20201210142538-e3217bee35cc
+	google.golang.org/grpc v1.34.0
 	google.golang.org/protobuf v1.25.0
 	gopkg.in/intercom/intercom-go.v2 v2.0.0-20200217143803-6ffc0627261a
 )
