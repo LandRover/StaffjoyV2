@@ -2,7 +2,7 @@
 
 # This release version should correspond to the version listed here:
 # https://github.com/bazelbuild/bazel/releases
-BAZEL_VERSION=3.7.1
+BAZEL_VERSION=4.0.0
 
 
 if ! command -V add-apt-repository >/dev/null 2>&1; then
