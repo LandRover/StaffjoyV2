@@ -73,7 +73,7 @@ import:
   - package: github.com/certifi/gocertifi
     version: deb3ae2ef2610fde3330947281941c562861188b
   - package: cloud.google.com/go
-    version: v0.74.0
+    version: v0.79.0
     repo: https://github.com/GoogleCloudPlatform/google-cloud-go
     subpackages:
       - "..."
@@ -85,7 +85,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/api
-    version: ^0.36.0
+    version: ^0.41.0
     repo: https://github.com/google/google-api-go-client
     subpackages:
       - "..."

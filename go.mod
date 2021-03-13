@@ -3,10 +3,10 @@ module v2.staffjoy.com
 go 1.15
 
 require (
-	cloud.google.com/go v0.74.0
+	cloud.google.com/go v0.79.0
 	cloud.google.com/go/bigquery v1.14.0 // indirect
-	github.com/GeertJohan/go.rice v1.0.1-0.20191102153406-d954009f7238
-	github.com/akavel/rsrc v0.10.1 // indirect
+	github.com/GeertJohan/go.rice v1.0.2
+	github.com/akavel/rsrc v0.10.2 // indirect
 	github.com/certifi/gocertifi v0.0.0-20200922220541-2c3bb06c6054 // indirect
 	github.com/daaku/go.zipexe v1.0.1
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
@@ -17,7 +17,7 @@ require (
 	github.com/go-gorp/gorp v2.2.0+incompatible
 	github.com/go-gorp/gorp/v3 v3.0.2
 	github.com/go-sql-driver/mysql v1.5.1-0.20200531100419-12508c83901b
-	github.com/gogo/protobuf v1.3.1
+	github.com/gogo/protobuf v1.3.2
 	github.com/golang/protobuf v1.4.3
 	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/googleapis/gax-go v1.0.4-0.20200325113634-be11bb253a76
@@ -44,7 +44,7 @@ require (
 	golang.org/x/net v0.0.0-20201209123823-ac852fbbde11
 	golang.org/x/text v0.3.4
 	golang.org/x/time v0.0.0-20201208040808-7e3f01d25324
-	google.golang.org/api v0.36.0
+	google.golang.org/api v0.41.0
 	google.golang.org/appengine v1.6.7
 	google.golang.org/genproto v0.0.0-20201210142538-e3217bee35cc
 	google.golang.org/grpc v1.34.0
