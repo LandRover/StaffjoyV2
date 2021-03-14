@@ -32,22 +32,22 @@ import:
   - package: github.com/modern-go/concurrent
     version: ^1.0.3
   - package: github.com/sirupsen/logrus
-    version: ^1.7.0
+    version: ^1.8.1
   - package: github.com/stretchr/testify
-    version: ^1.6.1
+    version: ^1.7.0
   - package: github.com/urfave/negroni
     version: 1.0.0
   - package: github.com/getsentry/raven-go
     version: 5c24d5110e0e198d9ae16f1f3465366085001d92
   - package: github.com/getsentry/sentry-go
-    version: ^0.9.0
+    version: ^0.10.0
   - package: google.golang.org/grpc
-    version: ^1.34.0
+    version: ^1.36.0
     repo: https://github.com/grpc/grpc-go
     subpackages:
       - "..."
   - package: google.golang.org/genproto
-    version: e3217bee35cc05224a14d950c85cb05b61109ded
+    version: fc591d9ea70f504c4e58af1adde64ae45b12fa07
     repo: https://github.com/googleapis/go-genproto
     subpackages:
       - "..."
@@ -61,7 +61,7 @@ import:
     subpackages:
       - "..."
   - package: github.com/gogo/protobuf
-    version: ^1.3.1
+    version: ^1.3.2
     subpackages:
       - "..."
   - package: github.com/golang/glog
@@ -104,9 +104,9 @@ import:
   - package: github.com/fatih/structs
     version: ^1.1.0
   - package: github.com/go-sql-driver/mysql
-    version: 46351a8892976898935f653f5333782579a96fa5
+    version: fe2230a8b20cee1e48f7b75a9b363def5f950ba0
   - package: golang.org/x/net
-    version: ac852fbbde11df194bfd5004603c7c8e117901f2
+    version: e18ecbb051101a46fc263334b127c89bc7bff7ea
     repo: https://github.com/golang/net
     subpackages:
       - html
@@ -115,7 +115,7 @@ import:
     version: 5d25da1a8d43b66f2898c444f899c7bcfd6a407e
     repo: https://github.com/golang/oauth2
   - package: golang.org/x/time
-    version: 7e3f01d253248a0a5694eb5b7376dfea18b6397e
+    version: f8bda1e9f3badef837c98cbaf4f7c335de90f266
     repo: https://github.com/golang/time
     subpackages:
       - rate
@@ -125,13 +125,13 @@ import:
     subpackages:
       - bcrypt
   - package: golang.org/x/text
-    version: ^0.3.4
+    version: ^0.3.5
     repo: https://github.com/golang/text
   - package: golang.org/x/sync
-    version: 67f06af15bc961c363a7260195bcd53487529a21
+    version: 036812b2e83c0ddf193dd5a34e034151da389d09
     repo: https://github.com/golang/sync
   - package: go.opencensus.io
-    version: ^0.22.5
+    version: ^0.23.0
     repo: https://github.com/census-instrumentation/opencensus-go
   - package: github.com/hashicorp/golang-lru
     version: eb529947af531eb529020ba979a7a887338904d1
