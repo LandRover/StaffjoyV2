@@ -26,7 +26,7 @@ require (
 	github.com/gorilla/csrf v1.7.0
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/sessions v1.2.1 // indirect
-	github.com/grpc-ecosystem/grpc-gateway v1.16.0
+	github.com/grpc-ecosystem/grpc-gateway v1.15.2
 	github.com/hashicorp/golang-lru v0.5.4
 	github.com/josharian/intern v1.0.0
 	github.com/mailgun/mailgun-go/v4 v4.4.1
