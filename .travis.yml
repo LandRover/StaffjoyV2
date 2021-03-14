@@ -24,7 +24,7 @@ install:
   - go get -u golang.org/x/lint/golint
   - go get -u golang.org/x/tools/cmd/cover
   - go get -u golang.org/x/tools/cmd/goimports
-  - go get github.com/bazelbuild/buildifier/buildifier
+  - go get github.com/bazelbuild/buildtools/buildifier
   - make build
 script:
   - make test
