@@ -14,21 +14,22 @@ require (
 	github.com/fatih/structs v1.1.0
 	github.com/getsentry/raven-go v0.1.2-0.20190619092523-5c24d5110e0e
 	github.com/getsentry/sentry-go v0.10.0
+	github.com/go-chi/chi v4.0.0+incompatible // indirect
 	github.com/go-gorp/gorp v2.2.0+incompatible
 	github.com/go-gorp/gorp/v3 v3.0.2
-	github.com/go-sql-driver/mysql v1.5.1-0.20210202043019-fe2230a8b20c
+	github.com/go-sql-driver/mysql v1.5.1-0.20210302105602-33267428f77e
 	github.com/gogo/protobuf v1.3.2
 	github.com/golang/protobuf v1.4.3
-	github.com/google/go-querystring v1.0.0 // indirect
-	github.com/googleapis/gax-go v1.0.4-0.20200325113634-be11bb253a76
+	github.com/google/go-querystring v1.0.1-0.20210310224124-1f4a1f9d6e29
+	github.com/googleapis/gax-go v1.0.4-0.20210222202407-fbaf9882acf3
 	github.com/gorilla/context v1.1.2-0.20190627024605-8559d4a6b87e
 	github.com/gorilla/csrf v1.7.0
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/sessions v1.2.1 // indirect
-	github.com/grpc-ecosystem/grpc-gateway v1.15.2
-	github.com/hashicorp/golang-lru v0.5.5-0.20200511160909-eb529947af53
+	github.com/grpc-ecosystem/grpc-gateway v1.16.0
+	github.com/hashicorp/golang-lru v0.5.4
 	github.com/josharian/intern v1.0.0
-	github.com/mailgun/mailgun-go/v4 v4.3.0
+	github.com/mailgun/mailgun-go/v4 v4.4.1
 	github.com/pkg/errors v0.9.1
 	github.com/rs/cors v1.7.0
 	github.com/russross/blackfriday/v2 v2.1.0
@@ -36,11 +37,11 @@ require (
 	github.com/sirupsen/logrus v1.8.1
 	github.com/stretchr/testify v1.7.0
 	github.com/ttacon/builder v0.0.0-20170518171403-c099f663e1c2 // indirect
-	github.com/ttacon/libphonenumber v1.1.0
+	github.com/ttacon/libphonenumber v1.2.0
 	github.com/urfave/negroni v1.0.0
 	github.com/valyala/fasttemplate v1.2.1 // indirect
 	go.opencensus.io v0.23.0
-	golang.org/x/crypto v0.0.0-20201208171446-5f87f3452ae9
+	golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83
 	golang.org/x/net v0.0.0-20210226172049-e18ecbb05110
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 	golang.org/x/text v0.3.5

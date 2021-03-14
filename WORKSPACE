@@ -69,7 +69,7 @@ new_git_repository(
 new_git_repository(
     name = "go_libphonenumber",
     build_file = "//:third_party/go/ttacon_libphonenumber.BUILD",
-    commit = "a54d6839d954633947ca08f00020d7eac2bf27cd", ## Jan 16, 2019 (LATEST GIT COMMIT)
+    commit = "9280002ff469715a0a90f0242c64a062dcc1cdd1", ## Mar 10, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/ttacon/libphonenumber.git",
 )
 
@@ -125,7 +125,7 @@ new_git_repository(
 new_git_repository(
     name = "go_mailgun",
     build_file = "//:third_party/go/go_mailgun.BUILD",
-    commit = "4549b26cb022921a04c55f8793e60b420587746d", # v4.3.0 Jun 24, 2020 (LATEST OFFICIAL VERSION)
+    commit = "afe6db08188523a62bf2001eb9f408f222ee3e68", # v4.4.1 Feb 23, 2021 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/mailgun/mailgun-go.git",
 )
 
@@ -188,7 +188,7 @@ new_git_repository(
 new_git_repository(
    name = "googleapis_gax",
    build_file = "//:third_party/go/googleapis_gax.BUILD",
-   commit = "1da42d02221b8e43600eb01ae142305ef3e97d86", # Sep 21, 2020 (LATEST GIT COMMIT)
+   commit = "fbaf9882acf3297573f3a7cb832e54c7d8f40635", # Feb 22, 2020 (LATEST GIT COMMIT)
    remote = "https://github.com/googleapis/gax-go.git",
 )
 
@@ -271,14 +271,14 @@ new_git_repository(
 new_git_repository(
     name = "go_querystring",
     build_file = "//:third_party/go/google_querystring.BUILD",
-    commit = "c8c88dbee036db4e4808d1f2ec8c2e15e11c3f80", # Mar 18, 2019 (LATEST GIT COMMIT)
+    commit = "1f4a1f9d6e29d314b2513651973fca5c4d4498f1", # Mar 11, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/google/go-querystring.git",
 )
 
 new_git_repository(
     name = "go_cmp",
     build_file = "//:third_party/go/google_cmp.BUILD",
-    commit = "d2fcc899bdc2d134b7c00e36137260db963e193c", # v0.5.2 Aug 18, 2020 (LATEST OFFICIAL RELEASE)
+    commit = "8fa37b4dd109f12e42b131e485268768f18bcbf8", # v0.5.5 Mar 3, 2021 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/google/go-cmp.git",
 )
 
@@ -336,7 +336,7 @@ new_git_repository(
 new_git_repository(
     name = "go_mysql",
     build_file = "//:third_party/go/mysql.BUILD",
-    commit = "fe2230a8b20cee1e48f7b75a9b363def5f950ba0", # Fab 02, 2021 (LATEST GIT COMMIT)
+    commit = "33267428f77eb99023f936a2b9b330416053d67a", # Mar 2, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/go-sql-driver/mysql.git",
 )
 
@@ -364,7 +364,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_crypto",
     build_file = "//:third_party/go/x_crypto.BUILD",
-    commit = "5f87f3452ae96c4850ab9af7783f2517b643061b", # Dec 8, 2020 (LATEST GIT COMMIT)
+    commit = "5ea612d1eb830b38bc4e914e37f55311eb58adce", # Feb 20, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/crypto.git"
 )
 
@@ -392,7 +392,7 @@ new_git_repository(
 new_git_repository(
     name = "golang_lru",
     build_file = "//:third_party/go/golang_lru.BUILD",
-    commit = "eb529947af531eb529020ba979a7a887338904d1", # May 11, 2020 (LATEST GIT COMMIT)
+    commit = "14eae340515388ca95aa8e7b86f0de668e981f54", # v0.5.4 Jan 16, 2021 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/hashicorp/golang-lru.git"
 )
 
