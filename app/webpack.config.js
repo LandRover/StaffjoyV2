@@ -1,10 +1,12 @@
 // for creating cache-safe files
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var WebappWebpackPlugin = require('webapp-webpack-plugin');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const WebappWebpackPlugin = require('webapp-webpack-plugin');
 
 // for cleanup of other builds
-var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+
+const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = (env, options) => {
     const isDevMode = options.mode === 'development';
@@ -16,8 +18,8 @@ module.exports = (env, options) => {
         output: {
             publicPath: '/',
             path: path.resolve(__dirname, 'dist'),
-            filename: '[name]-[hash:16].bundle.js',
-            chunkFilename: '[name]-[hash:16].chunk.js'
+            filename: '[name]-[contenthash:16].bundle.js',
+            chunkFilename: '[name]-[contenthash:16].chunk.js'
         },
         module: {
             rules: [
@@ -80,7 +82,7 @@ module.exports = (env, options) => {
                                 return 'assets/[path][name].[ext]';
                             }
 
-                            return 'assets/[name].[hash].[ext]';
+                            return 'assets/[name].[contenthash].[ext]';
                         },
                     },
                   },

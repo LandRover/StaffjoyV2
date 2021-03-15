@@ -58,7 +58,7 @@ module.exports = (env, options) => {
                                 return 'assets/[path][name].[ext]';
                             }
 
-                            return 'assets/[name].[hash].[ext]';
+                            return 'assets/[name].[contenthash].[ext]';
                         },
                     },
                   },

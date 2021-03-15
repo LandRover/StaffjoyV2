@@ -35,7 +35,7 @@ module.exports = async ({ config, mode }) => {
         loader: 'file-loader',
         options: {
             name(file) {
-                return 'assets/[name].[hash].[ext]';
+                return 'assets/[name].[contenthash].[ext]';
             },
         },
       },
