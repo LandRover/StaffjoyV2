@@ -12,9 +12,8 @@ external_go_package(
     deps = [
       "@go_protobuf_official//:internal/strs",
       "@go_protobuf_official//:internal/flags",
+      "@go_protobuf_official//:internal/order",
       "@go_protobuf_official//:internal/pragma",
-      "@go_protobuf_official//:internal/fieldsort",
-      "@go_protobuf_official//:internal/mapsort",
       "@go_protobuf_official//:internal/errors",
       "@go_protobuf_official//:internal/genid",
       "@go_protobuf_official//:internal/encoding/messageset",
@@ -44,8 +43,10 @@ external_go_package(
      name = "reflect/protoregistry",
      base_pkg = "google.golang.org/protobuf",
      deps = [
-        "@go_protobuf_official//:reflect/protoreflect",
+        "@go_protobuf_official//:internal/flags",
         "@go_protobuf_official//:internal/errors",
+        "@go_protobuf_official//:internal/encoding/messageset",
+        "@go_protobuf_official//:reflect/protoreflect",
      ],
 )
 
@@ -84,6 +85,7 @@ external_go_package(
        "@go_protobuf_official//:internal/genid",
        "@go_protobuf_official//:encoding/protowire",
        "@go_protobuf_official//:internal/encoding/defval",
+       "@go_protobuf_official//:internal/encoding/messageset",
      ],
 )
 
@@ -95,9 +97,11 @@ external_go_package(
        "@go_protobuf_official//:internal/set",
        "@go_protobuf_official//:internal/strs",
        "@go_protobuf_official//:internal/flags",
+       "@go_protobuf_official//:internal/order",
        "@go_protobuf_official//:internal/pragma",
        "@go_protobuf_official//:internal/encoding/json",
        "@go_protobuf_official//:internal/encoding/messageset",
+       "@go_protobuf_official//:internal/filedesc",
        "@go_protobuf_official//:internal/errors",
        "@go_protobuf_official//:internal/genid",
        "@go_protobuf_official//:reflect/protoregistry",
@@ -162,22 +166,6 @@ external_go_package(
 )
 
 external_go_package(
-     name = "internal/fieldsort",
-     base_pkg = "google.golang.org/protobuf",
-     deps = [
-       "@go_protobuf_official//:reflect/protoreflect",
-     ],
-)
-
-external_go_package(
-     name = "internal/mapsort",
-     base_pkg = "google.golang.org/protobuf",
-     deps = [
-       "@go_protobuf_official//:reflect/protoreflect",
-     ],
-)
-
-external_go_package(
      name = "internal/descopts",
      base_pkg = "google.golang.org/protobuf",
      deps = [
@@ -222,7 +210,6 @@ external_go_package(
      deps = [
        "@go_protobuf_official//:internal/errors",
        "@go_protobuf_official//:encoding/protowire",
-       "@go_protobuf_official//:reflect/protoregistry",
        "@go_protobuf_official//:reflect/protoreflect",
      ],
 )
@@ -260,6 +247,14 @@ external_go_package(
 )
 
 external_go_package(
+     name = "internal/order",
+     base_pkg = "google.golang.org/protobuf",
+     deps = [
+       "@go_protobuf_official//:reflect/protoreflect",
+     ],
+)
+
+external_go_package(
      name = "internal/filetype",
      base_pkg = "google.golang.org/protobuf",
      deps = [
@@ -278,10 +273,11 @@ external_go_package(
        "@go_protobuf_official//:proto",
        "@go_protobuf_official//:internal/strs",
        "@go_protobuf_official//:internal/flags",
+       "@go_protobuf_official//:internal/order",
        "@go_protobuf_official//:internal/pragma",
+       "@go_protobuf_official//:internal/detrand",
        "@go_protobuf_official//:internal/errors",
        "@go_protobuf_official//:internal/genid",
-       "@go_protobuf_official//:internal/fieldsort",
        "@go_protobuf_official//:internal/filedesc",
        "@go_protobuf_official//:internal/descopts",
        "@go_protobuf_official//:internal/encoding/messageset",
@@ -314,8 +310,8 @@ external_go_package(
        "@go_protobuf_official//:internal/set",
        "@go_protobuf_official//:internal/strs",
        "@go_protobuf_official//:internal/flags",
+       "@go_protobuf_official//:internal/order",
        "@go_protobuf_official//:internal/pragma",
-       "@go_protobuf_official//:internal/mapsort",
        "@go_protobuf_official//:internal/errors",
        "@go_protobuf_official//:internal/genid",
        "@go_protobuf_official//:internal/encoding/text",
