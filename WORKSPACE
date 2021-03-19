@@ -202,7 +202,7 @@ new_git_repository(
 new_git_repository(
     name = "go_genproto",
     build_file = "//:third_party/go/google_genproto.BUILD",
-    commit = "fc591d9ea70f504c4e58af1adde64ae45b12fa07", # Mar 12, 2021 (LATEST GIT COMMIT)
+    commit = "90b20ab0086099cc5494ad3de6521c731dfd2683", # Mar 12, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/googleapis/go-genproto.git"
 )
 
@@ -282,7 +282,7 @@ new_git_repository(
     remote = "https://github.com/google/go-cmp.git",
 )
 
-GO_GOOGLE_API_VERSION="0.41.0" # Mar 09, 2021 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_API_VERSION="0.42.0" # Mar 15, 2021 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_google_api",
     build_file = "//:third_party/go/google_api.BUILD",
@@ -343,7 +343,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_net",
     build_file = "//:third_party/go/x_net.BUILD",
-    commit = "e18ecbb051101a46fc263334b127c89bc7bff7ea", # Feb 26, 2021 (LATEST GIT COMMIT)
+    commit = "d523dce5a7f4b994f7ed0531dbe44cd8fd803e26", # Mar 16, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/net.git"
 )
 
@@ -364,7 +364,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_crypto",
     build_file = "//:third_party/go/x_crypto.BUILD",
-    commit = "5ea612d1eb830b38bc4e914e37f55311eb58adce", # Feb 20, 2021 (LATEST GIT COMMIT)
+    commit = "513c2a44f67042677f472fb65720351c7332c3b8", # Mar 17, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/crypto.git"
 )
 

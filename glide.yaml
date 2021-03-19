@@ -47,7 +47,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/genproto
-    version: fc591d9ea70f504c4e58af1adde64ae45b12fa07
+    version: 90b20ab0086099cc5494ad3de6521c731dfd2683
     repo: https://github.com/googleapis/go-genproto
     subpackages:
       - "..."
@@ -85,7 +85,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/api
-    version: ^0.41.0
+    version: ^0.42.0
     repo: https://github.com/google/google-api-go-client
     subpackages:
       - "..."
@@ -106,7 +106,7 @@ import:
   - package: github.com/go-sql-driver/mysql
     version: 33267428f77eb99023f936a2b9b330416053d67a
   - package: golang.org/x/net
-    version: e18ecbb051101a46fc263334b127c89bc7bff7ea
+    version: d523dce5a7f4b994f7ed0531dbe44cd8fd803e26
     repo: https://github.com/golang/net
     subpackages:
       - html
@@ -120,7 +120,7 @@ import:
     subpackages:
       - rate
   - package: golang.org/x/crypto
-    version: 5ea612d1eb830b38bc4e914e37f55311eb58adce
+    version: 513c2a44f67042677f472fb65720351c7332c3b8
     repo: https://github.com/golang/crypto
     subpackages:
       - bcrypt

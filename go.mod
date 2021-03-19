@@ -14,12 +14,13 @@ require (
 	github.com/fatih/structs v1.1.0
 	github.com/getsentry/raven-go v0.1.2-0.20190619092523-5c24d5110e0e
 	github.com/getsentry/sentry-go v0.10.0
-	github.com/go-chi/chi v4.0.0+incompatible // indirect
+	github.com/go-chi/chi v4.1.2+incompatible // indirect
 	github.com/go-gorp/gorp v2.2.0+incompatible
 	github.com/go-gorp/gorp/v3 v3.0.2
 	github.com/go-sql-driver/mysql v1.5.1-0.20210302105602-33267428f77e
 	github.com/gogo/protobuf v1.3.2
 	github.com/golang/protobuf v1.4.3
+	google.golang.org/protobuf v1.25.0
 	github.com/google/go-querystring v1.0.1-0.20210310224124-1f4a1f9d6e29
 	github.com/googleapis/gax-go v1.0.4-0.20210222202407-fbaf9882acf3
 	github.com/gorilla/context v1.1.2-0.20190627024605-8559d4a6b87e
@@ -41,15 +42,14 @@ require (
 	github.com/urfave/negroni v1.0.0
 	github.com/valyala/fasttemplate v1.2.1 // indirect
 	go.opencensus.io v0.23.0
-	golang.org/x/crypto v0.0.0-20210220033148-5ea612d1eb83
-	golang.org/x/net v0.0.0-20210226172049-e18ecbb05110
+	golang.org/x/crypto v0.0.0-20210317152858-513c2a44f670
+	golang.org/x/net v0.0.0-20210316092652-d523dce5a7f4
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 	golang.org/x/text v0.3.5
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba
-	google.golang.org/api v0.41.0
+	google.golang.org/api v0.42.0
 	google.golang.org/appengine v1.6.7
-	google.golang.org/genproto v0.0.0-20210312152112-fc591d9ea70f
+	google.golang.org/genproto v0.0.0-20210318145829-90b20ab00860
 	google.golang.org/grpc v1.36.0
-	google.golang.org/protobuf v1.25.0
 	gopkg.in/intercom/intercom-go.v2 v2.0.0-20200217143803-6ffc0627261a
 )
