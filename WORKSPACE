@@ -243,7 +243,7 @@ new_git_repository(
 new_git_repository(
     name = "go_protobuf",
     build_file = "//:third_party/go/protobuf.BUILD",
-    commit = "4846b58453b3708320bdb524f25cc5a1d9cda4d4", # v1.4.3 Oct 15, 2020 (LATEST OFFICIAL RELEASE)
+    commit = "a36a1a1c346d5cb6951b9440755adb530334f910", # v1.5.1 Mar 18, 2021 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/golang/protobuf.git",
 )
 

@@ -67,7 +67,7 @@ import:
   - package: github.com/golang/glog
     version: 23def4e6c14b4da8ac2ed8007337bc5eb5007998
   - package: github.com/golang/protobuf
-    version: v1.4.3
+    version: v1.5.1
     subpackages:
       - "..."
   - package: github.com/certifi/gocertifi

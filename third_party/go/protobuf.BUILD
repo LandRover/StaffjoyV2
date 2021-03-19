@@ -13,6 +13,7 @@ external_go_package(
       "@go_protobuf_official//:proto",
       "@go_protobuf_official//:encoding/prototext",
       "@go_protobuf_official//:encoding/protowire",
+      "@go_protobuf_official//:reflect/protodesc",
       "@go_protobuf_official//:reflect/protoregistry",
       "@go_protobuf_official//:reflect/protoreflect",
       "@go_protobuf_official//:runtime/protoiface",
