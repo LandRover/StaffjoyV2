@@ -125,7 +125,7 @@ import:
     subpackages:
       - bcrypt
   - package: golang.org/x/text
-    version: ^0.3.5
+    version: ^0.3.6
     repo: https://github.com/golang/text
   - package: golang.org/x/sync
     version: 036812b2e83c0ddf193dd5a34e034151da389d09

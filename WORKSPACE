@@ -371,7 +371,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_text",
     build_file = "//:third_party/go/x_text.BUILD",
-    commit = "75a595aef632b07c6eeaaa805adb6f0f66e4130e", # v0.3.5 Dec 8, 2020 (LATEST OFFICIAL RELEASE)
+    commit = "e328d63cff14134669501e0e154e4f141c784322", # v0.3.6 Mar 30, 2021 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/golang/text.git"
 )
 
