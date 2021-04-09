@@ -69,7 +69,7 @@ new_git_repository(
 new_git_repository(
     name = "go_libphonenumber",
     build_file = "//:third_party/go/ttacon_libphonenumber.BUILD",
-    commit = "9280002ff469715a0a90f0242c64a062dcc1cdd1", ## Mar 10, 2021 (LATEST GIT COMMIT)
+    commit = "759f71f653b20ae26a4ded88f69ed862055f0468", ## Mar 29, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/ttacon/libphonenumber.git",
 )
 
@@ -202,7 +202,7 @@ new_git_repository(
 new_git_repository(
     name = "go_genproto",
     build_file = "//:third_party/go/google_genproto.BUILD",
-    commit = "90b20ab0086099cc5494ad3de6521c731dfd2683", # Mar 12, 2021 (LATEST GIT COMMIT)
+    commit = "e86de6bf7a463b2639b486fecb289b704c859c98", # Apr 06, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/googleapis/go-genproto.git"
 )
 
@@ -243,7 +243,7 @@ new_git_repository(
 new_git_repository(
     name = "go_protobuf",
     build_file = "//:third_party/go/protobuf.BUILD",
-    commit = "a36a1a1c346d5cb6951b9440755adb530334f910", # v1.5.1 Mar 18, 2021 (LATEST OFFICIAL RELEASE)
+    commit = "ae97035608a719c7a1c1c41bed0ae0744bdb0c6f", # v1.5.2 Mar 29, 2021 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/golang/protobuf.git",
 )
 
@@ -336,14 +336,14 @@ new_git_repository(
 new_git_repository(
     name = "go_mysql",
     build_file = "//:third_party/go/mysql.BUILD",
-    commit = "33267428f77eb99023f936a2b9b330416053d67a", # Mar 2, 2021 (LATEST GIT COMMIT)
+    commit = "bcc459a906419e2890a50fc2c99ea6dd927a88f2", # v1.6.0 Apr 1, 2021 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/go-sql-driver/mysql.git",
 )
 
 new_git_repository(
     name = "go_x_net",
     build_file = "//:third_party/go/x_net.BUILD",
-    commit = "d523dce5a7f4b994f7ed0531dbe44cd8fd803e26", # Mar 16, 2021 (LATEST GIT COMMIT)
+    commit = "a5a99cb37ef4b68617775ab669177656090ab396", # Apr 5, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/net.git"
 )
 
@@ -364,7 +364,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_crypto",
     build_file = "//:third_party/go/x_crypto.BUILD",
-    commit = "513c2a44f67042677f472fb65720351c7332c3b8", # Mar 17, 2021 (LATEST GIT COMMIT)
+    commit = "0c34fe9e7dc2486962ef9867e3edb3503537209f", # Mar 22, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/crypto.git"
 )
 

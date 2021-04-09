@@ -3,7 +3,7 @@ import:
   - package: github.com/dpapathanasiou/go-recaptcha
     version: be5090b17804c90a577d345b6d67acbf01dc90ed
   - package: github.com/ttacon/libphonenumber
-    version: ^1.2.0
+    version: ^1.2.1
   - package: github.com/ttacon/builder
     version: c099f663e1c235176c175644792c5eb282017ad7
   - package: github.com/GeertJohan/go.rice
@@ -47,7 +47,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/genproto
-    version: 90b20ab0086099cc5494ad3de6521c731dfd2683
+    version: e86de6bf7a463b2639b486fecb289b704c859c98
     repo: https://github.com/googleapis/go-genproto
     subpackages:
       - "..."
@@ -67,7 +67,7 @@ import:
   - package: github.com/golang/glog
     version: 23def4e6c14b4da8ac2ed8007337bc5eb5007998
   - package: github.com/golang/protobuf
-    version: v1.5.1
+    version: v1.5.2
     subpackages:
       - "..."
   - package: github.com/certifi/gocertifi
@@ -81,7 +81,7 @@ import:
     version: 6ffc0627261af5a8ccfa6c107fe2ff39e3e2ed6b
     repo: https://github.com/intercom/intercom-go
   - package: github.com/google/go-querystring
-    version: 1f4a1f9d6e29d314b2513651973fca5c4d4498f1
+    version: ^1.1.0
     subpackages:
       - "..."
   - package: google.golang.org/api
@@ -104,9 +104,9 @@ import:
   - package: github.com/fatih/structs
     version: ^1.1.0
   - package: github.com/go-sql-driver/mysql
-    version: 33267428f77eb99023f936a2b9b330416053d67a
+    version: ^1.6.0
   - package: golang.org/x/net
-    version: d523dce5a7f4b994f7ed0531dbe44cd8fd803e26
+    version: a5a99cb37ef4b68617775ab669177656090ab396
     repo: https://github.com/golang/net
     subpackages:
       - html
@@ -120,7 +120,7 @@ import:
     subpackages:
       - rate
   - package: golang.org/x/crypto
-    version: 513c2a44f67042677f472fb65720351c7332c3b8
+    version: 0c34fe9e7dc2486962ef9867e3edb3503537209f
     repo: https://github.com/golang/crypto
     subpackages:
       - bcrypt

@@ -17,10 +17,10 @@ require (
 	github.com/go-chi/chi v4.1.2+incompatible // indirect
 	github.com/go-gorp/gorp v2.2.0+incompatible
 	github.com/go-gorp/gorp/v3 v3.0.2
-	github.com/go-sql-driver/mysql v1.5.1-0.20210302105602-33267428f77e
+	github.com/go-sql-driver/mysql v1.6.0
 	github.com/gogo/protobuf v1.3.2
-	github.com/golang/protobuf v1.5.1
-	github.com/google/go-querystring v1.0.1-0.20210310224124-1f4a1f9d6e29
+	github.com/golang/protobuf v1.5.2
+	github.com/google/go-querystring v1.1.0
 	github.com/googleapis/gax-go v1.0.4-0.20210222202407-fbaf9882acf3
 	github.com/gorilla/context v1.1.2-0.20190627024605-8559d4a6b87e
 	github.com/gorilla/csrf v1.7.0
@@ -37,19 +37,19 @@ require (
 	github.com/sirupsen/logrus v1.8.1
 	github.com/stretchr/testify v1.7.0
 	github.com/ttacon/builder v0.0.0-20170518171403-c099f663e1c2 // indirect
-	github.com/ttacon/libphonenumber v1.2.0
+	github.com/ttacon/libphonenumber v1.2.1
 	github.com/urfave/negroni v1.0.0
 	github.com/valyala/fasttemplate v1.2.1 // indirect
 	go.opencensus.io v0.23.0
-	golang.org/x/crypto v0.0.0-20210317152858-513c2a44f670
-	golang.org/x/net v0.0.0-20210316092652-d523dce5a7f4
+	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2
+	golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 	golang.org/x/text v0.3.6
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba
 	google.golang.org/api v0.42.0
 	google.golang.org/appengine v1.6.7
-	google.golang.org/genproto v0.0.0-20210318145829-90b20ab00860
-	google.golang.org/grpc v1.36.0
+	google.golang.org/genproto v0.0.0-20210406143921-e86de6bf7a46
+	google.golang.org/grpc v1.36.1
 	google.golang.org/protobuf v1.26.0
 	gopkg.in/intercom/intercom-go.v2 v2.0.0-20200217143803-6ffc0627261a
 )
