@@ -18,6 +18,7 @@ go_library(
         "@go_grpc//:status",
         "@go_protobuf//:proto",
         "@go_protobuf//:ptypes/empty",
+        "@go_protobuf_official//:types/known/emptypb",
         "@go_x_net//:context",
     ],
 )

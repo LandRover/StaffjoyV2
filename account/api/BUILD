@@ -37,6 +37,8 @@ go_binary(
         "@go_protobuf//:descriptor",
         "@go_protobuf_official//:reflect/protoreflect",
         "@go_protobuf_official//:runtime/protoimpl",
+        "@go_protobuf_official//:types/known/emptypb",
+        "@go_protobuf_official//:types/known/timestamppb",
         "@go_x_net//:context",
     ],
 )

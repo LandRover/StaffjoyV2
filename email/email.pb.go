@@ -7,10 +7,10 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	math "math"
 )
 
@@ -123,7 +123,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type EmailServiceClient interface {
-	Send(ctx context.Context, in *EmailRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	Send(ctx context.Context, in *EmailRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type emailServiceClient struct {
@@ -134,8 +134,8 @@ func NewEmailServiceClient(cc *grpc.ClientConn) EmailServiceClient {
 	return &emailServiceClient{cc}
 }
 
-func (c *emailServiceClient) Send(ctx context.Context, in *EmailRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *emailServiceClient) Send(ctx context.Context, in *EmailRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/staffjoy.email.EmailService/Send", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -145,14 +145,14 @@ func (c *emailServiceClient) Send(ctx context.Context, in *EmailRequest, opts ..
 
 // EmailServiceServer is the server API for EmailService service.
 type EmailServiceServer interface {
-	Send(context.Context, *EmailRequest) (*empty.Empty, error)
+	Send(context.Context, *EmailRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedEmailServiceServer can be embedded to have forward compatible implementations.
 type UnimplementedEmailServiceServer struct {
 }
 
-func (*UnimplementedEmailServiceServer) Send(ctx context.Context, req *EmailRequest) (*empty.Empty, error) {
+func (*UnimplementedEmailServiceServer) Send(ctx context.Context, req *EmailRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Send not implemented")
 }
 

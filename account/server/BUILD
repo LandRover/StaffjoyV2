@@ -34,6 +34,7 @@ go_binary(
         "@go_mysql//:mysql",
         "@go_protobuf//:ptypes",
         "@go_protobuf//:ptypes/empty",
+        "@go_protobuf_official//:types/known/emptypb",
         "@go_x_net//:context",
     ],
 )

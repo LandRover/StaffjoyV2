@@ -25,6 +25,8 @@ go_library(
         "@go_protobuf//:proto",
         "@go_protobuf//:ptypes/empty",
         "@go_protobuf//:ptypes/timestamp",
+        "@go_protobuf_official//:types/known/emptypb",
+        "@go_protobuf_official//:types/known/timestamppb",
         "@go_x_net//:context",
     ],
 )

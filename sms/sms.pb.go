@@ -7,10 +7,10 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	math "math"
 )
 
@@ -105,7 +105,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type SmsServiceClient interface {
-	QueueSend(ctx context.Context, in *SmsRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	QueueSend(ctx context.Context, in *SmsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type smsServiceClient struct {
@@ -116,8 +116,8 @@ func NewSmsServiceClient(cc *grpc.ClientConn) SmsServiceClient {
 	return &smsServiceClient{cc}
 }
 
-func (c *smsServiceClient) QueueSend(ctx context.Context, in *SmsRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *smsServiceClient) QueueSend(ctx context.Context, in *SmsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/staffjoy.sms.SmsService/QueueSend", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -127,14 +127,14 @@ func (c *smsServiceClient) QueueSend(ctx context.Context, in *SmsRequest, opts .
 
 // SmsServiceServer is the server API for SmsService service.
 type SmsServiceServer interface {
-	QueueSend(context.Context, *SmsRequest) (*empty.Empty, error)
+	QueueSend(context.Context, *SmsRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedSmsServiceServer can be embedded to have forward compatible implementations.
 type UnimplementedSmsServiceServer struct {
 }
 
-func (*UnimplementedSmsServiceServer) QueueSend(ctx context.Context, req *SmsRequest) (*empty.Empty, error) {
+func (*UnimplementedSmsServiceServer) QueueSend(ctx context.Context, req *SmsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method QueueSend not implemented")
 }
 

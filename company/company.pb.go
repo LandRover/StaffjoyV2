@@ -9,12 +9,12 @@ import (
 	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
 	github_com_gogo_protobuf_types "github.com/gogo/protobuf/types"
-	empty "github.com/golang/protobuf/ptypes/empty"
-	_ "github.com/golang/protobuf/ptypes/timestamp"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	_ "google.golang.org/protobuf/types/known/timestamppb"
 	io "io"
 	math "math"
 	math_bits "math/bits"
@@ -2907,7 +2907,7 @@ type CompanyServiceClient interface {
 	ListWorkerShifts(ctx context.Context, in *WorkerShiftListRequest, opts ...grpc.CallOption) (*ShiftList, error)
 	BulkPublishShifts(ctx context.Context, in *BulkPublishShiftsRequest, opts ...grpc.CallOption) (*ShiftList, error)
 	GetShift(ctx context.Context, in *GetShiftRequest, opts ...grpc.CallOption) (*Shift, error)
-	DeleteShift(ctx context.Context, in *GetShiftRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteShift(ctx context.Context, in *GetShiftRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	UpdateShift(ctx context.Context, in *Shift, opts ...grpc.CallOption) (*Shift, error)
 	// Directory
 	CreateDirectory(ctx context.Context, in *NewDirectoryEntry, opts ...grpc.CallOption) (*DirectoryEntry, error)
@@ -2919,11 +2919,11 @@ type CompanyServiceClient interface {
 	ListAdmins(ctx context.Context, in *AdminListRequest, opts ...grpc.CallOption) (*Admins, error)
 	CreateAdmin(ctx context.Context, in *DirectoryEntryRequest, opts ...grpc.CallOption) (*DirectoryEntry, error)
 	GetAdmin(ctx context.Context, in *DirectoryEntryRequest, opts ...grpc.CallOption) (*DirectoryEntry, error)
-	DeleteAdmin(ctx context.Context, in *DirectoryEntryRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteAdmin(ctx context.Context, in *DirectoryEntryRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	// Workers
 	ListWorkers(ctx context.Context, in *WorkerListRequest, opts ...grpc.CallOption) (*Workers, error)
 	GetWorker(ctx context.Context, in *Worker, opts ...grpc.CallOption) (*DirectoryEntry, error)
-	DeleteWorker(ctx context.Context, in *Worker, opts ...grpc.CallOption) (*empty.Empty, error)
+	DeleteWorker(ctx context.Context, in *Worker, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	CreateWorker(ctx context.Context, in *Worker, opts ...grpc.CallOption) (*DirectoryEntry, error)
 	// timezones
 	ListTimeZones(ctx context.Context, in *TimeZoneListRequest, opts ...grpc.CallOption) (*TimeZoneList, error)
@@ -3103,8 +3103,8 @@ func (c *companyServiceClient) GetShift(ctx context.Context, in *GetShiftRequest
 	return out, nil
 }
 
-func (c *companyServiceClient) DeleteShift(ctx context.Context, in *GetShiftRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *companyServiceClient) DeleteShift(ctx context.Context, in *GetShiftRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/staffjoy.company.CompanyService/DeleteShift", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3193,8 +3193,8 @@ func (c *companyServiceClient) GetAdmin(ctx context.Context, in *DirectoryEntryR
 	return out, nil
 }
 
-func (c *companyServiceClient) DeleteAdmin(ctx context.Context, in *DirectoryEntryRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *companyServiceClient) DeleteAdmin(ctx context.Context, in *DirectoryEntryRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/staffjoy.company.CompanyService/DeleteAdmin", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3220,8 +3220,8 @@ func (c *companyServiceClient) GetWorker(ctx context.Context, in *Worker, opts .
 	return out, nil
 }
 
-func (c *companyServiceClient) DeleteWorker(ctx context.Context, in *Worker, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *companyServiceClient) DeleteWorker(ctx context.Context, in *Worker, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/staffjoy.company.CompanyService/DeleteWorker", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -3295,7 +3295,7 @@ type CompanyServiceServer interface {
 	ListWorkerShifts(context.Context, *WorkerShiftListRequest) (*ShiftList, error)
 	BulkPublishShifts(context.Context, *BulkPublishShiftsRequest) (*ShiftList, error)
 	GetShift(context.Context, *GetShiftRequest) (*Shift, error)
-	DeleteShift(context.Context, *GetShiftRequest) (*empty.Empty, error)
+	DeleteShift(context.Context, *GetShiftRequest) (*emptypb.Empty, error)
 	UpdateShift(context.Context, *Shift) (*Shift, error)
 	// Directory
 	CreateDirectory(context.Context, *NewDirectoryEntry) (*DirectoryEntry, error)
@@ -3307,11 +3307,11 @@ type CompanyServiceServer interface {
 	ListAdmins(context.Context, *AdminListRequest) (*Admins, error)
 	CreateAdmin(context.Context, *DirectoryEntryRequest) (*DirectoryEntry, error)
 	GetAdmin(context.Context, *DirectoryEntryRequest) (*DirectoryEntry, error)
-	DeleteAdmin(context.Context, *DirectoryEntryRequest) (*empty.Empty, error)
+	DeleteAdmin(context.Context, *DirectoryEntryRequest) (*emptypb.Empty, error)
 	// Workers
 	ListWorkers(context.Context, *WorkerListRequest) (*Workers, error)
 	GetWorker(context.Context, *Worker) (*DirectoryEntry, error)
-	DeleteWorker(context.Context, *Worker) (*empty.Empty, error)
+	DeleteWorker(context.Context, *Worker) (*emptypb.Empty, error)
 	CreateWorker(context.Context, *Worker) (*DirectoryEntry, error)
 	// timezones
 	ListTimeZones(context.Context, *TimeZoneListRequest) (*TimeZoneList, error)
@@ -3379,7 +3379,7 @@ func (*UnimplementedCompanyServiceServer) BulkPublishShifts(ctx context.Context,
 func (*UnimplementedCompanyServiceServer) GetShift(ctx context.Context, req *GetShiftRequest) (*Shift, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetShift not implemented")
 }
-func (*UnimplementedCompanyServiceServer) DeleteShift(ctx context.Context, req *GetShiftRequest) (*empty.Empty, error) {
+func (*UnimplementedCompanyServiceServer) DeleteShift(ctx context.Context, req *GetShiftRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteShift not implemented")
 }
 func (*UnimplementedCompanyServiceServer) UpdateShift(ctx context.Context, req *Shift) (*Shift, error) {
@@ -3409,7 +3409,7 @@ func (*UnimplementedCompanyServiceServer) CreateAdmin(ctx context.Context, req *
 func (*UnimplementedCompanyServiceServer) GetAdmin(ctx context.Context, req *DirectoryEntryRequest) (*DirectoryEntry, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAdmin not implemented")
 }
-func (*UnimplementedCompanyServiceServer) DeleteAdmin(ctx context.Context, req *DirectoryEntryRequest) (*empty.Empty, error) {
+func (*UnimplementedCompanyServiceServer) DeleteAdmin(ctx context.Context, req *DirectoryEntryRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteAdmin not implemented")
 }
 func (*UnimplementedCompanyServiceServer) ListWorkers(ctx context.Context, req *WorkerListRequest) (*Workers, error) {
@@ -3418,7 +3418,7 @@ func (*UnimplementedCompanyServiceServer) ListWorkers(ctx context.Context, req *
 func (*UnimplementedCompanyServiceServer) GetWorker(ctx context.Context, req *Worker) (*DirectoryEntry, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetWorker not implemented")
 }
-func (*UnimplementedCompanyServiceServer) DeleteWorker(ctx context.Context, req *Worker) (*empty.Empty, error) {
+func (*UnimplementedCompanyServiceServer) DeleteWorker(ctx context.Context, req *Worker) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteWorker not implemented")
 }
 func (*UnimplementedCompanyServiceServer) CreateWorker(ctx context.Context, req *Worker) (*DirectoryEntry, error) {
@@ -7402,10 +7402,7 @@ func (m *Company) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -7527,10 +7524,7 @@ func (m *CompanyList) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -7618,10 +7612,7 @@ func (m *CompanyListRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -7767,10 +7758,7 @@ func (m *CreateCompanyRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -7852,10 +7840,7 @@ func (m *GetCompanyRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -8117,10 +8102,7 @@ func (m *Team) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -8204,10 +8186,7 @@ func (m *TeamList) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -8289,10 +8268,7 @@ func (m *TeamListRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -8502,10 +8478,7 @@ func (m *CreateTeamRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -8619,10 +8592,7 @@ func (m *GetTeamRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -8852,10 +8822,7 @@ func (m *Job) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -8939,10 +8906,7 @@ func (m *JobList) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -9056,10 +9020,7 @@ func (m *JobListRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -9237,10 +9198,7 @@ func (m *CreateJobRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -9386,10 +9344,7 @@ func (m *GetJobRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -9685,10 +9640,7 @@ func (m *Shift) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -9838,10 +9790,7 @@ func (m *ShiftList) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -10083,10 +10032,7 @@ func (m *ShiftListRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -10298,10 +10244,7 @@ func (m *WorkerShiftListRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -10565,10 +10508,7 @@ func (m *BulkPublishShiftsRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -10832,10 +10772,7 @@ func (m *CreateShiftRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -10981,10 +10918,7 @@ func (m *GetShiftRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -11278,10 +11212,7 @@ func (m *DirectoryEntry) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -11491,10 +11422,7 @@ func (m *NewDirectoryEntry) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -11608,10 +11536,7 @@ func (m *DirectoryEntryRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -11733,10 +11658,7 @@ func (m *DirectoryList) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -11856,10 +11778,7 @@ func (m *DirectoryListRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -11941,10 +11860,7 @@ func (m *AdminListRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -12060,10 +11976,7 @@ func (m *Admins) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -12145,10 +12058,7 @@ func (m *AdminOfRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -12264,10 +12174,7 @@ func (m *AdminOfList) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -12381,10 +12288,7 @@ func (m *WorkerListRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -12532,10 +12436,7 @@ func (m *Workers) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -12681,10 +12582,7 @@ func (m *Worker) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -12766,10 +12664,7 @@ func (m *WorkerOfRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -12885,10 +12780,7 @@ func (m *WorkerOfList) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -13025,10 +12917,7 @@ func (m *Association) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -13150,10 +13039,7 @@ func (m *AssociationList) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -13235,10 +13121,7 @@ func (m *TimeZoneList) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -13288,10 +13171,7 @@ func (m *TimeZoneListRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -13392,10 +13272,7 @@ func (m *ScheduledPerWeek) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -13541,7 +13418,7 @@ func (m *GrowthGraphResponse) Unmarshal(dAtA []byte) error {
 					if err != nil {
 						return err
 					}
-					if skippy < 0 {
+					if (skippy < 0) || (iNdEx+skippy) < 0 {
 						return ErrInvalidLengthCompany
 					}
 					if (iNdEx + skippy) > postIndex {
@@ -13577,10 +13454,7 @@ func (m *GrowthGraphResponse) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {
@@ -13630,10 +13504,7 @@ func (m *GrowthGraphRequest) Unmarshal(dAtA []byte) error {
 			if err != nil {
 				return err
 			}
-			if skippy < 0 {
-				return ErrInvalidLengthCompany
-			}
-			if (iNdEx + skippy) < 0 {
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
 				return ErrInvalidLengthCompany
 			}
 			if (iNdEx + skippy) > l {

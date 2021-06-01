@@ -7,10 +7,10 @@ import (
 	context "context"
 	fmt "fmt"
 	proto "github.com/gogo/protobuf/proto"
-	empty "github.com/golang/protobuf/ptypes/empty"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	math "math"
 	company "v2.staffjoy.com/company"
 )
@@ -363,12 +363,12 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type BotServiceClient interface {
-	OnboardWorker(ctx context.Context, in *OnboardWorkerRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	AlertNewShift(ctx context.Context, in *AlertNewShiftRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	AlertNewShifts(ctx context.Context, in *AlertNewShiftsRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	AlertRemovedShift(ctx context.Context, in *AlertRemovedShiftRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	AlertRemovedShifts(ctx context.Context, in *AlertRemovedShiftsRequest, opts ...grpc.CallOption) (*empty.Empty, error)
-	AlertChangedShift(ctx context.Context, in *AlertChangedShiftRequest, opts ...grpc.CallOption) (*empty.Empty, error)
+	OnboardWorker(ctx context.Context, in *OnboardWorkerRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	AlertNewShift(ctx context.Context, in *AlertNewShiftRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	AlertNewShifts(ctx context.Context, in *AlertNewShiftsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	AlertRemovedShift(ctx context.Context, in *AlertRemovedShiftRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	AlertRemovedShifts(ctx context.Context, in *AlertRemovedShiftsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
+	AlertChangedShift(ctx context.Context, in *AlertChangedShiftRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type botServiceClient struct {
@@ -379,8 +379,8 @@ func NewBotServiceClient(cc *grpc.ClientConn) BotServiceClient {
 	return &botServiceClient{cc}
 }
 
-func (c *botServiceClient) OnboardWorker(ctx context.Context, in *OnboardWorkerRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *botServiceClient) OnboardWorker(ctx context.Context, in *OnboardWorkerRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/staffjoy.bot.BotService/OnboardWorker", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -388,8 +388,8 @@ func (c *botServiceClient) OnboardWorker(ctx context.Context, in *OnboardWorkerR
 	return out, nil
 }
 
-func (c *botServiceClient) AlertNewShift(ctx context.Context, in *AlertNewShiftRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *botServiceClient) AlertNewShift(ctx context.Context, in *AlertNewShiftRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/staffjoy.bot.BotService/AlertNewShift", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -397,8 +397,8 @@ func (c *botServiceClient) AlertNewShift(ctx context.Context, in *AlertNewShiftR
 	return out, nil
 }
 
-func (c *botServiceClient) AlertNewShifts(ctx context.Context, in *AlertNewShiftsRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *botServiceClient) AlertNewShifts(ctx context.Context, in *AlertNewShiftsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/staffjoy.bot.BotService/AlertNewShifts", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -406,8 +406,8 @@ func (c *botServiceClient) AlertNewShifts(ctx context.Context, in *AlertNewShift
 	return out, nil
 }
 
-func (c *botServiceClient) AlertRemovedShift(ctx context.Context, in *AlertRemovedShiftRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *botServiceClient) AlertRemovedShift(ctx context.Context, in *AlertRemovedShiftRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/staffjoy.bot.BotService/AlertRemovedShift", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -415,8 +415,8 @@ func (c *botServiceClient) AlertRemovedShift(ctx context.Context, in *AlertRemov
 	return out, nil
 }
 
-func (c *botServiceClient) AlertRemovedShifts(ctx context.Context, in *AlertRemovedShiftsRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *botServiceClient) AlertRemovedShifts(ctx context.Context, in *AlertRemovedShiftsRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/staffjoy.bot.BotService/AlertRemovedShifts", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -424,8 +424,8 @@ func (c *botServiceClient) AlertRemovedShifts(ctx context.Context, in *AlertRemo
 	return out, nil
 }
 
-func (c *botServiceClient) AlertChangedShift(ctx context.Context, in *AlertChangedShiftRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
-	out := new(empty.Empty)
+func (c *botServiceClient) AlertChangedShift(ctx context.Context, in *AlertChangedShiftRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
+	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, "/staffjoy.bot.BotService/AlertChangedShift", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -435,34 +435,34 @@ func (c *botServiceClient) AlertChangedShift(ctx context.Context, in *AlertChang
 
 // BotServiceServer is the server API for BotService service.
 type BotServiceServer interface {
-	OnboardWorker(context.Context, *OnboardWorkerRequest) (*empty.Empty, error)
-	AlertNewShift(context.Context, *AlertNewShiftRequest) (*empty.Empty, error)
-	AlertNewShifts(context.Context, *AlertNewShiftsRequest) (*empty.Empty, error)
-	AlertRemovedShift(context.Context, *AlertRemovedShiftRequest) (*empty.Empty, error)
-	AlertRemovedShifts(context.Context, *AlertRemovedShiftsRequest) (*empty.Empty, error)
-	AlertChangedShift(context.Context, *AlertChangedShiftRequest) (*empty.Empty, error)
+	OnboardWorker(context.Context, *OnboardWorkerRequest) (*emptypb.Empty, error)
+	AlertNewShift(context.Context, *AlertNewShiftRequest) (*emptypb.Empty, error)
+	AlertNewShifts(context.Context, *AlertNewShiftsRequest) (*emptypb.Empty, error)
+	AlertRemovedShift(context.Context, *AlertRemovedShiftRequest) (*emptypb.Empty, error)
+	AlertRemovedShifts(context.Context, *AlertRemovedShiftsRequest) (*emptypb.Empty, error)
+	AlertChangedShift(context.Context, *AlertChangedShiftRequest) (*emptypb.Empty, error)
 }
 
 // UnimplementedBotServiceServer can be embedded to have forward compatible implementations.
 type UnimplementedBotServiceServer struct {
 }
 
-func (*UnimplementedBotServiceServer) OnboardWorker(ctx context.Context, req *OnboardWorkerRequest) (*empty.Empty, error) {
+func (*UnimplementedBotServiceServer) OnboardWorker(ctx context.Context, req *OnboardWorkerRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method OnboardWorker not implemented")
 }
-func (*UnimplementedBotServiceServer) AlertNewShift(ctx context.Context, req *AlertNewShiftRequest) (*empty.Empty, error) {
+func (*UnimplementedBotServiceServer) AlertNewShift(ctx context.Context, req *AlertNewShiftRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AlertNewShift not implemented")
 }
-func (*UnimplementedBotServiceServer) AlertNewShifts(ctx context.Context, req *AlertNewShiftsRequest) (*empty.Empty, error) {
+func (*UnimplementedBotServiceServer) AlertNewShifts(ctx context.Context, req *AlertNewShiftsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AlertNewShifts not implemented")
 }
-func (*UnimplementedBotServiceServer) AlertRemovedShift(ctx context.Context, req *AlertRemovedShiftRequest) (*empty.Empty, error) {
+func (*UnimplementedBotServiceServer) AlertRemovedShift(ctx context.Context, req *AlertRemovedShiftRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AlertRemovedShift not implemented")
 }
-func (*UnimplementedBotServiceServer) AlertRemovedShifts(ctx context.Context, req *AlertRemovedShiftsRequest) (*empty.Empty, error) {
+func (*UnimplementedBotServiceServer) AlertRemovedShifts(ctx context.Context, req *AlertRemovedShiftsRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AlertRemovedShifts not implemented")
 }
-func (*UnimplementedBotServiceServer) AlertChangedShift(ctx context.Context, req *AlertChangedShiftRequest) (*empty.Empty, error) {
+func (*UnimplementedBotServiceServer) AlertChangedShift(ctx context.Context, req *AlertChangedShiftRequest) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AlertChangedShift not implemented")
 }
 
