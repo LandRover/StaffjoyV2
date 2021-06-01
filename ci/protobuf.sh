@@ -8,10 +8,10 @@ set -e
 
 # VERSION
 GRPC_GATEWAY_VERSION="v1.15.2";
-GOGO_PROTOBUF_VERSION="v1.3.1";
+GOGO_PROTOBUF_VERSION="v1.3.2";
 
 # PATHS
-GO_PKG_PATH="${GOPATH}/pkg/mod/";
+GO_PKG_PATH="${GOPATH}/pkg/mod";
 GRPC_PATH="${GO_PKG_PATH}/github.com/grpc-ecosystem/grpc-gateway";
 GOGO_PROTOBUF_PATH="${GO_PKG_PATH}/github.com/gogo/protobuf"
 
