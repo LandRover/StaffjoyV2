@@ -55,6 +55,7 @@ external_go_package(
     ],
     exclude_srcs = [
         "not_go111.go",
+        "not_go115.go",
     ],
 )
 

@@ -23,7 +23,7 @@ import:
   - package: github.com/pkg/errors
     version: ^0.9.1
   - package: github.com/mailgun/mailgun-go/v4
-    version: ^4.4.1
+    version: ^4.5.1
     repo: https://github.com/mailgun/mailgun-go
   - package: github.com/mailru/jsoniter
     version: ^1.1.10
@@ -40,9 +40,9 @@ import:
   - package: github.com/getsentry/raven-go
     version: 5c24d5110e0e198d9ae16f1f3465366085001d92
   - package: github.com/getsentry/sentry-go
-    version: ^0.10.0
+    version: ^0.11.0
   - package: google.golang.org/grpc
-    version: ^1.36.0
+    version: ^1.33.3
     repo: https://github.com/grpc/grpc-go
     subpackages:
       - "..."
@@ -71,21 +71,21 @@ import:
     subpackages:
       - "..."
   - package: github.com/certifi/gocertifi
-    version: deb3ae2ef2610fde3330947281941c562861188b
+    version: 83314bf6d27c99d871fe836cd823f6da424d5149
   - package: cloud.google.com/go
-    version: v0.79.0
+    version: v0.82.0
     repo: https://github.com/GoogleCloudPlatform/google-cloud-go
     subpackages:
       - "..."
   - package: gopkg.in/intercom/intercom-go.v2
-    version: 6ffc0627261af5a8ccfa6c107fe2ff39e3e2ed6b
+    version: 2bd1af0ce4b2148380ce0f7482c6b81663977b93
     repo: https://github.com/intercom/intercom-go
   - package: github.com/google/go-querystring
     version: ^1.1.0
     subpackages:
       - "..."
   - package: google.golang.org/api
-    version: ^0.42.0
+    version: ^0.47.0
     repo: https://github.com/google/google-api-go-client
     subpackages:
       - "..."
@@ -106,7 +106,7 @@ import:
   - package: github.com/go-sql-driver/mysql
     version: ^1.6.0
   - package: golang.org/x/net
-    version: a5a99cb37ef4b68617775ab669177656090ab396
+    version: abc453219eb586afb3fc1742e8c685c28b9f7eea
     repo: https://github.com/golang/net
     subpackages:
       - html
@@ -120,7 +120,7 @@ import:
     subpackages:
       - rate
   - package: golang.org/x/crypto
-    version: 0c34fe9e7dc2486962ef9867e3edb3503537209f
+    version: c07d793c2f9aacf728fe68cbd7acd73adbd04159
     repo: https://github.com/golang/crypto
     subpackages:
       - bcrypt

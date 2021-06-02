@@ -3,17 +3,17 @@ module v2.staffjoy.com
 go 1.16
 
 require (
-	cloud.google.com/go v0.79.0
-	cloud.google.com/go/bigquery v1.16.0 // indirect
+	cloud.google.com/go v0.82.0
+	cloud.google.com/go/bigquery v1.18.0 // indirect
 	github.com/GeertJohan/go.rice v1.0.2
 	github.com/akavel/rsrc v0.10.2 // indirect
-	github.com/certifi/gocertifi v0.0.0-20200922220541-2c3bb06c6054 // indirect
+	github.com/certifi/gocertifi v0.0.0-20210429200110-83314bf6d27c
 	github.com/daaku/go.zipexe v1.0.1
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/dpapathanasiou/go-recaptcha v0.0.0-20190121160230-be5090b17804
 	github.com/fatih/structs v1.1.0
 	github.com/getsentry/raven-go v0.1.2-0.20190619092523-5c24d5110e0e
-	github.com/getsentry/sentry-go v0.10.0
+	github.com/getsentry/sentry-go v0.11.0
 	github.com/go-chi/chi v4.1.2+incompatible // indirect
 	github.com/go-gorp/gorp v2.2.0+incompatible
 	github.com/go-gorp/gorp/v3 v3.0.2
@@ -30,7 +30,7 @@ require (
 	github.com/hashicorp/golang-lru v0.5.4
 	github.com/jessevdk/go-flags v1.5.0 // indirect
 	github.com/josharian/intern v1.0.0
-	github.com/mailgun/mailgun-go/v4 v4.4.1
+	github.com/mailgun/mailgun-go/v4 v4.5.1
 	github.com/pkg/errors v0.9.1
 	github.com/rs/cors v1.7.0
 	github.com/russross/blackfriday/v2 v2.1.0
@@ -42,16 +42,16 @@ require (
 	github.com/urfave/negroni v1.0.0
 	github.com/valyala/fasttemplate v1.2.1 // indirect
 	go.opencensus.io v0.23.0
-	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2
-	golang.org/x/net v0.0.0-20210405180319-a5a99cb37ef4
+	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a
+	golang.org/x/net v0.0.0-20210525063256-abc453219eb5
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 	golang.org/x/sys v0.0.0-20210601080250-7ecdf8ef093b // indirect
 	golang.org/x/text v0.3.6
 	golang.org/x/time v0.0.0-20210220033141-f8bda1e9f3ba
-	google.golang.org/api v0.42.0
+	google.golang.org/api v0.47.0
 	google.golang.org/appengine v1.6.7
-	google.golang.org/genproto v0.0.0-20210406143921-e86de6bf7a46
-	google.golang.org/grpc v1.36.1
+	google.golang.org/genproto v0.0.0-20210517163617-5e0236093d7a
+	google.golang.org/grpc v1.37.1
 	google.golang.org/protobuf v1.26.0
-	gopkg.in/intercom/intercom-go.v2 v2.0.0-20200217143803-6ffc0627261a
+	gopkg.in/intercom/intercom-go.v2 v2.0.0-20210504094731-2bd1af0ce4b2
 )

@@ -125,7 +125,7 @@ new_git_repository(
 new_git_repository(
     name = "go_mailgun",
     build_file = "//:third_party/go/go_mailgun.BUILD",
-    commit = "afe6db08188523a62bf2001eb9f408f222ee3e68", # v4.4.1 Feb 23, 2021 (LATEST OFFICIAL VERSION)
+    commit = "a87d271e01bf098b5bf2a1998ebd910bff873c0d", # v4.5.1 Apr 13, 2021 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/mailgun/mailgun-go.git",
 )
 
@@ -181,7 +181,7 @@ new_git_repository(
 new_git_repository(
     name = "go_sentry",
     build_file = "//:third_party/go/go_sentry.BUILD",
-    commit = "0ed475012377446a089556c43bef095681a94899", # v0.10.0 Feb 18, 2020 (LATEST OFFICIAL VERSION)
+    commit = "8505791d2fe48cd64b8811354f1f1ad49e319fbf", # v0.11.0 May 21, 2020 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/getsentry/sentry-go.git",
 )
 
@@ -195,7 +195,7 @@ new_git_repository(
 new_git_repository(
     name = "go_grpc",
     build_file = "//:third_party/go/google_grpc.BUILD",
-    commit = "56d63285d528c0d33f9bf8c355139d91edc047de", # v1.36.0 Feb 25, 2021 (LATEST OFFICIAL VERSION)
+    commit = "5c09eff6a2af83b52e8b0e17825eeb4f9cbcc9a4", # v1.33.3 Jan 11, 2021 (UPGRADE NEEDED)
     remote = "https://github.com/grpc/grpc-go.git",
 )
 
@@ -257,14 +257,14 @@ new_git_repository(
 new_git_repository(
     name = "go_certifi",
     build_file = "//:third_party/go/certifi_gocertifi.BUILD",
-    commit = "deb3ae2ef2610fde3330947281941c562861188b", # 2020.02.11 - Feb 11, 2020 (LATEST OFFICIAL RELEASE)
+    commit = "83314bf6d27c99d871fe836cd823f6da424d5149", # 2021.04.29 - Apr 29, 2021 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/certifi/gocertifi.git",
 )
 
 new_git_repository(
     name = "go_intercom",
     build_file = "//:third_party/go/intercom.BUILD",
-    commit = "6ffc0627261af5a8ccfa6c107fe2ff39e3e2ed6b", # Feb 17, 2020 (LATEST GIT COMMIT)
+    commit = "2bd1af0ce4b2148380ce0f7482c6b81663977b93", # May 04, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/intercom/intercom-go.git"
 )
 
@@ -282,7 +282,7 @@ new_git_repository(
     remote = "https://github.com/google/go-cmp.git",
 )
 
-GO_GOOGLE_API_VERSION="0.42.0" # Mar 15, 2021 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_API_VERSION="0.47.0" # May 19, 2021 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_google_api",
     build_file = "//:third_party/go/google_api.BUILD",
@@ -290,7 +290,7 @@ http_archive(
     strip_prefix = "google-api-go-client-%s" % GO_GOOGLE_API_VERSION,
 )
 
-GO_GOOGLE_CLOUD_VERSION="0.79.0" # Mar 10, 2020 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_CLOUD_VERSION="0.82.0" # May 18, 2021 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_cloud",
     build_file = "//:third_party/go/google_cloud.BUILD",
@@ -343,7 +343,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_net",
     build_file = "//:third_party/go/x_net.BUILD",
-    commit = "a5a99cb37ef4b68617775ab669177656090ab396", # Apr 5, 2021 (LATEST GIT COMMIT)
+    commit = "abc453219eb586afb3fc1742e8c685c28b9f7eea", # May 25, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/net.git"
 )
 
@@ -364,7 +364,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_crypto",
     build_file = "//:third_party/go/x_crypto.BUILD",
-    commit = "0c34fe9e7dc2486962ef9867e3edb3503537209f", # Mar 22, 2021 (LATEST GIT COMMIT)
+    commit = "c07d793c2f9aacf728fe68cbd7acd73adbd04159", # May 13, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/crypto.git"
 )
 
