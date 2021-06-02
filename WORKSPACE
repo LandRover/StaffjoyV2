@@ -202,7 +202,7 @@ new_git_repository(
 new_git_repository(
     name = "go_genproto",
     build_file = "//:third_party/go/google_genproto.BUILD",
-    commit = "e86de6bf7a463b2639b486fecb289b704c859c98", # Apr 06, 2021 (LATEST GIT COMMIT)
+    commit = "0befbe3492e2d231f18f4d2cf120040ac4da3dd8", # Jun 01, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/googleapis/go-genproto.git"
 )
 
