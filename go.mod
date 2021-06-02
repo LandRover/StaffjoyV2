@@ -51,7 +51,7 @@ require (
 	google.golang.org/api v0.47.0
 	google.golang.org/appengine v1.6.7
 	google.golang.org/genproto v0.0.0-20210517163617-5e0236093d7a
-	google.golang.org/grpc v1.37.1
+	google.golang.org/grpc v1.33.3
 	google.golang.org/protobuf v1.26.0
 	gopkg.in/intercom/intercom-go.v2 v2.0.0-20210504094731-2bd1af0ce4b2
 )
