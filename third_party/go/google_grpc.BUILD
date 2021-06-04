@@ -22,12 +22,12 @@ external_go_package(
         "@go_grpc//:credentials",
         "@go_grpc//:connectivity",
         "@go_grpc//:metadata",
-        "@go_grpc//:internal",
         "@go_grpc//:status",
         "@go_grpc//:stats",
         "@go_grpc//:tap",
         "@go_grpc//:serviceconfig",
         "@go_grpc//:resolver/dns",
+        "@go_grpc//:internal",
         "@go_grpc//:internal/buffer",
         "@go_grpc//:internal/grpcutil",
         "@go_grpc//:internal/grpcrand",
@@ -39,7 +39,9 @@ external_go_package(
         "@go_grpc//:internal/grpcsync",
         "@go_grpc//:internal/transport",
         "@go_grpc//:internal/serviceconfig",
+        "@go_grpc//:internal/resolver",
         "@go_grpc//:internal/resolver/dns",
+        "@go_grpc//:internal/resolver/unix",
         "@go_grpc//:internal/resolver/passthrough",
         "@go_grpc//:resolver/passthrough",
         "@go_protobuf//:proto",
@@ -110,6 +112,8 @@ external_go_package(
         "@go_protobuf//:ptypes/timestamp",
         "@go_protobuf_official//:runtime/protoimpl",
         "@go_protobuf_official//:reflect/protoreflect",
+        "@go_protobuf_official//:types/known/durationpb",
+        "@go_protobuf_official//:types/known/timestamppb",
     ],
 )
 
@@ -151,6 +155,42 @@ external_go_package(
 )
 
 external_go_package(
+    name = "internal/metadata",
+    base_pkg = "google.golang.org/grpc",
+    deps = [
+        "@go_grpc//:metadata",
+        "@go_grpc//:resolver",
+    ],
+)
+
+external_go_package(
+    name = "internal/resolver",
+    base_pkg = "google.golang.org/grpc",
+    deps = [
+        "@go_grpc//:internal/serviceconfig",
+        "@go_grpc//:metadata",
+        "@go_grpc//:resolver",
+    ],
+)
+
+external_go_package(
+    name = "internal/resolver/unix",
+    base_pkg = "google.golang.org/grpc",
+    deps = [
+        "@go_grpc//:internal/transport/networktype",
+        "@go_grpc//:resolver",
+    ],
+)
+
+external_go_package(
+    name = "internal/transport/networktype",
+    base_pkg = "google.golang.org/grpc",
+    deps = [
+        "@go_grpc//:resolver",
+    ],
+)
+
+external_go_package(
     name = "internal/transport",
     base_pkg = "google.golang.org/grpc",
     deps = [
@@ -171,6 +211,9 @@ external_go_package(
         "@go_grpc//:internal/grpcrand",
         "@go_grpc//:internal/channelz",
         "@go_grpc//:internal/syscall",
+        "@go_grpc//:internal/metadata",
+        "@go_grpc//:internal/transport/networktype",
+        "@go_grpc//:internal/credentials",
         "@go_genproto//:googleapis/rpc/status",
         "@go_protobuf//:proto",
     ],
@@ -275,6 +318,7 @@ external_go_package(
         "@go_grpc//:resolver",
         "@go_grpc//:grpclog",
         "@go_grpc//:balancer",
+        "@go_grpc//:attributes",
         "@go_grpc//:connectivity",
     ],
 )
@@ -332,7 +376,6 @@ external_go_package(
     base_pkg = "google.golang.org/grpc",
     deps = [
         "@go_x_net//:context",
-        "@go_grpc//:internal",
         "@go_grpc//:internal/credentials",
         "@go_grpc//:attributes",
         "@go_protobuf//:proto",
@@ -458,8 +501,10 @@ external_go_package(
     base_pkg = "google.golang.org/grpc",
     deps = [
       "@go_x_net//:context",
-      "@go_grpc//:serviceconfig",
+      "@go_grpc//:resolver",
+      "@go_grpc//:attributes",
       "@go_grpc//:connectivity",
+      "@go_grpc//:serviceconfig",
     ],
 )
 
@@ -504,6 +549,7 @@ external_go_package(
     name = "internal/serviceconfig",
     base_pkg = "google.golang.org/grpc",
     deps = [
+      "@go_grpc//:codes",
       "@go_grpc//:balancer",
       "@go_grpc//:grpclog",
       "@go_grpc//:serviceconfig",
@@ -549,6 +595,7 @@ external_go_package(
       "@go_grpc//:resolver",
       "@go_grpc//:grpclog",
       "@go_grpc//:serviceconfig",
+      "@go_grpc//:internal/backoff",
       "@go_grpc//:balancer/grpclb/state",
       "@go_grpc//:internal/envconfig",
       "@go_grpc//:internal/grpcrand",
