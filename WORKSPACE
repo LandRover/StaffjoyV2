@@ -195,7 +195,7 @@ new_git_repository(
 new_git_repository(
     name = "go_grpc",
     build_file = "//:third_party/go/google_grpc.BUILD",
-    commit = "5c09eff6a2af83b52e8b0e17825eeb4f9cbcc9a4", # v1.33.3 Jan 11, 2021 (UPGRADE NEEDED)
+    commit = "0257c8657362b76f24e7a8cfb61df48d4cb735d3", # v1.38.0 May 20, 2021 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/grpc/grpc-go.git",
 )
 
