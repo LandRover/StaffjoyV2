@@ -2,7 +2,7 @@
 
 
 # VERSIONS
-GOLANG_VERSION=1.17
+GOLANG_VERSION=1.17.5
 
 
 # PATH MAPPING
@@ -22,7 +22,7 @@ PATH=$PATH:${GOPATH}/bin:${GOROOT}/bin
 if ! command -V go >/dev/null 2>&1; then
     GO_TAR_FILENAME="go${GOLANG_VERSION}.linux-amd64.tar.gz";
 
-    sudo curl -o ${SRC_PATH}/${GO_TAR_FILENAME} https://storage.googleapis.com/golang/${GO_TAR_FILENAME}
+    sudo curl -o ${SRC_PATH}/${GO_TAR_FILENAME} https://dl.google.com/go/${GO_TAR_FILENAME}
     sudo tar -xvf ${SRC_PATH}/${GO_TAR_FILENAME} -C ${SRC_PATH}
     sudo mv ${SRC_PATH}/go ${LOCAL_PATH}
     sudo rm ${SRC_PATH}/${GO_TAR_FILENAME}

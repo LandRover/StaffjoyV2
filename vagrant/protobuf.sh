@@ -3,7 +3,7 @@
 set -e
 
 # VERSIONS
-PROTOBUF_VERSION=3.17.1
+PROTOBUF_VERSION=3.19.1
 
 COMPILE_FROM_SRC="${1:-false}";
 COMPILE_SRC_TMP_DIR="/tmp/protobuf_src";
