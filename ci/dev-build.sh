@@ -32,4 +32,4 @@ do
     ./ci/deploy-service.sh ${SERVICE} ${VERSION} ${NAMESPACE};
 done
 
-echo "Finished deploying version ${VERSION} - check the status at http://kubernetes.staffjoy-v2.local";
+echo "Finished deploying version ${VERSION} - check the status at http://kubernetes.staffjoy-v2.local/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/#/overview?namespace=development";
