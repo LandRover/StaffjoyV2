@@ -82,9 +82,9 @@ new_git_repository(
 
 new_git_repository(
     name = "go_jwt",
-    build_file = "//:third_party/go/dgrijalva_jwt.BUILD",
-    commit = "06ea1031745cb8b3dab3f6a236daf2b0aa468b7e", # v3.2.0 Mar 9, 2018 (LATEST OFFICIAL VERSION)
-    remote = "https://github.com/dgrijalva/jwt-go.git",
+    build_file = "//:third_party/go/golang_jwt.BUILD",
+    commit = "c435f38291bfed5322cf0f4ed12d1f8668ceaeb3", # v4.2.0 Nov 24, 2021 (LATEST OFFICIAL VERSION)
+    remote = "https://github.com/golang-jwt/jwt.git",
 )
 
 new_git_repository(

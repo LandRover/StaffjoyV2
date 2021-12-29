@@ -11,7 +11,7 @@ go_library(
         "uuid.go",
     ],
     deps = [
-        "@go_jwt//:jwt-go",
+        "@go_jwt//:v4",
         "@go_x_crypto//:bcrypt",
     ],
 )
