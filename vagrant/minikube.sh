@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # VERSIONS
-MINIKUBE_VERSION=v1.24.0
-KUBECTL_CLI_VERSION=v1.23.1
+MINIKUBE_VERSION=1.24.0
+KUBECTL_CLI_VERSION=1.23.1
 
 # ARGS
 FORCE_UPDATE=false
@@ -44,7 +44,7 @@ $FORCE_UPDATE && [ -f /usr/local/bin/kubectl ] && sudo rm -rf /usr/local/bin/kub
 # Latest stable: https://github.com/kubernetes/kubernetes/releases | https://storage.googleapis.com/kubernetes-release/release/stable.txt
 if [ ! -f "/usr/local/bin/kubectl" ] ; then
     echo "[x] Downloading kubectl ${KUBECTL_CLI_VERSION}...";
-    curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_CLI_VERSION}/bin/linux/amd64/kubectl && sudo mv kubectl /usr/local/bin/ && sudo chmod +x /usr/local/bin/kubectl && sudo chown root:root /usr/local/bin/kubectl;
+    curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_CLI_VERSION}/bin/linux/amd64/kubectl && sudo mv kubectl /usr/local/bin/ && sudo chmod +x /usr/local/bin/kubectl && sudo chown root:root /usr/local/bin/kubectl;
 fi
 
 
@@ -52,7 +52,7 @@ fi
 # Latest stable: https://github.com/kubernetes/minikube/releases
 if [ ! -f "/usr/local/bin/minikube" ] ; then
     echo "[x] Downloading minikube ${MINIKUBE_VERSION}...";
-    curl -Lo minikube https://storage.googleapis.com/minikube/releases/${MINIKUBE_VERSION}/minikube-linux-amd64 && sudo mv minikube /usr/local/bin/ && sudo chmod +x /usr/local/bin/minikube && sudo chown root:root /usr/local/bin/minikube;
+    curl -Lo minikube https://storage.googleapis.com/minikube/releases/v${MINIKUBE_VERSION}/minikube-linux-amd64 && sudo mv minikube /usr/local/bin/ && sudo chmod +x /usr/local/bin/minikube && sudo chown root:root /usr/local/bin/minikube;
 fi
 
 
@@ -62,7 +62,7 @@ sudo rm -rf /tmp/juju* /tmp/minikube*;
 
 # Start minikube instance
 sudo -E minikube start \
-    --kubernetes-version=${KUBECTL_CLI_VERSION} \
+    --kubernetes-version=v${KUBECTL_CLI_VERSION} \
     --vm-driver=none \
     --bootstrapper=kubeadm \
     --dns-domain="cluster.local" \
