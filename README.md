@@ -1,6 +1,6 @@
 # Staffjoy V2 - Fork
 
-[![Build Status](https://travis-ci.com/LandRover/StaffjoyV2.svg?branch=master)](https://travis-ci.com/LandRover/StaffjoyV2) [![Godoc Reference](https://godoc.org/v2.staffjoy.com?status.svg)](https://godoc.org/v2.staffjoy.com)
+[![Build Status](https://github.com/LandRover/StaffjoyV2/actions/workflows/ci-master.yaml/badge.svg)](https://github.com/LandRover/StaffjoyV2/actions/workflows/ci-master.yaml) [![Godoc Reference](https://godoc.org/v2.staffjoy.com?status.svg)](https://godoc.org/v2.staffjoy.com)
 
 The main purpose of this StaffjoyV2 fork is education. I find in this project very inspiring and learn a lot from the implementation and engineering and monorepo structure.
 
