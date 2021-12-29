@@ -165,7 +165,7 @@ If you modify the files in `protobuf/`, run `make protobuf` to recompile all of 
 ⚠️ Please make sure that the version of protobuf matches the runtime version ([see this issue](https://github.com/Staffjoy/v2/issues/5#issuecomment-305704425)):
 
 ```sh
-go get github.com/golang/protobuf/...
+go install github.com/golang/protobuf/...
 cd $GOPATH/src/github.com/golang/protobuf/
 # Switch to version that is packaged in app
 # v1.4.2 May 14, 2020 (LATEST OFFICIAL RELEASE)
