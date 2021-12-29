@@ -1,5 +1,5 @@
 // ical is a web service that makes ical.staffjoy.com a custom
-// go import doman, e.g. it lets `go get v2.staffjoy.com` function
+// go import doman, e.g. it lets `go install v2.staffjoy.com` function
 package main
 
 import (
