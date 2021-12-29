@@ -1,0 +1,57 @@
+name: CI-master
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2.5.1
+      with:
+        node-version: 12.x
+
+    - name: Setup Java JDK
+      uses: actions/setup-java@v2.5.0
+      with:
+        java-version: 11
+        distribution: zulu
+        java-package: jdk
+        
+    - name: Bazel
+      run: ./vagrant/bazel.sh
+
+    - name: Add Glide
+      run: curl https://glide.sh/get | sh
+
+
+    - name: Add Golint
+      run: go get -u golang.org/x/lint/golint
+    
+    - name: Add Cover
+      run: go get -u golang.org/x/tools/cmd/cover
+    
+    - name: Add Goimports
+      run: go get -u golang.org/x/tools/cmd/goimports
+    
+    - name: Add Buildifier
+      run: go get github.com/bazelbuild/buildtools/buildifier
+
+    - name: Build
+      run: make build
+    
+    - name: Test
+      run: make test
