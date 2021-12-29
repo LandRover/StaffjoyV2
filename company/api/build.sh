@@ -1,8 +1,8 @@
 set -e
 
 # instal go deps
-go get -u github.com/GeertJohan/go.rice
-go get -u github.com/GeertJohan/go.rice/rice
+go install github.com/GeertJohan/go.rice
+go install github.com/GeertJohan/go.rice/rice
 
 # Put assets into the binary
 rice embed-go

@@ -4,8 +4,8 @@ set -e
 yarn install
 
 # instal go deps
-go get -u github.com/GeertJohan/go.rice
-go get -u github.com/GeertJohan/go.rice/rice
+go install github.com/GeertJohan/go.rice
+go install github.com/GeertJohan/go.rice/rice
 
 # Builds CSS from SCSS
 echo "gulp Gulp GULP"

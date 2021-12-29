@@ -41,16 +41,16 @@ id
 source ~/.profile
 
 if ! command -V golint ; then
-    go get -u golang.org/x/lint/golint
-    go get -u golang.org/x/tools/cmd/cover
-    go get -u golang.org/x/tools/cmd/goimports
+    go install golang.org/x/lint/golint
+    go install golang.org/x/tools/cmd/cover
+    go install golang.org/x/tools/cmd/goimports
 fi
 
 if ! command -V protoc-gen-go ; then 
-    go get -u github.com/golang/protobuf/protoc-gen-go
-    go get -u golang.org/x/tools/cmd/cover
-    go get -u golang.org/x/tools/cmd/goimports
-    go get -u github.com/grpc-ecosystem/grpc-gateway/...
+    go install github.com/golang/protobuf/protoc-gen-go
+    go install golang.org/x/tools/cmd/cover
+    go install golang.org/x/tools/cmd/goimports
+    go install github.com/grpc-ecosystem/grpc-gateway/...
 fi
 
 if ! command -V glide ; then
@@ -66,18 +66,18 @@ if ! command -V migrate ; then
 fi
 
 if ! command -V buildifier ; then
-    go get github.com/bazelbuild/buildtools/buildifier
+    go install github.com/bazelbuild/buildtools/buildifier
 fi
 
 if ! command -V rice ; then
-    go get -u github.com/GeertJohan/go.rice
-    go get -u github.com/GeertJohan/go.rice/rice
+    go install github.com/GeertJohan/go.rice
+    go install github.com/GeertJohan/go.rice/rice
 fi
 
-go get -u github.com/gogo/protobuf/...
+go install github.com/gogo/protobuf/...
 
 # used for local filesystem watching
 if ! command -V modd ; then
-    go get github.com/cortesi/modd/cmd/modd
+    go install github.com/cortesi/modd/cmd/modd
 fi
 "
