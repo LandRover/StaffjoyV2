@@ -30,7 +30,7 @@ jobs:
         run: ./vagrant/bazel.sh
 
       - name: Add Glide
-        run: curl -k https://glide.sh/get | sh
+        run: curl https://raw.githubusercontent.com/Masterminds/glide.sh/master/get | sh
 
       - name: Add Golint
         run: go install golang.org/x/lint/golint@latest
