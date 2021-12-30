@@ -1,6 +1,6 @@
 module v2.staffjoy.com
 
-go 1.16
+go 1.17
 
 require (
 	cloud.google.com/go v0.82.0
@@ -9,7 +9,7 @@ require (
 	github.com/akavel/rsrc v0.10.2 // indirect
 	github.com/certifi/gocertifi v0.0.0-20210429200110-83314bf6d27c
 	github.com/daaku/go.zipexe v1.0.1
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/golang-jwt/jwt/v4 v4.2.0
 	github.com/dpapathanasiou/go-recaptcha v0.0.0-20190121160230-be5090b17804
 	github.com/fatih/structs v1.1.0
 	github.com/getsentry/raven-go v0.1.2-0.20190619092523-5c24d5110e0e
