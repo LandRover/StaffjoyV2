@@ -54,7 +54,7 @@ if ! command -V protoc-gen-go ; then
 fi
 
 if ! command -V glide ; then
-    curl https://raw.githubusercontent.com/Masterminds/glide.sh/master/get | sh
+    curl 'https://raw.githubusercontent.com/Masterminds/glide.sh/master/get' | sed 's+get TAG https://glide.sh/version+TAG="v0.13.3"+g' | sh
 fi
 
 if ! command -V migrate ; then
