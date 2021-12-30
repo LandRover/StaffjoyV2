@@ -90,7 +90,7 @@ new_git_repository(
 new_git_repository(
     name = "go_gorilla_sessions",
     build_file = "//:third_party/go/gorilla_sessions.BUILD",
-    commit = "61fa50d034f99479a7de0d1c02c5e9dea5ad30cb", # v1.2.1 Aug 19, 2020 (LATEST GIT COMMIT)
+    commit = "61fa50d034f99479a7de0d1c02c5e9dea5ad30cb", # v1.2.1 Aug 23, 2020 (LATEST GIT COMMIT)
     remote = "https://github.com/gorilla/sessions.git",
 )
 
@@ -104,28 +104,28 @@ new_git_repository(
 new_git_repository(
     name = "go_gorilla_csrf",
     build_file = "//:third_party/go/gorilla_csrf.BUILD",
-    commit = "79c60d0e4fcf1fbc9653c1cb13d28e82248cf43c", # v1.7.0 Apr 26, 2020 (LATEST OFFICIAL VERSION)
+    commit = "b69cbb30a1ca62a91c30fc52f16a3cb24a73a8f7", # v1.7.1 Jul 29, 2021 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/gorilla/csrf.git",
 )
 
 new_git_repository(
     name = "go_gorilla_mux",
     build_file = "//:third_party/go/gorilla_mux.BUILD",
-    commit = "98cb6bf42e086f6af920b965c38cacc07402d51b", # v1.8.0 Jul 11, 2020 (LATEST OFFICIAL VERSION)
+    commit = "98cb6bf42e086f6af920b965c38cacc07402d51b", # v1.8.0 Aug 22, 2020 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/gorilla/mux.git",
 )
 
 new_git_repository(
     name = "go_pkg_errors",
     build_file = "//:third_party/go/pkg_errors.BUILD",
-    commit = "614d223910a179a466c1767a985424175c39b465", # Jan 14, 2020 (LATEST GIT COMMIT)
+    commit = "614d223910a179a466c1767a985424175c39b465", # v0.9.1 Jan 14, 2020 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/pkg/errors.git",
 )
 
 new_git_repository(
     name = "go_mailgun",
     build_file = "//:third_party/go/go_mailgun.BUILD",
-    commit = "a87d271e01bf098b5bf2a1998ebd910bff873c0d", # v4.5.1 Apr 13, 2021 (LATEST OFFICIAL VERSION)
+    commit = "e41a962e5ecfd1eeeb035c15f3b5189d26e7204e", # v4.6.0 Nov 17, 2021 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/mailgun/mailgun-go.git",
 )
 
