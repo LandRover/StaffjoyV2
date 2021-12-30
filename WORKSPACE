@@ -132,14 +132,14 @@ new_git_repository(
 new_git_repository(
     name = "jsoniter",
     build_file = "//:third_party/go/jsoniter.BUILD",
-    commit = "a1ca0830781e007c66b225121d2cdb3a649421f6", # v1.1.10 Jun 8, 2020 (LATEST GIT COMMIT)
+    commit = "024077e996b048517130b21ea6bf12aa23055d3d", # v1.1.12 Sep 11, 2021 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/json-iterator/go.git",
 )
 
 new_git_repository(
     name = "modern_reflect2",
     build_file = "//:third_party/go/modern_reflect2.BUILD",
-    commit = "94122c33edd36123c84d5368cfb2b69df93a0ec8", # v1.0.1 Jul 18, 2018 (LATEST GIT COMMIT)
+    commit = "2b33151c9bbc5231aea69b8861c540102b087070", # v1.0.2 Sep 11, 2021 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/modern-go/reflect2.git",
 )
 
@@ -153,7 +153,7 @@ new_git_repository(
 new_git_repository(
     name = "go_logrus",
     build_file = "//:third_party/go/sirupsen_logrus.BUILD",
-    commit = "bdc0db8ead3853c56b7cd1ac2ba4e11b47d7da6b", # v1.8.1 Mar 9, 2020 (LATEST OFFICIAL VERSION)
+    commit = "bdc0db8ead3853c56b7cd1ac2ba4e11b47d7da6b", # v1.8.1 Mar 9, 2021 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/sirupsen/logrus.git",
 )
 
@@ -181,14 +181,14 @@ new_git_repository(
 new_git_repository(
     name = "go_sentry",
     build_file = "//:third_party/go/go_sentry.BUILD",
-    commit = "8505791d2fe48cd64b8811354f1f1ad49e319fbf", # v0.11.0 May 21, 2020 (LATEST OFFICIAL VERSION)
+    commit = "e61b0a40aec5644bec36089566bb6f8b230f0ecf", # v0.12.0 Dec 22, 2021 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/getsentry/sentry-go.git",
 )
 
 new_git_repository(
    name = "googleapis_gax",
    build_file = "//:third_party/go/googleapis_gax.BUILD",
-   commit = "fbaf9882acf3297573f3a7cb832e54c7d8f40635", # Feb 22, 2020 (LATEST GIT COMMIT)
+   commit = "0968b165da19974432147e6058bc859f6c488642", # v2.1.1 Sep 16, 2021 (LATEST OFFICIAL VERSION)
    remote = "https://github.com/googleapis/gax-go.git",
 )
 

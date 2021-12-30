@@ -25,10 +25,10 @@ import:
   - package: github.com/mailgun/mailgun-go/v4
     version: ^4.6.0
     repo: https://github.com/mailgun/mailgun-go
-  - package: github.com/mailru/jsoniter
-    version: ^1.1.10
+  - package: github.com/json-iterator/go
+    version: ^1.1.12
   - package: github.com/modern-go/reflect2
-    version: ^1.0.1
+    version: ^1.0.2
   - package: github.com/modern-go/concurrent
     version: ^1.0.3
   - package: github.com/sirupsen/logrus
@@ -40,7 +40,7 @@ import:
   - package: github.com/getsentry/raven-go
     version: 5c24d5110e0e198d9ae16f1f3465366085001d92
   - package: github.com/getsentry/sentry-go
-    version: ^0.11.0
+    version: ^0.12.0
   - package: google.golang.org/grpc
     version: ^1.33.3
     repo: https://github.com/grpc/grpc-go
@@ -136,6 +136,6 @@ import:
   - package: github.com/hashicorp/golang-lru
     version: ^0.5.4
   - package: github.com/googleapis/gax-go
-    version: fbaf9882acf3297573f3a7cb832e54c7d8f40635
+    version: v2.1.1
   - package: github.com/google/go-cmp
     version: ^0.5.5
