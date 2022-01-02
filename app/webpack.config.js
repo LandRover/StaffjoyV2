@@ -18,8 +18,8 @@ module.exports = (env, options) => {
         output: {
             publicPath: '/',
             path: path.resolve(__dirname, 'dist'),
-            filename: '[name]-[contenthash:16].bundle.js',
-            chunkFilename: '[name]-[contenthash:16].chunk.js'
+            filename: '[name]-[hash].bundle.js',
+            chunkFilename: '[name]-[hash].chunk.js'
         },
         module: {
             rules: [
@@ -82,7 +82,7 @@ module.exports = (env, options) => {
                                 return 'assets/[path][name].[ext]';
                             }
 
-                            return 'assets/[name].[contenthash].[ext]';
+                            return 'assets/[name].[hash].[ext]';
                         },
                     },
                   },
