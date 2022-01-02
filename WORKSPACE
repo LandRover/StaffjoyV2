@@ -202,7 +202,7 @@ new_git_repository(
 new_git_repository(
     name = "go_genproto",
     build_file = "//:third_party/go/google_genproto.BUILD",
-    commit = "0befbe3492e2d231f18f4d2cf120040ac4da3dd8", # Jun 01, 2021 (LATEST GIT COMMIT)
+    commit = "3ac035c7e7cbd86eb6d8b95be888cf83d73dedd3", # Dec 23, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/googleapis/go-genproto.git"
 )
 
@@ -229,7 +229,7 @@ new_git_repository(
 new_git_repository(
     name = "go_glog",
     build_file = "//:third_party/go/glog.BUILD",
-    commit = "23def4e6c14b4da8ac2ed8007337bc5eb5007998", # Jan 27, 2016 (LATEST GIT COMMIT)
+    commit = "9ef845f417d839250ceabbc25c1b26101e772dd7", # Aug 20, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/glog.git",
 )
 
@@ -250,7 +250,7 @@ new_git_repository(
 new_git_repository(
     name = "go_protobuf_official",
     build_file = "//:third_party/go/protobuf-official.BUILD",
-    commit = "f2d1f6cbe10b90d22296ea09a7217081c2798009", # v1.26.0 Mar 18, 2021 (LATEST OFFICIAL RELEASE)
+    commit = "f2d1f6cbe10b90d22296ea09a7217081c2798009", # v1.27.1 Jun 28, 2021 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/protocolbuffers/protobuf-go.git",
 )
 
@@ -271,14 +271,14 @@ new_git_repository(
 new_git_repository(
     name = "go_querystring",
     build_file = "//:third_party/go/google_querystring.BUILD",
-    commit = "1f4a1f9d6e29d314b2513651973fca5c4d4498f1", # Mar 11, 2021 (LATEST GIT COMMIT)
+    commit = "1f4a1f9d6e29d314b2513651973fca5c4d4498f1", # v1.1.0 Mar 11, 2021 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/google/go-querystring.git",
 )
 
 new_git_repository(
     name = "go_cmp",
     build_file = "//:third_party/go/google_cmp.BUILD",
-    commit = "8fa37b4dd109f12e42b131e485268768f18bcbf8", # v0.5.5 Mar 3, 2021 (LATEST OFFICIAL RELEASE)
+    commit = "d103655696d8ae43c4125ee61454dbf03d8e8324", # v0.5.6 May 25, 2021 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/google/go-cmp.git",
 )
 

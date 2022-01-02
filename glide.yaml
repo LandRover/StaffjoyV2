@@ -47,7 +47,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/genproto
-    version: 0befbe3492e2d231f18f4d2cf120040ac4da3dd8
+    version: 3ac035c7e7cbd86eb6d8b95be888cf83d73dedd3
     repo: https://github.com/googleapis/go-genproto
     subpackages:
       - "..."
@@ -56,7 +56,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/protobuf
-    version: ^1.26.0
+    version: ^1.27.1
     repo: https://github.com/protocolbuffers/protobuf-go
     subpackages:
       - "..."
@@ -65,7 +65,7 @@ import:
     subpackages:
       - "..."
   - package: github.com/golang/glog
-    version: 23def4e6c14b4da8ac2ed8007337bc5eb5007998
+    version: 9ef845f417d839250ceabbc25c1b26101e772dd7
   - package: github.com/golang/protobuf
     version: v1.5.2
     subpackages:
@@ -138,4 +138,4 @@ import:
   - package: github.com/googleapis/gax-go
     version: v2.0.5
   - package: github.com/google/go-cmp
-    version: ^0.5.5
+    version: ^0.5.6
