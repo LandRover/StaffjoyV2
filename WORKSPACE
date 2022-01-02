@@ -282,7 +282,7 @@ new_git_repository(
     remote = "https://github.com/google/go-cmp.git",
 )
 
-GO_GOOGLE_API_VERSION="0.47.0" # May 19, 2021 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_API_VERSION="0.48.0" # Jun 07, 2021 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_google_api",
     build_file = "//:third_party/go/google_api.BUILD",
@@ -290,7 +290,7 @@ http_archive(
     strip_prefix = "google-api-go-client-%s" % GO_GOOGLE_API_VERSION,
 )
 
-GO_GOOGLE_CLOUD_VERSION="0.82.0" # May 18, 2021 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_CLOUD_VERSION="0.99.0" # Dec 7, 2021 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_cloud",
     build_file = "//:third_party/go/google_cloud.BUILD",
