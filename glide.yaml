@@ -136,6 +136,6 @@ import:
   - package: github.com/hashicorp/golang-lru
     version: ^0.5.4
   - package: github.com/googleapis/gax-go
-    version: fbaf9882acf3297573f3a7cb832e54c7d8f40635
+    version: v2.0.5
   - package: github.com/google/go-cmp
     version: ^0.5.5
