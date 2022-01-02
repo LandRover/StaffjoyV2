@@ -188,7 +188,7 @@ new_git_repository(
 new_git_repository(
    name = "googleapis_gax",
    build_file = "//:third_party/go/googleapis_gax.BUILD",
-   commit = "bd5b16380fd03dc758d11cef74ba2e3bc8b0e8c2", # Feb 22, 2020 (LATEST GIT COMMIT)
+   commit = "bd5b16380fd03dc758d11cef74ba2e3bc8b0e8c2", # v2.0.5 Jun 13, 2019 (LATEST GIT COMMIT)
    remote = "https://github.com/googleapis/gax-go.git",
 )
 
