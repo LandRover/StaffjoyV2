@@ -106,26 +106,26 @@ import:
   - package: github.com/go-sql-driver/mysql
     version: ^1.6.0
   - package: golang.org/x/net
-    version: abc453219eb586afb3fc1742e8c685c28b9f7eea
+    version: fe4d6282115f0528fd5bc04b5644ce8ba1f43a50
     repo: https://github.com/golang/net
     subpackages:
       - html
       - context
   - package: golang.org/x/oauth2
-    version: 5d25da1a8d43b66f2898c444f899c7bcfd6a407e
+    version: d3ed0bb246c8d3c75b63937d9a5eecff9c74d7fe
     repo: https://github.com/golang/oauth2
   - package: golang.org/x/time
-    version: f8bda1e9f3badef837c98cbaf4f7c335de90f266
+    version: f0f3c7e86c11ca8f8b99d970e28445dda0b41195
     repo: https://github.com/golang/time
     subpackages:
       - rate
   - package: golang.org/x/crypto
-    version: c07d793c2f9aacf728fe68cbd7acd73adbd04159
+    version: e495a2d5b3d3be43468d0ebb413f46eeaedf7eb3
     repo: https://github.com/golang/crypto
     subpackages:
       - bcrypt
   - package: golang.org/x/text
-    version: ^0.3.6
+    version: ^0.3.7
     repo: https://github.com/golang/text
   - package: golang.org/x/sync
     version: 036812b2e83c0ddf193dd5a34e034151da389d09

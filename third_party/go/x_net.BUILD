@@ -81,11 +81,12 @@ external_go_package(
         "@go_x_text//:secure/bidirule",
     ],
     exclude_srcs = [
-        "tables9.0.0.go",
         "tables10.0.0.go",
         "tables11.0.0.go",
         "tables12.0.0.go",
+        "tables13.0.0.go",
         "idna9.0.0.go",
+        "go118.go",
     ],
 )
 

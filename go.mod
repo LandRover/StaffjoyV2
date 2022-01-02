@@ -21,8 +21,8 @@ require (
 	github.com/stretchr/testify v1.7.0
 	github.com/ttacon/libphonenumber v1.2.1
 	github.com/urfave/negroni v1.0.0
-	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519
-	golang.org/x/net v0.0.0-20211008194852-3b03d305991f
+	golang.org/x/crypto v0.0.0-20211215153901-e495a2d5b3d3
+	golang.org/x/net v0.0.0-20211216030914-fe4d6282115f
 	google.golang.org/genproto v0.0.0-20211223182754-3ac035c7e7cb
 	google.golang.org/grpc v1.40.0
 	google.golang.org/protobuf v1.27.1

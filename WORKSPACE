@@ -343,35 +343,35 @@ new_git_repository(
 new_git_repository(
     name = "go_x_net",
     build_file = "//:third_party/go/x_net.BUILD",
-    commit = "abc453219eb586afb3fc1742e8c685c28b9f7eea", # May 25, 2021 (LATEST GIT COMMIT)
+    commit = "fe4d6282115f0528fd5bc04b5644ce8ba1f43a50", # Dec 16, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/net.git"
 )
 
 new_git_repository(
     name = "go_x_oauth2",
     build_file = "//:third_party/go/x_oauth2.BUILD",
-    commit = "5d25da1a8d43b66f2898c444f899c7bcfd6a407e", # Sep 3, 2020 (LATEST GIT COMMIT)
+    commit = "d3ed0bb246c8d3c75b63937d9a5eecff9c74d7fe", # Nov 04, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/oauth2.git"
 )
 
 new_git_repository(
     name = "go_x_time",
     build_file = "//:third_party/go/x_time.BUILD",
-    commit = "f8bda1e9f3badef837c98cbaf4f7c335de90f266", # Feb 20, 2021 (LATEST GIT COMMIT)
+    commit = "f0f3c7e86c11ca8f8b99d970e28445dda0b41195", # Nov 17, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/time.git"
 )
 
 new_git_repository(
     name = "go_x_crypto",
     build_file = "//:third_party/go/x_crypto.BUILD",
-    commit = "c07d793c2f9aacf728fe68cbd7acd73adbd04159", # May 13, 2021 (LATEST GIT COMMIT)
+    commit = "e495a2d5b3d3be43468d0ebb413f46eeaedf7eb3", # Dec 15, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/crypto.git"
 )
 
 new_git_repository(
     name = "go_x_text",
     build_file = "//:third_party/go/x_text.BUILD",
-    commit = "e328d63cff14134669501e0e154e4f141c784322", # v0.3.6 Mar 30, 2021 (LATEST OFFICIAL RELEASE)
+    commit = "383b2e75a7a4198c42f8f87833eefb772868a56f", # v0.3.7 Aug 10, 2021 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/golang/text.git"
 )
 
