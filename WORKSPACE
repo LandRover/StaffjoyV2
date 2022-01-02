@@ -62,7 +62,7 @@ bind(
 new_git_repository(
     name = "go_recaptcha",
     build_file = "//:third_party/go/dpapathanasiou_recaptcha.BUILD",
-    commit = "be5090b17804c90a577d345b6d67acbf01dc90ed", # Jan 21, 2019 (LATEST)
+    commit = "be5090b17804c90a577d345b6d67acbf01dc90ed", # Jan 21, 2019 (LATEST GIT COMMIT)
     remote = "https://github.com/dpapathanasiou/go-recaptcha.git",
 )
 
@@ -195,7 +195,7 @@ new_git_repository(
 new_git_repository(
     name = "go_grpc",
     build_file = "//:third_party/go/google_grpc.BUILD",
-    commit = "5c09eff6a2af83b52e8b0e17825eeb4f9cbcc9a4", # v1.33.3 Jan 11, 2021 (UPGRADE NEEDED)
+    commit = "5c09eff6a2af83b52e8b0e17825eeb4f9cbcc9a4", # v1.33.3 Jan 11, 2021 (UPGRADE NEEDED, ISSUES: breaks apis related to dates, something off with timestamp)
     remote = "https://github.com/grpc/grpc-go.git",
 )
 
