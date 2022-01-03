@@ -123,8 +123,6 @@ module.exports = (env, options) => {
         },
         
         plugins: [
-            new webpack.ProgressPlugin(),
-            
             new CleanWebpackPlugin(),
 
             new HtmlWebpackPlugin({
