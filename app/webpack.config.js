@@ -21,6 +21,13 @@ module.exports = (env, options) => {
             filename: '[name]-[contenthash].bundle.js',
             chunkFilename: '[name]-[contenthash].chunk.js'
         },
+
+        performance: {
+            hints: 'warning',
+            maxEntrypointSize: 2048 * 1000,
+            maxAssetSize: 3072 * 1000
+        },
+
         module: {
             rules: [
               {
