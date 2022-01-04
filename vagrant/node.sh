@@ -14,4 +14,8 @@ fi
 
 # dev packages
 echo "[v] Installing npm global packages for development...";
-sudo npm install -g  npm yarn npm-check-updates
+sudo npm install -g  yarn npm-check-updates
+
+# update npm
+echo "[v] Update npm to latest...";
+sudo npm install -g  npm
