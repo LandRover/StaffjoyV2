@@ -5,24 +5,24 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress --color --mode development --config ./webpack.config.js",
-    "build": "webpack --progress --color --config ./webpack.config.js"
+    "build": "webpack --progress --color --mode production --config ./webpack.config.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "css-loader": "^3.5.3",
-    "file-loader": "^6.0.0",
-    "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.14.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "css-loader": "^6.5.1",
+    "file-loader": "^6.2.0",
+    "mini-css-extract-plugin": "^2.4.5",
+    "node-sass": "^7.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "rmwc": "^5.7.2",
-    "sass-loader": "^8.0.2",
-    "style-loader": "^1.2.1",
-    "webpack": "^4.43.0",
-    "webpack-cleanup-plugin": "0.5.1",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
+    "sass-loader": "^12.4.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.65.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.2"
   }
 }

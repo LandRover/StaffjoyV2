@@ -1,6 +1,9 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+// for cleanup of other builds
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 module.exports = (env, options) => {
     const isDevMode = options.mode === 'development';
     
@@ -16,6 +19,13 @@ module.exports = (env, options) => {
             filename: 'bundle.js',
             chunkFilename: 'chunk.js'
         },
+
+        performance: {
+            hints: false,//'warning',
+            maxEntrypointSize: 2048 * 1000,
+            maxAssetSize: 3072 * 1000
+        },
+
         module: {
             rules: [
               {
@@ -23,9 +33,6 @@ module.exports = (env, options) => {
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            hmr: isDevMode,
-                        },
                     },
                     {
                         loader: 'css-loader',
@@ -85,12 +92,12 @@ module.exports = (env, options) => {
             host: '0.0.0.0',
             port: 8080,
             compress: true,
-            contentBase: './dist',
-            disableHostCheck: true,
             historyApiFallback: true,
         },
         
         plugins: [
+            new CleanWebpackPlugin(),
+
             new MiniCssExtractPlugin({
                 filename: "styles.css"
             }),
