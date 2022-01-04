@@ -1,6 +1,6 @@
 #!/bin/bash
 
-NODE_VERSION="12";
+NODE_VERSION="16";
 
 if ! command -V node >/dev/null 2>&1; then
     curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | sudo -E bash -
@@ -14,4 +14,4 @@ fi
 
 # dev packages
 echo "[v] Installing npm global packages for development...";
-sudo npm install -g  yarn npm-check-updates
+sudo npm install -g  npm yarn npm-check-updates
