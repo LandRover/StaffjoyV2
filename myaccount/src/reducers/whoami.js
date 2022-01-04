@@ -9,7 +9,7 @@ const initialState = {
   intercomSettings: {},
 };
 
-export default function reducerWhoAMI(state = initialState, action) {
+export default function reducerWhoAMI(state = initialState, action = {}) {
   switch (action.type) {
     case actionTypes.INVALIDATE_WHO_AM_I:
       return _.extend({}, state, { didInvalidate: true });
