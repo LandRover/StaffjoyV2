@@ -23,7 +23,7 @@ module.exports = (env, options) => {
         },
 
         performance: {
-            hints: 'warning',
+            hints: false,//'warning',
             maxEntrypointSize: 2048 * 1000,
             maxAssetSize: 3072 * 1000
         },
@@ -124,8 +124,6 @@ module.exports = (env, options) => {
             host: '0.0.0.0',
             port: '3000',
             compress: true,
-            contentBase: './dist',
-            disableHostCheck: true,
             historyApiFallback: true,
         },
         
