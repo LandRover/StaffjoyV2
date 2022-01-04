@@ -1,11 +1,12 @@
 // for creating cache-safe files
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var WebappWebpackPlugin = require('webapp-webpack-plugin');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 // for cleanup of other builds
-var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+const isDevelopment = process.env.NODE_ENV !== 'production';
 
 module.exports = (env, options) => {
     const isDevMode = options.mode === 'development';
@@ -17,14 +18,21 @@ module.exports = (env, options) => {
         output: {
             publicPath: '/',
             path: path.resolve(__dirname, 'dist'),
-            filename: '[name]-[hash:16].bundle.js',
-            chunkFilename: '[name]-[hash:16].chunk.js'
+            filename: '[name]-[contenthash].bundle.js',
+            chunkFilename: '[name]-[contenthash].chunk.js'
         },
+
+        performance: {
+            hints: false,//'warning',
+            maxEntrypointSize: 2048 * 1000,
+            maxAssetSize: 3072 * 1000
+        },
+
         module: {
             rules: [
               {
                 enforce: 'pre',
-                test: /\.(js|jsx)$/,
+                test: /\.(js|jsx)disabled$/,
                 include: /src/,
                 exclude: [
                     /node_modules/,
@@ -108,26 +116,27 @@ module.exports = (env, options) => {
             host: '0.0.0.0',
             port: '3000',
             compress: true,
-            contentBase: './dist',
-            disableHostCheck: true,
             historyApiFallback: true,
         },
         
         plugins: [
+            new CleanWebpackPlugin(),
+
             new HtmlWebpackPlugin({
                 title: "Staffjoy | My Account",
                 template: "index.template.ejs",
                 inject: "body",
             }),
-
-            new WebappWebpackPlugin({
+            
+            new FaviconsWebpackPlugin({
                 logo: './staffjoy-favicon.png',
                 prefix: 'assets/icons/',
                 cache: true,
                 inject: true,
                 favicons: {
                     background: '#fff',
-                    title: 'Staffjoy | My Account',
+                    appName: 'staffjoy',
+                    appDescription: 'Staffjoy | App',
 
                     icons: {
                         android: true,
@@ -143,10 +152,6 @@ module.exports = (env, options) => {
                     },
                 },
             }),
-            
-            new WebpackCleanupPlugin({
-                exclude: ["README.md", "assets/**/*"],
-            })
         ]
     }
 };
