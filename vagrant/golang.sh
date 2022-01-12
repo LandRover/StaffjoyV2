@@ -76,8 +76,4 @@ fi
 
 go install github.com/gogo/protobuf/...
 
-# used for local filesystem watching
-if ! command -V modd ; then
-    go install github.com/cortesi/modd/cmd/modd
-fi
 "
