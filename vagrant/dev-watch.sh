@@ -7,14 +7,14 @@ if ! command -V vagrant >/dev/null 2>&1; then
     exit 1
 fi
 
-if ! command -V gow >/dev/null 2>&1; then
-    echo "Oops - please install `gow` on your host machine"
-    echo "https://github.com/mitranim/gow"
+if ! command -V modd >/dev/null 2>&1; then
+    echo "Oops - please install `modd` on your host machine"
+    echo "https://github.com/cortesi/modd"
     exit 1
 fi
 
 # Boot the vm
-vagrant up 
+vagrant up
 
 # Catch shutdown signal and kill both
 trap 'kill %1;' SIGINT
