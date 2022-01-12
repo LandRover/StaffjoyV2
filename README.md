@@ -71,7 +71,7 @@ git clone git@github.com:LandRover/StaffjoyV2.git $GOPATH/src/v2.staffjoy.com/
 - Vagrant Plugins:
   - Vagrant host manager: `vagrant plugin install vagrant-hostmanager`
   - Vagrant resize disk: `vagrant plugin install vagrant-disksize`
-- [modd](https://github.com/cortesi/modd) (either from Go source or binary available [here])
+- [gow](https://github.com/mitranim/gow)
 
 ### Running the Environment
 
