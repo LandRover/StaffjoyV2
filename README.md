@@ -134,7 +134,7 @@ The tool [GoConvey](https://github.com/smartystreets/goconvey) is great for seei
 ```
 [automount]
 enabled = true
-options = "metadata,umask=22,fmask=11"
+options = "metadata,umask=022,fmask=133"
 ```
 
 - Install latest Vagrant inside the WSL and the Host
