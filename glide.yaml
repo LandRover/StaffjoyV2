@@ -11,7 +11,7 @@ import:
   - package: github.com/daaku/go.zipexe
     version: 74d766ac1dde7458348221869a7d1e7e5fa0597e
   - package: github.com/golang-jwt/jwt/v4
-    version: ^4.2.0
+    version: ^4.4.1
   - package: github.com/gorilla/sessions
     version: ^1.2.1
   - package: github.com/gorilla/securecookie
@@ -23,7 +23,7 @@ import:
   - package: github.com/pkg/errors
     version: ^0.9.1
   - package: github.com/mailgun/mailgun-go/v4
-    version: ^4.6.0
+    version: ^4.6.1
     repo: https://github.com/mailgun/mailgun-go
   - package: github.com/json-iterator/go
     version: ^1.1.12
@@ -40,7 +40,7 @@ import:
   - package: github.com/getsentry/raven-go
     version: 5c24d5110e0e198d9ae16f1f3465366085001d92
   - package: github.com/getsentry/sentry-go
-    version: ^0.12.0
+    version: ^0.13.0
   - package: google.golang.org/grpc
     version: ^1.33.3
     repo: https://github.com/grpc/grpc-go
@@ -56,7 +56,7 @@ import:
     subpackages:
       - "..."
   - package: google.golang.org/protobuf
-    version: ^1.27.1
+    version: ^1.28.0
     repo: https://github.com/protocolbuffers/protobuf-go
     subpackages:
       - "..."
@@ -106,21 +106,21 @@ import:
   - package: github.com/go-sql-driver/mysql
     version: ^1.6.0
   - package: golang.org/x/net
-    version: fe4d6282115f0528fd5bc04b5644ce8ba1f43a50
+    version: 2871e0cb64e47e47ba7466fad6e11562caf99563
     repo: https://github.com/golang/net
     subpackages:
       - html
       - context
   - package: golang.org/x/oauth2
-    version: d3ed0bb246c8d3c75b63937d9a5eecff9c74d7fe
+    version: 9780585627b5122c8cc9c6a378ac9861507e7551
     repo: https://github.com/golang/oauth2
   - package: golang.org/x/time
-    version: f0f3c7e86c11ca8f8b99d970e28445dda0b41195
+    version: 583f2d630306214ee49ea373317b53b90026aab7
     repo: https://github.com/golang/time
     subpackages:
       - rate
   - package: golang.org/x/crypto
-    version: e495a2d5b3d3be43468d0ebb413f46eeaedf7eb3
+    version: eb4f295cb31f7fb5d52810411604a2638c9b19a2
     repo: https://github.com/golang/crypto
     subpackages:
       - bcrypt

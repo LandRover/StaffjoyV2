@@ -84,7 +84,7 @@ new_git_repository(
 new_git_repository(
     name = "go_libphonenumber",
     build_file = "//:third_party/go/ttacon_libphonenumber.BUILD",
-    commit = "759f71f653b20ae26a4ded88f69ed862055f0468", ## Mar 29, 2021 (LATEST GIT COMMIT)
+    commit = "759f71f653b20ae26a4ded88f69ed862055f0468", # v1.2.1 Mar 29, 2021 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/ttacon/libphonenumber.git",
 )
 
@@ -98,7 +98,7 @@ new_git_repository(
 new_git_repository(
     name = "go_jwt",
     build_file = "//:third_party/go/golang_jwt.BUILD",
-    commit = "c435f38291bfed5322cf0f4ed12d1f8668ceaeb3", # v4.2.0 Nov 24, 2021 (LATEST OFFICIAL VERSION)
+    commit = "0972257eba279bb357882afc11db8218644ad565", # v4.4.1 Mar 26, 2022 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/golang-jwt/jwt.git",
 )
 
@@ -140,7 +140,7 @@ new_git_repository(
 new_git_repository(
     name = "go_mailgun",
     build_file = "//:third_party/go/go_mailgun.BUILD",
-    commit = "e41a962e5ecfd1eeeb035c15f3b5189d26e7204e", # v4.6.0 Nov 17, 2021 (LATEST OFFICIAL VERSION)
+    commit = "8b5d15e5e164f8159d313f5e455c0a91085bca4a", # v4.6.1 Mar 29, 2022 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/mailgun/mailgun-go.git",
 )
 
@@ -196,7 +196,7 @@ new_git_repository(
 new_git_repository(
     name = "go_sentry",
     build_file = "//:third_party/go/go_sentry.BUILD",
-    commit = "e61b0a40aec5644bec36089566bb6f8b230f0ecf", # v0.12.0 Dec 22, 2021 (LATEST OFFICIAL VERSION)
+    commit = "88bad6bedf8efad0f711710c96f2666307e9c815", # v0.13.0 Mar 10, 2022 (LATEST OFFICIAL VERSION)
     remote = "https://github.com/getsentry/sentry-go.git",
 )
 
@@ -265,7 +265,7 @@ new_git_repository(
 new_git_repository(
     name = "go_protobuf_official",
     build_file = "//:third_party/go/protobuf-official.BUILD",
-    commit = "f2d1f6cbe10b90d22296ea09a7217081c2798009", # v1.27.1 Jun 28, 2021 (LATEST OFFICIAL RELEASE)
+    commit = "32051b4f86e54c2142c7c05362c6e96ae3454a1c", # v1.28.0 Mar 22, 2021 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/protocolbuffers/protobuf-go.git",
 )
 
@@ -293,7 +293,7 @@ new_git_repository(
 new_git_repository(
     name = "go_cmp",
     build_file = "//:third_party/go/google_cmp.BUILD",
-    commit = "d103655696d8ae43c4125ee61454dbf03d8e8324", # v0.5.6 May 25, 2021 (LATEST OFFICIAL RELEASE)
+    commit = "f144a35ed4ac538fae93fa3783175108738f71b9", # v0.5.8 Apr 26, 2021 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/google/go-cmp.git",
 )
 
@@ -305,7 +305,7 @@ http_archive(
     strip_prefix = "google-api-go-client-%s" % GO_GOOGLE_API_VERSION,
 )
 
-GO_GOOGLE_CLOUD_VERSION="0.99.0" # Dec 7, 2021 (LATEST OFFICIAL RELEASE)
+GO_GOOGLE_CLOUD_VERSION="0.101.0" # Apr 21, 2022 (LATEST OFFICIAL RELEASE)
 http_archive(
     name = "go_cloud",
     build_file = "//:third_party/go/google_cloud.BUILD",
@@ -358,28 +358,28 @@ new_git_repository(
 new_git_repository(
     name = "go_x_net",
     build_file = "//:third_party/go/x_net.BUILD",
-    commit = "d55c255bac037b8052cb2cb906e2a42ef152ff79", # Dec 16, 2021 (LATEST GIT COMMIT)
+    commit = "2871e0cb64e47e47ba7466fad6e11562caf99563", # Apr 26, 2022 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/net.git"
 )
 
 new_git_repository(
     name = "go_x_oauth2",
     build_file = "//:third_party/go/x_oauth2.BUILD",
-    commit = "d3ed0bb246c8d3c75b63937d9a5eecff9c74d7fe", # Nov 04, 2021 (LATEST GIT COMMIT)
+    commit = "9780585627b5122c8cc9c6a378ac9861507e7551", # Apr 12, 2022 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/oauth2.git"
 )
 
 new_git_repository(
     name = "go_x_time",
     build_file = "//:third_party/go/x_time.BUILD",
-    commit = "f0f3c7e86c11ca8f8b99d970e28445dda0b41195", # Nov 17, 2021 (LATEST GIT COMMIT)
+    commit = "583f2d630306214ee49ea373317b53b90026aab7", # Apr 12, 2022 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/time.git"
 )
 
 new_git_repository(
     name = "go_x_crypto",
     build_file = "//:third_party/go/x_crypto.BUILD",
-    commit = "e495a2d5b3d3be43468d0ebb413f46eeaedf7eb3", # Dec 15, 2021 (LATEST GIT COMMIT)
+    commit = "eb4f295cb31f7fb5d52810411604a2638c9b19a2", # Apr 27, 2022 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/crypto.git"
 )
 
@@ -407,7 +407,7 @@ new_git_repository(
 new_git_repository(
     name = "golang_lru",
     build_file = "//:third_party/go/golang_lru.BUILD",
-    commit = "14eae340515388ca95aa8e7b86f0de668e981f54", # v0.5.4 Jan 16, 2021 (LATEST OFFICIAL RELEASE)
+    commit = "14eae340515388ca95aa8e7b86f0de668e981f54", # v0.5.4 Jan 16, 2020 (LATEST OFFICIAL RELEASE)
     remote = "https://github.com/hashicorp/golang-lru.git"
 )
 
