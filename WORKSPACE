@@ -20,9 +20,9 @@ http_archive(
 # rules_license
 git_repository(
     name = "rules_license",
-    commit = "eda4e9c2cde8d6a8d05f3f7cd182ea824a3b2830",
+    commit = "4a20d4e66ffefd3c0db5b72f7a7a5ea69c9d6806",
     remote = "https://github.com/bazelbuild/rules_license.git",
-    shallow_since = "1643730996 -0500"
+    shallow_since = "1643929700 -0500"
 )
 
 # DOCKER STUFF
