@@ -1,14 +1,29 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository", "new_git_repository")
 
-## Load docker rules
-IO_RULES_DOCKER_VERSION="0.22.0"
+## rules_docker
+RULES_DOCKER_VERSION="0.24.0"
 http_archive(
     name = "io_bazel_rules_docker",
-    urls = ["https://github.com/bazelbuild/rules_docker/releases/download/v%s/rules_docker-v%s.tar.gz" % (IO_RULES_DOCKER_VERSION, IO_RULES_DOCKER_VERSION)],
-    strip_prefix = "rules_docker-%s" % IO_RULES_DOCKER_VERSION,
+    urls = ["https://github.com/bazelbuild/rules_docker/releases/download/v%s/rules_docker-v%s.tar.gz" % (RULES_DOCKER_VERSION, RULES_DOCKER_VERSION)],
+    strip_prefix = "rules_docker-%s" % RULES_DOCKER_VERSION,
 )
 
+## rules_pkg
+RULES_PKG_VERSION="0.7.0"
+http_archive(
+    name = "rules_pkg",
+    urls = ["https://github.com/bazelbuild/rules_pkg/releases/download/%s/rules_pkg-%s.tar.gz" % (RULES_PKG_VERSION, RULES_PKG_VERSION)],
+)
+
+
+# rules_license
+git_repository(
+    name = "rules_license",
+    commit = "eda4e9c2cde8d6a8d05f3f7cd182ea824a3b2830",
+    remote = "https://github.com/bazelbuild/rules_license.git",
+    shallow_since = "1643730996 -0500"
+)
 
 # DOCKER STUFF
 load(
@@ -343,7 +358,7 @@ new_git_repository(
 new_git_repository(
     name = "go_x_net",
     build_file = "//:third_party/go/x_net.BUILD",
-    commit = "fe4d6282115f0528fd5bc04b5644ce8ba1f43a50", # Dec 16, 2021 (LATEST GIT COMMIT)
+    commit = "d55c255bac037b8052cb2cb906e2a42ef152ff79", # Dec 16, 2021 (LATEST GIT COMMIT)
     remote = "https://github.com/golang/net.git"
 )
 
