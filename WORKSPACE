@@ -54,7 +54,7 @@ container_pull(
     name = "ubuntu",
     registry ="index.docker.io",
     repository = "library/ubuntu",
-    tag = "focal",
+    tag = "jammy",
 )
 
 # Required by IO_RULES_DOCKER_VERSION > 0.14.4 (https://github.com/bazelbuild/rules_docker/issues/1550)
