@@ -140,6 +140,11 @@ options = "metadata,umask=022,fmask=11"
 command="service ssh restart; service rsyslog restart; service cron restart"
 ```
 
+Autostart WSL Tutorial via Task: https://www.youtube.com/watch?v=1rM-YcKhd1o
+```
+wsl -exec dbus-launch true
+```
+
 - Install latest Vagrant inside the WSL and the Host
 - Install latest Virtualbox
 - Run dev env
