@@ -137,7 +137,12 @@ enabled = true
 options = "metadata,umask=022,fmask=11"
 
 [boot]
-command="service ssh restart; service rsyslog restart; service cron restart"
+systemd=true
+command="service ssh restart; service rsyslog restart; service cron restart; echo ':WSLInterop:M::MZ::/init:PF' > /proc/sys/fs/binfmt_misc/register"
+
+[interop]
+enabled = true
+appendWindowsPath = true
 ```
 
 Autostart WSL Tutorial via Task: https://www.youtube.com/watch?v=1rM-YcKhd1o
