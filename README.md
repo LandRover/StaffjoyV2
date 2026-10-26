@@ -99,7 +99,7 @@ Login Info:
 - Login: root/SHIBBOLETH
 
 ```
-$ docker run --name myadmin -d -e PMA_HOST=10.0.0.100 -p 8080:80 phpmyadmin/phpmyadmin
+$ docker run --name myadmin -d -e PMA_HOST=10.0.0.100 -p 8080:80 phpmyadmin
 ```
 
 ### Development resources
